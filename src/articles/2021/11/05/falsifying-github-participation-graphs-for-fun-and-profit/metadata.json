@@ -1,0 +1,20 @@
+{
+  "article": {
+    "title": "Falsifying Github Participation Graphs for Fun and Profit!",
+    "description": "Or, how to make a useless recruiting metric even more useless.",
+    "tags": [
+      "github",
+      "git",
+      "bash",
+      "recruitment",
+      "coding"
+    ]
+  },
+  "author": {
+    "name": "Wilhelm Murdoch",
+    "social": {
+      "github": "wilhelm-murdoch",
+      "twitter": "wilhelm"
+    }
+  }
+}
