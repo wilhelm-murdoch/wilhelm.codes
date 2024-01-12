@@ -12,6 +12,7 @@ type Tag struct {
 }
 
 type Choice struct {
+	Cid          string `json:"cid"`
 	IsCorrect    bool   `json:"is_correct,omitempty"`
 	Text         string `json:"text"`
 	ContainsHTML bool   `json:"contains_html,omitempty"`
