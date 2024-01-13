@@ -16,12 +16,8 @@ export const getRandomNumbersInRange = (min: number, max: number, count: number)
     return out;
 }
 
-export const getProgress = (score: number, max: number) => {
-    let percentage = 0;
-    if (typeof score === "number" && typeof max === "number") {
-      percentage = Math.round((score / max) * 100);
-    }
-    return percentage;
+export const getProgress = (current: number, max: number) => {
+    return Math.round((current / max) * 100);
 };
 
 export const isCorrect = (question: Question, choice: string) => {

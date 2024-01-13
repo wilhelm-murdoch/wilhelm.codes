@@ -5,8 +5,8 @@ import jsonTrivia from '$lib/data/australia.json'
 
 export const trivia: Trivia = jsonTrivia;
 
-enum QuizStatus {
-    STOPPED = 0,
+export enum QuizStatus {
+    FINISHED = 0,
     STARTED
 }
 
@@ -46,6 +46,6 @@ export const quiz = derived([readable(trivia.questions), numberOfQuestions], ([$
 export const reset = () => {
     score.set(0);
     currentQuestionIndex.set(0);
-    status.set(QuizStatus.STOPPED);
+    status.set(QuizStatus.FINISHED);
 }
 
