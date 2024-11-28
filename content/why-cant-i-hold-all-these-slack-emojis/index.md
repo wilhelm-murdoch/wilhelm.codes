@@ -1,3 +1,16 @@
+---
+params:
+    author: Wilhelm Murdoch
+title: Why Can't I Hold All These Slack Emojis?
+summary: Or, more stupid tricks while messing with Slack’s API.
+draft: false
+date: 28 Sep 2023
+tags:
+  - slack
+  - emoji
+  - bash
+  - api
+---
 **TL;DR** if you want to skip all this and just get to the good stuff, **[click here](https://github.com/wilhelm-murdoch/slack-emoji-toolkit)**
  to download and run the `slack-emoji-toolkit`.
 

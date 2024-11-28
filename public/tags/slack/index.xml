@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slack on Wilhelm Codes</title>
+    <link>http://localhost:1313/tags/slack/</link>
+    <description>Recent content in Slack on Wilhelm Codes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/slack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Can&#39;t I Hold All These Slack Emojis?</title>
+      <link>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</link>
+      <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</guid>
+      <description>Or, more stupid tricks while messing with Slack’s API.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,3 +1,15 @@
+---
+params:
+    author: Wilhelm Murdoch
+title: Deleting Massive S3 Buckets the Easy Way.
+summary: Or, why do I have to create multiple lifecycle policies to do this?
+draft: false
+date: 04 Dec 2021
+tags:
+    - aws
+    - devops
+    - cost optimisation
+---
 ## Ok... 🥱
 
 Right, so, I'm in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources.
