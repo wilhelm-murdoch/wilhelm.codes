@@ -1,3 +1,13 @@
+---
+params:
+    author: Wilhelm Murdoch
+title: Learning Bash Through Pointless Fun ...
+summary: oR, HOW tO bE COmpletEly iNsufFerAbLE in tHE cHAT.
+draft: false
+date: 05 Oct 2022
+tags:
+  - bash
+---
 I’ve got a few minutes, so here’s a quick one.
 
 [Memes. Glorious memes.](https://knowyourmeme.com/memes/mocking-spongebob)

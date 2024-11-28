@@ -1,3 +1,14 @@
+---
+params:
+    author: Wilhelm Murdoch
+title: Falsifying Github Participation Graphs for Fun and Profit!
+summary: Or, how to make a useless recruiting metric even more useless.
+draft: false
+date: 04 Nov 2021
+tags:
+  - bash
+  - git
+---
 ## Psssst... Hey, over here. Hi! 👋 😬
 
 If you've spent any time job hunting in the tech industry, you've had to deal with recruiters. I like to joke around with my peers about how they're a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. But, good or bad, far too many of them will pass over your resume for the wildest reasons. We're not here to go over all of them. No, today we're going to address the somewhat recent trend of glancing at your public Github profile page and grading you based on how many green squares show up in your participation graph.

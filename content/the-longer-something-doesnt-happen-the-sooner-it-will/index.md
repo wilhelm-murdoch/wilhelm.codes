@@ -1,3 +1,15 @@
+---
+params:
+    author: Wilhelm Murdoch
+title: The Longer Something Doesn't Happen, the Sooner it Will. 
+summary: Or, manage your expectations and build around inevitable failure. 
+draft: false
+date: 27 Jan 2024
+tags:
+    - devops
+    - sre
+    - chaos engineering
+---
 This is often referred to as the "[Mean Time Between Failures (MTBF)](https://en.wikipedia.org/wiki/Mean_time_between_failures)" in the context of Site Reliability Engineering. It's a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven't experienced one for a while.
 
 While it may sound paradoxical, there is some reasoning behind it.

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Wilhelm Codes</title>
+    <link>http://localhost:1313/tags/git/</link>
+    <description>Recent content in Git on Wilhelm Codes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Falsifying Github Participation Graphs for Fun and Profit!</title>
+      <link>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</link>
+      <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
+      <description>Or, how to make a useless recruiting metric even more useless.</description>
+    </item>
+  </channel>
+</rss>

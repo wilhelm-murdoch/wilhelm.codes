@@ -1,3 +1,16 @@
+---
+params:
+    author: Wilhelm Murdoch
+title: Filtering Docker Containers with Jq
+summary: Or, I can’t be the only one who will find this useful.
+draft: false
+date: 29 Sep 2022
+tags: 
+  - docker
+  - js
+  - json
+  - bash
+---
 **TL;DR** if you want to skip all this and just get to the good stuff, **[click here](https://github.com/wilhelm-murdoch/dq)** to download and run `dq`.
 
 ---

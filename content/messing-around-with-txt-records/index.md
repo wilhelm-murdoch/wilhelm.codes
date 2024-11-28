@@ -1,3 +1,15 @@
+---
+params:
+    author: Wilhelm Murdoch
+title: Messing Around with TXT Records!
+summary: Or, a dumb little trick to use your personal domain as a business card.
+draft: false
+date: 11 Nov 2021
+tags:
+    - dns
+    - devops
+    - networking
+---
 ## Hey, wanna see a neat trick? 🤯
 
 Open up your terminal of choice and invoke this `dig` command:

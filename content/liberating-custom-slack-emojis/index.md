@@ -1,3 +1,16 @@
+---
+params:
+    author: Wilhelm Murdoch
+title: Liberating Custom Slack Emojis
+summary: Or, I'm bored. Let's learn some stupid stuff!
+draft: false
+date: 20 Sep 2022
+tags:
+  - emoji
+  - api
+  - bash
+  - api
+---
 **TL;DR** if you want to skip all this and just get to the good stuff, [click here](https://github.com/wilhelm-murdoch/slack-emoji-toolkit) to download and run the `slack-emoji-toolkit`.
 
 ---
