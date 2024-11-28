@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Psssst&hellip; Hey, over here. Hi! 👋 😬
+If you&rsquo;ve spent any time job hunting in the tech industry, you&rsquo;ve had to deal with recruiters. I like to joke around with my peers about how they&rsquo;re a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. But, good or bad, far too many of them will pass over your resume for the wildest reasons. We&rsquo;re not here to go over all of them. No, today we&rsquo;re going to address the somewhat recent trend of glancing at your public Github profile page and grading you based on how many green squares show up in your participation graph.">  
+
+  <title>
+    
+      
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.b3f3f10b76da53cb419a1c5b31ac9aa19368c212bd657c216cb741770676d110e21001bc85bb2527dd4e537a4c34b5333eda55e587f77769df67bb48cca62337.css" integrity="sha512-s/PxC3baU8tBmhxbMayaoZNowhK9ZXwhbLdBdwZ20RDiEAG8hbslJ91OU3pMNLUzPtpV5Yf3d2nfZ7tIzKYjNw==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+            0001-01-01
+        </time>
+    </p>
+
+    <h1></h1>
+
+    
+
+    <h2 id="psssst-hey-over-here-hi--">Psssst&hellip; Hey, over here. Hi! 👋 😬</h2>
+<p>If you&rsquo;ve spent any time job hunting in the tech industry, you&rsquo;ve had to deal with recruiters. I like to joke around with my peers about how they&rsquo;re a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. But, good or bad, far too many of them will pass over your resume for the wildest reasons. We&rsquo;re not here to go over all of them. No, today we&rsquo;re going to address the somewhat recent trend of glancing at your public Github profile page and grading you based on how many green squares show up in your participation graph.</p>
+<h2 id="so-whats-your-point-">So? What&rsquo;s your point? 🤨</h2>
+<p>Like basing your performance on LoC, using &ldquo;commits made&rdquo; as a recruiting metric is beyond useless. There can be any number of reasons why your graph isn&rsquo;t as populated as they&rsquo;d like:</p>
+<ol>
+<li>You work on private repositories and you haven&rsquo;t configured your profile to show anonymised private contributions.</li>
+<li>You have an alternate account from your personal one to keep work and private life separate. Or, maybe it&rsquo;s just company policy.</li>
+<li>You&rsquo;ve signed an NDA and can&rsquo;t publish your contributions publicly.</li>
+<li>You set personal boundaries for your work-life balance and don&rsquo;t care to stare at glowing rectangles in your free time.    ndscape:</li>
+</ol>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1635955257237/Mvka96vUO.png" alt="CleanShot 2021-11-03 at 23.39.57.png"></p>
+<p>To a verdant garden paradise:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1635955316932/MsSDvasr-.png" alt="CleanShot 2021-11-04 at 00.03.14.png"></p>
+<p>And that&rsquo;s it! 🎉</p>
+<p>If you&rsquo;ve made a mistake, simply delete your private repository and try again with a fresh one.</p>
+<h2 id="any-final-thoughts-">Any final thoughts? 😏</h2>
+<p>Job hunting is hard enough. Especially with more and more companies becoming increasingly risk-averse in their interviewing and recruiting processes. It&rsquo;s my hope that this little bit of harmless monkey mischief will make things a bit easier for you! 🙈 🙉 🙊</p>
+<p>Till next time!</p>
+<ol start="5">
+<li>Or, maybe you&rsquo;ve just had a slow year? 🤷</li>
+</ol>
+<p>Personally, I have <em>thousands</em> of commits that will never see the light of day for some of the ☝️ points. If I&rsquo;m out job hunting, I would hate to be passed over because I don&rsquo;t tick some mundane box on an arbitrary checklist.</p>
+<h2 id="what-do-">What do? 🤔</h2>
+<p>Well, we light up that graph like it&rsquo;s a switch board, of course. Make this information utterly useless. What do they care if your profile says you&rsquo;ve had <code>2,345</code> commits in the last week? Maybe you did. If it&rsquo;s 🟩 , they cross it off their checklist and move on to something else.</p>
+<h2 id="ok-show-me-">Ok, show me. 🤫</h2>
+<p>Crack your knuckles and get ready to do some coding. For this little project, we&rsquo;ll be doing some simple Bash scripting. I&rsquo;m currently working on MacOS, but this code should be fairly portable on other Linux-based distributions.</p>
+<p>You will, naturally, need a Github account. Let&rsquo;s start there.</p>
+<h3 id="configure-your-participation-graph">Configure Your Participation Graph</h3>
+<p>Did you know you can configure your participation graph to display anonymised private commit statistics? Ensure that setting is ✅ and move on to the next step.</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1635953829516/3Ucg1G2sa.png" alt="CleanShot 2021-11-04 at 01.36.54.png"></p>
+<h3 id="new-private-repository">New Private Repository</h3>
+<p>Let&rsquo;s create a new <em>empty</em> repository entitled <code>graph-participation</code> and make sure it&rsquo;s private.</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1635953948555/wP9rrFo7J.png" alt="CleanShot 2021-11-04 at 01.38.58.png"></p>
+<h3 id="checkout-local-working-copy">Checkout Local Working Copy</h3>
+<p>Follow the post-setup instructions Github gives you to check out a local working copy of your new 🔒 repository!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Let&#39;s goooooooo!&#34;</span> &gt;&gt; README.md
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add README.md
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;The first and final legitimate commit in this repository ...&#34;</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span>git remote add origin git@github.com:&lt;account&gt;/github-participation.git
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></div><p>Of course, replace <code>&lt;account&gt;</code> with the name of your Github account.</p>
+<h3 id="writing-some-code">Writing Some Code</h3>
+<p>Here comes the best part! What, you didn&rsquo;t think you&rsquo;d walk away from this article without writing a bit of code, did you?</p>
+<p>This script is super-simple. There&rsquo;s no need for elegance here as we&rsquo;re probably only ever going to run this code once or twice. I&rsquo;ll show you the full snippet and then walk you through the details.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>start<span style="color:#f92672">=</span>2021-05-01
+</span></span><span style="display:flex;"><span>stop<span style="color:#f92672">=</span>2021-05-09
+</span></span><span style="display:flex;"><span>max<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>start<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>stop<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">do</span> 
+</span></span><span style="display:flex;"><span>  start<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>gdate -I -d <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>start<span style="color:#e6db74">}</span><span style="color:#e6db74"> + 1 day&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span>run<span style="color:#f92672">=</span>1; run &lt;<span style="color:#f92672">=</span> <span style="color:#66d9ef">$((</span>RANDOM <span style="color:#f92672">%</span> max <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#66d9ef">))</span>; run++<span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    openssl rand -hex <span style="color:#ae81ff">32</span> &gt; touch.txt
+</span></span><span style="display:flex;"><span>    git add -A
+</span></span><span style="display:flex;"><span>    export GIT_AUTHOR_DATE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>start<span style="color:#e6db74">}</span><span style="color:#e6db74">T00:01&#34;</span>
+</span></span><span style="display:flex;"><span>    export GIT_COMMITTER_DATE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>GIT_AUTHOR_DATE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    git commit -m <span style="color:#e6db74">&#34;Touch #</span><span style="color:#e6db74">${</span>run<span style="color:#e6db74">}</span><span style="color:#e6db74"> for </span><span style="color:#e6db74">${</span>GIT_AUTHOR_DATE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>First things first, we only need to know three things to get started:</p>
+<ol>
+<li><code>start</code>: The day of our first &ldquo;commit&rdquo; in the format of <code>YYYY-MM-DD</code>.</li>
+<li><code>stop</code>: The day of our last &ldquo;commit&rdquo; in the format of <code>YYYY-MM-DD</code>.</li>
+<li><code>max</code>: We don&rsquo;t want a single commit per day. Otherwise, the graph will be all one colour and not at all random enough to look legitimate. So, to account for this, we randomly create between <code>1</code> and <code>20</code> commits per day.</li>
+</ol>
+<p>We start a <code>while</code> loop that keeps going until our <code>start</code> and <code>stop</code> strings are no longer different. With each iteration, we add <code>1</code> day to our <code>start</code> variable. Eventually, this date will increment until both <code>start</code> and <code>stop</code> strings are equal, thus ending the loop.</p>
+<p>For each day iteration, we create another loop that randomly-iterates anywhere between <code>1</code> and <code>max</code> times. Within each nested iteration we replace the content of the file named <code>touch.txt</code> with a random value making it a unique commit.</p>
+<p>We then stage this change and assign a date value to both the <code>GIT_AUTHOR_DATE</code> and <code>GIT_COMMITTER_DATE</code> environmental variables. These are what allow you to easily back date a commit.</p>
+<p>Finally, we commit this unique change locally. This keeps happening for every day until the script stops.</p>
+<p>Write this to an executable file, or just paste it into your terminal of choice and hit <code>enter</code>. If you see the following kind of log output, you know you&rsquo;re doing the right thing:</p>
+<pre tabindex="0"><code>[main 2ebb5b9] Touch #1 2021-05-07T00:01
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[main e104b0a] Touch #2 2021-05-07T00:01
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[main 873fa39] Touch #3 2021-05-07T00:01
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[main 9def564] Touch #4 2021-05-07T00:01
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[main 1b83187] Touch #1 2021-05-08T00:01
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[main b9f00db] Touch #2 2021-05-08T00:01
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+</code></pre><p>Now, you simply have to push all your changes up to your repository on Github!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div><p>All you now have to do is sit back and wait for everything to update.</p>
+<p>We&rsquo;ve gone from barren landscape:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1635955257237/Mvka96vUO.png" alt="CleanShot 2021-11-03 at 23.39.57.png"></p>
+<p>To a verdant garden paradise:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1635955316932/MsSDvasr-.png" alt="CleanShot 2021-11-04 at 00.03.14.png"></p>
+<p>And that&rsquo;s it! 🎉</p>
+<p>If you&rsquo;ve made a mistake, simply delete your private repository and try again with a fresh one.</p>
+<h2 id="any-final-thoughts--1">Any final thoughts? 😏</h2>
+<p>Job hunting is hard enough. Especially with more and more companies becoming increasingly risk-averse in their interviewing and recruiting processes. It&rsquo;s my hope that this little bit of harmless monkey mischief will make things a bit easier for you! 🙈 🙉 🙊</p>
+<p>Till next time!</p>
+
+</article>
+
+                
+This is footer.
+You can edit this in ../nostyleplease/layouts/footer.md
+
+            </div>
+        </main>
+    </body>
+</html>

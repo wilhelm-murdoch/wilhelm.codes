@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Hey, wanna see a neat trick? 🤯
+Open up your terminal of choice and invoke this dig command:
+dig txt contact.wilhelm.codes &#43;short
+You should see, hopefully 🤞, the following block of text as a response:
+&#34;twitter: @wilhelm&#34;
+&#34;email:   wilhelm@devilmayco.de&#34;
+&#34;github:  wilhelm-murdoch&#34;
+&#34;keybase: 7F89 5036 2816 06F6&#34;
+&#34;blog:    https://wilhelm.codes/&#34;
+Ok, what am I looking at? 🤨
+Simply put, you&rsquo;re looking at my contact details using a simple DNS TXT record lookup. There are heaps of online tools out there to help you directly query DNS records, but dig tends to be the most common utility included included in most Linux distributions as well as MacOS.">  
+
+  <title>
+    
+      
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.b3f3f10b76da53cb419a1c5b31ac9aa19368c212bd657c216cb741770676d110e21001bc85bb2527dd4e537a4c34b5333eda55e587f77769df67bb48cca62337.css" integrity="sha512-s/PxC3baU8tBmhxbMayaoZNowhK9ZXwhbLdBdwZ20RDiEAG8hbslJ91OU3pMNLUzPtpV5Yf3d2nfZ7tIzKYjNw==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+            0001-01-01
+        </time>
+    </p>
+
+    <h1></h1>
+
+    
+
+    <h2 id="hey-wanna-see-a-neat-trick-">Hey, wanna see a neat trick? 🤯</h2>
+<p>Open up your terminal of choice and invoke this <code>dig</code> command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dig txt contact.wilhelm.codes +short
+</span></span></code></pre></div><p>You should see, hopefully 🤞, the following block of text as a response:</p>
+<pre tabindex="0"><code>&#34;twitter: @wilhelm&#34;
+&#34;email:   wilhelm@devilmayco.de&#34;
+&#34;github:  wilhelm-murdoch&#34;
+&#34;keybase: 7F89 5036 2816 06F6&#34;
+&#34;blog:    https://wilhelm.codes/&#34;
+</code></pre><h2 id="ok-what-am-i-looking-at-">Ok, what am I looking at? 🤨</h2>
+<p>Simply put, you&rsquo;re looking at my contact details using a simple DNS <code>TXT</code> record lookup. There are <a href="https://dns.google/query?name=contact.wilhelm.codes">heaps</a> <a href="https://toolbox.googleapps.com/apps/dig/#TXT/">of</a> <a href="https://www.diggui.com/">online tools</a> out there to help you directly query DNS records, but <code>dig</code> tends to be the most common utility included included in most Linux distributions as well as MacOS.</p>
+<h2 id="yes-i-can-see-that-but-why-">Yes, I can see that. But, why? 🤔</h2>
+<p>Originally, <code>TXT</code> records were meant to allow DNS administrators to attach simple plain text human-readable &ldquo;notes&rdquo; to their zones. A bit later, it became common practice to use this flexible record type as a way to verify ownership of a domain.</p>
+<p>If you&rsquo;ve spent any time in an ops-related position, you&rsquo;ve had to add these records when using custom domain names while integrating with some 3rd-party service. Especially, if you&rsquo;ve ever wanted to configure an email service provider, like Google&rsquo;s Gmail, to appear as if you&rsquo;re sending emails from a personal domain name.</p>
+<p>So, why not also create personal, human-readable way of declaring ownership over a domain as well? Like a globally-accessible low-tech &ldquo;business card&rdquo;.</p>
+<p>DNS is effectively a globally-distributed, (mostly) fault-tolerant, eventually-consistent key / value store. These details can be easily looked up and verified by anyone with an Internet connection.</p>
+<p>And as for &ldquo;Why?&rdquo;, why not?</p>
+<h2 id="show-me-">Show me. 🤫</h2>
+<p>Honestly, there&rsquo;s nothing special about how to implement this. It&rsquo;s just another record. In my case, I ended up creating a separate <code>TXT</code> record <em>per</em> contact detail. Depending on which server software your DNS provider is using, you may or may not be able to create multi-line text blocks. So, your safest bet is just multiple one-liners attached to the same <code>CNAME</code>.</p>
+<p>I recently migrated my zone for <code>wilhelm.codes</code> from <a href="https://www.vultr.com/">Vultr</a> to <a href="https://www.cloudflare.com/">CloudFlare</a> and this is pretty much what it all looks like:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1636614449288/CC4b9W-Ui.png" alt="CleanShot 2021-11-11 at 17.07.15.png"></p>
+<p>Obviously, this interface will be different if you use a different service, but that&rsquo;s all there is to it!</p>
+<h2 id="thats-it-">That&rsquo;s it?! 🤓</h2>
+<p>Yep. This isn&rsquo;t groundbreaking stuff and I&rsquo;m surely not the first person to do something like this. Just a bit of (mostly) harmless DNS fun!</p>
+<p>🙈 🙉 🙊</p>
+<p>Enjoy!</p>
+
+</article>
+
+                
+This is footer.
+You can edit this in ../nostyleplease/layouts/footer.md
+
+            </div>
+        </main>
+    </body>
+</html>
