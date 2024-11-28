@@ -20,17 +20,11 @@ const newTriviaSession = (questions: Question[], amount: number) => {
     return out;
 }
 
-
-// Settings
 export const maxNumberOfQuestions = readable(trivia.questions.length);
-export const numberOfQuestions = writable(10);
-
-
+export const numberOfQuestions = writable(2);
 export const currentQuestionIndex = writable(0);
-
 export const title = readable(trivia.title);
 export const description = readable(trivia.description);
-
 export const status = writable(QuizStatus.STARTED);
 export const score = writable(0);
 export const quiz = derived([readable(trivia.questions), numberOfQuestions], ([$questions, $numberOfQuestions]) => {
@@ -38,10 +32,6 @@ export const quiz = derived([readable(trivia.questions), numberOfQuestions], ([$
         return newTriviaSession($questions, $numberOfQuestions);
     }
 }, []);
-
-// export const scorePercentage = derived([score, quiz], ([$score, $quiz]) => {
-//     return getProgress($score, $quiz.length);
-// }, 0);
 
 export const reset = () => {
     score.set(0);
