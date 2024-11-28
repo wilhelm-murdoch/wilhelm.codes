@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="I’ve got a few minutes, so here’s a quick one.
+Memes. Glorious memes.
+Responding to company chat messages in a mocking and sarcastic tone is one of my favourite past times. Classic engineer snark as it were. We’re all in on the joke. However, the artful nuances of snark via online chat tend to get confused by others; Did they mean to sound sarcastic?
+Let’s leave out all doubt regarding our god-tier levels of snarkiness.">  
+
+  <title>
+    
+      
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.b3f3f10b76da53cb419a1c5b31ac9aa19368c212bd657c216cb741770676d110e21001bc85bb2527dd4e537a4c34b5333eda55e587f77769df67bb48cca62337.css" integrity="sha512-s/PxC3baU8tBmhxbMayaoZNowhK9ZXwhbLdBdwZ20RDiEAG8hbslJ91OU3pMNLUzPtpV5Yf3d2nfZ7tIzKYjNw==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+            0001-01-01
+        </time>
+    </p>
+
+    <h1></h1>
+
+    
+
+    <p>I’ve got a few minutes, so here’s a quick one.</p>
+<p><a href="https://knowyourmeme.com/memes/mocking-spongebob">Memes. Glorious memes.</a></p>
+<p>Responding to company chat messages in a mocking and sarcastic tone is one of my favourite past times. Classic engineer snark as it were. We’re all in on the joke. However, the artful nuances of snark via online chat tend to get confused by others; Did they <em>mean</em> to sound sarcastic?</p>
+<p>Let’s leave out all doubt regarding our god-tier levels of snarkiness.</p>
+<p>Today, we’re going to write a laughably-simple Bash script that lets our coworkers know <em><a href="https://knowyourmeme.com/memes/mocking-spongebob">exactly</a></em> what we think. Along the way, you’ll learn a little bit more about Bash such as:</p>
+<ol>
+<li>Setting some default flags.</li>
+<li>Reading text from <code>stdin</code>.</li>
+<li>Parameter expansion.</li>
+<li>Looping through each character of a string.</li>
+<li>Creating random numbers.</li>
+<li>Swapping character types using the <code>tr</code> command.</li>
+<li>And, finally, making your long-suffering coworkers’ eyes roll.</li>
+</ol>
+<h2 id="here-we-go">Here We Go!</h2>
+<p>First, I’m going to just paste the entire script here and then we’ll go through all the important bits line-by-line:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>set -eo pipefail
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>read text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span> i<span style="color:#f92672">=</span>0; i &lt; <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${#</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>; i++ <span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#66d9ef">$((</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RANDOM<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">))</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo -n <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>text:<span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>:1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | tr <span style="color:#e6db74">&#39;[:lower:]&#39;</span> <span style="color:#e6db74">&#39;[:upper:]&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    echo -n <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>text:<span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>:1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | tr <span style="color:#e6db74">&#39;[:upper:]&#39;</span> <span style="color:#e6db74">&#39;[:lower:]&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo
+</span></span></code></pre></div><p>Alright, let’s take it from the top. All Bash scripts should start with a <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">“shebang line”</a>. This tells your terminal which environments and runtimes your script should run under. There are more traditional versions of this — <code>#!/bin/bash</code>, for instance — but, our way is considered to be the most portable overall.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
+</span></span></span></code></pre></div><hr>
+<p>Next, we setup some environmental flags. I use at least the following for <em>all</em> of my personal scripts:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set -eo pipefail
+</span></span></code></pre></div><p>Here is what they do:</p>
+<ol>
+<li><code>set -e</code>: Instructs Bash to immediately exit if any command has a non-zero exit status. This is how it works in most languages, but with Bash, it just keeps on trying to execute subsequent commands. This is generally acceptable on the command line, but not in a script. If we encounter an error, we want to exit immediately.</li>
+<li><code>set -o pipefail</code>: This tells Bash <em>not</em> to mask errors that may appear in a pipeline of commands. We want any failed command’s exit code in a pipeline to bubble up to the script itself and then exit with that code.</li>
+</ol>
+<hr>
+<p>Speaking of pipelines, we want to be able to pipe text to this script so we can do something like the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;wilhelm, i asked you to patch the server.&#34;</span> | ./spongebob
+</span></span><span style="display:flex;"><span>wiLHELm, I AsKEd yOu TO PatCh The seRvEr.
+</span></span></code></pre></div><p>Let&rsquo;s halt the script and wait for user input and then assign that input to variable <code>text</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>read text
+</span></span></code></pre></div><hr>
+<p>Now that we have some text, we need to start randomly-swapping between upper and lower case characters. In order to do that, we need to know the number of characters in our string so we can build a nice loop:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span> i<span style="color:#f92672">=</span>0; i &lt; <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${#</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>; i++ <span style="color:#f92672">))</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ... sweet code goes here </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>We could do something in a sub-shell here like <code>$(echo &quot;${text}&quot; | wc -c)</code> to get the character count, but why do that when we could get the same result with <code>&quot;${#text}&quot;</code>. This lovely bit of <a href="https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html">“shell parameter expansion”</a> helps us avoid sub-commands and sub-shells.</p>
+<hr>
+<p>Next, we want to be able to randomly swap the capitalisation of each character in the string to get the appropriate effect. A character is either upper- or lower-case, so minimum we need only to swap randomly between 2 values; <code>0</code> and <code>1</code>. We can get this effect in Bash by using the internal <a href="https://tldp.org/LDP/abs/html/randomvar.html"><code>${RANDOM}</code> function</a> like so with the <a href="https://tldp.org/LDP/abs/html/ops.html">modulo</a> ( or “mod” ) operator:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#66d9ef">$((</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RANDOM<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">))</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ... do something</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ... do the opposite</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><hr>
+<p>We’re now at the point where we want to modify the character associated with the <code>for</code> loop’s current iteration, but how do we get it from the <code>text</code> variable? Once again we use some parameter expansion in the form of <code>${text:offset:length}</code>. We have the value for “offset” already; it’s <code>${i}</code>. We only want a single character returned, so we use <code>1</code> for “length”.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo -n <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>text:<span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>:1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>This spits out the current character for each iteration of our loop. The <code>-n</code> in the <code>echo</code> statement simply stops Bash from adding a newline to the end of the result. Otherwise, you’d get a line per character as output.</p>
+<hr>
+<p>Finally, we want to do case swapping. For this, we pipe the output of the above <code>echo</code> command into the <code>tr</code> command. Within the above <code>if</code> statement, if our random number equals <code>0</code>, let’s swap a <em>lowercase</em> <code>[:lower:]</code> character with an <em>uppercase</em> <code>[:upper:]</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo -n <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>text:<span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>:1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | tr <span style="color:#e6db74">&#39;[:lower:]&#39;</span> <span style="color:#e6db74">&#39;[:upper:]&#39;</span>
+</span></span></code></pre></div><p>And, then, we do the opposite for any other result:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo -n <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>text:<span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span>:1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | tr <span style="color:#e6db74">&#39;[:upper:]&#39;</span> <span style="color:#e6db74">&#39;[:lower:]&#39;</span>
+</span></span></code></pre></div><p>You’ll notice a final <code>echo</code> command at the bottom of the script. Thanks to the final <code>echo -n ...</code> command from the previous <code>for</code> loop, you may find your results prepended to your command prompt. This ensures a newline makes it to the end of your 🧽 output.</p>
+<h2 id="testing-time">Testing Time</h2>
+<p>Save the script as <code>spongebob</code> and make it executable with <code>chmod a+x spongebob</code>. That should be it! Here are a few of my results:</p>
+<pre tabindex="0"><code>$ echo &#34;abandon all hope, ye who enter here.&#34; | ./spongebob
+abaNDON ALl Hope, yE wHO EnTer heRE.
+</code></pre><pre tabindex="0"><code>$ echo &#34;Wilhelm, that last deployment failed. Could you roll it back, please?&#34; | ./spongebob
+WilhelM, THAT LASt dEployMeNT fAILED. coUlD YOu RoLL It BaCk, PlEaSE?
+</code></pre><pre tabindex="0"><code>$ echo &#34;Wilhelm, I am your manager. Please, stop mocking me.&#34; | ./spongebob
+wIlHElM, i aM yOUr MANagER. PlEasE, sTOP mOCKINg mE.
+</code></pre><pre tabindex="0"><code>$ echo &#34;Wilhelm, should we use Kubernetes for this?&#34; | ./spongebob
+WilHELM, should We Use KuBerNeTEs for THiS?
+</code></pre><h2 id="in-conclusion">In Conclusion…</h2>
+<p>Ok, obviously this was all a clever ploy to get you to learn a few more Bash things. Definitely do <em>not</em> use this new knowledge to frustrate and annoy your coworkers. Please, be considerate of other people’s mental well being.
+I mean, what I <em>meant</em> to say was:</p>
+<blockquote>
+<p>DefInIteLY dO Not UsE THis nEw knoWleDGE to FRUStRATe aND aNnOY YoUR cOWorkers.
+pLeAsE, be ConsiDeRAtE oF oThEr peOPle’s mEnTal well beiNG.</p>
+</blockquote>
+<p>🥺<br>
+🙏🏻</p>
+<p>There are any number of ways you could change this script. Instead of liberal use of <code>echo</code>, you could just build a string assigned to a variable and spit that out at the end. Instead of using <code>else</code> you could use <code>continue</code> to skip the final <code>if</code> fallback. Try a few and see what changes.</p>
+<p>For the purposes of this article I felt the above sequence of commands was clear enough for most people to follow along.</p>
+<p>I hope you learned something!</p>
+<p>Behave! ( mostly ) 🙉🙈🙊</p>
+
+</article>
+
+                
+This is footer.
+You can edit this in ../nostyleplease/layouts/footer.md
+
+            </div>
+        </main>
+    </body>
+</html>

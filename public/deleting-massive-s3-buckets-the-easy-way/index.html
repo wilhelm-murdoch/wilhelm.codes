@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Ok&hellip; 🥱
+Right, so, I&rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources.
+For this particular service, we have an  ETL  process that stores raw data points for downstream ingestion by some other&hellip; thing. Anyway, the storage mechanism for this is a cross-region replicated S3 bucket containing just over 10 million objects.">  
+
+  <title>
+    
+      
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.b3f3f10b76da53cb419a1c5b31ac9aa19368c212bd657c216cb741770676d110e21001bc85bb2527dd4e537a4c34b5333eda55e587f77769df67bb48cca62337.css" integrity="sha512-s/PxC3baU8tBmhxbMayaoZNowhK9ZXwhbLdBdwZ20RDiEAG8hbslJ91OU3pMNLUzPtpV5Yf3d2nfZ7tIzKYjNw==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+            0001-01-01
+        </time>
+    </p>
+
+    <h1></h1>
+
+    
+
+    <h2 id="ok-">Ok&hellip; 🥱</h2>
+<p>Right, so, I&rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources.</p>
+<p>For this particular service, we have an  <a href="https://en.wikipedia.org/wiki/Extract,_transform,_load">ETL</a>  process that stores raw data points for downstream ingestion by some other&hellip; thing. Anyway, the storage mechanism for this is a cross-region replicated S3 bucket containing just over 10 <em>million</em> objects.</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638548785954/CRJnzTGec.png" alt="CleanShot 2021-12-04 at 02.26.09.png"></p>
+<p>All associated buckets and objects must be deleted. 😬</p>
+<p>Have you ever had to delete a bucket with this many objects? Not exactly straight-forward. Even by AWS standards.</p>
+<h2 id="whats-the-problem-">What&rsquo;s the problem? 🤨</h2>
+<p>As you may or may not know, you can&rsquo;t delete a bucket that still contains objects. For smaller buckets, this isn&rsquo;t much of an issue as you can saunter on over to the &ldquo;empty bucket&rdquo; screen. This will take you to a confirmation interstitial where you have to sit and wait until the deletion process finishes. Though, you had better not close that tab unless you want to start the process all over.</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638549026061/akhrckto9.png" alt="CleanShot 2021-12-04 at 02.30.12.png"></p>
+<p>Not exactly a feasible solution for our use case. No, for larger buckets there really is only one pragmatic solution.</p>
+<h2 id="lifecycle-policies-">Lifecycle Policies! 🥳</h2>
+<p>You may have noticed the tone of this article as being somewhat snarky. Well, that&rsquo;s because what follows shouldn&rsquo;t be nearly as convoluted as it is. This process should be a single button with a confirmation step where the work is done asynchronously.</p>
+<p>That being said, I know better than to question another team&rsquo;s design decisions. Who knows what weirdness they encountered during implementing this functionality. In all fairness, they do provide the mechanisms necessary drop millions, or even billions, of objects. The main concern is it&rsquo;s just not at all intuitive.</p>
+<p>So, let&rsquo;s get to it! 🦾</p>
+<h3 id="expire-those-objects">Expire those objects!</h3>
+<p>Alright, we&rsquo;re going to have to perform the following steps for the first policy:</p>
+<ol>
+<li>Expire all current objects.</li>
+<li>Permanently delete all non-current versions of objects.</li>
+<li>Delete expired object delete markers.</li>
+</ol>
+<p>First and foremost, give this policy and name and confirm your intent:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638549696502/-lTpB_G3n.png" alt="CleanShot 2021-12-04 at 02.41.27.png"></p>
+<p>Select the following actions. We will need to select the last option in the list, but due to conflicting settings you will have to add it in separate, secondary, lifecycle policy:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638549879034/hymw4utOp.png" alt="CleanShot 2021-12-04 at 02.44.30.png"></p>
+<p>Set the following option to <code>1</code> day:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638549751390/SD1Vy3EWAl.png" alt="CleanShot 2021-12-04 at 02.42.18.png"></p>
+<p>Again, set this option to <code>1</code> day as well. Unfortunately, this is the lowest value you can select. You also have the option to specify how many versions of each object to keep. This is only really relevant if you have object versioning activated for this bucket, but you&rsquo;re going do nuke it all, so just go ahead and leave this blank:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638549823741/zfAcMBZah.png" alt="CleanShot 2021-12-04 at 02.43.10.png"></p>
+<p>Look at you! All done except looking over your work and saving your new lifecycle policy:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638550036393/k65adYZbp.png" alt="CleanShot 2021-12-04 at 02.46.40.png"></p>
+<h3 id="delete-those-objects">Delete those objects!</h3>
+<p>A secondary policy is necessary to <em>delete</em> the objects you&rsquo;ve just told AWS to expire. Begin the process by clicking the <code>Create lifecycle rule</code> button ith a single button click and a confirmation interstitial ( one that you can walk away from ).</p>
+<p>Anyway, it is what it is. I&rsquo;ll keep checking back over the next few days to chase up its progress.</p>
+<p>Hope this helped! Happy hacking! 🤘</p>
+<h2 id="several-days-later">Several days later&hellip;</h2>
+<p>Ok, it&rsquo;s been a few days and we&rsquo;re finally seeing progress on one of the buckets in question:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638780646338/LaTqZKFqb.png" alt="CleanShot 2021-12-06 at 18.49.31.png"></p>
+<p>All it takes is a little bit of patience.</p>
+<p>and performing the first step from the previous policy:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638550316173/kp7Hdqji3.png" alt="CleanShot 2021-12-04 at 02.51.44.png"></p>
+<p>Next, you&rsquo;ll select the last action in the list:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638550345371/N6bz9Qx1s.png" alt="CleanShot 2021-12-04 at 02.52.16.png"></p>
+<p>Select the options to delete all expired objects. Optionally, you can also delete impartial uploads older than <code>1</code> day as well.</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638550392466/AUMVBl50X.png" alt="CleanShot 2021-12-04 at 02.53.03.png"></p>
+<p>And that&rsquo;s it! Click <code>Save</code> and view the summary screen. It should look similar to this:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638550613364/BVPxW_0nm.png" alt="CleanShot 2021-12-04 at 02.56.42.png"></p>
+<h2 id="and-now-we-wait-">And now&hellip; we wait. 🕰</h2>
+<p>It will probably take an additional day for all pre-existing objects to be marked as &ldquo;expired&rdquo;. Next, AWS will trigger the lifecycle policies at 12am UTC. Depending on the size of your bucket, it could possibly take several days to empty. Just go on an extended ☕️ break.</p>
+<p><em>Something to keep in mind is that you will not be charged for storage that has been marked as expired while AWS empties the associated bucket.</em></p>
+<h2 id="and-thats-that-">And that&rsquo;s that! 🤓</h2>
+<p>Look, this works. But, it isn&rsquo;t exactly intuitive. In my opinion, you shouldn&rsquo;t have to google &ldquo;how to empty large S3 bucket&rdquo; or even go out of your way to create these policies. Ideally, this would all be neatly abstracted away from you and handled with a single button click and a confirmation interstitial ( one that you can walk away from ).</p>
+<p>Anyway, it is what it is. I&rsquo;ll keep checking back over the next few days to chase up its progress.</p>
+<p>Hope this helped! Happy hacking! 🤘</p>
+<h2 id="several-days-later-1">Several days later&hellip;</h2>
+<p>Ok, it&rsquo;s been a few days and we&rsquo;re finally seeing progress on one of the buckets in question:</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638780646338/LaTqZKFqb.png" alt="CleanShot 2021-12-06 at 18.49.31.png"></p>
+<p>All it takes is a little bit of patience.</p>
+
+</article>
+
+                
+This is footer.
+You can edit this in ../nostyleplease/layouts/footer.md
+
+            </div>
+        </main>
+    </body>
+</html>

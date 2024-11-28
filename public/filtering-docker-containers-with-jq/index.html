@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="TL;DR if you want to skip all this and just get to the good stuff, click here to download and run dq.
+
+As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following:
+
+Bash scripting for portability.
+jq to filter JSON objects from RESTful APIs.
+Docker ( or more recently Podman ) for managing containers.
+AWS CLI as I cannot stand dealing with the web console.
+curl ( with wget as a reasonable fallback ) to interact with various APIs.
+Terraform for most of my IaC needs.
+
+It wouldn’t be an exaggeration to say I literally use these tools every day. Specifically, the first 3 items. Furthermore, to say that manually sorting through Docker containers is a practice in tedium would be a massive understatement. Because of this, not a day passes where I am not grateful to have found jq.">  
+
+  <title>
+    
+      
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.b3f3f10b76da53cb419a1c5b31ac9aa19368c212bd657c216cb741770676d110e21001bc85bb2527dd4e537a4c34b5333eda55e587f77769df67bb48cca62337.css" integrity="sha512-s/PxC3baU8tBmhxbMayaoZNowhK9ZXwhbLdBdwZ20RDiEAG8hbslJ91OU3pMNLUzPtpV5Yf3d2nfZ7tIzKYjNw==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+            0001-01-01
+        </time>
+    </p>
+
+    <h1></h1>
+
+    
+
+    <p><strong>TL;DR</strong> if you want to skip all this and just get to the good stuff, <strong><a href="https://github.com/wilhelm-murdoch/dq">click here</a></strong> to download and run <code>dq</code>.</p>
+<hr>
+<p>As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following:</p>
+<ol>
+<li>Bash scripting for portability.</li>
+<li><a href="https://stedolan.github.io/jq/">jq</a> to filter JSON objects from RESTful APIs.</li>
+<li>Docker ( or more recently Podman ) for managing containers.</li>
+<li>AWS CLI as I cannot stand dealing with the web console.</li>
+<li><code>curl</code> ( with <code>wget</code> as a reasonable fallback ) to interact with various APIs.</li>
+<li><a href="https://www.terraform.io/">Terraform</a> for <em>most</em> of my IaC needs.</li>
+</ol>
+<p>It wouldn’t be an exaggeration to say I <em>literally</em> use these tools <em>every</em> day. Specifically, the first 3 items. Furthermore, to say that manually sorting through Docker containers is a practice in tedium would be a massive understatement. Because of this, not a day passes where I am not grateful to have found <code>jq</code>.</p>
+<p>In this case, my favourite duo <em>is</em> Docker and <code>jq</code>&hellip; which is what this article is about. Let’s learn some fun filtering patterns to make your life a bit easier if you’re stuck in a terminal all day like myself.</p>
+<p><em>Disclaimer: Yes, this is 6 tools, but i listed Terraform as a bonus item because ❤️.</em></p>
+<h2 id="setting-up">Setting Up</h2>
+<p>First and foremost, you’re going to need to install <code>jq</code> in your test environment. If you’re on most common Linux distributions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt-get install jq
+</span></span></code></pre></div><p>Or, on MacOS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew update <span style="color:#f92672">&amp;&amp;</span> brew install jq
+</span></span></code></pre></div><p>I’m assuming that if you’re reading this you already have Docker installed in your test environment. If not, head out to their website and read their <a href="https://docs.docker.com/get-docker/">installation documentation</a>. It tends to vary wildly depending on your OS.</p>
+<p>Let’s spin up some containers we can play around with. I use <code>redis</code> for stuff like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>1..5<span style="color:#f92672">}</span>; <span style="color:#66d9ef">do</span> docker run -it --rm -d redis; <span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><h2 id="environmental-variables">Environmental Variables</h2>
+<h3 id="sourceable-blocks">Sourceable Blocks</h3>
+<p>There may be times I wish to collate all environmental variables associated with a set of containers and stick them a <code>.env</code> file to source later. Here we create a block for all the <code>redis</code> containers we just spun up:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .[].Config.Env
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | flatten 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .[]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>This one will generate a lot of duplicates as all our test containers are effectively clones. What if we want a distinct set of instead? We can use the <code>unique</code> filter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	[
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	  .[].Config.Env
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | flatten 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | unique 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .[]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>What if I want a set from specific containers?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	    .[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      | select([.Id] | inside([
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	      &#34;747c2c92855f88a8e9aa9709dcdf3a01f1677e70bf4c0bf0e520eb38ac502876&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	      &#34;2cf70261ef62bc36d19aba02f8ef7b8d7aabfcb1e9f4593a919baa17f80aca5b&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	    ]))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      | .Config.Env
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | flatten 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | unique 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .[]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>How about filtering by a specific ip address for the default <code>bridge</code> network? Using a different network? Just replace <code>bridge</code> with the alternate network name.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select(.NetworkSettings.Networks.bridge.IPAddress == &#34;172.17.0.2&#34;) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .Config.Env 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .[]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>Multiple ip addresses?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select([.NetworkSettings.Networks.bridge.IPAddress] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | inside([
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;172.17.0.2&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;172.17.0.3&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ])) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .Config.Env 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .[]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><h3 id="as-flags-instead">As Flags Instead</h3>
+<p>Here’s a strange one I’ve had to do. What if we want to recreate a list of <code>--env</code> flags we could pass to other <code>docker run ...</code> commands?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          .[].Config.Env
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      | flatten 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      | unique 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      | &#34;--env=\(.[])&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | join(&#34; &#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>You’ll get a string that looks similar to the following.</p>
+<pre tabindex="0"><code>--env=GOSU_VERSION=1.14 --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=REDIS_DOWNLOAD_SHA=f0e65fda74c44a3dd4fa9d512d4d4d833dd0939c934e946a5c622a630d057f2f --env=REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-7.0.4.tar.gz --env=REDIS_VERSION=7.0.4
+</code></pre><h2 id="filtering-by-relative-time">Filtering By Relative Time</h2>
+<p>I’ve had to use these several times for things like garbage collecting and cleaning up long-running containers. This uses a bit of Bash to help generate the relative timestamps. We use the <code>date</code> command for this, but if you’re on a <code>darwin</code>-based OS you’ll need to install <code>gdate</code> first via Homebrew with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install coreutils
+</span></span></code></pre></div><p>Substitute the following calls to <code>date</code> with <code>gdate</code> below if on MacOS.</p>
+<h3 id="newer-than-">Newer Than …</h3>
+<p>Filtering out recent containers with relative time is fairly straight-forward. The following gives us all containers created in the last hour as JSON output from <code>docker inspect ...</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>threshold<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date -d <span style="color:#e6db74">&#34;1 hour ago&#34;</span> +%s<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq --argjson threshold <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>threshold<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select((.State.StartedAt | split(&#34;.&#34;)[0] | &#34;\(.)Z&#34; | fromdate) &gt; $threshold)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>Perhaps you just want the names of the containers instead:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>threshold<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date -d <span style="color:#e6db74">&#34;1 hour ago&#34;</span> +%s<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq --argjson threshold <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>threshold<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select((.State.StartedAt | split(&#34;.&#34;)[0] | &#34;\(.)Z&#34; | fromdate) &gt; $threshold)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .Name[1:]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>Docker likes to put a <code>/</code> at the beginning of each generated container pet name, so we use <code>.Name[1:]</code> to snip it off.</p>
+<p>What about just returning the associated ids?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>threshold<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date -d <span style="color:#e6db74">&#34;1 hour ago&#34;</span> +%s<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq --argjson threshold <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>threshold<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select((.State.StartedAt | split(&#34;.&#34;)[0] | &#34;\(.)Z&#34; | fromdate) &gt; $threshold)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .Id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>Or, ip addresses:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>threshold<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date -d <span style="color:#e6db74">&#34;1 hour ago&#34;</span> +%s<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq --argjson threshold <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>threshold<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select((.State.StartedAt | split(&#34;.&#34;)[0] | &#34;\(.)Z&#34; | fromdate) &gt; $threshold)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .NetworkSettings.Networks.bridge.IPAddress
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><h3 id="older-than">Older Than???</h3>
+<p>The same filters apply, but you’re just flipping the compare operator from <code>&gt;</code> to <code>&lt;</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>threshold<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date -d <span style="color:#e6db74">&#34;1 hour ago&#34;</span> +%s<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq --argjson threshold <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>threshold<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select((.State.StartedAt | split(&#34;.&#34;)[0] | &#34;\(.)Z&#34; | fromdate) &lt; $threshold)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><h2 id="other-common-patterns">Other Common Patterns</h2>
+<p>There have been times where I need a block of container ip addresses so I can dynamically update some Nginx upstreams somewhere. With <code>jq</code> it’s as easy as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  .[].NetworkSettings.Networks.bridge.IPAddress
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>The output would look something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.17.0.6
+</span></span><span style="display:flex;"><span>172.17.0.5
+</span></span><span style="display:flex;"><span>172.17.0.4
+</span></span><span style="display:flex;"><span>172.17.0.3
+</span></span><span style="display:flex;"><span>172.17.0.2
+</span></span></code></pre></div><p>Perhaps, I want to find a specific container id by it’s ip address:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	.[]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select(.NetworkSettings.Networks.bridge.IPAddress == &#34;172.17.0.3&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .Id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>Or, just give me the names of all running containers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  .[].Name[1:]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span></code></pre></div><p>Which would give you something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zealous_hertz
+</span></span><span style="display:flex;"><span>fervent_dijkstra
+</span></span><span style="display:flex;"><span>focused_galileo
+</span></span><span style="display:flex;"><span>zealous_poincare
+</span></span><span style="display:flex;"><span>naughty_wescoff
+</span></span></code></pre></div><h2 id="cleaning-up-">Cleaning Up …</h2>
+<p>We’re considerate people, so let’s clean up after ourselves by killing all containers created using the <code>redis</code> image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker kill <span style="color:#66d9ef">$(</span>docker inspect <span style="color:#66d9ef">$(</span>docker ps -q<span style="color:#66d9ef">)</span> | jq -r <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	.[] 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | select(.Config.Image == &#34;redis&#34;) 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  | .Id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span><span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>Keep in mind this will kill <em>all</em> <code>redis</code> containers.</p>
+<h2 id="in-closing-">In Closing …</h2>
+<p>Having a toolbox filled with utilities you can mix and match together is great if you spend most of your day working in a terminal on a glowing rectangle. Hopefully, I’ve made a strong enough case to for Docker and <code>jq</code> as a great combo.</p>
+<h2 id="but-wait-theres-more">But, Wait! There’s More!</h2>
+<p>Why copy and paste these commands in your terminal, when you could just download and install a handy little Bash script to do it all for you? <code>dq</code> has all the above built-in as well as heaps more bells and whistles.</p>
+<p>Here are a few command examples if you’re interested:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dq older-than <span style="color:#ae81ff">4</span> months --only-return ips --network pebkac
+</span></span><span style="display:flex;"><span>dq newer-than <span style="color:#ae81ff">2</span> fortnights --only-return ids
+</span></span><span style="display:flex;"><span>dq filter <span style="color:#e6db74">&#39;.[].Name[1:]&#39;</span>
+</span></span><span style="display:flex;"><span>dq find-by-ip-address 172.17.0.2 --only-return names --network foo
+</span></span></code></pre></div><p>Give it a try here:</p>
+<p>%[https://github.com/wilhelm-murdoch/dq]</p>
+
+</article>
+
+                
+This is footer.
+You can edit this in ../nostyleplease/layouts/footer.md
+
+            </div>
+        </main>
+    </body>
+</html>

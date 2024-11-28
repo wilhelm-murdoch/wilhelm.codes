@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Pssst&hellip; If you don&rsquo;t know what project I&rsquo;m referring to, click  here to find out!
+Simply put, I love plants and I love animals. I can&rsquo;t count how many times I&rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.">  
+
+  <title>
+    
+      
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.b3f3f10b76da53cb419a1c5b31ac9aa19368c212bd657c216cb741770676d110e21001bc85bb2527dd4e537a4c34b5333eda55e587f77769df67bb48cca62337.css" integrity="sha512-s/PxC3baU8tBmhxbMayaoZNowhK9ZXwhbLdBdwZ20RDiEAG8hbslJ91OU3pMNLUzPtpV5Yf3d2nfZ7tIzKYjNw==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+            0001-01-01
+        </time>
+    </p>
+
+    <h1></h1>
+
+    
+
+    <p><!-- raw HTML omitted -->Pssst&hellip; If you don&rsquo;t know what project I&rsquo;m referring to, click <!-- raw HTML omitted --> <a href="https://plantsm.art"><!-- raw HTML omitted -->here<!-- raw HTML omitted --></a> <!-- raw HTML omitted -->to find out!<!-- raw HTML omitted --></p>
+<p>Simply put, I love plants and I love animals. I can&rsquo;t count how many times I&rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png" alt=""></p>
+<h3 id="its-as-simple-as-that"><strong>It&rsquo;s as simple as that?</strong></h3>
+<p>That was the idea, at least. I just wanted a single place that had all the information I needed so I could make informed purchasing decisions. I also figured I couldn&rsquo;t possibly be the only person who has thiss site along with licensing and attribution data.</p>
+<ol start="2">
+<li>
+<p><a href="https://www.aspca.org/"><strong>ASPCA</strong></a> was used to initially prime the first dataset. This is also where I sourced most of the common name and symptom data.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Plant"><strong>Wikipedia</strong></a> is the best source of scientific classification data out there.</p>
+<pre><code>                                                                                                                                                                                                      ngs for a variety of other pet species. I already have the data; just need to go through it with a fine-toothed comb. Not to mention responsiveness for smaller screens needs a solid amount of work.
+</code></pre>
+</li>
+</ol>
+<p>I&rsquo;m having loads of fun at the moment learning new things. I hope I can keep doing this for a while longer. However, I do have other things planned for the future and will be using what I&rsquo;ve learned here as a kind of launching pad.</p>
+<p>I sincerely hope you find <a href="https://plantsm.art">Plant Smart</a> as useful as I had fun making it.
+All of this disparate data was collated and munged together by several processing scripts written in <a href="https://go.dev/"><strong>Go</strong></a> as <a href="https://magefile.org/"><strong>Magefiles</strong></a>. It got me about 95% there, but it still needs quite a bit of handraulic finessing.</p>
+<h3 id="where-to-go-from-here"><strong>Where to go from here?</strong></h3>
+<p>I think I&rsquo;ve met most, if not all, of my requirements. The datasets for the project still need a lot of love and I plan on supporting listi problem. So, I set off to make this project during the holiday break of 2022.</p>
+<p>However, I didn&rsquo;t want to make it <em>too</em> easy for myself&hellip;</p>
+<h3 id="a-challenge"><strong>A challenge!</strong></h3>
+<p>I work as a weird combination of <a href="https://en.wikipedia.org/wiki/Site_reliability_engineering"><strong>SRE</strong></a> and <a href="https://en.wikipedia.org/wiki/DevOps"><strong>DevOps engineer</strong></a>. I have plenty of smarts when it comes to the technical side of hosting and running things, but it&rsquo;s been years since I&rsquo;ve done any front-end work. Career-wise, I need to be able to speak the same language as the teams I have to support. So, understanding how far behind that portion of my skillset had become, I thought this would be the perfect opportunity to brush up.</p>
+<h4 id="the-requirements"><strong>The Requirements:</strong></h4>
+<ul>
+<li>
+<p>Must keep operational costs as close to zero as possible. The only money I&rsquo;ve put down on this so far is the $20 AUD to purchase the domain name.</p>
+</li>
+<li>
+<p>Must be hosted on <a href="https://pages.cloudflare.com/"><strong>Cloudflare Pages</strong></a>. I could&rsquo;ve chosen <a href="https://pages.github.com/"><strong>Github Pages</strong></a> to keep everything in one place, but automated Cloudflare builds &amp; deployments work out of the box with minimal configuration. Besides, I&rsquo;ve already worked with the latter and I wanted the challenge of trying something new.</p>
+</li>
+<li>
+<p>Must be completely static. There should be no server-side rendering, processing or other explicit backend dependencies to manage. For this, I use the pre-rendering functionality that comes packaged with <a href="https://kit.svelte.dev/"><strong>SvelteKit</strong></a>. I&rsquo;ve been working with this for only a few weeks now and I&rsquo;m a full convert.</p>
+</li>
+<li>
+<p>All data must be served statically as well. The entirety of the data set is contained within a single JSON file, which you can view at <a href="https://plantsm.art/plants.json"><strong>/plants.json</strong></a>. This is the source of truth for all derivative data sets and lookup tables used on this site. It&rsquo;s effectively what I call a &ldquo;dumb API&rdquo;. Check out the <a href="http://localhost:5173/api"><strong>API documentation</strong></a> if you&rsquo;d like to know more about it.</p>
+</li>
+<li>
+<p>Must use <a href="https://kit.svelte.dev/"><strong>SvelteKit</strong></a>, <a href="https://www.typescriptlang.org/"><strong>TypeScript</strong></a>, <a href="https://tailwindcss.com/"><strong>TailwindCSS</strong></a> and <a href="https://vitejs.dev/"><strong>Vite</strong></a>. I had zero working knowledge of any of these and my frontend peers can&rsquo;t seem to shut up about them. So&hellip; why not?</p>
+</li>
+<li>
+<p>Must be <em>fast</em>. Everything is static, compressed, cached and sitting behind a world-class CDN. I&rsquo;ve worked in a network performance and load testing SaaS for close to 5 years now. I wouldn&rsquo;t be able to look myself in the mirror if I couldn&rsquo;t easily do this one. 😅</p>
+</li>
+<li>
+<p>Must be open-source and community-driven. At one point, I would like to take the hands off the wheel and see if other interested parties would like to get involved and help out with managing datasets and fixing bugs. GitHub allows for pretty much all of this. Check how to <a href="http://plantsm.art/contribute"><strong>contribute</strong></a> or see the <a href="http://plantsm.art/updates"><strong>latest contributions</strong></a>.</p>
+</li>
+</ul>
+<p>So far, it&rsquo;s going quite well. I haven&rsquo;t had any issues with meeting any of these self-imposed development constraints.</p>
+<h4 id="any-caveats"><strong>Any Caveats?</strong></h4>
+<p>Definitely. The most obvious one would be image storage which has a direct effect on not only repository size — which currently clocks in at over 1.5GB — but, also build and deployment speeds. I could shell out $5 - $10 for object storage and image processing, but that would go against the first constraint. For now, image data will live in the GitHub repository as a perfectly reasonable compromise.</p>
+<h3 id="where-did-you-source-all-this-data"><strong>Where did you source all this data?</strong></h3>
+<p>There are quite a few sources I&rsquo;ve collated from, but these are the main ones.</p>
+<ol>
+<li><a href="https://www.inaturalist.org/"><strong>iNaturalist</strong></a> is the best source of high-quality, community-driven creative commons license photography. All images have been sourced from thi</li>
+</ol>
+
+</article>
+
+                
+This is footer.
+You can edit this in ../nostyleplease/layouts/footer.md
+
+            </div>
+        </main>
+    </body>
+</html>
