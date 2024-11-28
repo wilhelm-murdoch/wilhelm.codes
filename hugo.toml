@@ -1,0 +1,4 @@
+baseURL = 'https://wilhelm.codes/'
+languageCode = 'en-us'
+title = 'Wilhelm Codes'
+theme = 'nostyleplease'
