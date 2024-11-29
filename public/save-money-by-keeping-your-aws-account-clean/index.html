@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<html lang="en-us"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="Or, I say we nuke the entire account from orbit. It’s the only way to be sure.">  
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Save Money By Keeping Your AWS Account Clean | Wilhelm Codes</title>
 
-  <title>
-    
-      Save Money By Keeping Your AWS Account Clean
-    
-  </title>
+    <link rel="stylesheet" href="/css/main.css">
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/" />
-  
-  
-  
-  <link rel="stylesheet" href="/css/main.b3f3f10b76da53cb419a1c5b31ac9aa19368c212bd657c216cb741770676d110e21001bc85bb2527dd4e537a4c34b5333eda55e587f77769df67bb48cca62337.css" integrity="sha512-s/PxC3baU8tBmhxbMayaoZNowhK9ZXwhbLdBdwZ20RDiEAG8hbslJ91OU3pMNLUzPtpV5Yf3d2nfZ7tIzKYjNw==" />
-  
+      <script src="/js/main.js"></script>
+
+
 </head>
-<body a="auto">
-        <main class="page-content" aria-label="Content">
-            <div class="w">
-<a href="/">..</a>
+<body>
+  <header>
+    <h1>Wilhelm Codes</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a>Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
 
 
-<article>
-    <p class="post-meta">
-        <time datetime="2022-10-06 00:00:00 &#43;0000 UTC">
-            2022-10-06
-        </time>
-    </p>
-
-    <h1>Save Money By Keeping Your AWS Account Clean</h1>
-
+  </header>
+  <main>
     
+  <h1>Save Money By Keeping Your AWS Account Clean</h1>
 
-    <p>At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.</p>
+  
+  
+  <time datetime="2022-10-06T00:00:00&#43;00:00">October 6, 2022</time>
+
+  <p>At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.</p>
 <p>Because we have so many to manage and not a whole lot of people power ( it’s just 2 of us ), it gets easy for a lot of hidden costs to pop up here and there if we aren’t vigilant enough with housekeeping.</p>
 <p>We like to keep roughly 95% of <em>all</em> static infrastructure nicely tucked away in Terraform, but over the years you get so many small extant changes that the dirt begins to pile up and, along with it, costs. Just a little bit here and there, but the cumulative effect becomes more and more obvious as time moves on.</p>
 <p>So, what do you do? Do you manually audit every account? Every <em>region</em> in every account? AWS doesn’t give you an easy way to view <em>all</em> resources across the entirety of your org outside of what you can glean from the billing console. So, we do what comes natural; find a way to make the glowing rectangle do the job for you.</p>
@@ -188,13 +192,22 @@ The above resources would be deleted with the supplied configuration. Provide --
 <p>Hope you&rsquo;ve learned something useful!</p>
 <p>Behave! (mostly) 🙉🙈🙊</p>
 
-</article>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/aws/">Aws</a></li>
+        <li><a href="/tags/devops/">Devops</a></li>
+        <li><a href="/tags/security/">Security</a></li>
+        <li><a href="/tags/cost-optimisation/">Cost Optimisation</a></li>
+    </ul>
+  </div>
 
-                
-This is footer.
-You can edit this in ../nostyleplease/layouts/footer.md
 
-            </div>
-        </main>
-    </body>
+  </main>
+  <footer>
+    <p>Copyright 2024. All rights reserved.</p>
+
+  </footer>
+</body>
 </html>

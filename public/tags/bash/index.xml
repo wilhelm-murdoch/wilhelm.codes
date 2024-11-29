@@ -6,7 +6,7 @@
     <description>Recent content in Bash on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2024 21:13:29 +1000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why Can&#39;t I Hold All These Slack Emojis?</title>
@@ -14,6 +14,34 @@
       <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</guid>
       <description>Or, more stupid tricks while messing with Slack’s API.</description>
+    </item>
+    <item>
+      <title>Learning Bash Through Pointless Fun ...</title>
+      <link>http://localhost:1313/learning-bash-through-pointless-fun/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/learning-bash-through-pointless-fun/</guid>
+      <description>oR, HOW tO bE COmpletEly iNsufFerAbLE in tHE cHAT.</description>
+    </item>
+    <item>
+      <title>Filtering Docker Containers with Jq</title>
+      <link>http://localhost:1313/filtering-docker-containers-with-jq/</link>
+      <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/filtering-docker-containers-with-jq/</guid>
+      <description>Or, I can’t be the only one who will find this useful.</description>
+    </item>
+    <item>
+      <title>Liberating Custom Slack Emojis</title>
+      <link>http://localhost:1313/liberating-custom-slack-emojis/</link>
+      <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/liberating-custom-slack-emojis/</guid>
+      <description>Or, I&amp;rsquo;m bored. Let&amp;rsquo;s learn some stupid stuff!</description>
+    </item>
+    <item>
+      <title>Falsifying Github Participation Graphs for Fun and Profit!</title>
+      <link>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</link>
+      <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
+      <description>Or, how to make a useless recruiting metric even more useless.</description>
     </item>
   </channel>
 </rss>
