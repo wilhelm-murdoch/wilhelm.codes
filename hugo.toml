@@ -1,4 +1,5 @@
 baseURL = 'https://wilhelm.codes/'
 languageCode = 'en-us'
 title = 'Wilhelm Codes'
-theme = 'nostyleplease'
+theme = 'devilmaycode'
+enableGitInfo = true

@@ -6,14 +6,42 @@
     <description>Recent content in Devops on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2024 21:13:29 +1000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Longer Something Doesn&#39;t Happen, the Sooner it Will.</title>
+      <link>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
+      <description>Or, manage your expectations and build around inevitable failure.</description>
+    </item>
     <item>
       <title>Why I Built Plant Smart</title>
       <link>http://localhost:1313/why-i-built-plant-smart/</link>
       <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/why-i-built-plant-smart/</guid>
       <description>Or, it&amp;rsquo;s a great idea to push yourself outside of your comfort zone.</description>
+    </item>
+    <item>
+      <title>Save Money By Keeping Your AWS Account Clean</title>
+      <link>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</link>
+      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</guid>
+      <description>Or, I say we nuke the entire account from orbit. It’s the only way to be sure.</description>
+    </item>
+    <item>
+      <title>Deleting Massive S3 Buckets the Easy Way.</title>
+      <link>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</guid>
+      <description>Or, why do I have to create multiple lifecycle policies to do this?</description>
+    </item>
+    <item>
+      <title>Messing Around with TXT Records!</title>
+      <link>http://localhost:1313/messing-around-with-txt-records/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/messing-around-with-txt-records/</guid>
+      <description>Or, a dumb little trick to use your personal domain as a business card.</description>
     </item>
   </channel>
 </rss>

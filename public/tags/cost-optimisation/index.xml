@@ -6,7 +6,7 @@
     <description>Recent content in Cost Optimisation on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2024 21:13:29 +1000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/cost-optimisation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Save Money By Keeping Your AWS Account Clean</title>
@@ -14,6 +14,13 @@
       <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</guid>
       <description>Or, I say we nuke the entire account from orbit. It’s the only way to be sure.</description>
+    </item>
+    <item>
+      <title>Deleting Massive S3 Buckets the Easy Way.</title>
+      <link>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</guid>
+      <description>Or, why do I have to create multiple lifecycle policies to do this?</description>
     </item>
   </channel>
 </rss>
