@@ -1,48 +1,69 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Why I Built Plant Smart | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
 
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
-
-
-  </header>
-  <main>
-    
+      </header>
+      <main>
+        
   <h1>Why I Built Plant Smart</h1>
 
   
   
   <time datetime="2023-01-08T00:00:00&#43;00:00">January 8, 2023</time>
 
-  <p><!-- raw HTML omitted -->Pssst&hellip; If you don&rsquo;t know what project I&rsquo;m referring to, click <!-- raw HTML omitted --> <a href="https://plantsm.art"><!-- raw HTML omitted -->here<!-- raw HTML omitted --></a> <!-- raw HTML omitted -->to find out!<!-- raw HTML omitted --></p>
-<p>Simply put, I love plants and I love animals. I can&rsquo;t count how many times I&rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.</p>
-<p>![](<a href="https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png">https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png</a> align=&ldquo;center&rdquo;)</p>
+  <p>Simply put, I love plants and I love animals. I can&rsquo;t count how many times I&rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png" alt=""></p>
 <h3 id="its-as-simple-as-that"><strong>It&rsquo;s as simple as that?</strong></h3>
 <p>That was the idea, at least. I just wanted a single place that had all the information I needed so I could make informed purchasing decisions. I also figured I couldn&rsquo;t possibly be the only person who has this problem. So, I set off to make this project during the holiday break of 2022.</p>
 <p>However, I didn&rsquo;t want to make it <em>too</em> easy for myself&hellip;</p>
@@ -50,27 +71,13 @@
 <p>I work as a weird combination of <a href="https://en.wikipedia.org/wiki/Site_reliability_engineering"><strong>SRE</strong></a> and <a href="https://en.wikipedia.org/wiki/DevOps"><strong>DevOps engineer</strong></a>. I have plenty of smarts when it comes to the technical side of hosting and running things, but it&rsquo;s been years since I&rsquo;ve done any front-end work. Career-wise, I need to be able to speak the same language as the teams I have to support. So, understanding how far behind that portion of my skillset had become, I thought this would be the perfect opportunity to brush up.</p>
 <h4 id="the-requirements"><strong>The Requirements:</strong></h4>
 <ul>
-<li>
-<p>Must keep operational costs as close to zero as possible. The only money I&rsquo;ve put down on this so far is the $20 AUD to purchase the domain name.</p>
-</li>
-<li>
-<p>Must be hosted on <a href="https://pages.cloudflare.com/"><strong>Cloudflare Pages</strong></a>. I could&rsquo;ve chosen <a href="https://pages.github.com/"><strong>Github Pages</strong></a> to keep everything in one place, but automated Cloudflare builds &amp; deployments work out of the box with minimal configuration. Besides, I&rsquo;ve already worked with the latter and I wanted the challenge of trying something new.</p>
-</li>
-<li>
-<p>Must be completely static. There should be no server-side rendering, processing or other explicit backend dependencies to manage. For this, I use the pre-rendering functionality that comes packaged with <a href="https://kit.svelte.dev/"><strong>SvelteKit</strong></a>. I&rsquo;ve been working with this for only a few weeks now and I&rsquo;m a full convert.</p>
-</li>
-<li>
-<p>All data must be served statically as well. The entirety of the data set is contained within a single JSON file, which you can view at <a href="https://plantsm.art/plants.json"><strong>/plants.json</strong></a>. This is the source of truth for all derivative data sets and lookup tables used on this site. It&rsquo;s effectively what I call a &ldquo;dumb API&rdquo;. Check out the <a href="http://localhost:5173/api"><strong>API documentation</strong></a> if you&rsquo;d like to know more about it.</p>
-</li>
-<li>
-<p>Must use <a href="https://kit.svelte.dev/"><strong>SvelteKit</strong></a>, <a href="https://www.typescriptlang.org/"><strong>TypeScript</strong></a>, <a href="https://tailwindcss.com/"><strong>TailwindCSS</strong></a> and <a href="https://vitejs.dev/"><strong>Vite</strong></a>. I had zero working knowledge of any of these and my frontend peers can&rsquo;t seem to shut up about them. So&hellip; why not?</p>
-</li>
-<li>
-<p>Must be <em>fast</em>. Everything is static, compressed, cached and sitting behind a world-class CDN. I&rsquo;ve worked in a network performance and load testing SaaS for close to 5 years now. I wouldn&rsquo;t be able to look myself in the mirror if I couldn&rsquo;t easily do this one. 😅</p>
-</li>
-<li>
-<p>Must be open-source and community-driven. At one point, I would like to take the hands off the wheel and see if other interested parties would like to get involved and help out with managing datasets and fixing bugs. GitHub allows for pretty much all of this. Check how to <a href="http://plantsm.art/contribute"><strong>contribute</strong></a> or see the <a href="http://plantsm.art/updates"><strong>latest contributions</strong></a>.</p>
-</li>
+<li>Must keep operational costs as close to zero as possible. The only money I&rsquo;ve put down on this so far is the $20 AUD to purchase the domain name.</li>
+<li>Must be hosted on <a href="https://pages.cloudflare.com/"><strong>Cloudflare Pages</strong></a>. I could&rsquo;ve chosen <a href="https://pages.github.com/"><strong>Github Pages</strong></a> to keep everything in one place, but automated Cloudflare builds &amp; deployments work out of the box with minimal configuration. Besides, I&rsquo;ve already worked with the latter and I wanted the challenge of trying something new.</li>
+<li>Must be completely static. There should be no server-side rendering, processing or other explicit backend dependencies to manage. For this, I use the pre-rendering functionality that comes packaged with <a href="https://kit.svelte.dev/"><strong>SvelteKit</strong></a>. I&rsquo;ve been working with this for only a few weeks now and I&rsquo;m a full convert.</li>
+<li>All data must be served statically as well. The entirety of the data set is contained within a single JSON file, which you can view at <a href="https://plantsm.art/plants.json"><strong>/plants.json</strong></a>. This is the source of truth for all derivative data sets and lookup tables used on this site. It&rsquo;s effectively what I call a &ldquo;dumb API&rdquo;. Check out the <a href="http://localhost:5173/api"><strong>API documentation</strong></a> if you&rsquo;d like to know more about it.</li>
+<li>Must use <a href="https://kit.svelte.dev/"><strong>SvelteKit</strong></a>, <a href="https://www.typescriptlang.org/"><strong>TypeScript</strong></a>, <a href="https://tailwindcss.com/"><strong>TailwindCSS</strong></a> and <a href="https://vitejs.dev/"><strong>Vite</strong></a>. I had zero working knowledge of any of these and my frontend peers can&rsquo;t seem to shut up about them. So&hellip; why not?</li>
+<li>Must be <em>fast</em>. Everything is static, compressed, cached and sitting behind a world-class CDN. I&rsquo;ve worked in a network performance and load testing SaaS for close to 5 years now. I wouldn&rsquo;t be able to look myself in the mirror if I couldn&rsquo;t easily do this one. 😅</li>
+<li>Must be open-source and community-driven. At one point, I would like to take the hands off the wheel and see if other interested parties would like to get involved and help out with managing datasets and fixing bugs. GitHub allows for pretty much all of this. Check how to <a href="http://plantsm.art/contribute"><strong>contribute</strong></a> or see the <a href="http://plantsm.art/updates"><strong>latest contributions</strong></a>.</li>
 </ul>
 <p>So far, it&rsquo;s going quite well. I haven&rsquo;t had any issues with meeting any of these self-imposed development constraints.</p>
 <h4 id="any-caveats"><strong>Any Caveats?</strong></h4>
@@ -78,15 +85,9 @@
 <h3 id="where-did-you-source-all-this-data"><strong>Where did you source all this data?</strong></h3>
 <p>There are quite a few sources I&rsquo;ve collated from, but these are the main ones.</p>
 <ol>
-<li>
-<p><a href="https://www.inaturalist.org/"><strong>iNaturalist</strong></a> is the best source of high-quality, community-driven creative commons license photography. All images have been sourced from this site along with licensing and attribution data.</p>
-</li>
-<li>
-<p><a href="https://www.aspca.org/"><strong>ASPCA</strong></a> was used to initially prime the first dataset. This is also where I sourced most of the common name and symptom data.</p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Plant"><strong>Wikipedia</strong></a> is the best source of scientific classification data out there.</p>
-</li>
+<li><a href="https://www.inaturalist.org/"><strong>iNaturalist</strong></a> is the best source of high-quality, community-driven creative commons license photography. All images have been sourced from this site along with licensing and attribution data.</li>
+<li><a href="https://www.aspca.org/"><strong>ASPCA</strong></a> was used to initially prime the first dataset. This is also where I sourced most of the common name and symptom data.</li>
+<li><a href="https://en.wikipedia.org/wiki/Plant"><strong>Wikipedia</strong></a> is the best source of scientific classification data out there.</li>
 </ol>
 <p>All of this disparate data was collated and munged together by several processing scripts written in <a href="https://go.dev/"><strong>Go</strong></a> as <a href="https://magefile.org/"><strong>Magefiles</strong></a>. It got me about 95% there, but it still needs quite a bit of handraulic finessing.</p>
 <h3 id="where-to-go-from-here"><strong>Where to go from here?</strong></h3>
@@ -106,12 +107,11 @@
   </div>
 
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  3119b43
-
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

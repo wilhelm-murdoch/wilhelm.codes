@@ -1,18 +1,13 @@
 ---
-params:
-    author: Wilhelm Murdoch
 title: Filtering Docker Containers with Jq
-summary: Or, I can’t be the only one who will find this useful.
+alternate: Or, I can’t be the only one who will find this useful.
 draft: false
-date: 29 Sep 2022
-tags: 
+date: 2022-09-29
+tags:
   - docker
   - js
   - json
   - bash
----
-**TL;DR** if you want to skip all this and just get to the good stuff, **[click here](https://github.com/wilhelm-murdoch/dq)** to download and run `dq`.
-
 ---
 As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following:
 
@@ -121,8 +116,6 @@ docker inspect $(docker ps -q) | jq -r '
   | .[]
 '
 ```
-
-
 
 ### As Flags Instead
 

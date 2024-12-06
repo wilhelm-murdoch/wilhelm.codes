@@ -1,14 +1,13 @@
 ---
-params:
-    author: Wilhelm Murdoch
 title: Deleting Massive S3 Buckets the Easy Way.
-summary: Or, why do I have to create multiple lifecycle policies to do this?
+alternate: Or, why do I have to create multiple lifecycle policies to do this?
 draft: false
-date: 04 Dec 2021
+date: 2021-12-04
 tags:
-    - aws
-    - devops
-    - cost optimisation
+  - aws
+  - devops
+  - cost
+  - optimisation
 ---
 ## Ok... 🥱
 
@@ -68,22 +67,7 @@ Look at you! All done except looking over your work and saving your new lifecycl
 
 ### Delete those objects!
 
-A secondary policy is necessary to _delete_ the objects you've just told AWS to expire. Begin the process by clicking the `Create lifecycle rule` button ith a single button click and a confirmation interstitial ( one that you can walk away from ). 
-
-Anyway, it is what it is. I'll keep checking back over the next few days to chase up its progress.
-
-Hope this helped! Happy hacking! 🤘
-
-## Several days later... 
-
-Ok, it's been a few days and we're finally seeing progress on one of the buckets in question: 
-
-![CleanShot 2021-12-06 at 18.49.31.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1638780646338/LaTqZKFqb.png)
-
-All it takes is a little bit of patience.  
-
-
-and performing the first step from the previous policy:
+A secondary policy is necessary to _delete_ the objects you've just told AWS to expire. Begin the process by clicking the `Create lifecycle rule` button and performing the first step from the previous policy:
 
 ![CleanShot 2021-12-04 at 02.51.44.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1638550316173/kp7Hdqji3.png)
 
@@ -120,6 +104,3 @@ Ok, it's been a few days and we're finally seeing progress on one of the buckets
 ![CleanShot 2021-12-06 at 18.49.31.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1638780646338/LaTqZKFqb.png)
 
 All it takes is a little bit of patience.  
-
-
-

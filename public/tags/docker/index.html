@@ -1,50 +1,82 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Docker | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
 
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
-
-
-  </header>
-  <main>
-    
+      </header>
+      <main>
+        
   <h1>Docker</h1>
   
   
     <h2><a href="/filtering-docker-containers-with-jq/">Filtering Docker Containers with Jq</a></h2>
-    Or, I can’t be the only one who will find this useful.
+    <p>As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following:</p>
+<ol>
+<li>Bash scripting for portability.</li>
+<li><a href="https://stedolan.github.io/jq/">jq</a> to filter JSON objects from RESTful APIs.</li>
+<li>Docker ( or more recently Podman ) for managing containers.</li>
+<li>AWS CLI as I cannot stand dealing with the web console.</li>
+<li><code>curl</code> ( with <code>wget</code> as a reasonable fallback ) to interact with various APIs.</li>
+<li><a href="https://www.terraform.io/">Terraform</a> for <em>most</em> of my IaC needs.</li>
+</ol>
+<p>It wouldn’t be an exaggeration to say I <em>literally</em> use these tools <em>every</em> day. Specifically, the first 3 items. Furthermore, to say that manually sorting through Docker containers is a practice in tedium would be a massive understatement. Because of this, not a day passes where I am not grateful to have found <code>jq</code>.</p>
   
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

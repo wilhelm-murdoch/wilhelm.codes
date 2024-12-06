@@ -1,52 +1,96 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Why Can&#39;t I Hold All These Slack Emojis? | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
 
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
-
-
-  </header>
-  <main>
-    
+      </header>
+      <main>
+        
   <h1>Why Can&#39;t I Hold All These Slack Emojis?</h1>
 
   
   
-  <time datetime="2023-09-28T00:00:00&#43;00:00">September 28, 2023</time>
+  <time datetime="2022-09-28T00:00:00&#43;00:00">September 28, 2022</time>
 
-  <p><strong>TL;DR</strong> if you want to skip all this and just get to the good stuff, <strong><a href="https://github.com/wilhelm-murdoch/slack-emoji-toolkit">click here</a></strong>
- to download and run the <code>slack-emoji-toolkit</code>.</p>
-<hr>
-<h2 id="first-things-first">First Things First</h2>
-<p>The <a href="https://wilhelm.codes/liberating-custom-slack-emojis">last blog post</a> I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your <em>new</em> Slack workspace?</p>
+  <p>The <a href="https://wilhelm.codes/liberating-custom-slack-emojis">last blog post</a> I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your <em>new</em> Slack workspace?</p>
 <h2 id="gathering-requirements">Gathering Requirements</h2>
-<p>Since we’re doing some destructive operations, we’ll need to make sure our Slack user has the appropriate permissions to manage emoji; adding &amp; deleting. This means using a pload.</p>
+<p>Since we’re doing some destructive operations, we’ll need to make sure our Slack user has the appropriate permissions to manage emoji; adding &amp; deleting. This means using a different section of the Slack interface which uses an entirely seperate set of API endpoints.</p>
+<p>You’ll still be using the following, which can be found using instructions from <a href="https://wilhelm.codes/liberating-custom-slack-emojis#heading-some-investigative-work">the previous article</a>:</p>
+<ul>
+<li>An API request token.</li>
+<li>A session cookie.</li>
+<li>A workspace, or team, id.</li>
+</ul>
+<p>In addition, you will need your workspaces’s subdomain, or URL. This can easily be found within the Slack app itself:</p>
+<p>![slack-emoji-toolkit-workspace-url.png](<a href="https://cdn.hashnode.com/res/hashnode/image/upload/v1664349744760/PDjwLi9t4.png">https://cdn.hashnode.com/res/hashnode/image/upload/v1664349744760/PDjwLi9t4.png</a> align=&ldquo;left&rdquo;)</p>
+<h2 id="testing-your-findings"><strong><strong>Testing Your Findings</strong></strong></h2>
+<p>This is an incredibly straight-forward process as it’s quite similar to what we already know. The primary difference is this is a <code>multipart/form-data</code> upload. So, instead of shipping of a JSON payload, it’s a form with associated fields.</p>
+<p>With the information gathered above, you can upload directly to Slack using a simple cURL command like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -s --compressed <span style="color:#e6db74">&#34;https://&lt;domain&gt;.slack.com/api/emoji.add&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;content-type: multipart/form-data&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;cookie: d=&lt;cookie&gt;;&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -F <span style="color:#e6db74">&#34;token=&lt;token&gt;&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -F <span style="color:#e6db74">&#34;name=&lt;name&gt;&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -F mode<span style="color:#f92672">=</span>data <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -F <span style="color:#e6db74">&#34;image=@&lt;local-emoji-path&gt;&#34;</span>
+</span></span></code></pre></div><p>Replace the following:</p>
+<ul>
+<li><code>&lt;domain&gt;</code> is your workspace’s, or team’s, private URL.</li>
+<li><code>&lt;cookie&gt;</code> is your session cookie value.</li>
+<li><code>&lt;token&gt;</code> is your request token.</li>
+<li><code>&lt;name&gt;</code> will be the named reference of your new emoji.</li>
+<li><code>&lt;path&gt;</code> is the relative, or absolute, local path of your emoji file to upload.</li>
+</ul>
 <p>The JSON response to this request will have the following structure if all goes well:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{ <span style="color:#f92672">&#34;ok&#34;</span>: <span style="color:#66d9ef">true</span> }
 </span></span></code></pre></div><p>And, if something went wrong:</p>
@@ -82,21 +126,35 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>set -eo pipefail
-</span></span><span style="display:flex;"><span>                                                                                                                                                                      ookie: d<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>SLACK_COOKIE<span style="color:#e6db74">}</span>;<span style="color:#e6db74">&#34; \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -F &#34;</span>token<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>SLACK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -F &#34;</span>name<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -F mode=data \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -F &#34;</span>image<span style="color:#f92672">=</span>@<span style="color:#e6db74">${</span>path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; 
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  )
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  if [[ </span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | jq -r <span style="color:#e6db74">&#34;.ok&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74"> == false ]]; then
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    echo &#34;</span><span style="color:#e6db74">${</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; | jq -r &#34;</span>.error<span style="color:#e6db74">&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    exit 1
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  fi
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  echo &#34;</span>uploaded :<span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span>:!<span style="color:#e6db74">&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">done
-</span></span></span></code></pre></div><p>There you go! To test it out yourself, save this as an executable script and make sure your present working directory has some supported images in it. Pass through the your environmental variables when executing and you’re off:</p>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_COOKIE:=<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_TOKEN:=<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_DOMAIN:=<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>files<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>find . -iname <span style="color:#ae81ff">\*</span>.gif -o -iname <span style="color:#ae81ff">\*</span>.png -o -iname <span style="color:#ae81ff">\*</span>.png -maxdepth 1<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>files<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>files<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | <span style="color:#66d9ef">while</span> read -r path; <span style="color:#66d9ef">do</span> 
+</span></span><span style="display:flex;"><span>  name<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>path%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  result<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
+</span></span><span style="display:flex;"><span>    curl -s --compressed <span style="color:#e6db74">&#34;https://</span><span style="color:#e6db74">${</span>SLACK_DOMAIN<span style="color:#e6db74">}</span><span style="color:#e6db74">.slack.com/api/emoji.add&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -H <span style="color:#e6db74">&#39;content-type: multipart/form-data&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -H <span style="color:#e6db74">&#34;cookie: d=</span><span style="color:#e6db74">${</span>SLACK_COOKIE<span style="color:#e6db74">}</span><span style="color:#e6db74">;&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -F <span style="color:#e6db74">&#34;token=</span><span style="color:#e6db74">${</span>SLACK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -F <span style="color:#e6db74">&#34;name=</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -F mode<span style="color:#f92672">=</span>data <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -F <span style="color:#e6db74">&#34;image=@</span><span style="color:#e6db74">${</span>path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | jq -r <span style="color:#e6db74">&#34;.ok&#34;</span><span style="color:#66d9ef">)</span> <span style="color:#f92672">==</span> false <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | jq -r <span style="color:#e6db74">&#34;.error&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;uploaded :</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">:!&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><p>There you go! To test it out yourself, save this as an executable script and make sure your present working directory has some supported images in it. Pass through the your environmental variables when executing and you’re off:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ SLACK_DOMAIN<span style="color:#f92672">=</span>*** SLACK_COOKIE<span style="color:#f92672">=</span>*** SLACK_TOKEN<span style="color:#f92672">=</span>*** ./upload.sh
 </span></span><span style="display:flex;"><span>uploaded :stonks:!
 </span></span><span style="display:flex;"><span>uploaded :boop:!
@@ -105,8 +163,8 @@
 </span></span><span style="display:flex;"><span>uploaded :merp-flakes:!
 </span></span></code></pre></div><p>Nice! 😊</p>
 <h2 id="once-again-something-better">Once Again, Something Better!</h2>
-<p>While perfectly functional                                                                                                                                                                     , there’s not a lot of flexibility. No error checking, filtering or confirmation checks. If you’re looking for something a bit more fleshed out, look no further!</p>
-<p><a href="https://github.com/wilhelm-murdoch/slack-emoji-toolkit">https://github.com/wilhelm-murdoch/slack-emoji-toolkit</a></p>
+<p>While perfectly functional, there’s not a lot of flexibility. No error checking, filtering or confirmation checks. If you’re looking for something a bit more fleshed out, look no further!</p>
+<p>%[https://github.com/wilhelm-murdoch/slack-emoji-toolkit]</p>
 <h2 id="the-final-piece-">The Final Piece &hellip;</h2>
 <p>So far, we’ve gone over how to download and upload large sets of emoji, but what if you want to nuke them from orbit? The final article in this series will cover how to bulk delete while using advanced filters to pin-point specific sets of emoji you wish to remove.</p>
 <p>Hope you’ve learned something useful!</p>
@@ -123,12 +181,11 @@
   </div>
 
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  0d424b5
-
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

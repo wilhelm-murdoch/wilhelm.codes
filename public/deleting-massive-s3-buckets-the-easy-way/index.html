@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Deleting Massive S3 Buckets the Easy Way. | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
 
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
-
-
-  </header>
-  <main>
-    
+      </header>
+      <main>
+        
   <h1>Deleting Massive S3 Buckets the Easy Way.</h1>
 
   
@@ -72,14 +94,7 @@
 <p>Look at you! All done except looking over your work and saving your new lifecycle policy:</p>
 <p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638550036393/k65adYZbp.png" alt="CleanShot 2021-12-04 at 02.46.40.png"></p>
 <h3 id="delete-those-objects">Delete those objects!</h3>
-<p>A secondary policy is necessary to <em>delete</em> the objects you&rsquo;ve just told AWS to expire. Begin the process by clicking the <code>Create lifecycle rule</code> button ith a single button click and a confirmation interstitial ( one that you can walk away from ).</p>
-<p>Anyway, it is what it is. I&rsquo;ll keep checking back over the next few days to chase up its progress.</p>
-<p>Hope this helped! Happy hacking! 🤘</p>
-<h2 id="several-days-later">Several days later&hellip;</h2>
-<p>Ok, it&rsquo;s been a few days and we&rsquo;re finally seeing progress on one of the buckets in question:</p>
-<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638780646338/LaTqZKFqb.png" alt="CleanShot 2021-12-06 at 18.49.31.png"></p>
-<p>All it takes is a little bit of patience.</p>
-<p>and performing the first step from the previous policy:</p>
+<p>A secondary policy is necessary to <em>delete</em> the objects you&rsquo;ve just told AWS to expire. Begin the process by clicking the <code>Create lifecycle rule</code> button and performing the first step from the previous policy:</p>
 <p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638550316173/kp7Hdqji3.png" alt="CleanShot 2021-12-04 at 02.51.44.png"></p>
 <p>Next, you&rsquo;ll select the last action in the list:</p>
 <p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638550345371/N6bz9Qx1s.png" alt="CleanShot 2021-12-04 at 02.52.16.png"></p>
@@ -94,7 +109,7 @@
 <p>Look, this works. But, it isn&rsquo;t exactly intuitive. In my opinion, you shouldn&rsquo;t have to google &ldquo;how to empty large S3 bucket&rdquo; or even go out of your way to create these policies. Ideally, this would all be neatly abstracted away from you and handled with a single button click and a confirmation interstitial ( one that you can walk away from ).</p>
 <p>Anyway, it is what it is. I&rsquo;ll keep checking back over the next few days to chase up its progress.</p>
 <p>Hope this helped! Happy hacking! 🤘</p>
-<h2 id="several-days-later-1">Several days later&hellip;</h2>
+<h2 id="several-days-later">Several days later&hellip;</h2>
 <p>Ok, it&rsquo;s been a few days and we&rsquo;re finally seeing progress on one of the buckets in question:</p>
 <p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1638780646338/LaTqZKFqb.png" alt="CleanShot 2021-12-06 at 18.49.31.png"></p>
 <p>All it takes is a little bit of patience.</p>
@@ -105,17 +120,17 @@
     <ul>
         <li><a href="/tags/aws/">Aws</a></li>
         <li><a href="/tags/devops/">Devops</a></li>
-        <li><a href="/tags/cost-optimisation/">Cost Optimisation</a></li>
+        <li><a href="/tags/cost/">Cost</a></li>
+        <li><a href="/tags/optimisation/">Optimisation</a></li>
     </ul>
   </div>
 
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  3119b43
-
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

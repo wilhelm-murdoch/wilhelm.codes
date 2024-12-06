@@ -1,47 +1,83 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Categories | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
 
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
 
+      lazy.unobserve(entry.target);
+    });
+  });
 
-  </header>
-  <main>
-    
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header class="mx-auto max-w-4xl text-center mb-8 pb-8 border-b relative fade-in-animation">
+        <a href="" title="">
+  <img
+    src="https://0.gravatar.com/avatar/c1bc1ee1440ccaa8de907689c80c29802a461b886ad352580a605ce6881a44cb?size=512"
+    alt="My gorgeous mug."
+    class="zoom-animation absolute right-0 top-0 rounded-full h-32 ring-4 ring-blue-100 border-4 border-white"
+  />
+</a>
+<h1 class="text-5xl my-8 font-bold text-left leading-tight">
+  Heya, I'm
+  <span class="font-normal relative">Wilhelm Murdoch</span>.<br />Coder
+  & Platform Engineer.
+</h1>
+<p class="text-justify text-2xl text-slate-600 font-light">
+  Slinger of nibbles, bits and bytes. Over 25 years of professional
+  experience as a software engineer. Love making glowing rectangles
+  go"beep-boop".
+</p>
+      </header>
+      <main>
+        
   <h1>Categories</h1>
   
   
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

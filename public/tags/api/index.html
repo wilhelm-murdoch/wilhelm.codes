@@ -1,53 +1,79 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Api | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
 
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
-
-
-  </header>
-  <main>
-    
+      </header>
+      <main>
+        
   <h1>Api</h1>
   
   
     <h2><a href="/why-cant-i-hold-all-these-slack-emojis/">Why Can&#39;t I Hold All These Slack Emojis?</a></h2>
-    Or, more stupid tricks while messing with Slack’s API.
+    <p>The <a href="https://wilhelm.codes/liberating-custom-slack-emojis">last blog post</a> I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your <em>new</em> Slack workspace?</p>
+<h2 id="gathering-requirements">Gathering Requirements</h2>
+<p>Since we’re doing some destructive operations, we’ll need to make sure our Slack user has the appropriate permissions to manage emoji; adding &amp; deleting. This means using a different section of the Slack interface which uses an entirely seperate set of API endpoints.</p>
   
     <h2><a href="/liberating-custom-slack-emojis/">Liberating Custom Slack Emojis</a></h2>
-    Or, I&rsquo;m bored. Let&rsquo;s learn some stupid stuff!
+    <p>As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.</p>
+<p>But, when it comes time to part ways it’s only understandable to want to gather your stuff for the next place to start the process again. Over the years one can collect and curate quite a nice hoard of stupid images.</p>
   
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

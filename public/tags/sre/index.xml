@@ -13,7 +13,7 @@
       <link>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
       <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
-      <description>Or, manage your expectations and build around inevitable failure.</description>
+      <description>&lt;p&gt;This is often referred to as the &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Mean_time_between_failures&#34;&gt;Mean Time Between Failures (MTBF)&lt;/a&gt;&amp;rdquo; in the context of Site Reliability Engineering. It&amp;rsquo;s a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven&amp;rsquo;t experienced one for a while.&lt;/p&gt;&#xA;&lt;p&gt;While it may sound paradoxical, there is some reasoning behind it.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
