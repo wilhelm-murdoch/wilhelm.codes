@@ -1,207 +1,87 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Liberating Custom Slack Emojis | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
 
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
 
+      lazy.unobserve(entry.target);
+    });
+  });
 
-  </header>
-  <main>
-    
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <a href="" title="">
+  <img
+    src="https://0.gravatar.com/avatar/c1bc1ee1440ccaa8de907689c80c29802a461b886ad352580a605ce6881a44cb?size=512"
+    alt="My gorgeous mug."
+    class="zoom-animation absolute right-0 top-0 rounded-full h-32 ring-4 ring-blue-100 border-4 border-white"
+  />
+</a>
+<h1 class="text-5xl my-8 font-bold text-left leading-tight">
+  Heya, I'm
+  <span class="font-normal relative">Wilhelm Murdoch</span>.<br />Coder
+  & Platform Engineer.
+</h1>
+<p class="text-justify text-2xl text-slate-600 font-light">
+  Slinger of nibbles, bits and bytes. Over 25 years of professional
+  experience as a software engineer. Love making glowing rectangles
+  go"beep-boop".
+</p>
+      </header>
+      <main>
+        
   <h1>Liberating Custom Slack Emojis</h1>
 
   
   
   <time datetime="2022-09-20T00:00:00&#43;00:00">September 20, 2022</time>
 
-  <p><strong>TL;DR</strong> if you want to skip all this and just get to the good stuff, <a href="https://github.com/wilhelm-murdoch/slack-emoji-toolkit">click here</a> to download and run the <code>slack-emoji-toolkit</code>.</p>
-<hr>
-<p>As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.</p>
+  <p>As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.</p>
 <p>But, when it comes time to part ways it’s only understandable to want to gather your stuff for the next place to start the process again. Over the years one can collect and curate quite a nice hoard of stupid images.</p>
 <p>I’ve been using Slack prolifically for the past few years. Unfortunately, there is no simple way of exporting your precious collection outside of the old “right-click and save” method. This is effective for smaller collections of a couple dozen or so, but becomes impractical when there are hundreds or even thousands.</p>
 <p>And, of course, I’m not alone. There have been a non-zero number of times when someone left the company only to hit me up later asking for an emoji archive.</p>
 <p>Yes, this really happens and something <em>must</em> be done about it!</p>
 <p>What follows is an unnecessarily long dive into a little bit of reverse engineering one of Slack’s API endpoints, subverting it for our own use and writing a stupid little tool to help ourselves ( and others ) automate this process for the future.</p>
-<h2 id="some-s-you-whether-the-request-was-successful-or-not-if-it-returns-false-there-will-be-an-additional-field-named-error-that-should-clue-you-into-what-went-wrong">Some s you whether the request was successful or not. If it returns <code>false</code> there will be an additional field named <code>error</code> that should clue you into what went wrong.</h2>
-<ul>
-<li><code>next_marker</code> tells you where in the list of custom emoji the <em>next</em> page of results should start. We use this as the value of <code>marker</code> in subsequent request payloads ( see below ). This is effectively how you page through large lists of emoji.</li>
-<li><code>results</code> should be obvious, but it contains an array of objects with <code>name</code> and <code>value</code> fields.
-<ul>
-<li><code>name</code> is the alias of the emoji.</li>
-<li><code>value</code> is the direct CDN URL to the emoji.</li>
-</ul>
-</li>
-</ul>
-<p>You may see other fields, but <code>next_marker</code> and <code>value</code> are the only fields we really care about.</p>
-<p>Next, If you take a look at the “Payload” tab in the “Network” panel fsociated value to help page through subsequent results. Keep doing this in a loop until your response no longer returns a <code>marker_next</code> field.</p>
-<p>Once that happens, you’re at the end of the list.</p>
-<p>With a little bit of help from <code>jq</code> to parse and filter the JSON responses, we can grab a simple list of URLs.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ &lt;previous_curl_command&gt; | jq -r <span style="color:#e6db74">&#39;.results[].value&#39;</span>
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/no/060fca9aa2581a93.png
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/nods/c7fe54342ab5b8b6.gif
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/nods-back/fbd1b5384cdd0905.gif
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/nomnomnom/612cfc74c785010d.gif
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/octocat/627964d7c9.png
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/ohyou/6a352df984d9c076.gif
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/one-sec-cooking/e749627cb088859d.png
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/oof/db94710445cbb206.png
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/petrol/35ed3db238f795fc.png
-</span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/piggy/b7762ee8cd.png
-</span></span></code></pre></div><p>We now understand how to collect everything we need, so let’s automate this a bit more.</p>
-<h2 id="the-implementation">The Implementation</h2>
-<p>We’re going to write a little script that’ll download all the custom emojis from the target Slack workspace. It’s going to perform the following steps:</p>
-<ol>
-<li>Define a starting JSON payload.</li>
-<li>Create a run loop.</li>
-<li>With each loop we make a request using the API endpoint.</li>
-<li>Do some error checking.</li>
-<li>Iterate through the results and save them to disk.</li>
-<li>If the results contain a <code>next_marker</code> update the JSON payload with a <code>marker</code> field and continue the run loop.</li>
-<li>Keep going until the last request no longer provides a <code>next_marker</code>.</li>
-</ol>
-<p>First, we want to define some environmental variables so we can easily configure the script:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_WORKSPACE_ID:=<span style="color:#e6db74">}</span>
-</span></span><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_COOKIE:=<span style="color:#e6db74">}</span>
-</span></span><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_TOKEN:=<span style="color:#e6db74">}</span>
-</span></span></code></pre></div><p>Now we define our JSON payload object. We use <code>jq</code> here to keep things eae also targeting our workspace:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>  result<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
-</span></span><span style="display:flex;"><span>    curl -s --compressed <span style="color:#e6db74">&#34;https://edgeapi.slack.com/cache/</span><span style="color:#e6db74">${</span>SLACK_WORKSPACE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">/emojis/list?fp=97&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -H <span style="color:#e6db74">&#34;cookie: d=</span><span style="color:#e6db74">${</span>SLACK_COOKIE<span style="color:#e6db74">}</span><span style="color:#e6db74">;&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      --data-raw <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> 
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>                                                                            ; all <span style="color:#66d9ef">done</span>. However, <span style="color:#66d9ef">if</span> we <span style="color:#66d9ef">do</span> get a value, we take the previous payload we constructed and *add* the <span style="color:#e6db74">`</span>marker<span style="color:#e6db74">`</span> field. 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>The next loop will pick this change up and pass it on through to the API request tellin -s --compressed <span style="color:#e6db74">&#34;https://edgeapi.slack.com/cache/</span><span style="color:#e6db74">${</span>SLACK_WORKSPACE_ID<span style="color:#e6db74">}</span><span style="color:#e6db74">/emojis/list?fp=97&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -H <span style="color:#e6db74">&#34;cookie: d=</span><span style="color:#e6db74">${</span>SLACK_COOKIE<span style="color:#e6db74">}</span><span style="color:#e6db74">;&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      --data-raw <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>                                                                 f, makehashnode.com/res/hashnode/image/upload/v1663601487957/aTOrHhP9G.png align<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;left&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span> the script executable, define the environmental variables and fire it off like so:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>bash
-</span></span><span style="display:flex;"><span>$ SLACK_WORKSPACE_ID<span style="color:#f92672">=</span>*** SLACK_COOKIE<span style="color:#f92672">=</span>*** SLACK_TOKEN<span style="color:#f92672">=</span>*** ./fetch.sh
-</span></span></code></pre></div><h2 id="an-even-better-version">An Even Better Version!</h2>
-<p>I know I just made you read through all this, but you also could’ve just downloaded the tool from here. It’s got heaps more bells and whistles ( if you’re into that sort of thing):</p>
-<p>%[https://github.com/wilhelm-murdoch/slack-emoji-toolkit]</p>
-<h2 id="the-bitter-irony">The Bitter Irony</h2>
-<p>In typical bored engineer fashion, I’ve spent more time writing this article, documenting and publishing the code than I ever would have personally just “handraulically” doing this from time to time.</p>
-<p>Hopefully, you’ve learned something new! 🤞</p>
-<h2 id="bonus-relevant-xkcd-image">Bonus Relevant XKCD Image</h2>
-<p><img src="https://cdn." alt="Untitled.png"></p>
-<p>if [[ $(echo &ldquo;${result}&rdquo; | jq -r &ldquo;.ok&rdquo;) == false ]]; then
-echo &ldquo;${result}&rdquo; | jq -r &ldquo;.error&rdquo;
-exit 1
-fi</p>
-<p>echo &ldquo;${result}&rdquo;  | jq -r &lsquo;.results[].value&rsquo; | while read -r url; do
-name=$(basename $(dirname &ldquo;${url}&rdquo;))
-curl -s -o &ldquo;${name}.${url##*.}&rdquo; &ldquo;${url}&rdquo;
-done</p>
-<p>marker=$(echo &ldquo;${result}&rdquo; | jq -r &ldquo;.next_marker&rdquo;)
-[[ &ldquo;${marker}&rdquo; == &ldquo;null&rdquo; ]] &amp;&amp; exit 0</p>
-<p>payload=$(echo &ldquo;${payload}&rdquo; | jq &ndash;arg marker &ldquo;${marker}&rdquo; &lsquo;. + { marker: $marker }&rsquo;)
-done</p>
-<pre tabindex="0"><code>
-This is pretty much it. A barebones script that downloads all findings to its present working directory. To test it out yourselg Slack to give us the next page of precious emojis.
-
-```bash
-marker=$(echo &#34;${result}&#34; | jq -r &#34;.next_marker&#34;)
-[[ &#34;${marker}&#34; == &#34;null&#34; ]] &amp;&amp; exit 0
-
-payload=$(echo &#34;${payload}&#34; | jq --arg marker &#34;${marker}&#34; &#39;. + { marker: $marker }&#39;)
-</code></pre><h2 id="the-finished-product">The Finished Product</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>set -eo pipefail
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_WORKSPACE_ID:=<span style="color:#e6db74">}</span>
-</span></span><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_COOKIE:=<span style="color:#e6db74">}</span>
-</span></span><span style="display:flex;"><span>: <span style="color:#e6db74">${</span>SLACK_TOKEN:=<span style="color:#e6db74">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>payload<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
-</span></span><span style="display:flex;"><span>  jq -nc <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --arg     token <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SLACK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --argjson count <span style="color:#e6db74">&#34;100&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#39;{
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      token: $token, 
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      count: $count
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>  result<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
-</span></span><span style="display:flex;"><span>    curl
-</span></span></code></pre></div><p>We obviously want to do some simple error checking so we know what we did wrong if the requests fail. Grab the error, spit it out and terminate the script.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | jq -r <span style="color:#e6db74">&#34;.ok&#34;</span><span style="color:#66d9ef">)</span> <span style="color:#f92672">==</span> false <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | jq -r <span style="color:#e6db74">&#34;.error&#34;</span>
-</span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
-</span></span></code></pre></div><p>We now start iterating through any of the results we got from the initial request. We really only care about the <code>value</code> field as the URL gives us all the pieces we need to give our emojis a human-readable filename.</p>
-<p>Here we treat the resulting URL as a standard file path and use <code>dirname</code> paired with <code>basename</code> to get the name of the parent directory of the file. The parent directory holds the actual name of the emoji, while the file itself is only a random hash. We use <a href="https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html">Bash’s parameter expansion</a> feature to construct our filename.</p>
-<p>Finally, we download the remote file to the current directory:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  | jq -r <span style="color:#e6db74">&#39;.results[].value&#39;</span> | <span style="color:#66d9ef">while</span> read -r url; <span style="color:#66d9ef">do</span> 
-</span></span><span style="display:flex;"><span>name<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>basename <span style="color:#66d9ef">$(</span>dirname <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">))</span>
-</span></span><span style="display:flex;"><span>curl -s -o <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">${</span>url##*.<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span> 
-</span></span></code></pre></div><p>We need to check if there are more results to page through, so let’s look for the <code>marker_next</code> field. If we can’t find one, then mission accomplishedsy. Not only is it great for parsing and filtering JSON in Bash, it also makes building and manipulating objects simple:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>payload<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
-</span></span><span style="display:flex;"><span>  jq -nc <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --arg     token <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SLACK_TOKEN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --argjson count <span style="color:#e6db74">&#34;100&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#39;{
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      token: $token, 
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      count: $count
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">)</span>
-</span></span></code></pre></div><p>Next, is the run loop where we make our API requests. This passes through the payload object we just defined whilhis to authenticate with the Slack API itself.</p>
-<h2 id="testing-your-findings">Testing Your Findings</h2>
-<p>We now understand the structure of our payload. We also have the endpoint to hit as well as our tokens and session cookie to authenticate. Piecing it all together, you can now use cURL to hit the API directly from your terminal:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl --silent https://edgeapi.slack.com/cache/&lt;team&gt;/emojis/list?fp<span style="color:#f92672">=</span><span style="color:#ae81ff">97</span>
-</span></span><span style="display:flex;"><span>  -H <span style="color:#e6db74">&#39;cookie: d=&lt;cookie&gt;;&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --data-raw <span style="color:#e6db74">&#39;{&#34;token&#34;:&#34;&lt;token&gt;&#34;,&#34;count&#34;:10}&#39;</span>
-</span></span></code></pre></div><p>Replace the following:</p>
-<ul>
-<li><code>&lt;team&gt;</code> is your workspace, or team, id.</li>
-<li><code>&lt;cookie&gt;</code> is your session cookie value.</li>
-<li><code>&lt;token&gt;</code> is your request token.</li>
-</ul>
-<p>If everything worked out, you should have successful API response like the one above. If the response has root field named <code>marker_next</code>, make note of the asor the same request, you’ll see something similar to:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;token&#34;</span>: <span style="color:#e6db74">&#34;xoxc-xxxx-xxxx-xxxx&#34;</span>,
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;count&#34;</span>: <span style="color:#ae81ff">100</span>,
-</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;marker&#34;</span>: <span style="color:#e6db74">&#34;some-other-emoji&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ul>
-<li><code>token</code> is the API request token the Slack client uses to make the emoji list request on your behalf.</li>
-<li><code>count</code> is the amount of emojis to return as a page.</li>
-<li><code>marker</code> tells the API where in the emoji list to start paging.</li>
-</ul>
-<p>The final piece of the puzzle is getting the value of your session cookie. You can grab this by clicking the “Request Headers” section under the “Headers” tab. You should see a header labeled <code>cookie</code>.</p>
-<p>There’s going to be a fairly large block of text to parse through, but you’re looking for the cookie named <code>d</code>. Save everything between the <code>d=</code> and the closing <code>;</code>. You’re going to need tInvestigative Work</p>
+<h2 id="some-investigative-work">Some Investigative Work</h2>
 <p>There just has to be a straightforward way we can <em>mostly</em> automate this. So, I did some cursory digging around the Chrome Developer Tools console and found this endpoint in the “Network” tab:</p>
 <pre tabindex="0"><code>https://edgeapi.slack.com/cache/T0XXXX/emojis/list?fp=97
 </code></pre><p>The <code>T0XXXX</code> will be your workspace, or team, id. Make note of it, you’ll need it later.</p>
@@ -241,7 +121,7 @@ payload=$(echo &#34;${payload}&#34; | jq --arg marker &#34;${marker}&#34; &#39;.
 </ul>
 <p>The final piece of the puzzle is getting the value of your session cookie. You can grab this by clicking the “Request Headers” section under the “Headers” tab. You should see a header labeled <code>cookie</code>.</p>
 <p>There’s going to be a fairly large block of text to parse through, but you’re looking for the cookie named <code>d</code>. Save everything between the <code>d=</code> and the closing <code>;</code>. You’re going to need this to authenticate with the Slack API itself.</p>
-<h2 id="testing-your-findings-1">Testing Your Findings</h2>
+<h2 id="testing-your-findings">Testing Your Findings</h2>
 <p>We now understand the structure of our payload. We also have the endpoint to hit as well as our tokens and session cookie to authenticate. Piecing it all together, you can now use cURL to hit the API directly from your terminal:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl --silent https://edgeapi.slack.com/cache/&lt;team&gt;/emojis/list?fp<span style="color:#f92672">=</span><span style="color:#ae81ff">97</span>
 </span></span><span style="display:flex;"><span>  -H <span style="color:#e6db74">&#39;cookie: d=&lt;cookie&gt;;&#39;</span> <span style="color:#ae81ff">\
@@ -267,7 +147,7 @@ payload=$(echo &#34;${payload}&#34; | jq --arg marker &#34;${marker}&#34; &#39;.
 </span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/petrol/35ed3db238f795fc.png
 </span></span><span style="display:flex;"><span>https://emoji.slack-edge.com/T0XXXX/piggy/b7762ee8cd.png
 </span></span></code></pre></div><p>We now understand how to collect everything we need, so let’s automate this a bit more.</p>
-<h2 id="the-implementation-1">The Implementation</h2>
+<h2 id="the-implementation">The Implementation</h2>
 <p>We’re going to write a little script that’ll download all the custom emojis from the target Slack workspace. It’s going to perform the following steps:</p>
 <ol>
 <li>Define a starting JSON payload.</li>
@@ -318,7 +198,7 @@ payload=$(echo &#34;${payload}&#34; | jq --arg marker &#34;${marker}&#34; &#39;.
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>marker<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;null&#34;</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> exit <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>payload<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | jq --arg marker <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>marker<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#39;. + { marker: $marker }&#39;</span><span style="color:#66d9ef">)</span>
-</span></span></code></pre></div><h2 id="the-finished-product-1">The Finished Product</h2>
+</span></span></code></pre></div><h2 id="the-finished-product">The Finished Product</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>set -eo pipefail
@@ -361,14 +241,14 @@ payload=$(echo &#34;${payload}&#34; | jq --arg marker &#34;${marker}&#34; &#39;.
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
 </span></span></code></pre></div><p>This is pretty much it. A barebones script that downloads all findings to its present working directory. To test it out yourself, make the script executable, define the environmental variables and fire it off like so:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ SLACK_WORKSPACE_ID<span style="color:#f92672">=</span>*** SLACK_COOKIE<span style="color:#f92672">=</span>*** SLACK_TOKEN<span style="color:#f92672">=</span>*** ./fetch.sh
-</span></span></code></pre></div><h2 id="an-even-better-version-1">An Even Better Version!</h2>
+</span></span></code></pre></div><h2 id="an-even-better-version">An Even Better Version!</h2>
 <p>I know I just made you read through all this, but you also could’ve just downloaded the tool from here. It’s got heaps more bells and whistles ( if you’re into that sort of thing):</p>
 <p>%[https://github.com/wilhelm-murdoch/slack-emoji-toolkit]</p>
-<h2 id="the-bitter-irony-1">The Bitter Irony</h2>
+<h2 id="the-bitter-irony">The Bitter Irony</h2>
 <p>In typical bored engineer fashion, I’ve spent more time writing this article, documenting and publishing the code than I ever would have personally just “handraulically” doing this from time to time.</p>
 <p>Hopefully, you’ve learned something new! 🤞</p>
-<h2 id="bonus-relevant-xkcd-image-1">Bonus Relevant XKCD Image</h2>
-<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1663601487957/aTOrHhP9G.png" alt="Untitled.png"></p>
+<h2 id="bonus-relevant-xkcd-image">Bonus Relevant XKCD Image</h2>
+<p>![Untitled.png](<a href="https://cdn.hashnode.com/res/hashnode/image/upload/v1663601487957/aTOrHhP9G.png">https://cdn.hashnode.com/res/hashnode/image/upload/v1663601487957/aTOrHhP9G.png</a> align=&ldquo;left&rdquo;)</p>
 
   
   <div>
@@ -381,12 +261,11 @@ payload=$(echo &#34;${payload}&#34; | jq --arg marker &#34;${marker}&#34; &#39;.
   </div>
 
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  3119b43
-
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

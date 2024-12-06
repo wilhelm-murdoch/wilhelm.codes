@@ -11,9 +11,9 @@
     <item>
       <title>Save Money By Keeping Your AWS Account Clean</title>
       <link>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</link>
-      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</guid>
-      <description>Or, I say we nuke the entire account from orbit. It’s the only way to be sure.</description>
+      <description>&lt;p&gt;At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.&lt;/p&gt;&#xA;&lt;p&gt;Because we have so many to manage and not a whole lot of people power ( it’s just 2 of us ), it gets easy for a lot of hidden costs to pop up here and there if we aren’t vigilant enough with housekeeping.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

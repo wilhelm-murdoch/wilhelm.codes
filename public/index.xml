@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Wilhelm Codes</title>
+    <title>Wilhelm Codes</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content in Home on Wilhelm Codes</description>
+    <description>Recent content on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 30 Nov 2024 02:01:20 +1000</lastBuildDate>
@@ -13,70 +13,70 @@
       <link>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
       <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
-      <description>Or, manage your expectations and build around inevitable failure.</description>
-    </item>
-    <item>
-      <title>Why Can&#39;t I Hold All These Slack Emojis?</title>
-      <link>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</link>
-      <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</guid>
-      <description>Or, more stupid tricks while messing with Slack’s API.</description>
+      <description>&lt;p&gt;This is often referred to as the &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Mean_time_between_failures&#34;&gt;Mean Time Between Failures (MTBF)&lt;/a&gt;&amp;rdquo; in the context of Site Reliability Engineering. It&amp;rsquo;s a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven&amp;rsquo;t experienced one for a while.&lt;/p&gt;&#xA;&lt;p&gt;While it may sound paradoxical, there is some reasoning behind it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why I Built Plant Smart</title>
       <link>http://localhost:1313/why-i-built-plant-smart/</link>
       <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/why-i-built-plant-smart/</guid>
-      <description>Or, it&amp;rsquo;s a great idea to push yourself outside of your comfort zone.</description>
-    </item>
-    <item>
-      <title>Save Money By Keeping Your AWS Account Clean</title>
-      <link>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</link>
-      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</guid>
-      <description>Or, I say we nuke the entire account from orbit. It’s the only way to be sure.</description>
+      <description>&lt;p&gt;Simply put, I love plants and I love animals. I can&amp;rsquo;t count how many times I&amp;rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;its-as-simple-as-that&#34;&gt;&lt;strong&gt;It&amp;rsquo;s as simple as that?&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;That was the idea, at least. I just wanted a single place that had all the information I needed so I could make informed purchasing decisions. I also figured I couldn&amp;rsquo;t possibly be the only person who has this problem. So, I set off to make this project during the holiday break of 2022.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Learning Bash Through Pointless Fun ...</title>
       <link>http://localhost:1313/learning-bash-through-pointless-fun/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/learning-bash-through-pointless-fun/</guid>
-      <description>oR, HOW tO bE COmpletEly iNsufFerAbLE in tHE cHAT.</description>
+      <description>&lt;p&gt;Responding to company chat messages in a mocking and sarcastic tone is one of my favourite past times. Classic engineer snark as it were. We’re all in on the joke. However, the artful nuances of snark via online chat tend to get confused by others; Did they &lt;em&gt;mean&lt;/em&gt; to sound sarcastic?&lt;/p&gt;&#xA;&lt;p&gt;Let’s leave out all doubt regarding our god-tier levels of snarkiness.&lt;/p&gt;&#xA;&lt;p&gt;Today, we’re going to write a laughably-simple Bash script that lets our coworkers know &lt;em&gt;&lt;a href=&#34;https://knowyourmeme.com/memes/mocking-spongebob&#34;&gt;exactly&lt;/a&gt;&lt;/em&gt; what we think. Along the way, you’ll learn a little bit more about Bash such as:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Filtering Docker Containers with Jq</title>
       <link>http://localhost:1313/filtering-docker-containers-with-jq/</link>
       <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/filtering-docker-containers-with-jq/</guid>
-      <description>Or, I can’t be the only one who will find this useful.</description>
+      <description>&lt;p&gt;As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Bash scripting for portability.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;jq&lt;/a&gt; to filter JSON objects from RESTful APIs.&lt;/li&gt;&#xA;&lt;li&gt;Docker ( or more recently Podman ) for managing containers.&lt;/li&gt;&#xA;&lt;li&gt;AWS CLI as I cannot stand dealing with the web console.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;curl&lt;/code&gt; ( with &lt;code&gt;wget&lt;/code&gt; as a reasonable fallback ) to interact with various APIs.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.terraform.io/&#34;&gt;Terraform&lt;/a&gt; for &lt;em&gt;most&lt;/em&gt; of my IaC needs.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;It wouldn’t be an exaggeration to say I &lt;em&gt;literally&lt;/em&gt; use these tools &lt;em&gt;every&lt;/em&gt; day. Specifically, the first 3 items. Furthermore, to say that manually sorting through Docker containers is a practice in tedium would be a massive understatement. Because of this, not a day passes where I am not grateful to have found &lt;code&gt;jq&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why Can&#39;t I Hold All These Slack Emojis?</title>
+      <link>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</link>
+      <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://wilhelm.codes/liberating-custom-slack-emojis&#34;&gt;last blog post&lt;/a&gt; I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your &lt;em&gt;new&lt;/em&gt; Slack workspace?&lt;/p&gt;&#xA;&lt;h2 id=&#34;gathering-requirements&#34;&gt;Gathering Requirements&lt;/h2&gt;&#xA;&lt;p&gt;Since we’re doing some destructive operations, we’ll need to make sure our Slack user has the appropriate permissions to manage emoji; adding &amp;amp; deleting. This means using a different section of the Slack interface which uses an entirely seperate set of API endpoints.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Liberating Custom Slack Emojis</title>
       <link>http://localhost:1313/liberating-custom-slack-emojis/</link>
       <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/liberating-custom-slack-emojis/</guid>
-      <description>Or, I&amp;rsquo;m bored. Let&amp;rsquo;s learn some stupid stuff!</description>
+      <description>&lt;p&gt;As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.&lt;/p&gt;&#xA;&lt;p&gt;But, when it comes time to part ways it’s only understandable to want to gather your stuff for the next place to start the process again. Over the years one can collect and curate quite a nice hoard of stupid images.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Save Money By Keeping Your AWS Account Clean</title>
+      <link>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</link>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</guid>
+      <description>&lt;p&gt;At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.&lt;/p&gt;&#xA;&lt;p&gt;Because we have so many to manage and not a whole lot of people power ( it’s just 2 of us ), it gets easy for a lot of hidden costs to pop up here and there if we aren’t vigilant enough with housekeeping.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Deleting Massive S3 Buckets the Easy Way.</title>
       <link>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</link>
       <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</guid>
-      <description>Or, why do I have to create multiple lifecycle policies to do this?</description>
+      <description>&lt;h2 id=&#34;ok-&#34;&gt;Ok&amp;hellip; 🥱&lt;/h2&gt;&#xA;&lt;p&gt;Right, so, I&amp;rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources.&lt;/p&gt;&#xA;&lt;p&gt;For this particular service, we have an  &lt;a href=&#34;https://en.wikipedia.org/wiki/Extract,_transform,_load&#34;&gt;ETL&lt;/a&gt;  process that stores raw data points for downstream ingestion by some other&amp;hellip; thing. Anyway, the storage mechanism for this is a cross-region replicated S3 bucket containing just over 10 &lt;em&gt;million&lt;/em&gt; objects.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Messing Around with TXT Records!</title>
       <link>http://localhost:1313/messing-around-with-txt-records/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/messing-around-with-txt-records/</guid>
-      <description>Or, a dumb little trick to use your personal domain as a business card.</description>
+      <description>&lt;h2 id=&#34;hey-wanna-see-a-neat-trick-&#34;&gt;Hey, wanna see a neat trick? 🤯&lt;/h2&gt;&#xA;&lt;p&gt;Open up your terminal of choice and invoke this &lt;code&gt;dig&lt;/code&gt; command:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dig txt contact.wilhelm.codes +short&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see, hopefully 🤞, the following block of text as a response:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;twitter: @wilhelm&amp;#34;&#xA;&amp;#34;email:   wilhelm@devilmayco.de&amp;#34;&#xA;&amp;#34;github:  wilhelm-murdoch&amp;#34;&#xA;&amp;#34;keybase: 7F89 5036 2816 06F6&amp;#34;&#xA;&amp;#34;blog:    https://wilhelm.codes/&amp;#34;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;ok-what-am-i-looking-at-&#34;&gt;Ok, what am I looking at? 🤨&lt;/h2&gt;&#xA;&lt;p&gt;Simply put, you&amp;rsquo;re looking at my contact details using a simple DNS &lt;code&gt;TXT&lt;/code&gt; record lookup. There are &lt;a href=&#34;https://dns.google/query?name=contact.wilhelm.codes&#34;&gt;heaps&lt;/a&gt; &lt;a href=&#34;https://toolbox.googleapps.com/apps/dig/#TXT/&#34;&gt;of&lt;/a&gt; &lt;a href=&#34;https://www.diggui.com/&#34;&gt;online tools&lt;/a&gt; out there to help you directly query DNS records, but &lt;code&gt;dig&lt;/code&gt; tends to be the most common utility included included in most Linux distributions as well as MacOS.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Falsifying Github Participation Graphs for Fun and Profit!</title>
       <link>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</link>
       <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
-      <description>Or, how to make a useless recruiting metric even more useless.</description>
+      <description>&lt;h2 id=&#34;psssst-hey-over-here-hi--&#34;&gt;Psssst&amp;hellip; Hey, over here. Hi! 👋 😬&lt;/h2&gt;&#xA;&lt;p&gt;If you&amp;rsquo;ve spent any time job hunting in the tech industry, you&amp;rsquo;ve had to deal with recruiters. I like to joke around with my peers about how they&amp;rsquo;re a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. But, good or bad, far too many of them will pass over your resume for the wildest reasons. We&amp;rsquo;re not here to go over all of them. No, today we&amp;rsquo;re going to address the somewhat recent trend of glancing at your public Github profile page and grading you based on how many green squares show up in your participation graph.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

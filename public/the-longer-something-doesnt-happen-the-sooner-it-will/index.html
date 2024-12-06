@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>The Longer Something Doesn&#39;t Happen, the Sooner it Will. | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
 
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
-
-
-  </header>
-  <main>
-    
+      </header>
+      <main>
+        
   <h1>The Longer Something Doesn&#39;t Happen, the Sooner it Will.</h1>
 
   
@@ -52,39 +74,38 @@
 <p><a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">The law of large numbers</a> suggests that over time, events tend to revert to their average or &ldquo;mean&rdquo; frequency. If you&rsquo;ve experienced an unusually long period without incidents, statistics may suggest that you&rsquo;re due for one soon, just as a run of heads in a coin toss doesn&rsquo;t make tails any less likely on the next toss.</p>
 <h3 id="maintaining-awareness">Maintaining Awareness</h3>
 <blockquote>
-<p>The price of <!-- raw HTML omitted -->freedom<!-- raw HTML omitted --> stability is eternal vigilance.</p>
+<p>The price of <!-- raw HTML omitted -->freedom<!-- raw HTML omitted --> stability is eternal vigilance.<br>
+<!-- raw HTML omitted -->&ndash; Ancient Klingon Proverb ( probably )<!-- raw HTML omitted --></p>
 </blockquote>
-<p>— <em>Ancient Klingon Proverb ( probably )</em></p>
-<h4 id="-mitigation-strategies">🩹 Mitigation Strategies</h4>
+<h4 id="mitigation-strategies">Mitigation Strategies</h4>
 <p>Recognize the importance of proactively addressing issues before they accumulate. This involves regular monitoring, capacity planning, load testing, and maintenance to reduce the likelihood of a sudden failure.</p>
-<h4 id="-risk-management">🚨 Risk Management</h4>
+<h4 id="risk-management">Risk Management</h4>
 <p>Focus on identifying and managing risks, even during periods of relative stability. They plan for various failure scenarios and aim to minimize their impact through redundancy, graceful degradation, and fault-tolerant design.</p>
-<h4 id="-continuous-improvement">🔁 Continuous improvement</h4>
+<h4 id="continuous-improvement">Continuous improvement</h4>
 <p>Promote a culture of continuous improvement, encouraging teams to learn from past incidents, conduct post-mortems, even live-fire exercises and apply those lessons to prevent similar issues in the future.</p>
-<h4 id="-metrics--monitoring">📊 Metrics &amp; Monitoring</h4>
+<h4 id="metrics--monitoring">Metrics &amp; Monitoring</h4>
 <p>Use metrics and monitoring tools to maintain a vigilant eye on system health and performance. They set thresholds and alarms to detect anomalies early, regardless of how long it&rsquo;s been since the last incident.</p>
 <p><!-- raw HTML omitted -->At any given point your production workloads may be operating under any number of unknown failure modes. Things break; it&rsquo;s inevitable. Adjust your expectations accordingly and build around this fact.<!-- raw HTML omitted --></p>
-<h2 id="in-conclusion">In Conclusion</h2>
+<h3 id="in-conclusion">In Conclusion</h3>
 <p>The idea that the longer something doesn&rsquo;t happen, the sooner it will is a <em>reminder</em> of the importance of vigilance, proactive maintenance, and risk management not only in site reliability engineering, but software engineering as a whole.</p>
 <p>This may not be a deterministic law as it highlights the tendency for issues to accumulate over time if not addressed, making it crucial to maintain a robust and resilient system.</p>
-
   
   <div>
     <div>Tags:</div>
     <ul>
         <li><a href="/tags/devops/">Devops</a></li>
         <li><a href="/tags/sre/">Sre</a></li>
-        <li><a href="/tags/chaos-engineering/">Chaos Engineering</a></li>
+        <li><a href="/tags/chaos/">Chaos</a></li>
+        <li><a href="/tags/engineering/">Engineering</a></li>
     </ul>
   </div>
 
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  3119b43
-
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

@@ -1,18 +1,20 @@
 ---
-params:
-    author: Wilhelm Murdoch
-title: The Longer Something Doesn't Happen, the Sooner it Will. 
-summary: Or, manage your expectations and build around inevitable failure. 
+title: The Longer Something Doesn't Happen, the Sooner it Will.
+alternate: Or, manage your expectations and build around inevitable failure.
 draft: false
-date: 27 Jan 2024
+date: 2024-01-27
+category: sre
 tags:
-    - devops
-    - sre
-    - chaos engineering
+  - devops
+  - sre
+  - chaos
+  - engineering
 ---
 This is often referred to as the "[Mean Time Between Failures (MTBF)](https://en.wikipedia.org/wiki/Mean_time_between_failures)" in the context of Site Reliability Engineering. It's a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven't experienced one for a while.
 
 While it may sound paradoxical, there is some reasoning behind it.
+
+<!--more-->
 
 ### Accumulation of Underlying Issues
 
@@ -32,29 +34,28 @@ As technology and business environments evolve — as they inevitably do in our 
 
 ### Maintaining Awareness
 
-> The price of <s>freedom</s> stability is eternal vigilance.
+> The price of <s>freedom</s> stability is eternal vigilance.  
+> <cite>-- Ancient Klingon Proverb ( probably )</cite>
 
-— *Ancient Klingon Proverb ( probably )*
-
-#### 🩹 Mitigation Strategies
+#### Mitigation Strategies
 
 Recognize the importance of proactively addressing issues before they accumulate. This involves regular monitoring, capacity planning, load testing, and maintenance to reduce the likelihood of a sudden failure.
 
-#### 🚨 Risk Management
+#### Risk Management
 
 Focus on identifying and managing risks, even during periods of relative stability. They plan for various failure scenarios and aim to minimize their impact through redundancy, graceful degradation, and fault-tolerant design.
 
-#### 🔁 Continuous improvement
+#### Continuous improvement
 
 Promote a culture of continuous improvement, encouraging teams to learn from past incidents, conduct post-mortems, even live-fire exercises and apply those lessons to prevent similar issues in the future.
 
-#### 📊 Metrics & Monitoring
+#### Metrics & Monitoring
 
 Use metrics and monitoring tools to maintain a vigilant eye on system health and performance. They set thresholds and alarms to detect anomalies early, regardless of how long it's been since the last incident.
 
 <mark>At any given point your production workloads may be operating under any number of unknown failure modes. Things break; it's inevitable. Adjust your expectations accordingly and build around this fact.</mark>
 
-## In Conclusion
+### In Conclusion
 
 The idea that the longer something doesn't happen, the sooner it will is a *reminder* of the importance of vigilance, proactive maintenance, and risk management not only in site reliability engineering, but software engineering as a whole.
 

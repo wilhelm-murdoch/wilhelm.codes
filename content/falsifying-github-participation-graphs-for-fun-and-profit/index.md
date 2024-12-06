@@ -1,10 +1,8 @@
 ---
-params:
-    author: Wilhelm Murdoch
 title: Falsifying Github Participation Graphs for Fun and Profit!
-summary: Or, how to make a useless recruiting metric even more useless.
+alternate: Or, how to make a useless recruiting metric even more useless.
 draft: false
-date: 04 Nov 2021
+date: 2021-11-04
 tags:
   - bash
   - git
@@ -20,29 +18,7 @@ Like basing your performance on LoC, using "commits made" as a recruiting metric
 1. You work on private repositories and you haven't configured your profile to show anonymised private contributions.
 2. You have an alternate account from your personal one to keep work and private life separate. Or, maybe it's just company policy.
 3. You've signed an NDA and can't publish your contributions publicly.
-4. You set personal boundaries for your work-life balance and don't care to stare at glowing rectangles in your free time.    ndscape:
-
-![CleanShot 2021-11-03 at 23.39.57.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1635955257237/Mvka96vUO.png)
-
-To a verdant garden paradise:
-
-![CleanShot 2021-11-04 at 00.03.14.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1635955316932/MsSDvasr-.png)
-
-And that's it! 🎉
-
-If you've made a mistake, simply delete your private repository and try again with a fresh one.
-
-## Any final thoughts? 😏
-
-Job hunting is hard enough. Especially with more and more companies becoming increasingly risk-averse in their interviewing and recruiting processes. It's my hope that this little bit of harmless monkey mischief will make things a bit easier for you! 🙈 🙉 🙊
-
-Till next time! 
-
-
-
-
-
-
+4. You set personal boundaries for your work-life balance and don't care to stare at glowing rectangles in your free time.
 5. Or, maybe you've just had a slow year? 🤷
 
 Personally, I have _thousands_ of commits that will never see the light of day for some of the ☝️ points. If I'm out job hunting, I would hate to be passed over because I don't tick some mundane box on an arbitrary checklist.
@@ -162,4 +138,4 @@ If you've made a mistake, simply delete your private repository and try again wi
 
 Job hunting is hard enough. Especially with more and more companies becoming increasingly risk-averse in their interviewing and recruiting processes. It's my hope that this little bit of harmless monkey mischief will make things a bit easier for you! 🙈 🙉 🙊
 
-Till next time! 
+Till next time!

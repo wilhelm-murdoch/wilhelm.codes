@@ -1,14 +1,12 @@
 ---
-params:
-    author: Wilhelm Murdoch
 title: Messing Around with TXT Records!
-summary: Or, a dumb little trick to use your personal domain as a business card.
+alternate: Or, a dumb little trick to use your personal domain as a business card.
 draft: false
-date: 11 Nov 2021
+date: 2021-11-11
 tags:
-    - dns
-    - devops
-    - networking
+  - dns
+  - devops
+  - networking
 ---
 ## Hey, wanna see a neat trick? 🤯
 

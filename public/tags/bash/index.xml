@@ -9,39 +9,39 @@
     <lastBuildDate>Sat, 30 Nov 2024 02:01:20 +1000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Why Can&#39;t I Hold All These Slack Emojis?</title>
-      <link>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</link>
-      <pubDate>Thu, 28 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</guid>
-      <description>Or, more stupid tricks while messing with Slack’s API.</description>
-    </item>
-    <item>
       <title>Learning Bash Through Pointless Fun ...</title>
       <link>http://localhost:1313/learning-bash-through-pointless-fun/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/learning-bash-through-pointless-fun/</guid>
-      <description>oR, HOW tO bE COmpletEly iNsufFerAbLE in tHE cHAT.</description>
+      <description>&lt;p&gt;Responding to company chat messages in a mocking and sarcastic tone is one of my favourite past times. Classic engineer snark as it were. We’re all in on the joke. However, the artful nuances of snark via online chat tend to get confused by others; Did they &lt;em&gt;mean&lt;/em&gt; to sound sarcastic?&lt;/p&gt;&#xA;&lt;p&gt;Let’s leave out all doubt regarding our god-tier levels of snarkiness.&lt;/p&gt;&#xA;&lt;p&gt;Today, we’re going to write a laughably-simple Bash script that lets our coworkers know &lt;em&gt;&lt;a href=&#34;https://knowyourmeme.com/memes/mocking-spongebob&#34;&gt;exactly&lt;/a&gt;&lt;/em&gt; what we think. Along the way, you’ll learn a little bit more about Bash such as:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Filtering Docker Containers with Jq</title>
       <link>http://localhost:1313/filtering-docker-containers-with-jq/</link>
       <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/filtering-docker-containers-with-jq/</guid>
-      <description>Or, I can’t be the only one who will find this useful.</description>
+      <description>&lt;p&gt;As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Bash scripting for portability.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;jq&lt;/a&gt; to filter JSON objects from RESTful APIs.&lt;/li&gt;&#xA;&lt;li&gt;Docker ( or more recently Podman ) for managing containers.&lt;/li&gt;&#xA;&lt;li&gt;AWS CLI as I cannot stand dealing with the web console.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;curl&lt;/code&gt; ( with &lt;code&gt;wget&lt;/code&gt; as a reasonable fallback ) to interact with various APIs.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.terraform.io/&#34;&gt;Terraform&lt;/a&gt; for &lt;em&gt;most&lt;/em&gt; of my IaC needs.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;It wouldn’t be an exaggeration to say I &lt;em&gt;literally&lt;/em&gt; use these tools &lt;em&gt;every&lt;/em&gt; day. Specifically, the first 3 items. Furthermore, to say that manually sorting through Docker containers is a practice in tedium would be a massive understatement. Because of this, not a day passes where I am not grateful to have found &lt;code&gt;jq&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why Can&#39;t I Hold All These Slack Emojis?</title>
+      <link>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</link>
+      <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://wilhelm.codes/liberating-custom-slack-emojis&#34;&gt;last blog post&lt;/a&gt; I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your &lt;em&gt;new&lt;/em&gt; Slack workspace?&lt;/p&gt;&#xA;&lt;h2 id=&#34;gathering-requirements&#34;&gt;Gathering Requirements&lt;/h2&gt;&#xA;&lt;p&gt;Since we’re doing some destructive operations, we’ll need to make sure our Slack user has the appropriate permissions to manage emoji; adding &amp;amp; deleting. This means using a different section of the Slack interface which uses an entirely seperate set of API endpoints.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Liberating Custom Slack Emojis</title>
       <link>http://localhost:1313/liberating-custom-slack-emojis/</link>
       <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/liberating-custom-slack-emojis/</guid>
-      <description>Or, I&amp;rsquo;m bored. Let&amp;rsquo;s learn some stupid stuff!</description>
+      <description>&lt;p&gt;As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.&lt;/p&gt;&#xA;&lt;p&gt;But, when it comes time to part ways it’s only understandable to want to gather your stuff for the next place to start the process again. Over the years one can collect and curate quite a nice hoard of stupid images.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Falsifying Github Participation Graphs for Fun and Profit!</title>
       <link>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</link>
       <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
-      <description>Or, how to make a useless recruiting metric even more useless.</description>
+      <description>&lt;h2 id=&#34;psssst-hey-over-here-hi--&#34;&gt;Psssst&amp;hellip; Hey, over here. Hi! 👋 😬&lt;/h2&gt;&#xA;&lt;p&gt;If you&amp;rsquo;ve spent any time job hunting in the tech industry, you&amp;rsquo;ve had to deal with recruiters. I like to joke around with my peers about how they&amp;rsquo;re a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. But, good or bad, far too many of them will pass over your resume for the wildest reasons. We&amp;rsquo;re not here to go over all of them. No, today we&amp;rsquo;re going to address the somewhat recent trend of glancing at your public Github profile page and grading you based on how many green squares show up in your participation graph.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

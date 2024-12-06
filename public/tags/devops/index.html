@@ -1,62 +1,102 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Devops | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
 
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
-
-
-  </header>
-  <main>
-    
+      </header>
+      <main>
+        
   <h1>Devops</h1>
   
   
     <h2><a href="/the-longer-something-doesnt-happen-the-sooner-it-will/">The Longer Something Doesn&#39;t Happen, the Sooner it Will.</a></h2>
-    Or, manage your expectations and build around inevitable failure.
+    <p>This is often referred to as the &ldquo;<a href="https://en.wikipedia.org/wiki/Mean_time_between_failures">Mean Time Between Failures (MTBF)</a>&rdquo; in the context of Site Reliability Engineering. It&rsquo;s a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven&rsquo;t experienced one for a while.</p>
+<p>While it may sound paradoxical, there is some reasoning behind it.</p>
   
     <h2><a href="/why-i-built-plant-smart/">Why I Built Plant Smart</a></h2>
-    Or, it&rsquo;s a great idea to push yourself outside of your comfort zone.
+    <p>Simply put, I love plants and I love animals. I can&rsquo;t count how many times I&rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.</p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png" alt=""></p>
+<h3 id="its-as-simple-as-that"><strong>It&rsquo;s as simple as that?</strong></h3>
+<p>That was the idea, at least. I just wanted a single place that had all the information I needed so I could make informed purchasing decisions. I also figured I couldn&rsquo;t possibly be the only person who has this problem. So, I set off to make this project during the holiday break of 2022.</p>
   
     <h2><a href="/save-money-by-keeping-your-aws-account-clean/">Save Money By Keeping Your AWS Account Clean</a></h2>
-    Or, I say we nuke the entire account from orbit. It’s the only way to be sure.
+    <p>At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.</p>
+<p>Because we have so many to manage and not a whole lot of people power ( it’s just 2 of us ), it gets easy for a lot of hidden costs to pop up here and there if we aren’t vigilant enough with housekeeping.</p>
   
     <h2><a href="/deleting-massive-s3-buckets-the-easy-way/">Deleting Massive S3 Buckets the Easy Way.</a></h2>
-    Or, why do I have to create multiple lifecycle policies to do this?
+    <h2 id="ok-">Ok&hellip; 🥱</h2>
+<p>Right, so, I&rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources.</p>
+<p>For this particular service, we have an  <a href="https://en.wikipedia.org/wiki/Extract,_transform,_load">ETL</a>  process that stores raw data points for downstream ingestion by some other&hellip; thing. Anyway, the storage mechanism for this is a cross-region replicated S3 bucket containing just over 10 <em>million</em> objects.</p>
   
     <h2><a href="/messing-around-with-txt-records/">Messing Around with TXT Records!</a></h2>
-    Or, a dumb little trick to use your personal domain as a business card.
+    <h2 id="hey-wanna-see-a-neat-trick-">Hey, wanna see a neat trick? 🤯</h2>
+<p>Open up your terminal of choice and invoke this <code>dig</code> command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dig txt contact.wilhelm.codes +short
+</span></span></code></pre></div><p>You should see, hopefully 🤞, the following block of text as a response:</p>
+<pre tabindex="0"><code>&#34;twitter: @wilhelm&#34;
+&#34;email:   wilhelm@devilmayco.de&#34;
+&#34;github:  wilhelm-murdoch&#34;
+&#34;keybase: 7F89 5036 2816 06F6&#34;
+&#34;blog:    https://wilhelm.codes/&#34;
+</code></pre><h2 id="ok-what-am-i-looking-at-">Ok, what am I looking at? 🤨</h2>
+<p>Simply put, you&rsquo;re looking at my contact details using a simple DNS <code>TXT</code> record lookup. There are <a href="https://dns.google/query?name=contact.wilhelm.codes">heaps</a> <a href="https://toolbox.googleapps.com/apps/dig/#TXT/">of</a> <a href="https://www.diggui.com/">online tools</a> out there to help you directly query DNS records, but <code>dig</code> tends to be the most common utility included included in most Linux distributions as well as MacOS.</p>
   
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

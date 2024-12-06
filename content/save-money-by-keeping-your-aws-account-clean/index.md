@@ -1,15 +1,16 @@
 ---
 params:
-    author: Wilhelm Murdoch
+  author: Wilhelm Murdoch
 title: Save Money By Keeping Your AWS Account Clean
-summary: Or, I say we nuke the entire account from orbit. It’s the only way to be sure.
+alternate: Or, I say we nuke the entire account from orbit. It’s the only way to be sure.
 draft: false
-date: 06 Oct 2022
+date: 2022-09-06
 tags:
   - aws
   - devops
   - security
-  - cost optimisation
+  - cost
+  - optimisation
 ---
 At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.
 
@@ -220,7 +221,7 @@ Just stop paying the bill. Seriously. Just stop paying for the account. Cancel t
 
 _obviously, do not do this... Or, go nuts! After all, don't you sometimes wish you could burn it all down and just walk away? j/k_
 
-![burn-koala.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1664982128441/xnlblxy1F.gif)
+![burn-koala.gif](https://cdn.hashnode.com/res/hashnode/image/upload/v1664982128441/xnlblxy1F.gif align="center")
 
 Hope you've learned something useful!
 

@@ -1,5 +1,10 @@
-baseURL = 'https://wilhelm.codes/'
-languageCode = 'en-us'
-title = 'Wilhelm Codes'
-theme = 'devilmaycode'
+baseURL = "https://wilhelm.codes/"
+languageCode = "en-us"
+title = "Wilhelm Codes"
 enableGitInfo = true
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = true
+    startLevel = 2

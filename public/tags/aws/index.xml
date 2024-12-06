@@ -11,16 +11,16 @@
     <item>
       <title>Save Money By Keeping Your AWS Account Clean</title>
       <link>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</link>
-      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</guid>
-      <description>Or, I say we nuke the entire account from orbit. It’s the only way to be sure.</description>
+      <description>&lt;p&gt;At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.&lt;/p&gt;&#xA;&lt;p&gt;Because we have so many to manage and not a whole lot of people power ( it’s just 2 of us ), it gets easy for a lot of hidden costs to pop up here and there if we aren’t vigilant enough with housekeeping.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Deleting Massive S3 Buckets the Easy Way.</title>
       <link>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</link>
       <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</guid>
-      <description>Or, why do I have to create multiple lifecycle policies to do this?</description>
+      <description>&lt;h2 id=&#34;ok-&#34;&gt;Ok&amp;hellip; 🥱&lt;/h2&gt;&#xA;&lt;p&gt;Right, so, I&amp;rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources.&lt;/p&gt;&#xA;&lt;p&gt;For this particular service, we have an  &lt;a href=&#34;https://en.wikipedia.org/wiki/Extract,_transform,_load&#34;&gt;ETL&lt;/a&gt;  process that stores raw data points for downstream ingestion by some other&amp;hellip; thing. Anyway, the storage mechanism for this is a cross-region replicated S3 bucket containing just over 10 &lt;em&gt;million&lt;/em&gt; objects.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,28 +1,53 @@
 ---
-params:
-    author: Wilhelm Murdoch
 title: Why Can't I Hold All These Slack Emojis?
-summary: Or, more stupid tricks while messing with Slack’s API.
+alternate: Or, more stupid tricks while messing with Slack’s API.
 draft: false
-date: 28 Sep 2023
+date: 2022-09-28
 tags:
   - slack
   - emoji
   - bash
   - api
 ---
-**TL;DR** if you want to skip all this and just get to the good stuff, **[click here](https://github.com/wilhelm-murdoch/slack-emoji-toolkit)**
- to download and run the `slack-emoji-toolkit`.
-
----
-
-## First Things First
-
 The [last blog post](https://wilhelm.codes/liberating-custom-slack-emojis) I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your *new* Slack workspace? 
 
 ## Gathering Requirements
 
-Since we’re doing some destructive operations, we’ll need to make sure our Slack user has the appropriate permissions to manage emoji; adding & deleting. This means using a pload.
+Since we’re doing some destructive operations, we’ll need to make sure our Slack user has the appropriate permissions to manage emoji; adding & deleting. This means using a different section of the Slack interface which uses an entirely seperate set of API endpoints.
+
+You’ll still be using the following, which can be found using instructions from [the previous article](https://wilhelm.codes/liberating-custom-slack-emojis#heading-some-investigative-work):
+
+- An API request token.
+- A session cookie.
+- A workspace, or team, id.
+
+In addition, you will need your workspaces’s subdomain, or URL. This can easily be found within the Slack app itself:
+
+![slack-emoji-toolkit-workspace-url.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1664349744760/PDjwLi9t4.png align="left")
+
+## ****Testing Your Findings****
+
+This is an incredibly straight-forward process as it’s quite similar to what we already know. The primary difference is this is a `multipart/form-data` upload. So, instead of shipping of a JSON payload, it’s a form with associated fields. 
+
+With the information gathered above, you can upload directly to Slack using a simple cURL command like so:
+
+```bash
+curl -s --compressed "https://<domain>.slack.com/api/emoji.add" \
+  -H 'content-type: multipart/form-data' \
+  -H "cookie: d=<cookie>;" \
+  -F "token=<token>" \
+  -F "name=<name>" \
+  -F mode=data \
+  -F "image=@<local-emoji-path>"
+```
+
+Replace the following:
+
+- `<domain>` is your workspace’s, or team’s, private URL.
+- `<cookie>` is your session cookie value.
+- `<token>` is your request token.
+- `<name>` will be the named reference of your new emoji.
+- `<path>` is the relative, or absolute, local path of your emoji file to upload.
 
 The JSON response to this request will have the following structure if all goes well:
 
@@ -88,7 +113,21 @@ We now have all the information we need to upload each file in bulk. Put it all 
 #!/usr/bin/env bash
 
 set -eo pipefail
-                                                                                                                                                                      ookie: d=${SLACK_COOKIE};" \
+
+: ${SLACK_COOKIE:=}
+: ${SLACK_TOKEN:=}
+: ${SLACK_DOMAIN:=}
+
+files=$(find . -iname \*.gif -o -iname \*.png -o -iname \*.png -maxdepth 1)
+[[ "${files}" == "" ]] && exit 1
+
+echo "${files}" | while read -r path; do 
+  name=$(basename "${path%.*}")
+
+  result=$(
+    curl -s --compressed "https://${SLACK_DOMAIN}.slack.com/api/emoji.add" \
+      -H 'content-type: multipart/form-data' \
+      -H "cookie: d=${SLACK_COOKIE};" \
       -F "token=${SLACK_TOKEN}" \
       -F "name=${name}" \
       -F mode=data \
@@ -119,9 +158,9 @@ Nice! 😊
 
 ## Once Again, Something Better!
 
-While perfectly functional                                                                                                                                                                     , there’s not a lot of flexibility. No error checking, filtering or confirmation checks. If you’re looking for something a bit more fleshed out, look no further!
+While perfectly functional, there’s not a lot of flexibility. No error checking, filtering or confirmation checks. If you’re looking for something a bit more fleshed out, look no further!
 
-[https://github.com/wilhelm-murdoch/slack-emoji-toolkit](https://github.com/wilhelm-murdoch/slack-emoji-toolkit)
+%[https://github.com/wilhelm-murdoch/slack-emoji-toolkit]
 
 ## The Final Piece ...
 

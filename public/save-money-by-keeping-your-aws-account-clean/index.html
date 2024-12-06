@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
 <title>Save Money By Keeping Your AWS Account Clean | Wilhelm Codes</title>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/main.css">
 
 
-      <script src="/js/main.js"></script>
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
 
 
-</head>
-<body>
-  <header>
-    <h1>Wilhelm Codes</h1>
 
-  <nav>
-    <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a>Posts</a>
-    </li>
-    <li>
-      <a href="/tags/">Tags</a>
-    </li>
-    </ul>
-  </nav>
-
-
-  </header>
-  <main>
-    
+      </header>
+      <main>
+        
   <h1>Save Money By Keeping Your AWS Account Clean</h1>
 
   
   
-  <time datetime="2022-10-06T00:00:00&#43;00:00">October 6, 2022</time>
+  <time datetime="2022-09-06T00:00:00&#43;00:00">September 6, 2022</time>
 
   <p>At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.</p>
 <p>Because we have so many to manage and not a whole lot of people power ( it’s just 2 of us ), it gets easy for a lot of hidden costs to pop up here and there if we aren’t vigilant enough with housekeeping.</p>
@@ -188,7 +210,7 @@ The above resources would be deleted with the supplied configuration. Provide --
 <h2 id="100-completion-speed-run">100% Completion Speed-Run</h2>
 <p>Just stop paying the bill. Seriously. Just stop paying for the account. Cancel the card. Delete those billing alerts and just walk away. If you stop paying, AWS will eventually just tear down your account with everything in it. All of it. The entire account. Credit score be damned!</p>
 <p><em>obviously, do not do this&hellip; Or, go nuts! After all, don&rsquo;t you sometimes wish you could burn it all down and just walk away? j/k</em></p>
-<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1664982128441/xnlblxy1F.gif" alt="burn-koala.gif"></p>
+<p>![burn-koala.gif](<a href="https://cdn.hashnode.com/res/hashnode/image/upload/v1664982128441/xnlblxy1F.gif">https://cdn.hashnode.com/res/hashnode/image/upload/v1664982128441/xnlblxy1F.gif</a> align=&ldquo;center&rdquo;)</p>
 <p>Hope you&rsquo;ve learned something useful!</p>
 <p>Behave! (mostly) 🙉🙈🙊</p>
 
@@ -199,17 +221,17 @@ The above resources would be deleted with the supplied configuration. Provide --
         <li><a href="/tags/aws/">Aws</a></li>
         <li><a href="/tags/devops/">Devops</a></li>
         <li><a href="/tags/security/">Security</a></li>
-        <li><a href="/tags/cost-optimisation/">Cost Optimisation</a></li>
+        <li><a href="/tags/cost/">Cost</a></li>
+        <li><a href="/tags/optimisation/">Optimisation</a></li>
     </ul>
   </div>
 
 
-  </main>
-  <footer>
-    <p>Copyright 2024. All rights reserved.</p>
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
 
-  3119b43
-
-  </footer>
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

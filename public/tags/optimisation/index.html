@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+<title>Optimisation | Wilhelm Codes</title>
+
+    <link rel="stylesheet" href="/main.css">
+
+
+
+<script type="text/javascript">
+  const lazy = new IntersectionObserver((entries) => {
+    const loaded = (entry) => {
+      entry.target.style.opacity = "1";
+    };
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      if (entry.target.complete) {
+        loaded(entry);
+      } else {
+        entry.target.addEventListener("load", loaded);
+      }
+
+      lazy.unobserve(entry.target);
+    });
+  });
+
+  window.onload = () => {
+    images = document.querySelectorAll("img.lazy");
+
+    images.forEach((image) => {
+      lazy.observe(image);
+    });
+  };
+</script>
+
+  </head>
+  <body>
+    <div class="m-10">
+      <nav class="flex justify-center space-x-10 my-8 mb-16 font-semibold text-lg text-slate-600">
+    <a href="" title="" class="border-b-4 border-blue-600">Latest</a>
+    <a href="" title="" class="border-b-4 border-slate-200">Archive</a>
+    <a href="" title="" class="border-b-4 border-slate-200">RSS</a>
+</nav>
+      <header>
+        <h1>Wilhelm Codes</h1>
+
+
+
+      </header>
+      <main>
+        
+  <h1>Optimisation</h1>
+  
+  
+    <h2><a href="/save-money-by-keeping-your-aws-account-clean/">Save Money By Keeping Your AWS Account Clean</a></h2>
+    <p>At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.</p>
+<p>Because we have so many to manage and not a whole lot of people power ( it’s just 2 of us ), it gets easy for a lot of hidden costs to pop up here and there if we aren’t vigilant enough with housekeeping.</p>
+  
+    <h2><a href="/deleting-massive-s3-buckets-the-easy-way/">Deleting Massive S3 Buckets the Easy Way.</a></h2>
+    <h2 id="ok-">Ok&hellip; 🥱</h2>
+<p>Right, so, I&rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources.</p>
+<p>For this particular service, we have an  <a href="https://en.wikipedia.org/wiki/Extract,_transform,_load">ETL</a>  process that stores raw data points for downstream ingestion by some other&hellip; thing. Anyway, the storage mechanism for this is a cross-region replicated S3 bucket containing just over 10 <em>million</em> objects.</p>
+  
+
+      </main>
+      <footer>
+        <p>Copyright 2024. All rights reserved.</p>
+
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chaos on Wilhelm Codes</title>
+    <link>http://localhost:1313/tags/chaos/</link>
+    <description>Recent content in Chaos on Wilhelm Codes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Nov 2024 21:13:29 +1000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/chaos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Longer Something Doesn&#39;t Happen, the Sooner it Will.</title>
+      <link>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
+      <description>&lt;p&gt;This is often referred to as the &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Mean_time_between_failures&#34;&gt;Mean Time Between Failures (MTBF)&lt;/a&gt;&amp;rdquo; in the context of Site Reliability Engineering. It&amp;rsquo;s a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven&amp;rsquo;t experienced one for a while.&lt;/p&gt;&#xA;&lt;p&gt;While it may sound paradoxical, there is some reasoning behind it.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

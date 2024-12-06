@@ -1,17 +1,11 @@
 ---
-params:
-    author: Wilhelm Murdoch
 title: Learning Bash Through Pointless Fun ...
-summary: oR, HOW tO bE COmpletEly iNsufFerAbLE in tHE cHAT.
+alternate: oR, HOW tO bE COmpletEly iNsufFerAbLE in tHE cHAT.
 draft: false
-date: 05 Oct 2022
+date: 2022-10-05
 tags:
   - bash
 ---
-I’ve got a few minutes, so here’s a quick one.
-
-[Memes. Glorious memes.](https://knowyourmeme.com/memes/mocking-spongebob)
-
 Responding to company chat messages in a mocking and sarcastic tone is one of my favourite past times. Classic engineer snark as it were. We’re all in on the joke. However, the artful nuances of snark via online chat tend to get confused by others; Did they *mean* to sound sarcastic?
 
 Let’s leave out all doubt regarding our god-tier levels of snarkiness. 
