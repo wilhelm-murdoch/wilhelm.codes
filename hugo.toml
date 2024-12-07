@@ -3,8 +3,15 @@ languageCode = "en-us"
 title = "Wilhelm Codes"
 enableGitInfo = true
 
+[params]
+  [params.author]
+    email = "0xdeadbeef@devilmayco.de"
+    name = "ɯlǝɥlᴉʍ"
+
 [markup]
   [markup.tableOfContents]
     endLevel = 3
     ordered = true
     startLevel = 2
+  [markup.highlight]
+    style = "nord"
