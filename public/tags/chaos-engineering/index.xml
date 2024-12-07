@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chaos Engineering on Wilhelm Codes</title>
+    <link>http://localhost:1313/tags/chaos-engineering/</link>
+    <description>Recent content in Chaos Engineering on Wilhelm Codes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
+    <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
+    <lastBuildDate>Sat, 27 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/chaos-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The longer something doesn&#39;t happen, the sooner it will</title>
+      <link>http://localhost:1313/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
+      <description>&lt;p&gt;This is often referred to as the &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Mean_time_between_failures&#34;&gt;Mean Time Between Failures (MTBF)&lt;/a&gt;&amp;rdquo; in the context of Site Reliability Engineering. It&amp;rsquo;s a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven&amp;rsquo;t experienced one for a while. While it may sound paradoxical, there is some reasoning behind it.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -6,14 +6,16 @@
     <description>Recent content in Git on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Dec 2024 15:40:33 +1000</lastBuildDate>
+    <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
+    <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
+    <lastBuildDate>Thu, 04 Nov 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Falsifying Github Participation Graphs for Fun and Profit!</title>
-      <link>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</link>
-      <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
-      <description>&lt;h2 id=&#34;psssst-hey-over-here-hi--&#34;&gt;Psssst&amp;hellip; Hey, over here. Hi! 👋 😬&lt;/h2&gt;&#xA;&lt;p&gt;If you&amp;rsquo;ve spent any time job hunting in the tech industry, you&amp;rsquo;ve had to deal with recruiters. I like to joke around with my peers about how they&amp;rsquo;re a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. But, good or bad, far too many of them will pass over your resume for the wildest reasons. We&amp;rsquo;re not here to go over all of them. No, today we&amp;rsquo;re going to address the somewhat recent trend of glancing at your public Github profile page and grading you based on how many green squares show up in your participation graph.&lt;/p&gt;</description>
+      <title>Falsifying Github participation graphs for fun and profit</title>
+      <link>http://localhost:1313/blog/falsifying-github-participation-graphs-for-fun-and-profit/</link>
+      <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;ve spent any time job hunting in the tech industry, you&amp;rsquo;ve had to deal with recruiters. I like to joke around with my peers about how they&amp;rsquo;re a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. However &amp;hellip;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

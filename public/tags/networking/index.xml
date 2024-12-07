@@ -6,14 +6,16 @@
     <description>Recent content in Networking on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Dec 2024 15:40:33 +1000</lastBuildDate>
+    <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
+    <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
+    <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Messing Around with TXT Records!</title>
-      <link>http://localhost:1313/messing-around-with-txt-records/</link>
-      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/messing-around-with-txt-records/</guid>
-      <description>&lt;h2 id=&#34;hey-wanna-see-a-neat-trick-&#34;&gt;Hey, wanna see a neat trick? 🤯&lt;/h2&gt;&#xA;&lt;p&gt;Open up your terminal of choice and invoke this &lt;code&gt;dig&lt;/code&gt; command:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dig txt contact.wilhelm.codes +short&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see, hopefully 🤞, the following block of text as a response:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;twitter: @wilhelm&amp;#34;&#xA;&amp;#34;email:   wilhelm@devilmayco.de&amp;#34;&#xA;&amp;#34;github:  wilhelm-murdoch&amp;#34;&#xA;&amp;#34;keybase: 7F89 5036 2816 06F6&amp;#34;&#xA;&amp;#34;blog:    https://wilhelm.codes/&amp;#34;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;ok-what-am-i-looking-at-&#34;&gt;Ok, what am I looking at? 🤨&lt;/h2&gt;&#xA;&lt;p&gt;Simply put, you&amp;rsquo;re looking at my contact details using a simple DNS &lt;code&gt;TXT&lt;/code&gt; record lookup. There are &lt;a href=&#34;https://dns.google/query?name=contact.wilhelm.codes&#34;&gt;heaps&lt;/a&gt; &lt;a href=&#34;https://toolbox.googleapps.com/apps/dig/#TXT/&#34;&gt;of&lt;/a&gt; &lt;a href=&#34;https://www.diggui.com/&#34;&gt;online tools&lt;/a&gt; out there to help you directly query DNS records, but &lt;code&gt;dig&lt;/code&gt; tends to be the most common utility included included in most Linux distributions as well as MacOS.&lt;/p&gt;</description>
+      <title>Messing around with TXT records</title>
+      <link>http://localhost:1313/blog/messing-around-with-txt-records/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/messing-around-with-txt-records/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;ve spent any time in an ops-related position, you&amp;rsquo;ve had to add these records when using custom domain names while integrating with some 3rd-party service. Especially, if you&amp;rsquo;ve ever wanted to configure an email service provider, like Google&amp;rsquo;s Gmail, to appear as if you&amp;rsquo;re sending emails from a personal domain name.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -6,21 +6,23 @@
     <description>Recent content in Emoji on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Dec 2024 15:40:33 +1000</lastBuildDate>
+    <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
+    <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
+    <lastBuildDate>Wed, 28 Sep 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/emoji/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Why Can&#39;t I Hold All These Slack Emojis?</title>
-      <link>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</link>
-      <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/why-cant-i-hold-all-these-slack-emojis/</guid>
-      <description>&lt;p&gt;The &lt;a href=&#34;https://wilhelm.codes/liberating-custom-slack-emojis&#34;&gt;last blog post&lt;/a&gt; I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your &lt;em&gt;new&lt;/em&gt; Slack workspace?&lt;/p&gt;&#xA;&lt;h2 id=&#34;gathering-requirements&#34;&gt;Gathering Requirements&lt;/h2&gt;&#xA;&lt;p&gt;Since we’re doing some destructive operations, we’ll need to make sure our Slack user has the appropriate permissions to manage emoji; adding &amp;amp; deleting. This means using a different section of the Slack interface which uses an entirely seperate set of API endpoints.&lt;/p&gt;</description>
+      <title>Why can&#39;t I hold all these Slack emojis?</title>
+      <link>http://localhost:1313/blog/why-cant-i-hold-all-these-slack-emojis/</link>
+      <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/why-cant-i-hold-all-these-slack-emojis/</guid>
+      <description>&lt;p&gt;Previously, &lt;a href=&#34;https://wilhelm.codes/liberating-custom-slack-emojis&#34;&gt;last blog post&lt;/a&gt; I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your &lt;em&gt;new&lt;/em&gt; Slack workspace?&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Liberating Custom Slack Emojis</title>
-      <link>http://localhost:1313/liberating-custom-slack-emojis/</link>
-      <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/liberating-custom-slack-emojis/</guid>
-      <description>&lt;p&gt;As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.&lt;/p&gt;&#xA;&lt;p&gt;But, when it comes time to part ways it’s only understandable to want to gather your stuff for the next place to start the process again. Over the years one can collect and curate quite a nice hoard of stupid images.&lt;/p&gt;</description>
+      <title>Liberating custom Slack emojis</title>
+      <link>http://localhost:1313/blog/liberating-custom-slack-emojis/</link>
+      <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/liberating-custom-slack-emojis/</guid>
+      <description>&lt;p&gt;As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

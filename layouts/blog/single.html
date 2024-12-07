@@ -1,0 +1,39 @@
+{{ define "main" }}
+  <header class="mx-auto max-w-4xl text-center mb-8 pb-8 border-b relative category-{{ .Params.category | urlize  }}">
+    <a href="" title="" class="category p-2 rounded-md text-sm font-medium inline-block">
+      {{ partial (printf "categories/%s.html" (.Params.category | urlize)) . }}
+      {{ .Params.category }}
+    </a>
+    {{ with .Params.tags }}
+      {{ $count :=  len . }}
+      {{ if ne $count 0 }}
+        +
+        {{ range $index, $tag := . }}
+          <span class="border-b-2 border-b-slate-100 font-medium text-slate-500">{{ $tag }}</span>
+          {{ if eq $count 2 }}{{ if eq $index 0 }}&nbsp;&amp;&nbsp;{{ end }}
+          {{ else if and (ge $count 2) (eq $index (sub $count 2)) }}&nbsp;&amp;&nbsp;
+          {{ else }}{{ if and (ne $count 1) (ne $index (sub $count 1)) }},{{ end }}{{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    <h1 class="text-5xl my-8 font-bold leading-tight">{{ .Title }}</h1>
+    <div class="text-justify text-2xl text-slate-500 font-extralight my-8">{{ .Summary }}</div>
+    <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" class="article-card overflow-hidden rounded-2xl block ring-4 border-4 border-white">
+      {{ $title := .LinkTitle }}
+      {{ with .Resources.Get "header.jpeg" }}
+        <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
+      {{ end }}
+    </a>
+    <div class="mt-8 text-slate-400 text-sm">
+      {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+      {{ $dateHuman := .Date | time.Format ":date_medium" }}
+      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+      &middot;
+      {{ .ReadingTime }} min read
+    </div>
+  </header>
+
+  <article class="mx-auto max-w-4xl mb-8 pb-8 border-b prose-xl prose-p:text-slate-700 prose-p:font-extralight prose-h3:font-semibold prose-h3:text-slate-700 prose-pre:overflow-x-auto">
+    {{ .ContentWithoutSummary }}
+  </article>
+{{ end }}

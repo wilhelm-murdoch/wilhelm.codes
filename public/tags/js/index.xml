@@ -6,14 +6,16 @@
     <description>Recent content in Js on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Dec 2024 15:40:33 +1000</lastBuildDate>
+    <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
+    <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
+    <lastBuildDate>Thu, 29 Sep 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/js/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Filtering Docker Containers with Jq</title>
-      <link>http://localhost:1313/filtering-docker-containers-with-jq/</link>
-      <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/filtering-docker-containers-with-jq/</guid>
-      <description>&lt;p&gt;As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Bash scripting for portability.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;jq&lt;/a&gt; to filter JSON objects from RESTful APIs.&lt;/li&gt;&#xA;&lt;li&gt;Docker ( or more recently Podman ) for managing containers.&lt;/li&gt;&#xA;&lt;li&gt;AWS CLI as I cannot stand dealing with the web console.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;curl&lt;/code&gt; ( with &lt;code&gt;wget&lt;/code&gt; as a reasonable fallback ) to interact with various APIs.&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.terraform.io/&#34;&gt;Terraform&lt;/a&gt; for &lt;em&gt;most&lt;/em&gt; of my IaC needs.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;It wouldn’t be an exaggeration to say I &lt;em&gt;literally&lt;/em&gt; use these tools &lt;em&gt;every&lt;/em&gt; day. Specifically, the first 3 items. Furthermore, to say that manually sorting through Docker containers is a practice in tedium would be a massive understatement. Because of this, not a day passes where I am not grateful to have found &lt;code&gt;jq&lt;/code&gt;.&lt;/p&gt;</description>
+      <title>Filtering Docker containers with jq</title>
+      <link>http://localhost:1313/blog/filtering-docker-containers-with-jq/</link>
+      <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/filtering-docker-containers-with-jq/</guid>
+      <description>&lt;p&gt;As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

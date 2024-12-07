@@ -6,14 +6,16 @@
     <description>Recent content in Svelte on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Dec 2024 15:40:33 +1000</lastBuildDate>
+    <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
+    <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
+    <lastBuildDate>Sun, 08 Jan 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Why I Built Plant Smart</title>
-      <link>http://localhost:1313/why-i-built-plant-smart/</link>
-      <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/why-i-built-plant-smart/</guid>
-      <description>&lt;p&gt;Simply put, I love plants and I love animals. I can&amp;rsquo;t count how many times I&amp;rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;its-as-simple-as-that&#34;&gt;&lt;strong&gt;It&amp;rsquo;s as simple as that?&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;That was the idea, at least. I just wanted a single place that had all the information I needed so I could make informed purchasing decisions. I also figured I couldn&amp;rsquo;t possibly be the only person who has this problem. So, I set off to make this project during the holiday break of 2022.&lt;/p&gt;</description>
+      <title>Why I built Plant Smart</title>
+      <link>http://localhost:1313/blog/why-i-built-plant-smart/</link>
+      <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/why-i-built-plant-smart/</guid>
+      <description>&lt;p&gt;Simply put, I love plants and I love animals. I can&amp;rsquo;t count how many times I&amp;rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

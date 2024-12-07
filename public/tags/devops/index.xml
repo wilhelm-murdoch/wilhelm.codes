@@ -6,42 +6,44 @@
     <description>Recent content in Devops on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Dec 2024 15:40:33 +1000</lastBuildDate>
+    <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
+    <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
+    <lastBuildDate>Sat, 27 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>The Longer Something Doesn&#39;t Happen, the Sooner it Will.</title>
-      <link>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
-      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
-      <description>&lt;p&gt;This is often referred to as the &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Mean_time_between_failures&#34;&gt;Mean Time Between Failures (MTBF)&lt;/a&gt;&amp;rdquo; in the context of Site Reliability Engineering. It&amp;rsquo;s a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven&amp;rsquo;t experienced one for a while.&lt;/p&gt;&#xA;&lt;p&gt;While it may sound paradoxical, there is some reasoning behind it.&lt;/p&gt;</description>
+      <title>The longer something doesn&#39;t happen, the sooner it will</title>
+      <link>http://localhost:1313/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
+      <description>&lt;p&gt;This is often referred to as the &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Mean_time_between_failures&#34;&gt;Mean Time Between Failures (MTBF)&lt;/a&gt;&amp;rdquo; in the context of Site Reliability Engineering. It&amp;rsquo;s a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven&amp;rsquo;t experienced one for a while. While it may sound paradoxical, there is some reasoning behind it.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Why I Built Plant Smart</title>
-      <link>http://localhost:1313/why-i-built-plant-smart/</link>
-      <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/why-i-built-plant-smart/</guid>
-      <description>&lt;p&gt;Simply put, I love plants and I love animals. I can&amp;rsquo;t count how many times I&amp;rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;its-as-simple-as-that&#34;&gt;&lt;strong&gt;It&amp;rsquo;s as simple as that?&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;That was the idea, at least. I just wanted a single place that had all the information I needed so I could make informed purchasing decisions. I also figured I couldn&amp;rsquo;t possibly be the only person who has this problem. So, I set off to make this project during the holiday break of 2022.&lt;/p&gt;</description>
+      <title>Why I built Plant Smart</title>
+      <link>http://localhost:1313/blog/why-i-built-plant-smart/</link>
+      <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/why-i-built-plant-smart/</guid>
+      <description>&lt;p&gt;Simply put, I love plants and I love animals. I can&amp;rsquo;t count how many times I&amp;rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Save Money By Keeping Your AWS Account Clean</title>
-      <link>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</link>
-      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/save-money-by-keeping-your-aws-account-clean/</guid>
-      <description>&lt;p&gt;At my current role, we manage just under 20 AWS accounts. Their uses vary from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on. Needless to say, we like to isolate our concerns across our AWS org.&lt;/p&gt;&#xA;&lt;p&gt;Because we have so many to manage and not a whole lot of people power ( it’s just 2 of us ), it gets easy for a lot of hidden costs to pop up here and there if we aren’t vigilant enough with housekeeping.&lt;/p&gt;</description>
+      <title>Save money by keeping your AWS account clean</title>
+      <link>http://localhost:1313/blog/save-money-by-keeping-your-aws-account-clean/</link>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/save-money-by-keeping-your-aws-account-clean/</guid>
+      <description>&lt;p&gt;At a prior role, I managed just under 20 AWS accounts. Their uses varied from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Deleting Massive S3 Buckets the Easy Way.</title>
-      <link>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</link>
-      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/deleting-massive-s3-buckets-the-easy-way/</guid>
-      <description>&lt;h2 id=&#34;ok-&#34;&gt;Ok&amp;hellip; 🥱&lt;/h2&gt;&#xA;&lt;p&gt;Right, so, I&amp;rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources.&lt;/p&gt;&#xA;&lt;p&gt;For this particular service, we have an  &lt;a href=&#34;https://en.wikipedia.org/wiki/Extract,_transform,_load&#34;&gt;ETL&lt;/a&gt;  process that stores raw data points for downstream ingestion by some other&amp;hellip; thing. Anyway, the storage mechanism for this is a cross-region replicated S3 bucket containing just over 10 &lt;em&gt;million&lt;/em&gt; objects.&lt;/p&gt;</description>
+      <title>Deleting massive S3 buckets the easy way</title>
+      <link>http://localhost:1313/blog/deleting-massive-s3-buckets-the-easy-way/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/deleting-massive-s3-buckets-the-easy-way/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources. It&amp;rsquo;s incredibly tedious, so let&amp;rsquo;s walk through it.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Messing Around with TXT Records!</title>
-      <link>http://localhost:1313/messing-around-with-txt-records/</link>
-      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/messing-around-with-txt-records/</guid>
-      <description>&lt;h2 id=&#34;hey-wanna-see-a-neat-trick-&#34;&gt;Hey, wanna see a neat trick? 🤯&lt;/h2&gt;&#xA;&lt;p&gt;Open up your terminal of choice and invoke this &lt;code&gt;dig&lt;/code&gt; command:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dig txt contact.wilhelm.codes +short&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see, hopefully 🤞, the following block of text as a response:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;twitter: @wilhelm&amp;#34;&#xA;&amp;#34;email:   wilhelm@devilmayco.de&amp;#34;&#xA;&amp;#34;github:  wilhelm-murdoch&amp;#34;&#xA;&amp;#34;keybase: 7F89 5036 2816 06F6&amp;#34;&#xA;&amp;#34;blog:    https://wilhelm.codes/&amp;#34;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;ok-what-am-i-looking-at-&#34;&gt;Ok, what am I looking at? 🤨&lt;/h2&gt;&#xA;&lt;p&gt;Simply put, you&amp;rsquo;re looking at my contact details using a simple DNS &lt;code&gt;TXT&lt;/code&gt; record lookup. There are &lt;a href=&#34;https://dns.google/query?name=contact.wilhelm.codes&#34;&gt;heaps&lt;/a&gt; &lt;a href=&#34;https://toolbox.googleapps.com/apps/dig/#TXT/&#34;&gt;of&lt;/a&gt; &lt;a href=&#34;https://www.diggui.com/&#34;&gt;online tools&lt;/a&gt; out there to help you directly query DNS records, but &lt;code&gt;dig&lt;/code&gt; tends to be the most common utility included included in most Linux distributions as well as MacOS.&lt;/p&gt;</description>
+      <title>Messing around with TXT records</title>
+      <link>http://localhost:1313/blog/messing-around-with-txt-records/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
+      <guid>http://localhost:1313/blog/messing-around-with-txt-records/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;ve spent any time in an ops-related position, you&amp;rsquo;ve had to add these records when using custom domain names while integrating with some 3rd-party service. Especially, if you&amp;rsquo;ve ever wanted to configure an email service provider, like Google&amp;rsquo;s Gmail, to appear as if you&amp;rsquo;re sending emails from a personal domain name.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
