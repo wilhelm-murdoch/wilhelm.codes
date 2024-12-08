@@ -1,8 +1,7 @@
 {{ define "main" }}
   <section class="mx-auto max-w-4xl fade-in-animation">
-    {{ .Content }}
-    {{ range site.RegularPages }}
-      <article class="relative flex pb-8 mb-8 border-b category-{{ .Params.category | urlize  }} transition hover:scale-105 ">
+    {{ range (where .Site.RegularPages "Section" "blog" ) }}
+      <article class="relative flex pb-8 mb-8 border-b category-{{ .Params.category | urlize  }} transition hover:scale-105">
         <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" class="article-card overflow-hidden rounded-2xl block h-64 w-64 ring-4 border-4 border-white">
           {{ $title := .LinkTitle }}
           {{ with .Resources.Get "header.jpeg" }}
