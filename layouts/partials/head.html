@@ -1,8 +1,45 @@
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
-{{ partialCached "head/css.html" . }}
-{{ partialCached "head/js.html" . }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content="Hugo" />
+    <link rel="canonical" href="{{ .Permalink }}"/>
+
+    {{ $title := site.Title }}
+    {{ $description := .Site.Params.Description }}
+    {{ if not .IsHome }}
+        {{ $title = printf "%s | %s" .Title site.Title }}
+        {{ $description = .Summary }}
+    {{ end }}
+
+    <title>{{ $title }}</title>
+    <meta name="title" content="{{ $title }}" />
+    <meta name="description" content="{{ $description | truncate 160 }}" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ site.BaseURL }}" />
+    <meta property="og:title" content="{{ $title }}" />
+    <meta property="og:description" content="{{ $description | truncate 160 }}" />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="{{ site.BaseURL }}" />
+	<meta property="twitter:title" content="{{ $title }}" />
+	<meta property="twitter:description" content="{{ $description }}" />
+	<meta name="twitter:creator" content="@wilhelm.codes" />
+	<meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+	<!-- RSS Link -->
+	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="{{ site.Title }}" />
+
+	<!-- Sitemap -->
+	<link rel="sitemap" href="/sitemap.xml" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+
+    {{ partialCached "head/css.html" . }}
+    {{ partialCached "head/js.html" . }}

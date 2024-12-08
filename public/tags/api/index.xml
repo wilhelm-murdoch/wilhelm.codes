@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Api on Wilhelm Codes</title>
-    <link>http://localhost:1313/tags/api/</link>
+    <link>https://wilhelm.codes/tags/api/</link>
     <description>Recent content in Api on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
     <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
-    <lastBuildDate>Wed, 28 Sep 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Dec 2024 01:05:08 +1000</lastBuildDate>
+    <atom:link href="https://wilhelm.codes/tags/api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why can&#39;t I hold all these Slack emojis?</title>
-      <link>http://localhost:1313/blog/why-cant-i-hold-all-these-slack-emojis/</link>
+      <link>https://wilhelm.codes/blog/why-cant-i-hold-all-these-slack-emojis/</link>
       <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/why-cant-i-hold-all-these-slack-emojis/</guid>
+      <guid>https://wilhelm.codes/blog/why-cant-i-hold-all-these-slack-emojis/</guid>
       <description>&lt;p&gt;Previously, &lt;a href=&#34;https://wilhelm.codes/liberating-custom-slack-emojis&#34;&gt;last blog post&lt;/a&gt; I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your &lt;em&gt;new&lt;/em&gt; Slack workspace?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Liberating custom Slack emojis</title>
-      <link>http://localhost:1313/blog/liberating-custom-slack-emojis/</link>
+      <link>https://wilhelm.codes/blog/liberating-custom-slack-emojis/</link>
       <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/liberating-custom-slack-emojis/</guid>
+      <guid>https://wilhelm.codes/blog/liberating-custom-slack-emojis/</guid>
       <description>&lt;p&gt;As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.&lt;/p&gt;</description>
     </item>
   </channel>

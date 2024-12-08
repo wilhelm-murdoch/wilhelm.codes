@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cost Optimisation on Wilhelm Codes</title>
-    <link>http://localhost:1313/tags/cost-optimisation/</link>
+    <link>https://wilhelm.codes/tags/cost-optimisation/</link>
     <description>Recent content in Cost Optimisation on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
     <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
-    <lastBuildDate>Tue, 06 Sep 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/cost-optimisation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Dec 2024 01:05:08 +1000</lastBuildDate>
+    <atom:link href="https://wilhelm.codes/tags/cost-optimisation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Save money by keeping your AWS account clean</title>
-      <link>http://localhost:1313/blog/save-money-by-keeping-your-aws-account-clean/</link>
+      <link>https://wilhelm.codes/blog/save-money-by-keeping-your-aws-account-clean/</link>
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/save-money-by-keeping-your-aws-account-clean/</guid>
+      <guid>https://wilhelm.codes/blog/save-money-by-keeping-your-aws-account-clean/</guid>
       <description>&lt;p&gt;At a prior role, I managed just under 20 AWS accounts. Their uses varied from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Deleting massive S3 buckets the easy way</title>
-      <link>http://localhost:1313/blog/deleting-massive-s3-buckets-the-easy-way/</link>
+      <link>https://wilhelm.codes/blog/deleting-massive-s3-buckets-the-easy-way/</link>
       <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/deleting-massive-s3-buckets-the-easy-way/</guid>
+      <guid>https://wilhelm.codes/blog/deleting-massive-s3-buckets-the-easy-way/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources. It&amp;rsquo;s incredibly tedious, so let&amp;rsquo;s walk through it.&lt;/p&gt;</description>
     </item>
   </channel>

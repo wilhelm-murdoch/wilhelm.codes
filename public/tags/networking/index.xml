@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Networking on Wilhelm Codes</title>
-    <link>http://localhost:1313/tags/networking/</link>
+    <link>https://wilhelm.codes/tags/networking/</link>
     <description>Recent content in Networking on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
     <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
-    <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Dec 2024 01:05:08 +1000</lastBuildDate>
+    <atom:link href="https://wilhelm.codes/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Messing around with TXT records</title>
-      <link>http://localhost:1313/blog/messing-around-with-txt-records/</link>
+      <link>https://wilhelm.codes/blog/messing-around-with-txt-records/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/messing-around-with-txt-records/</guid>
+      <guid>https://wilhelm.codes/blog/messing-around-with-txt-records/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve spent any time in an ops-related position, you&amp;rsquo;ve had to add these records when using custom domain names while integrating with some 3rd-party service. Especially, if you&amp;rsquo;ve ever wanted to configure an email service provider, like Google&amp;rsquo;s Gmail, to appear as if you&amp;rsquo;re sending emails from a personal domain name.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,89 +2,82 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Wilhelm Codes</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>https://wilhelm.codes/blog/</link>
     <description>Recent content in Blogs on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
     <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
-    <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Markdown Elements</title>
-      <link>http://localhost:1313/blog/markdown-elements/</link>
-      <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/markdown-elements/</guid>
-      <description>&lt;p&gt;This is only a test &amp;hellip;&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate>Sun, 08 Dec 2024 01:05:08 +1000</lastBuildDate>
+    <atom:link href="https://wilhelm.codes/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The longer something doesn&#39;t happen, the sooner it will</title>
-      <link>http://localhost:1313/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
+      <link>https://wilhelm.codes/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</link>
       <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
+      <guid>https://wilhelm.codes/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</guid>
       <description>&lt;p&gt;This is often referred to as the &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Mean_time_between_failures&#34;&gt;Mean Time Between Failures (MTBF)&lt;/a&gt;&amp;rdquo; in the context of Site Reliability Engineering. It&amp;rsquo;s a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven&amp;rsquo;t experienced one for a while. While it may sound paradoxical, there is some reasoning behind it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why I built Plant Smart</title>
-      <link>http://localhost:1313/blog/why-i-built-plant-smart/</link>
+      <link>https://wilhelm.codes/blog/why-i-built-plant-smart/</link>
       <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/why-i-built-plant-smart/</guid>
+      <guid>https://wilhelm.codes/blog/why-i-built-plant-smart/</guid>
       <description>&lt;p&gt;Simply put, I love plants and I love animals. I can&amp;rsquo;t count how many times I&amp;rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Learning Bash through pointless fun</title>
-      <link>http://localhost:1313/blog/learning-bash-through-pointless-fun/</link>
+      <link>https://wilhelm.codes/blog/learning-bash-through-pointless-fun/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/learning-bash-through-pointless-fun/</guid>
+      <guid>https://wilhelm.codes/blog/learning-bash-through-pointless-fun/</guid>
       <description>&lt;p&gt;Responding to company chat messages in a mocking and sarcastic tone is one of my favourite past times. Classic engineer snark as it were. We’re all in on the joke. However, the artful nuances of snark via online chat tend to get confused by others; Did they &lt;em&gt;mean&lt;/em&gt; to sound sarcastic?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Filtering Docker containers with jq</title>
-      <link>http://localhost:1313/blog/filtering-docker-containers-with-jq/</link>
+      <link>https://wilhelm.codes/blog/filtering-docker-containers-with-jq/</link>
       <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/filtering-docker-containers-with-jq/</guid>
+      <guid>https://wilhelm.codes/blog/filtering-docker-containers-with-jq/</guid>
       <description>&lt;p&gt;As is the case with any seasoned DevOps engineer, I have a set of tools in my kit that I simply cannot live without. If I had to distill them into a top-5 list it would be the following.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why can&#39;t I hold all these Slack emojis?</title>
-      <link>http://localhost:1313/blog/why-cant-i-hold-all-these-slack-emojis/</link>
+      <link>https://wilhelm.codes/blog/why-cant-i-hold-all-these-slack-emojis/</link>
       <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/why-cant-i-hold-all-these-slack-emojis/</guid>
+      <guid>https://wilhelm.codes/blog/why-cant-i-hold-all-these-slack-emojis/</guid>
       <description>&lt;p&gt;Previously, &lt;a href=&#34;https://wilhelm.codes/liberating-custom-slack-emojis&#34;&gt;last blog post&lt;/a&gt; I wrote covered how to make a quick escape with your precious hoard of custom Slack emojis. It was fairly well-received, but didn’t quite cover the next step in the migration process; how do you upload your millions of little images to your &lt;em&gt;new&lt;/em&gt; Slack workspace?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Liberating custom Slack emojis</title>
-      <link>http://localhost:1313/blog/liberating-custom-slack-emojis/</link>
+      <link>https://wilhelm.codes/blog/liberating-custom-slack-emojis/</link>
       <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/liberating-custom-slack-emojis/</guid>
+      <guid>https://wilhelm.codes/blog/liberating-custom-slack-emojis/</guid>
       <description>&lt;p&gt;As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Save money by keeping your AWS account clean</title>
-      <link>http://localhost:1313/blog/save-money-by-keeping-your-aws-account-clean/</link>
+      <link>https://wilhelm.codes/blog/save-money-by-keeping-your-aws-account-clean/</link>
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/save-money-by-keeping-your-aws-account-clean/</guid>
+      <guid>https://wilhelm.codes/blog/save-money-by-keeping-your-aws-account-clean/</guid>
       <description>&lt;p&gt;At a prior role, I managed just under 20 AWS accounts. Their uses varied from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Deleting massive S3 buckets the easy way</title>
-      <link>http://localhost:1313/blog/deleting-massive-s3-buckets-the-easy-way/</link>
+      <link>https://wilhelm.codes/blog/deleting-massive-s3-buckets-the-easy-way/</link>
       <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/deleting-massive-s3-buckets-the-easy-way/</guid>
+      <guid>https://wilhelm.codes/blog/deleting-massive-s3-buckets-the-easy-way/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m in the middle of decommissioning a service at the moment and I have to do the typical process of performing final snapshots and cleaning up extant resources. It&amp;rsquo;s incredibly tedious, so let&amp;rsquo;s walk through it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Messing around with TXT records</title>
-      <link>http://localhost:1313/blog/messing-around-with-txt-records/</link>
+      <link>https://wilhelm.codes/blog/messing-around-with-txt-records/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/messing-around-with-txt-records/</guid>
+      <guid>https://wilhelm.codes/blog/messing-around-with-txt-records/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve spent any time in an ops-related position, you&amp;rsquo;ve had to add these records when using custom domain names while integrating with some 3rd-party service. Especially, if you&amp;rsquo;ve ever wanted to configure an email service provider, like Google&amp;rsquo;s Gmail, to appear as if you&amp;rsquo;re sending emails from a personal domain name.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Falsifying Github participation graphs for fun and profit</title>
-      <link>http://localhost:1313/blog/falsifying-github-participation-graphs-for-fun-and-profit/</link>
+      <link>https://wilhelm.codes/blog/falsifying-github-participation-graphs-for-fun-and-profit/</link>
       <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
+      <guid>https://wilhelm.codes/blog/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve spent any time job hunting in the tech industry, you&amp;rsquo;ve had to deal with recruiters. I like to joke around with my peers about how they&amp;rsquo;re a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. However &amp;hellip;&lt;/p&gt;</description>
     </item>
   </channel>
