@@ -2,159 +2,145 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Wilhelm Codes</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://wilhelm.codes/tags/</link>
     <description>Recent content in Tags on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
     <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
-    <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Css</title>
-      <link>http://localhost:1313/tags/css/</link>
-      <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/css/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Markdown</title>
-      <link>http://localhost:1313/tags/markdown/</link>
-      <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/markdown/</guid>
-      <description></description>
-    </item>
+    <lastBuildDate>Sun, 08 Dec 2024 01:05:08 +1000</lastBuildDate>
+    <atom:link href="https://wilhelm.codes/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chaos Engineering</title>
-      <link>http://localhost:1313/tags/chaos-engineering/</link>
+      <link>https://wilhelm.codes/tags/chaos-engineering/</link>
       <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/chaos-engineering/</guid>
+      <guid>https://wilhelm.codes/tags/chaos-engineering/</guid>
       <description></description>
     </item>
     <item>
       <title>Devops</title>
-      <link>http://localhost:1313/tags/devops/</link>
+      <link>https://wilhelm.codes/tags/devops/</link>
       <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/devops/</guid>
+      <guid>https://wilhelm.codes/tags/devops/</guid>
       <description></description>
     </item>
     <item>
       <title>Sre</title>
-      <link>http://localhost:1313/tags/sre/</link>
+      <link>https://wilhelm.codes/tags/sre/</link>
       <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/sre/</guid>
+      <guid>https://wilhelm.codes/tags/sre/</guid>
       <description></description>
     </item>
     <item>
       <title>Svelte</title>
-      <link>http://localhost:1313/tags/svelte/</link>
+      <link>https://wilhelm.codes/tags/svelte/</link>
       <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/svelte/</guid>
+      <guid>https://wilhelm.codes/tags/svelte/</guid>
       <description></description>
     </item>
     <item>
       <title>Typescript</title>
-      <link>http://localhost:1313/tags/typescript/</link>
+      <link>https://wilhelm.codes/tags/typescript/</link>
       <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/typescript/</guid>
+      <guid>https://wilhelm.codes/tags/typescript/</guid>
       <description></description>
     </item>
     <item>
       <title>Vite</title>
-      <link>http://localhost:1313/tags/vite/</link>
+      <link>https://wilhelm.codes/tags/vite/</link>
       <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/vite/</guid>
+      <guid>https://wilhelm.codes/tags/vite/</guid>
       <description></description>
     </item>
     <item>
       <title>Bash</title>
-      <link>http://localhost:1313/tags/bash/</link>
+      <link>https://wilhelm.codes/tags/bash/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/bash/</guid>
+      <guid>https://wilhelm.codes/tags/bash/</guid>
       <description></description>
     </item>
     <item>
       <title>Docker</title>
-      <link>http://localhost:1313/tags/docker/</link>
+      <link>https://wilhelm.codes/tags/docker/</link>
       <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/docker/</guid>
+      <guid>https://wilhelm.codes/tags/docker/</guid>
       <description></description>
     </item>
     <item>
       <title>Js</title>
-      <link>http://localhost:1313/tags/js/</link>
+      <link>https://wilhelm.codes/tags/js/</link>
       <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/js/</guid>
+      <guid>https://wilhelm.codes/tags/js/</guid>
       <description></description>
     </item>
     <item>
       <title>Json</title>
-      <link>http://localhost:1313/tags/json/</link>
+      <link>https://wilhelm.codes/tags/json/</link>
       <pubDate>Thu, 29 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/json/</guid>
+      <guid>https://wilhelm.codes/tags/json/</guid>
       <description></description>
     </item>
     <item>
       <title>Api</title>
-      <link>http://localhost:1313/tags/api/</link>
+      <link>https://wilhelm.codes/tags/api/</link>
       <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/api/</guid>
+      <guid>https://wilhelm.codes/tags/api/</guid>
       <description></description>
     </item>
     <item>
       <title>Emoji</title>
-      <link>http://localhost:1313/tags/emoji/</link>
+      <link>https://wilhelm.codes/tags/emoji/</link>
       <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/emoji/</guid>
+      <guid>https://wilhelm.codes/tags/emoji/</guid>
       <description></description>
     </item>
     <item>
       <title>Slack</title>
-      <link>http://localhost:1313/tags/slack/</link>
+      <link>https://wilhelm.codes/tags/slack/</link>
       <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/slack/</guid>
+      <guid>https://wilhelm.codes/tags/slack/</guid>
       <description></description>
     </item>
     <item>
       <title>Aws</title>
-      <link>http://localhost:1313/tags/aws/</link>
+      <link>https://wilhelm.codes/tags/aws/</link>
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/aws/</guid>
+      <guid>https://wilhelm.codes/tags/aws/</guid>
       <description></description>
     </item>
     <item>
       <title>Cost Optimisation</title>
-      <link>http://localhost:1313/tags/cost-optimisation/</link>
+      <link>https://wilhelm.codes/tags/cost-optimisation/</link>
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/cost-optimisation/</guid>
+      <guid>https://wilhelm.codes/tags/cost-optimisation/</guid>
       <description></description>
     </item>
     <item>
       <title>Security</title>
-      <link>http://localhost:1313/tags/security/</link>
+      <link>https://wilhelm.codes/tags/security/</link>
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/security/</guid>
+      <guid>https://wilhelm.codes/tags/security/</guid>
       <description></description>
     </item>
     <item>
       <title>Dns</title>
-      <link>http://localhost:1313/tags/dns/</link>
+      <link>https://wilhelm.codes/tags/dns/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/dns/</guid>
+      <guid>https://wilhelm.codes/tags/dns/</guid>
       <description></description>
     </item>
     <item>
       <title>Networking</title>
-      <link>http://localhost:1313/tags/networking/</link>
+      <link>https://wilhelm.codes/tags/networking/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/networking/</guid>
+      <guid>https://wilhelm.codes/tags/networking/</guid>
       <description></description>
     </item>
     <item>
       <title>Git</title>
-      <link>http://localhost:1313/tags/git/</link>
+      <link>https://wilhelm.codes/tags/git/</link>
       <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/tags/git/</guid>
+      <guid>https://wilhelm.codes/tags/git/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Svelte on Wilhelm Codes</title>
-    <link>http://localhost:1313/tags/svelte/</link>
+    <link>https://wilhelm.codes/tags/svelte/</link>
     <description>Recent content in Svelte on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
     <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
-    <lastBuildDate>Sun, 08 Jan 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Dec 2024 01:05:08 +1000</lastBuildDate>
+    <atom:link href="https://wilhelm.codes/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why I built Plant Smart</title>
-      <link>http://localhost:1313/blog/why-i-built-plant-smart/</link>
+      <link>https://wilhelm.codes/blog/why-i-built-plant-smart/</link>
       <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/why-i-built-plant-smart/</guid>
+      <guid>https://wilhelm.codes/blog/why-i-built-plant-smart/</guid>
       <description>&lt;p&gt;Simply put, I love plants and I love animals. I can&amp;rsquo;t count how many times I&amp;rsquo;ve been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.&lt;/p&gt;</description>
     </item>
   </channel>

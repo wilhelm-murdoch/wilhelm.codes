@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Wilhelm Codes</title>
-    <link>http://localhost:1313/tags/git/</link>
+    <link>https://wilhelm.codes/tags/git/</link>
     <description>Recent content in Git on Wilhelm Codes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</managingEditor>
     <webMaster>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</webMaster>
-    <lastBuildDate>Thu, 04 Nov 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Dec 2024 01:05:08 +1000</lastBuildDate>
+    <atom:link href="https://wilhelm.codes/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Falsifying Github participation graphs for fun and profit</title>
-      <link>http://localhost:1313/blog/falsifying-github-participation-graphs-for-fun-and-profit/</link>
+      <link>https://wilhelm.codes/blog/falsifying-github-participation-graphs-for-fun-and-profit/</link>
       <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate><author>0xdeadbeef@devilmayco.de (ɯlǝɥlᴉʍ)</author>
-      <guid>http://localhost:1313/blog/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
+      <guid>https://wilhelm.codes/blog/falsifying-github-participation-graphs-for-fun-and-profit/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;ve spent any time job hunting in the tech industry, you&amp;rsquo;ve had to deal with recruiters. I like to joke around with my peers about how they&amp;rsquo;re a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. However &amp;hellip;&lt;/p&gt;</description>
     </item>
   </channel>

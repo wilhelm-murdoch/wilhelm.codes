@@ -2,111 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/css/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/chaos-engineering/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/markdown/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/devops/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/markdown-elements/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/sre/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-12-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/chaos-engineering/</loc>
-    <lastmod>2024-01-27T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/devops/</loc>
-    <lastmod>2024-01-27T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/svelte/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/sre/</loc>
-    <lastmod>2024-01-27T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/typescript/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/the-longer-something-doesnt-happen-the-sooner-it-will/</loc>
-    <lastmod>2024-01-27T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/vite/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/svelte/</loc>
-    <lastmod>2023-01-08T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/why-i-built-plant-smart/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/typescript/</loc>
-    <lastmod>2023-01-08T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/bash/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/vite/</loc>
-    <lastmod>2023-01-08T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/learning-bash-through-pointless-fun/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/why-i-built-plant-smart/</loc>
-    <lastmod>2023-01-08T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/docker/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bash/</loc>
-    <lastmod>2022-10-05T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/filtering-docker-containers-with-jq/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/learning-bash-through-pointless-fun/</loc>
-    <lastmod>2022-10-05T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/js/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
-    <lastmod>2022-09-29T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/json/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/filtering-docker-containers-with-jq/</loc>
-    <lastmod>2022-09-29T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/api/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/js/</loc>
-    <lastmod>2022-09-29T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/emoji/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/json/</loc>
-    <lastmod>2022-09-29T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/slack/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/api/</loc>
-    <lastmod>2022-09-28T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/why-cant-i-hold-all-these-slack-emojis/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/emoji/</loc>
-    <lastmod>2022-09-28T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/liberating-custom-slack-emojis/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/slack/</loc>
-    <lastmod>2022-09-28T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/aws/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/why-cant-i-hold-all-these-slack-emojis/</loc>
-    <lastmod>2022-09-28T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/cost-optimisation/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/liberating-custom-slack-emojis/</loc>
-    <lastmod>2022-09-20T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/save-money-by-keeping-your-aws-account-clean/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/aws/</loc>
-    <lastmod>2022-09-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/security/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cost-optimisation/</loc>
-    <lastmod>2022-09-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/deleting-massive-s3-buckets-the-easy-way/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/save-money-by-keeping-your-aws-account-clean/</loc>
-    <lastmod>2022-09-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/dns/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/security/</loc>
-    <lastmod>2022-09-06T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/messing-around-with-txt-records/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/deleting-massive-s3-buckets-the-easy-way/</loc>
-    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/networking/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dns/</loc>
-    <lastmod>2021-11-11T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/blog/falsifying-github-participation-graphs-for-fun-and-profit/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/messing-around-with-txt-records/</loc>
-    <lastmod>2021-11-11T00:00:00+00:00</lastmod>
+    <loc>https://wilhelm.codes/tags/git/</loc>
+    <lastmod>2024-12-08T01:05:08+10:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/networking/</loc>
-    <lastmod>2021-11-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/falsifying-github-participation-graphs-for-fun-and-profit/</loc>
-    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/git/</loc>
-    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://wilhelm.codes/categories/</loc>
   </url>
 </urlset>
