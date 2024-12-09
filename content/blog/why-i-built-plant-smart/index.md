@@ -10,9 +10,6 @@ tags:
 Simply put, I love plants and I love animals. I can't count how many times I've been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.
 
 <!--more-->
-
-![](panda.png)
-
 ### It's as simple as that?
 
 That was the idea, at least. I just wanted a single place that had all the information I needed so I could make informed purchasing decisions. I also figured I couldn't possibly be the only person who has this problem. So, I set off to make this project during the holiday break of 2022.
