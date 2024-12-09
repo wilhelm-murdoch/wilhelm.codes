@@ -245,9 +245,7 @@ $ SLACK_WORKSPACE_ID=*** SLACK_COOKIE=*** SLACK_TOKEN=*** ./fetch.sh
 
 ## An Even Better Version!
 
-I know I just made you read through all this, but you also could’ve just downloaded the tool from here. It’s got heaps more bells and whistles ( if you’re into that sort of thing):
-
-%[https://github.com/wilhelm-murdoch/slack-emoji-toolkit]
+I know I just made you read through all this, but you also could’ve just [downloaded the tool from here](https://github.com/wilhelm-murdoch/slack-emoji-toolkit). It’s got heaps more bells and whistles ( if you’re into that sort of thing):
 
 ## The Bitter Irony
 

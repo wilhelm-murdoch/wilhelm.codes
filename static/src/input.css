@@ -8,7 +8,16 @@
   }
 }
 
-article blockquote::before {
+article.blog a, .summary a {
+  border-bottom: 2px solid theme("colors.slate.200");
+  color: theme("colors.slate.500");
+}
+
+  article.blog a:hover, .summary a:hover {
+    border-bottom: 2px solid theme("colors.blue.600");
+  }
+
+article.blog blockquote::before {
   content: "“";
   position: absolute;
   top: .4em;

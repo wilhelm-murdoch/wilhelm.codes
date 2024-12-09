@@ -277,7 +277,7 @@ Having a toolbox filled with utilities you can mix and match together is great i
 
 ## But, Wait! There’s More!
 
-Why copy and paste these commands in your terminal, when you could just download and install a handy little Bash script to do it all for you? `dq` has all the above built-in as well as heaps more bells and whistles.
+Why copy and paste these commands in your terminal, when you could just [download and install](https://github.com/wilhelm-murdoch/dq) a handy little Bash script to do it all for you? `dq` has all the above built-in as well as heaps more bells and whistles.
 
 Here are a few command examples if you’re interested:
 
@@ -287,7 +287,3 @@ dq newer-than 2 fortnights --only-return ids
 dq filter '.[].Name[1:]'
 dq find-by-ip-address 172.17.0.2 --only-return names --network foo
 ```
-
-Give it a try here:
-
-%[https://github.com/wilhelm-murdoch/dq]

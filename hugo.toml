@@ -2,7 +2,6 @@ baseURL = "https://wilhelm.codes/"
 languageCode = "en-us"
 title = "Wilhelm Codes"
 enableGitInfo = true
-enableEmoji = true
 
 [params]
   description = "Slinger of nibbles, bits and bytes. Over 25 years of professional experience as a software engineer. Love making glowing rectangles go \"beep-boop\"."

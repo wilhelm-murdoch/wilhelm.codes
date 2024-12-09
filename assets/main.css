@@ -864,6 +864,10 @@ ul, ol {
   margin-bottom: 4rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -874,10 +878,6 @@ ul, ol {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
 }
 
 .line-clamp-3 {
@@ -1055,10 +1055,6 @@ ul, ol {
   padding-bottom: 2rem;
 }
 
-.pt-5 {
-  padding-top: 1.25rem;
-}
-
 .pt-4 {
   padding-top: 1rem;
 }
@@ -1211,7 +1207,16 @@ ul, ol {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-article blockquote::before {
+article.blog a, .summary a {
+  border-bottom: 2px solid #e2e8f0;
+  color: #64748b;
+}
+
+article.blog a:hover, .summary a:hover {
+  border-bottom: 2px solid #2563eb;
+}
+
+article.blog blockquote::before {
   content: "“";
   position: absolute;
   top: .4em;
