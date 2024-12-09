@@ -31,8 +31,7 @@ As technology and business environments evolve — as they inevitably do in our 
 
 ### Maintaining Awareness
 
-> The price of <s>freedom</s> stability is eternal vigilance.  
-> -- Ancient Klingon Proverb ( probably )
+{{< blockquote "The price of <s>freedom</s> stability is eternal vigilance." "Ancient Klingon Proverb ( probably )" >}}
 
 #### **Mitigation Strategies**
 
