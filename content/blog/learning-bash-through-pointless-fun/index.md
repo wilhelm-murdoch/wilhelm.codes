@@ -128,19 +128,13 @@ You’ll notice a final `echo` command at the bottom of the script. Thanks to th
 
 Save the script as `spongebob` and make it executable with `chmod a+x spongebob`. That should be it! Here are a few of my results:
 
-```
+```bash
 $ echo "abandon all hope, ye who enter here." | ./spongebob
 abaNDON ALl Hope, yE wHO EnTer heRE.
-```
-```
 $ echo "Wilhelm, that last deployment failed. Could you roll it back, please?" | ./spongebob
 WilhelM, THAT LASt dEployMeNT fAILED. coUlD YOu RoLL It BaCk, PlEaSE?
-```
-```
 $ echo "Wilhelm, I am your manager. Please, stop mocking me." | ./spongebob
 wIlHElM, i aM yOUr MANagER. PlEasE, sTOP mOCKINg mE.
-```
-```
 $ echo "Wilhelm, should we use Kubernetes for this?" | ./spongebob
 WilHELM, should We Use KuBerNeTEs for THiS?
 ```
@@ -152,14 +146,9 @@ I mean, what I _meant_ to say was:
 
 > DefInIteLY dO Not UsE THis nEw knoWleDGE to FRUStRATe aND aNnOY YoUR cOWorkers.
 > pLeAsE, be ConsiDeRAtE oF oThEr peOPle’s mEnTal well beiNG. 
- 
-🥺  
-🙏🏻
 
 There are any number of ways you could change this script. Instead of liberal use of `echo`, you could just build a string assigned to a variable and spit that out at the end. Instead of using `else` you could use `continue` to skip the final `if` fallback. Try a few and see what changes.
 
 For the purposes of this article I felt the above sequence of commands was clear enough for most people to follow along.
 
 I hope you learned something!
-
-Behave! ( mostly ) 🙉🙈🙊

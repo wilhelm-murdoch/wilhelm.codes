@@ -7,7 +7,7 @@ tags:
   - aws
   - devops
   - security
-  - cost optimisation
+  - cost-optimisation
 ---
 
 At a prior role, I managed just under 20 AWS accounts. Their uses varied from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on.

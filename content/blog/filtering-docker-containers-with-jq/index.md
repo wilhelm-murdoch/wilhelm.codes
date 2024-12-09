@@ -16,17 +16,13 @@ As is the case with any seasoned DevOps engineer, I have a set of tools in my ki
 
 1. Bash for portability.
 2. [jq](https://stedolan.github.io/jq/) to filter JSON objects from RESTful APIs.
-3. Docker ( or more recently Podman ) for managing containers.
-4. AWS CLI as I cannot stand dealing with the web console.
-5. `curl` ( with `wget` as a reasonable fallback ) to interact with various APIs.
-6. [Terraform](https://www.terraform.io/) for *most* of my IaC needs.
+3. AWS CLI as I cannot stand dealing with the web console.
+4. `curl` ( with `wget` as a reasonable fallback ) to interact with various APIs.
+5. [Terraform](https://www.terraform.io/) for *most* of my IaC needs.
 
 It wouldn’t be an exaggeration to say I *literally* use these tools *every* day. Specifically, the first 3 items. Furthermore, to say that manually sorting through Docker containers is a practice in tedium would be a massive understatement. Because of this, not a day passes where I am not grateful to have found `jq`.  
 
 In this case, my favourite duo *is* Docker and `jq`... which is what this article is about. Let’s learn some fun filtering patterns to make your life a bit easier if you’re stuck in a terminal all day like myself.
-
-*Disclaimer: Yes, this is 6 tools, but i listed Terraform as a bonus item because ❤️.*
-
 ## Setting Up
 
 First and foremost, you’re going to need to install `jq` in your test environment. If you’re on most common Linux distributions:
