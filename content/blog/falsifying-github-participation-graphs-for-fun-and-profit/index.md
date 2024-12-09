@@ -14,7 +14,7 @@ If you've spent any time job hunting in the tech industry, you've had to deal wi
 
 But, good or bad, far too many of them will pass over your resume for the wildest reasons. We're not here to go over all of them. No, today we're going to address the somewhat recent trend of glancing at your public Github profile page and grading you based on how many green squares show up in your participation graph.
 
-## So? What's your point? 🤨
+## What's your point? 
 
 Like basing your performance on LoC, using "commits made" as a recruiting metric is beyond useless. There can be any number of reasons why your graph isn't as populated as they'd like:
 
@@ -26,11 +26,11 @@ Like basing your performance on LoC, using "commits made" as a recruiting metric
 
 Personally, I have _thousands_ of commits that will never see the light of day for some of the ☝️ points. If I'm out job hunting, I would hate to be passed over because I don't tick some mundane box on an arbitrary checklist.
 
-## What do? 🤔
+## What to do?
 
 Well, we light up that graph like it's a switch board, of course. Make this information utterly useless. What do they care if your profile says you've had `2,345` commits in the last week? Maybe you did. If it's 🟩 , they cross it off their checklist and move on to something else.
 
-## Ok, show me. 🤫
+## Ok, show me. 
 
 Crack your knuckles and get ready to do some coding. For this little project, we'll be doing some simple Bash scripting. I'm currently working on MacOS, but this code should be fairly portable on other Linux-based distributions.
 
@@ -40,13 +40,13 @@ You will, naturally, need a Github account. Let's start there.
 
 Did you know you can configure your participation graph to display anonymised private commit statistics? Ensure that setting is ✅ and move on to the next step.
 
-![CleanShot 2021-11-04 at 01.36.54.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1635953829516/3Ucg1G2sa.png)
+![](image-1.png)
 
 ### New Private Repository
 
 Let's create a new _empty_ repository entitled `graph-participation` and make sure it's private.
 
-![CleanShot 2021-11-04 at 01.38.58.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1635953948555/wP9rrFo7J.png)
+![](image-2.png)
 
 ### Checkout Local Working Copy
 
@@ -102,7 +102,7 @@ Finally, we commit this unique change locally. This keeps happening for every da
 
 Write this to an executable file, or just paste it into your terminal of choice and hit `enter`. If you see the following kind of log output, you know you're doing the right thing:
 
-```
+```bash
 [main 2ebb5b9] Touch #1 2021-05-07T00:01
  1 file changed, 1 insertion(+), 1 deletion(-)
 [main e104b0a] Touch #2 2021-05-07T00:01
@@ -127,18 +127,16 @@ All you now have to do is sit back and wait for everything to update.
 
 We've gone from barren landscape:
 
-![CleanShot 2021-11-03 at 23.39.57.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1635955257237/Mvka96vUO.png)
+![](image-3.png)
 
 To a verdant garden paradise:
 
-![CleanShot 2021-11-04 at 00.03.14.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1635955316932/MsSDvasr-.png)
+![](image-4.png)
 
 And that's it! 🎉
 
 If you've made a mistake, simply delete your private repository and try again with a fresh one.
 
-## Any final thoughts? 😏
+## Any final thoughts? 
 
-Job hunting is hard enough. Especially with more and more companies becoming increasingly risk-averse in their interviewing and recruiting processes. It's my hope that this little bit of harmless monkey mischief will make things a bit easier for you! 🙈 🙉 🙊
-
-Till next time!
+Job hunting is hard enough. Especially with more and more companies becoming increasingly risk-averse in their interviewing and recruiting processes. It's my hope that this little bit of harmless mischief will make things a bit easier for you! 

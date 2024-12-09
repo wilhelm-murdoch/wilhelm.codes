@@ -7,7 +7,6 @@ tags:
   - emoji
   - api
   - bash
-  - api
 ---
 
 As is stupid tradition, whenever I start at a new company, one of the first things I like to do while getting settled in is upload my favourite emojis to whatever real-time messaging platform is in use. I know it’s childish, but silly memes and emojis are great ways for you to break the ice with your new coworkers. 
@@ -258,4 +257,5 @@ Hopefully, you’ve learned something new! 🤞
 
 ## Bonus Relevant XKCD Image
 
-![Untitled.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1663601487957/aTOrHhP9G.png align="left")
+![](image-1.png)
+source: [xkcd: automation](https://xkcd.com/1319/)

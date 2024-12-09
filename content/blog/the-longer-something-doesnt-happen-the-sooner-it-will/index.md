@@ -6,7 +6,7 @@ category: Platform Engineering
 tags:
   - devops
   - sre
-  - chaos engineering
+  - chaos-engineering
 ---
 
 This is often referred to as the "[Mean Time Between Failures (MTBF)](https://en.wikipedia.org/wiki/Mean_time_between_failures)" in the context of Site Reliability Engineering. It's a somewhat counterintuitive concept that highlights the fact that failures or incidents tend to occur when you least expect them, especially if you haven't experienced one for a while. While it may sound paradoxical, there is some reasoning behind it.

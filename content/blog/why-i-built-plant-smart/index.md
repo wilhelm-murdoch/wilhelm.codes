@@ -5,15 +5,13 @@ date: 2023-01-08
 category: Thoughts & Musings
 tags:
   - svelte
-  - typescript
-  - vite
-  - devops
+  - projects
 ---
 Simply put, I love plants and I love animals. I can't count how many times I've been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.
 
 <!--more-->
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1673148005641/641ed4fd-db08-40d0-b3c8-daa692b9700a.png)
+![](panda.png)
 
 ### It's as simple as that?
 

@@ -25,7 +25,7 @@ You’ll still be using the following, which can be found using instructions fro
 
 In addition, you will need your workspaces’s subdomain, or URL. This can easily be found within the Slack app itself:
 
-![slack-emoji-toolkit-workspace-url.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1664349744760/PDjwLi9t4.png align="left")
+![](image-1.png)
 
 ## ****Testing Your Findings****
 
