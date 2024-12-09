@@ -45,7 +45,12 @@ by yours truly;
 <a href="https://wilhelm.codes" title="It me.">me</a>
 <img class="inline-block h-6 w-6 rounded-full border-2 jello-animation" src="https://s.gravatar.com/avatar/7cc6bee5975704b299bd7355e8ba9356?s=40" alt="It me." />
 <div class="text-center text-slate-200 text-sm mt-8 font-mono">
-  {{ with .GitInfo }}
-    {{ .AbbreviatedHash }}
+  {{ $date := now }}
+  {{ if .GitInfo }}
+    {{ $date = .GitInfo.AuthorDate }}
   {{ end }}
+
+  last updated:
+  {{ $date  | time.Format ":date_long" }}
+  {{ $date  | time.Format ":time_medium" }}
 </div>

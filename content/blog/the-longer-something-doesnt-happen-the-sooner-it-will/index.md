@@ -33,7 +33,7 @@ As technology and business environments evolve — as they inevitably do in our 
 
 {{< blockquote "The price of <s>freedom</s> stability is eternal vigilance." "Ancient Klingon Proverb ( probably )" >}}
 
-#### **Mitigation Strategies**
+#### Mitigation Strategies
 
 Recognize the importance of proactively addressing issues before they accumulate. This involves regular monitoring, capacity planning, load testing, and maintenance to reduce the likelihood of a sudden failure.
 
@@ -49,7 +49,7 @@ Promote a culture of continuous improvement, encouraging teams to learn from pas
 
 Use metrics and monitoring tools to maintain a vigilant eye on system health and performance. They set thresholds and alarms to detect anomalies early, regardless of how long it's been since the last incident.
 
-<mark>At any given point your production workloads may be operating under any number of unknown failure modes. Things break; it's inevitable. Adjust your expectations accordingly and build around this fact.</mark>
+At any given point your production workloads may be operating under any number of unknown failure modes. Things break; it's inevitable. Adjust your expectations accordingly and build around this fact.
 
 ### In Conclusion
 

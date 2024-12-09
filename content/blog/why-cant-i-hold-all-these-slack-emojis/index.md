@@ -160,9 +160,7 @@ Nice! 😊
 
 ## Once Again, Something Better!
 
-While perfectly functional, there’s not a lot of flexibility. No error checking, filtering or confirmation checks. If you’re looking for something a bit more fleshed out, look no further!
-
-%[https://github.com/wilhelm-murdoch/slack-emoji-toolkit]
+While perfectly functional, there’s not a lot of flexibility. No error checking, filtering or confirmation checks. If you’re looking for something a bit more fleshed out, [look no further](https://github.com/wilhelm-murdoch/slack-emoji-toolkit)!
 
 ## The Final Piece ...
 
