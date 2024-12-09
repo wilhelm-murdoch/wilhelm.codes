@@ -8,6 +8,16 @@
   }
 }
 
+article blockquote::before {
+  content: "“";
+  position: absolute;
+  top: .4em;
+  left: 0;
+  font-size: 2em;
+  line-height: 0;
+  color: theme("colors.slate.400");
+}
+
 .category-development a.article-card {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(219 234 254 / var(--tw-ring-opacity, 1));
