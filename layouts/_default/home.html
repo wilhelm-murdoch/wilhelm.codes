@@ -35,14 +35,14 @@
               {{ .LinkTitle | safeHTML }}
             </a>
           </h3>
-          <p class="text-slate-300 text-sm font-medium">
+          <p class="text-slate-300 text-sm">
               <span class="border-b-2 border-b-slate-100 font-medium text-slate-500">{{ .Params.category }}</span>
               {{ with .Params.tags }}
                 {{ $count :=  len . }}
                 {{ if ne $count 0 }}
                   +
                   {{ range $index, $tag := . }}
-                    <span class="border-b-2 border-b-slate-100 font-medium text-slate-500">{{ $tag }}</span>
+                    <span class="border-b-2 border-b-slate-100  text-slate-500">{{ $tag }}</span>
                     {{ if eq $count 2 }}{{ if eq $index 0 }}&nbsp;&amp;&nbsp;{{ end }}
                     {{ else if and (ge $count 2) (eq $index (sub $count 2)) }}&nbsp;&amp;&nbsp;
                     {{ else }}{{ if and (ne $count 1) (ne $index (sub $count 1)) }},{{ end }}{{ end }}
