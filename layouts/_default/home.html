@@ -1,9 +1,33 @@
 {{ define "main" }}
+    <section class="mx-auto max-w-4xl grid grid-cols-2 gap-8 fade-in-animation mb-8 border-b border-b-slate-100 pb-8">
+    {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
+      <article class="transition hover:scale-105 hover:ease-in-out hover:duration-300 highlight-{{ .Params.highlight }} card border rounded-2xl shadow-md shadow-slate-100 overflow-hidden">
+        <div class="overflow-hidden">
+          {{ $title := .LinkTitle }}
+          {{ with .Resources.Get "header.jpeg" }}
+            <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
+          {{ end }}
+        </div>
+        <div class="p-8 relative h-max">
+          <span class="absolute mx-auto -top-4 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-5 w-5 p-2 rounded-full ring-4 ring-white"></span>
+          <h4 class="text-center mb-4">
+            <span class="rounded-full px-4 py-2 text-sm font-medium">{{ .Params.category }}</span>
+          </h4>
+          <h3 class="font-normal text-center text-2xl mb-2 text-slate-800">
+            <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+              {{ .LinkTitle | safeHTML }}
+            </a>
+          </h3>
+        </div>
+      </article>
+    {{ end }}
+    </section>
+
     <section class="mx-auto max-w-4xl fade-in-animation">
-    {{ range (where .Site.RegularPages "Section" "blog") }}
-      <article class="highlight-{{ .Params.highlight }} archive transition hover:scale-105 flex border rounded-3xl p-8 mb-8 shadow-md shadow-slate-100">
-        <div class="w-16 pt-2 lg:inline-block md:inline-block sm:hidden">
-          <span class="fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-6 w-6 p-3 rounded-full"></span>
+    {{ range (first 6 (where .Site.RegularPages "Section" "blog" | after 2)) }}
+      <article class="highlight-{{ .Params.highlight }} archive transition hover:scale-105 flex border rounded-2xl p-8 mb-8 shadow-md shadow-slate-100">
+        <div class="w-16 pt-1 mr-4 lg:inline-block md:inline-block sm:hidden">
+          <span class="fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-8 w-8 p-3 rounded-full"></span>
         </div>
         <div>
           <h3 class="font-light text-2xl mb-2 text-slate-800">
@@ -11,7 +35,7 @@
               {{ .LinkTitle | safeHTML }}
             </a>
           </h3>
-          <h4 class="text-slate-300 text-sm font-medium">
+          <p class="text-slate-300 text-sm font-medium">
               <span class="border-b-2 border-b-slate-100 font-medium text-slate-500">{{ .Params.category }}</span>
               {{ with .Params.tags }}
                 {{ $count :=  len . }}
@@ -25,7 +49,7 @@
                   {{ end }}
                 {{ end }}
               {{ end }}
-          </h4>
+          </p>
         </div>
       </article>
     {{ end }}
