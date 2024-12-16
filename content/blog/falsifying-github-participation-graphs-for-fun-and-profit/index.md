@@ -1,5 +1,8 @@
 ---
-title: Falsifying Github participation graphs for fun and profit
+title: <span>Falsifying</span> Github Participation Graphs for <span>Fun and Profit</span>
+highlight: blue
+pack: brands
+icon: github
 draft: false
 date: 2021-11-04
 category: Random Bullshit

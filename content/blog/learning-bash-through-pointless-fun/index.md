@@ -1,6 +1,8 @@
 ---
-title: Learning Bash through pointless fun
-draft: false
+title: Learning Bash Through <span>Pointless Fun</span>
+highlight: purple
+pack: duotone
+icon: mushroom
 date: 2022-10-05
 category: Development
 tags:
@@ -112,8 +114,7 @@ WilHELM, should We Use KuBerNeTEs for THiS?
 Ok, obviously this was all a clever ploy to get you to learn a few more Bash things. Definitely do *not* use this new knowledge to frustrate and annoy your coworkers. Please, be considerate of other people’s mental well being. 
 I mean, what I _meant_ to say was:
 
-> DefInIteLY dO Not UsE THis nEw knoWleDGE to FRUStRATe aND aNnOY YoUR cOWorkers.
-> pLeAsE, be ConsiDeRAtE oF oThEr peOPle’s mEnTal well beiNG. 
+{{< blockquote "DefInIteLY dO Not UsE THis nEw knoWleDGE to FRUStRATe aND aNnOY YoUR cOWorkers. pLeAsE, be ConsiDeRAtE oF oThEr peOPle’s mEnTal well beiNG." "Me." >}}
 
 There are any number of ways you could change this script. Instead of liberal use of `echo`, you could just build a string assigned to a variable and spit that out at the end. Instead of using `else` you could use `continue` to skip the final `if` fallback. Try a few and see what changes.
 

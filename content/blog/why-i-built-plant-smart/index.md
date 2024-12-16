@@ -1,5 +1,8 @@
 ---
-title: Why I built Plant Smart
+title: Why I Built <span>Plant Smart</span>
+highlight: emerald
+pack: duotone
+icon: seedling
 draft: false
 date: 2023-01-08
 category: Thoughts & Musings

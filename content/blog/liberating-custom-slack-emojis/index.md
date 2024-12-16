@@ -1,5 +1,8 @@
 ---
-title: Liberating custom Slack emojis
+title: Liberating Custom <span>Slack Emojis</span>
+highlight: yellow
+pack: duotone
+icon: face-awesome
 draft: false
 date: 2022-09-20
 category: Random Bullshit
