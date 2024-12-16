@@ -66,6 +66,7 @@ article.highlight-slate svg,
 article.highlight-slate h4 span,
 article.highlight-slate h3 span {
   color: theme("colors.slate.400");
+  font-weight: 500;
 }
 
 article.highlight-slate svg,
@@ -78,6 +79,7 @@ article.highlight-red svg,
 article.highlight-red h4 span,
 article.highlight-red h3 span {
   color: theme("colors.red.400");
+  font-weight: 500;
 }
 
 article.highlight-red svg,
@@ -90,6 +92,7 @@ article.highlight-yellow svg,
 article.highlight-yellow h4 span,
 article.highlight-yellow h3 span {
   color: theme("colors.yellow.500");
+  font-weight: 500;
 }
 
 article.highlight-yellow svg,
@@ -102,6 +105,7 @@ article.highlight-orange svg,
 article.highlight-orange h4 span,
 article.highlight-orange h3 span {
   color: theme("colors.orange.400");
+  font-weight: 500;
 }
 
 article.highlight-orange svg,
@@ -114,6 +118,7 @@ article.highlight-emerald svg,
 article.highlight-emerald h4 span,
 article.highlight-emerald h3 span {
   color: theme("colors.emerald.400");
+  font-weight: 500;
 }
 
 article.highlight-emerald svg,
@@ -125,6 +130,7 @@ article.highlight-emerald h3 span::after {
 article.highlight-teal svg,
 article.highlight-teal h3 span {
   color: theme("colors.teal.400");
+  font-weight: 500;
 }
 
 article.highlight-teal svg,
@@ -136,6 +142,7 @@ article.highlight-blue svg,
 article.highlight-blue h4 span,
 article.highlight-blue h3 span {
   color: theme("colors.blue.400");
+  font-weight: 500;
 }
 
 article.highlight-blue svg,
@@ -148,6 +155,7 @@ article.highlight-purple svg,
 article.highlight-purple h4 span,
 article.highlight-purple h3 span {
   color: theme("colors.purple.400");
+  font-weight: 500;
 }
 
 article.highlight-purple svg,
@@ -160,6 +168,7 @@ article.highlight-rose svg,
 article.highlight-rose h4 span,
 article.highlight-rose h3 span {
   color: theme("colors.rose.400");
+  font-weight: 500;
 }
 
 article.highlight-rose svg,
