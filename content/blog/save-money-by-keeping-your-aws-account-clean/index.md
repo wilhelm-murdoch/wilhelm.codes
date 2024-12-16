@@ -1,5 +1,8 @@
 ---
-title: Save money by keeping your AWS account clean
+title: <span>Save Money</span> by Keeping Your AWS Account Clean
+highlight: emerald
+pack: duotone
+icon: sack-dollar
 draft: false
 date: 2022-09-06
 category: Platform Engineering

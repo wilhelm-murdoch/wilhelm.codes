@@ -1,5 +1,8 @@
 ---
-title: Why can't I hold all these Slack emojis?
+title: Why Can't I Hold All These <span>Slack Emojis</span>?
+highlight: yellow
+pack: duotone
+icon: face-awesome
 draft: false
 date: 2022-09-28
 category: Random Bullshit
@@ -27,7 +30,7 @@ In addition, you will need your workspaces’s subdomain, or URL. This can easil
 
 ![](image-1.png)
 
-## ****Testing Your Findings****
+## Testing Your Findings
 
 This is an incredibly straight-forward process as it’s quite similar to what we already know. The primary difference is this is a `multipart/form-data` upload. So, instead of shipping of a JSON payload, it’s a form with associated fields. 
 

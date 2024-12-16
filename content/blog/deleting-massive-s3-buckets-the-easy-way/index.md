@@ -1,5 +1,8 @@
 ---
-title: Deleting massive S3 buckets the easy way
+title: Deleting <span>Massive S3 Buckets</span> the Easy Way
+highlight: red
+pack: duotone
+icon: bucket
 draft: false
 date: 2021-12-04
 category: Platform Engineering

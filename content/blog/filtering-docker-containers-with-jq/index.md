@@ -1,5 +1,8 @@
 ---
-title: Filtering Docker containers with jq
+title: Filtering <span>Docker Containers</span> with jq
+highlight: blue
+pack: brands
+icon: docker
 draft: false
 date: 2022-09-29
 category: Platform Engineering

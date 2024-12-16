@@ -1,5 +1,8 @@
 ---
-title: Messing around with TXT records
+title: <span>Messing Around</span> with TXT Records
+highlight: slate
+pack: duotone
+icon: id-card
 draft: false
 date: 2021-11-11
 category: Random Bullshit

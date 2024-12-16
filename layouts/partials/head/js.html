@@ -1,3 +1,15 @@
+{{- with resources.Get "fontawesome.js" }}
+  <script defer src="{{ .RelPermalink }}"></script>
+{{ end }}
+
+{{- with resources.Get "fa-duotone.js" }}
+  <script defer src="{{ .RelPermalink }}"></script>
+{{ end }}
+
+{{- with resources.Get "brands.js" }}
+  <script defer src="{{ .RelPermalink }}"></script>
+{{ end }}
+
 <script type="text/javascript">
   const lazy = new IntersectionObserver((entries) => {
     const loaded = (entry) => {
