@@ -1,0 +1,21 @@
+<article class="highlight-{{ .Params.highlight }} archive transition hover:scale-105 flex border rounded-2xl p-8 mb-8 shadow-md shadow-slate-100">
+    <div class="w-16 pt-1 mr-4 lg:inline-block md:inline-block sm:hidden">
+        <span class="fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-8 w-8 p-3 rounded-full"></span>
+    </div>
+    <div>
+        <h3 class="font-light text-2xl mb-2 text-slate-800">
+            <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+                {{ .LinkTitle | safeHTML }}
+            </a>
+        </h3>
+        <p class="text-slate-300 text-sm">
+            <span class="border-b-2 border-b-slate-100 font-medium text-slate-500">{{ .Params.category }}</span>
+            {{ with .Params.tags }}
+                {{ if ne (len .) 0 }}
+                    +
+                    {{ partial "tags/inline.html" . }}
+                {{ end }}
+            {{ end }}
+        </p>
+    </div>
+</article>

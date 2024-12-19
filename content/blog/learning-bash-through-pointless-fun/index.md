@@ -3,6 +3,7 @@ title: Learning Bash Through <span>Pointless Fun</span>
 highlight: purple
 pack: duotone
 icon: mushroom
+comments: true
 date: 2022-10-05
 category: Development
 tags:
@@ -24,6 +25,8 @@ Today, we’re going to write a laughably-simple Bash script that lets our cowor
 5. Creating random numbers.
 6. Swapping character types using the `tr` command.
 7. And, finally, making your long-suffering coworkers’ eyes roll.
+
+---
 
 ## Here We Go!
 

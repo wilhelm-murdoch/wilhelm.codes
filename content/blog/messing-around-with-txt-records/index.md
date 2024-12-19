@@ -16,7 +16,7 @@ If you've spent any time in an ops-related position, you've had to add these rec
 
 <!--more-->
 
-## Hey, wanna see a neat trick? 🤯
+## Wanna see a neat trick?
 
 Open up your terminal of choice and invoke this `dig` command:
 
@@ -26,18 +26,18 @@ dig txt contact.wilhelm.codes +short
 
 You should see, hopefully 🤞, the following block of text as a response:
 
-```
+```text
 "twitter: @wilhelm"
 "github:  wilhelm-murdoch"
 "keybase: 7F89 5036 2816 06F6"
 "blog:    https://wilhelm.codes/"
 ```
 
-## Ok, what am I looking at? 🤨
+## What you're looking at.
 
 Simply put, you're looking at my contact details using a simple DNS `TXT` record lookup. There are [heaps](https://dns.google/query?name=contact.wilhelm.codes) [of](https://toolbox.googleapps.com/apps/dig/#TXT/) [online tools](https://www.diggui.com/) out there to help you directly query DNS records, but `dig` tends to be the most common utility included included in most Linux distributions as well as MacOS.
 
-## Yes, I can see that. But, why? 🤔
+## Why might you do this?
 
 Originally, `TXT` records were meant to allow DNS administrators to attach simple plain text human-readable "notes" to their zones. A bit later, it became common practice to use this flexible record type as a way to verify ownership of a domain.
 
@@ -49,7 +49,7 @@ DNS is effectively a globally-distributed, (mostly) fault-tolerant, eventually-c
 
 And as for "Why?", why not?
 
-## Show me. 🤫
+## Here's you would implement it.
 
 Honestly, there's nothing special about how to implement this. It's just another record. In my case, I ended up creating a separate `TXT` record _per_ contact detail. Depending on which server software your DNS provider is using, you may or may not be able to create multi-line text blocks. So, your safest bet is just multiple one-liners attached to the same `CNAME`.
 
@@ -59,10 +59,6 @@ I recently migrated my zone for `wilhelm.codes` from [Vultr](https://www.vultr.c
 
 Obviously, this interface will be different if you use a different service, but that's all there is to it!
 
-## That's it?! 🤓
+## That's it!
 
 Yep. This isn't groundbreaking stuff and I'm surely not the first person to do something like this. Just a bit of (mostly) harmless DNS fun!
-
-🙈 🙉 🙊
-
-Enjoy!

@@ -13,17 +13,17 @@ tags:
 Simply put, I love plants and I love animals. I can't count how many times I've been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.
 
 <!--more-->
-### It's as simple as that?
+## It's as simple as that?
 
 That was the idea, at least. I just wanted a single place that had all the information I needed so I could make informed purchasing decisions. I also figured I couldn't possibly be the only person who has this problem. So, I set off to make this project during the holiday break of 2022.
 
 However, I didn't want to make it *too* easy for myself...
 
-### A challenge!
+## A challenge!
 
 I work as a weird combination of [SRE](https://en.wikipedia.org/wiki/Site_reliability_engineering) and [DevOps engineer](https://en.wikipedia.org/wiki/DevOps). I have plenty of smarts when it comes to the technical side of hosting and running things, but it's been years since I've done any front-end work. Career-wise, I need to be able to speak the same language as the teams I have to support. So, understanding how far behind that portion of my skillset had become, I thought this would be the perfect opportunity to brush up.
 
-#### The Requirements:
+### The Requirements:
 
 * Must keep operational costs as close to zero as possible. The only money I've put down on this so far is the $20 AUD to purchase the domain name.
 * Must be hosted on [Cloudflare Pages](https://pages.cloudflare.com/). I could've chosen [Github Pages](https://pages.github.com/) to keep everything in one place, but automated Cloudflare builds & deployments work out of the box with minimal configuration. Besides, I've already worked with the latter and I wanted the challenge of trying something new.
@@ -35,11 +35,11 @@ I work as a weird combination of [SRE](https://en.wikipedia.org/wiki/Site_reliab
 
 So far, it's going quite well. I haven't had any issues with meeting any of these self-imposed development constraints.
 
-#### Any Caveats?
+### Any Caveats?
 
 Definitely. The most obvious one would be image storage which has a direct effect on not only repository size — which currently clocks in at over 1.5GB — but, also build and deployment speeds. I could shell out $5 - $10 for object storage and image processing, but that would go against the first constraint. For now, image data will live in the GitHub repository as a perfectly reasonable compromise.
 
-### Where did you source all this data?
+## Where did you source all this data?
 
 There are quite a few sources I've collated from, but these are the main ones.
 
@@ -49,7 +49,7 @@ There are quite a few sources I've collated from, but these are the main ones.
 
 All of this disparate data was collated and munged together by several processing scripts written in [Go](https://go.dev/) as [Magefiles](https://magefile.org/). It got me about 95% there, but it still needs quite a bit of handraulic finessing.
 
-### Where to go from here?
+## Where to go from here?
 
 I think I've met most, if not all, of my requirements. The datasets for the project still need a lot of love and I plan on supporting listings for a variety of other pet species. I already have the data; just need to go through it with a fine-toothed comb. Not to mention responsiveness for smaller screens needs a solid amount of work.
 
