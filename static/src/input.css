@@ -2,32 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-.summary-large p a {
-  border-bottom: 2px solid theme("colors.slate.200");
-  color: theme("colors.slate.500");
-}
-
-  .summary-large p a:hover {
-    border-bottom: 2px solid theme("colors.slate.300");
-  }
-
 @layer base {
   ul, ol {
     list-style: revert;
   }
+
+  body {
+    font-family: "Inter", Helvetica Neue, Helvetica, Arial, sans-serif;
+  }
 }
+
+/*
+Table of Contents
+*/
 
 .toc ul, ol {
   margin-left: 16px;
 }
 
 .toc a {
-  border-bottom: 2px solid theme("colors.slate.200");
-  padding-bottom: 1px;
+  color: theme("colors.slate.700") !important;
+  border-bottom: 2px solid theme("colors.slate.200") !important;
+  padding-bottom: 1px !important;
 }
 
   .toc a:hover {
-    border-bottom: 2px solid theme("colors.slate.300");
+    border-bottom: 2px solid theme("colors.slate.300") !important;
   }
 
   .toc ol {
@@ -39,151 +39,320 @@
     letter-spacing: 1px;
   }
 
-article.blog a, .summary a {
-  border-bottom: 2px solid theme("colors.slate.200");
-  color: theme("colors.slate.500");
+.prose-xl :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before,
+.prose-xl :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after {
+  content: "`";
 }
 
-  article.blog a:hover, .summary a:hover {
-    border-bottom: 2px solid theme("colors.blue.600");
-  }
+.highlight code::after,
+.highlight code::before {
+  content: "";
+}
 
-article.blog blockquote::before {
-  content: "“";
-  position: absolute;
-  top: .4em;
+/*
+Progress Bar
+*/
+
+[data-progress-bar] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: fixed;
+  top: 0;
   left: 0;
-  font-size: 2em;
-  line-height: 0;
-  color: theme("colors.slate.400");
+  width: 100%;
+  height: 10px;
+  background-color: transparent;
+  opacity: .75;
+  z-index: 1100;
 }
+
+[data-progress-bar]::-webkit-progress-bar { background: transparent; }
+[data-progress-bar]::-moz-progress-bar { background: black; }
+[data-progress-bar]::-webkit-progress-value { background: black; }
 
 /*
 Article Highlights
 */
 
-article.highlight-slate svg,
-article.highlight-slate h4 span,
-article.highlight-slate h3 span {
+.highlight-slate svg,
+.highlight-slate h3 span {
   color: theme("colors.slate.400");
   font-weight: 500;
 }
 
-article.highlight-slate svg,
-article.highlight-slate h4 span,
-article.highlight-slate h3 span::after {
+.highlight-slate h4 span {
+  color: theme("colors.slate.400");
+  border: 1px solid theme("colors.slate.200");
+}
+
+.highlight-slate svg,
+.highlight-slate h4 span,
+.highlight-slate h3 span::after {
   background-color: theme("colors.slate.50");
 }
 
-article.highlight-red svg,
-article.highlight-red h4 span,
-article.highlight-red h3 span {
+.blog.highlight-slate a {
+  color: theme("colors.slate.400");
+  border-bottom: 2px solid theme("colors.slate.500") 
+}
+
+.blog.highlight-slate a:hover {
+  color: theme("colors.slate.500");
+}
+
+progress.highlight-slate::-webkit-progress-value {
+  background-color: theme("colors.slate.400");
+}
+
+.highlight-red svg,
+.highlight-red h4 span,
+.highlight-red h3 span {
   color: theme("colors.red.400");
   font-weight: 500;
 }
 
-article.highlight-red svg,
-article.highlight-red h4 span,
-article.highlight-red h3 span::after {
+.highlight-red h4 span {
+  color: theme("colors.red.400");
+  border: 1px solid theme("colors.red.200");
+}
+
+.highlight-red svg,
+.highlight-red h4 span,
+.highlight-red h3 span::after {
   background-color: theme("colors.red.50");
 }
 
-article.highlight-yellow svg,
-article.highlight-yellow h4 span,
-article.highlight-yellow h3 span {
+.blog.highlight-red a {
+  color: theme("colors.red.400");
+  border-bottom: 2px solid theme("colors.red.500") 
+}
+
+.blog.highlight-red a:hover {
+  color: theme("colors.red.500");
+}
+
+progress.highlight-red::-webkit-progress-value {
+  background-color: theme("colors.red.400");
+}
+
+.highlight-yellow svg,
+.highlight-yellow h3 span {
   color: theme("colors.yellow.500");
   font-weight: 500;
 }
 
-article.highlight-yellow svg,
-article.highlight-yellow h4 span,
-article.highlight-yellow h3 span::after {
+.highlight-yellow h4 span {
+  color: theme("colors.yellow.400");
+  border: 1px solid theme("colors.yellow.200");
+}
+
+.highlight-yellow svg,
+.highlight-yellow h4 span,
+.highlight-yellow h3 span::after {
   background-color: theme("colors.yellow.50");
 }
 
-article.highlight-orange svg,
-article.highlight-orange h4 span,
-article.highlight-orange h3 span {
+.blog.highlight-yellow a {
+  color: theme("colors.yellow.400");
+  border-bottom: 2px solid theme("colors.yellow.500") 
+}
+
+.blog.highlight-yellow a:hover {
+  color: theme("colors.yellow.500");
+}
+
+progress.highlight-yellow::-webkit-progress-value {
+  background-color: theme("colors.yellow.400");
+}
+
+.highlight-orange svg,
+.highlight-orange h3 span {
   color: theme("colors.orange.400");
   font-weight: 500;
 }
 
-article.highlight-orange svg,
-article.highlight-orange h4 span,
-article.highlight-orange h3 span::after {
+.highlight-orange h4 span {
+  color: theme("colors.orange.400");
+  border: 1px solid theme("colors.orange.200");
+}
+
+.highlight-orange svg,
+.highlight-orange h4 span,
+.highlight-orange h3 span::after {
   background-color: theme("colors.orange.50");
 }
 
-article.highlight-emerald svg,
-article.highlight-emerald h4 span,
-article.highlight-emerald h3 span {
+.blog.highlight-orange a {
+  color: theme("colors.orange.400");
+  border-bottom: 2px solid theme("colors.orange.500") 
+}
+
+.blog.highlight-orange a:hover {
+  color: theme("colors.orange.500");
+}
+
+progress.highlight-orange::-webkit-progress-value {
+  background-color: theme("colors.orange.400");
+}
+
+.highlight-emerald svg,
+.highlight-emerald h3 span {
   color: theme("colors.emerald.400");
   font-weight: 500;
 }
 
-article.highlight-emerald svg,
-article.highlight-emerald h4 span,
-article.highlight-emerald h3 span::after {
+.highlight-emerald h4 span {
+  color: theme("colors.emerald.400");
+  border: 1px solid theme("colors.emerald.200");
+}
+
+.highlight-emerald svg,
+.highlight-emerald h4 span,
+.highlight-emerald h3 span::after {
   background-color: theme("colors.emerald.50");
 }
 
-article.highlight-teal svg,
-article.highlight-teal h3 span {
+.blog.highlight-emerald a {
+  color: theme("colors.emerald.400");
+  border-bottom: 2px solid theme("colors.emerald.500") 
+}
+
+.blog.highlight-emerald a:hover {
+  color: theme("colors.emerald.500");
+}
+
+progress.highlight-emerald::-webkit-progress-value {
+  background-color: theme("colors.emerald.400");
+}
+
+.highlight-teal svg,
+.highlight-teal h3 span {
   color: theme("colors.teal.400");
   font-weight: 500;
 }
 
-article.highlight-teal svg,
-article.highlight-teal h3 span::after {
+.highlight-teal h4 span {
+  color: theme("colors.teal.400");
+  border: 1px solid theme("colors.teal.200");
+}
+
+.highlight-teal svg,
+.highlight-teal h4 span,
+.highlight-teal h3 span::after {
   background-color: theme("colors.teal.50");
 }
 
-article.highlight-blue svg,
-article.highlight-blue h4 span,
-article.highlight-blue h3 span {
+.blog.highlight-teal a {
+  color: theme("colors.teal.400");
+  border-bottom: 2px solid theme("colors.teal.500") 
+}
+
+.blog.highlight-teal a:hover {
+  color: theme("colors.teal.500");
+}
+
+progress.highlight-teal::-webkit-progress-value {
+  background-color: theme("colors.teal.400");
+}
+
+.highlight-blue svg,
+.highlight-blue h3 span {
   color: theme("colors.blue.400");
   font-weight: 500;
 }
 
-article.highlight-blue svg,
-article.highlight-blue h4 span,
-article.highlight-blue h3 span::after {
+.highlight-blue h4 span {
+  color: theme("colors.blue.400");
+  border: 1px solid theme("colors.blue.200");
+}
+
+.highlight-blue svg,
+.highlight-blue h4 span,
+.highlight-blue h3 span::after {
   background-color: theme("colors.blue.50");
 }
 
-article.highlight-purple svg,
-article.highlight-purple h4 span,
-article.highlight-purple h3 span {
+.blog.highlight-blue a {
+  color: theme("colors.blue.400");
+  border-bottom: 2px solid theme("colors.blue.500") 
+}
+
+.blog.highlight-blue a:hover {
+  color: theme("colors.blue.500");
+}
+
+progress.highlight-blue::-webkit-progress-value {
+  background-color: theme("colors.blue.400");
+}
+
+.highlight-purple svg,
+.highlight-purple h3 span {
   color: theme("colors.purple.400");
   font-weight: 500;
 }
 
-article.highlight-purple svg,
-article.highlight-purple h4 span,
-article.highlight-purple h3 span::after {
+.highlight-purple h4 span {
+  color: theme("colors.purple.400");
+  border: 1px solid theme("colors.purple.200");
+}
+
+.highlight-purple svg,
+.highlight-purple h4 span,
+.highlight-purple h3 span::after {
   background-color: theme("colors.purple.50");
 }
 
-article.highlight-rose svg,
-article.highlight-rose h4 span,
-article.highlight-rose h3 span {
+.blog.highlight-purple a {
+  color: theme("colors.purple.400");
+  border-bottom: 2px solid theme("colors.purple.500") 
+}
+
+.blog.highlight-purple a:hover {
+  color: theme("colors.purple.500");
+}
+
+progress.highlight-purple::-webkit-progress-value {
+  background-color: theme("colors.purple.400");
+}
+
+.highlight-rose svg,
+.highlight-rose h3 span {
   color: theme("colors.rose.400");
   font-weight: 500;
 }
 
-article.highlight-rose svg,
-article.highlight-rose h4 span,
-article.highlight-rose h3 span::after {
+.highlight-rose h4 span {
+  color: theme("colors.rose.400");
+  border: 1px solid theme("colors.rose.200");
+}
+
+.highlight-rose svg,
+.highlight-rose h4 span,
+.highlight-rose h3 span::after {
   background-color: theme("colors.rose.50");
 }
 
-article.archive h3 span {
+.blog.highlight-rose a {
+  color: theme("colors.rose.400");
+  border-bottom: 2px solid theme("colors.rose.500") 
+}
+
+.blog.highlight-rose a:hover {
+  color: theme("colors.rose.500");
+}
+
+progress.highlight-rose::-webkit-progress-value {
+  background-color: theme("colors.rose.400");
+}
+
+.archive h3 span {
   font-weight: 500;
   display: inline-block;
   position: relative;
 }
 
-article.archive h3 span::after {
+.archive h3 span::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -199,11 +368,12 @@ img.lazy {
   transition: all 1s ease;
 }
 
-article h3,
-.summary-large h2,
-article p,
-header h1,
-header h2 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Rubik", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 

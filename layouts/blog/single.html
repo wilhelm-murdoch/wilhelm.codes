@@ -1,88 +1,121 @@
 {{ define "main" }}
-  <header class="mx-auto max-w-4xl text-center mb-8 relative category-{{ .Params.category | urlize  }}">
-    <a href="" title="" class="category p-2 rounded-md text-sm font-medium inline-block">
-      {{ .Params.category }}
-    </a>
-    {{ with .Params.tags }}
-      {{ $count :=  len . }}
-      {{ if ne $count 0 }}
-        +
-        {{ range $index, $tag := . }}
-          <span class="border-b-2 border-b-slate-100 font-medium text-slate-500">{{ $tag }}</span>
-          {{ if eq $count 2 }}{{ if eq $index 0 }}&nbsp;&amp;&nbsp;{{ end }}
-          {{ else if and (ge $count 2) (eq $index (sub $count 2)) }}&nbsp;&amp;&nbsp;
-          {{ else }}{{ if and (ne $count 1) (ne $index (sub $count 1)) }},{{ end }}{{ end }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-    <h1 class="text-5xl my-8 font-bold leading-tight">{{ .Title }}</h1>
-    <div class="mt-8 font-medium text-slate-500">
-      {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-      {{ $dateHuman := .Date | time.Format ":date_medium" }}
-      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-      &middot;
-      about a {{ .ReadingTime }} min read
-    </div>
-    <div class="summary text-justify text-2xl text-slate-500 font-extralight my-8 leading-8">{{ .Summary }}</div>
-    <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}" class="article-card overflow-hidden rounded-2xl block ring-4 border-4 border-white">
-      {{ $title := .LinkTitle }}
-      {{ with .Resources.Get "header.jpeg" }}
-        <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
-      {{ end }}
-    </a>
-  </header>
-  <section class="toc mx-auto max-w-4xl rounded-2xl bg-gray-100 p-10 mb-8">
-    <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">Table of Contents</h3>
-    {{ .TableOfContents }}
-  </section>
-  <article class="
-    blog
-    mx-auto 
-    max-w-4xl 
-    mb-8 
-    pb-8 
-    border-b 
-    prose-xl 
-    prose-p:text-slate-700 
-    prose-p:font-extralight 
-    prose-h3:text-slate-700 
-    prose-h3:font-extralight
-    prose-pre:overflow-x-auto 
-    prose-img:rounded-lg 
-    prose-img:m-auto 
-    prose-ol:text-slate-700 
-    prose-li:text-slate-700 
-    prose-li:font-light
-    prose-inline-code:text-slate-500
-    prose-inline-code:text-base
-    prose-inline-code:bg-slate-50
-    prose-inline-code:px-2
-    prose-inline-code:py-1
-    prose-inline-code:border
-    prose-inline-code:rounded-md
-    prose-inline-code:shadow-sm
-  ">
-    {{ .ContentWithoutSummary }}
-  </article>
+<div class="blog highlight-{{ .Params.highlight }} mx-auto max-w-4xl">
+    <h4 class="text-center mt-12 mb-6">
+        <span class="rounded-full px-4 py-3 text-lg">{{ .Params.category }}</span>
+    </h4>
 
-  {{ if .Params.comments }}
-  <section id="comments" class="mx-auto max-w-4xl mb-8">
-    <script src="https://giscus.app/client.js"
-      data-repo="wilhelm-murdoch/wilhelm.codes"
-      data-repo-id="R_kgDOGWTH9g"
-      data-category="Blog Comments"
-      data-category-id="DIC_kwDOGWTH9s4ClCVr"
-      data-mapping="og:title"
-      data-strict="1"
-      data-reactions-enabled="1"
-      data-emit-metadata="1"
-      data-input-position="top"
-      data-theme="light"
-      data-lang="en"
-      data-loading="lazy"
-      crossorigin="anonymous"
-      async>
-    </script>
-  </section>
-  {{ end }}
+    <div class="text-center mb-12 text-slate-300">
+        {{ with .Params.tags }}
+            {{ if ne (len .) 0 }}
+                {{ partial "tags/inline.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <h3 class="text-center text-5xl mb-12 text-slate-600 font-light">
+        {{ .LinkTitle | safeHTML }}
+    </h3>
+
+    <article class="mb-8 fade-in-animation transition card border rounded-2xl shadow-md shadow-slate-100 overflow-hidden">
+        <div class="overflow-hidden h-96">
+            {{ $title := .LinkTitle }}
+            {{ with .Resources.Get "header.jpeg" }}
+                <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
+            {{ end }}
+        </div>
+        <div class="pt-16 relative">
+            <span class="absolute mx-auto -top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-10 w-10 p-4 rounded-full ring-4 ring-white"></span>
+            <div class="px-24 mb-16 text-slate-700 text-xl font-light text-justify leading-relaxed">
+                {{ .Summary }}
+                <footer class="mt-10 text-sm text-center text-slate-400 font-light">
+                    written by
+                    <img
+                        class="inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400 jello-animation"
+                        src="https://s.gravatar.com/avatar/7cc6bee5975704b299bd7355e8ba9356?s=40"
+                        alt="It me."
+                    /> on <strong class="border-b border-slate-300">{{ .Date | time.Format ":date_medium" }}</strong> and it's about a <strong class="border-b border-slate-300">{{ .ReadingTime }}-minute</strong> read
+                </footer>
+            </div>
+            <section class="toc mx-auto bg-gray-100 p-8 px-24 mb-16">
+                <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">Table of Contents</h3>
+                {{ .TableOfContents }}
+            </section>
+        </div>
+        <div class="
+            mx-auto 
+            max-w-4xl 
+            mb-8 
+            pb-8
+            px-24
+            prose-xl 
+
+            prose-p:text-slate-700 
+            prose-p:text-xl
+            prose-p:leading-relaxed
+            prose-p:text-justify
+            prose-p:font-light
+
+            prose-h4:font-semibold
+            prose-h4:text-slate-700
+            prose-h5:font-semibold
+            prose-h5:text-slate-700
+
+            prose-li:text-xl
+            prose-li:text-slate-700 
+            prose-li:leading-relaxed
+            prose-li:text-left
+            prose-li:font-light
+
+            prose-hr:my-18
+            prose-pre:overflow-x-auto 
+            prose-img:m-auto 
+
+            prose-inline-code:text-black
+            prose-inline-code:font-bold
+        ">
+            {{ .ContentWithoutSummary }}
+        </div>
+    </article>
+
+    <progress class="highlight-{{ .Params.highlight }}" value="0" max="100" data-progress-bar></progress>
+    <script>
+    function getScrollPercent() {
+        const h = document.documentElement, 
+            b = document.body,
+            st = 'scrollTop',
+            sh = 'scrollHeight';
+        return Math.round((h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100);
+    }
+
+    const progressBar = document.querySelector('[data-progress-bar]');
+    
+    if (progressBar) {
+        progressBar.setAttribute('value', getScrollPercent());
+        window.addEventListener('scroll', () => {
+        progressBar.setAttribute('value', getScrollPercent());
+        });
+    }
+    </script> 
+
+    {{ if .Params.comments }}
+    <section id="comments" class="mx-auto max-w-4xl mb-8">
+        <script src="https://giscus.app/client.js"
+            data-repo="wilhelm-murdoch/wilhelm.codes"
+            data-repo-id="R_kgDOGWTH9g"
+            data-category="Blog Comments"
+            data-category-id="DIC_kwDOGWTH9s4ClCVr"
+            data-mapping="og:title"
+            data-strict="1"
+            data-reactions-enabled="1"
+            data-emit-metadata="1"
+            data-input-position="top"
+            data-theme="light"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+    {{ end }}
+</div>
 {{ end }}

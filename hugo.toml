@@ -15,4 +15,4 @@ enableGitInfo = true
     ordered = true
     startLevel = 2
   [markup.highlight]
-    style = "nord"
+    style = "catppuccin-mocha"

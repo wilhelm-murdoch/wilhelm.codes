@@ -1,33 +1,16 @@
 {{ define "main" }}
+
+<!-- {{range $name, $taxonomy := .Site.Taxonomies.tags}} {{ $cnt := .Count }}
+{{ with $.Site.GetPage (printf "/tags/%s" $name) }}
+    <div class="tagbutton">
+  <a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a>
+  <sup>{{$cnt}}</sup>
+    </div>
+{{end}}
+{{end}} -->
     <section class="mx-auto max-w-4xl fade-in-animation">
-    {{ range (where .Site.RegularPages "Section" "blog") }}
-      <article class="highlight-{{ .Params.highlight }} archive transition hover:scale-105 flex border rounded-2xl p-8 mb-8 shadow-md shadow-slate-100">
-        <div class="w-16 pt-1 mr-4 lg:inline-block md:inline-block sm:hidden">
-          <span class="fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-8 w-8 p-3 rounded-full"></span>
-        </div>
-        <div>
-          <h3 class="font-light text-2xl mb-2 text-slate-800">
-            <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
-              {{ .LinkTitle | safeHTML }}
-            </a>
-          </h3>
-          <p class="text-slate-300 text-sm">
-              <span class="border-b-2 border-b-slate-100 font-medium text-slate-500">{{ .Params.category }}</span>
-              {{ with .Params.tags }}
-                {{ $count :=  len . }}
-                {{ if ne $count 0 }}
-                  +
-                  {{ range $index, $tag := . }}
-                    <span class="border-b-2 border-b-slate-100  text-slate-500">{{ $tag }}</span>
-                    {{ if eq $count 2 }}{{ if eq $index 0 }}&nbsp;&amp;&nbsp;{{ end }}
-                    {{ else if and (ge $count 2) (eq $index (sub $count 2)) }}&nbsp;&amp;&nbsp;
-                    {{ else }}{{ if and (ne $count 1) (ne $index (sub $count 1)) }},{{ end }}{{ end }}
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-          </p>
-        </div>
-      </article>
-    {{ end }}
-  </section>
+        {{ range (where .Site.RegularPages "Section" "blog") }}
+            {{ partial "views/row.html" . }}
+        {{ end }}
+    </section>
 {{ end }}

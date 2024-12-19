@@ -139,7 +139,7 @@ docker inspect $(docker ps -q) | jq -r '
 
 You’ll get a string that looks similar to the following.
 
-```
+```text
 --env=GOSU_VERSION=1.14 --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=REDIS_DOWNLOAD_SHA=f0e65fda74c44a3dd4fa9d512d4d4d833dd0939c934e946a5c622a630d057f2f --env=REDIS_DOWNLOAD_URL=http://download.redis.io/releases/redis-7.0.4.tar.gz --env=REDIS_VERSION=7.0.4
 ```
 
