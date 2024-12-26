@@ -1,5 +1,6 @@
 ---
 title: Why Can't I Hold All These <span>Slack Emojis</span>?
+title_safe: Why Can't I Hold All These Slack Emojis?
 highlight: yellow
 pack: duotone
 icon: face-awesome

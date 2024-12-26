@@ -1,31 +1,31 @@
 {{- with resources.Get "fontawesome.js" }}
-  <script defer src="{{ .RelPermalink }}"></script>
-{{ end }}
+    <script defer src="{{ .RelPermalink }}"></script>
+{{ end }} 
 
 {{- with resources.Get "fa-duotone.js" }}
-  <script defer src="{{ .RelPermalink }}"></script>
-{{ end }}
+    <script defer src="{{ .RelPermalink }}"></script>
+{{ end }} 
 
 {{- with resources.Get "brands.js" }}
-  <script defer src="{{ .RelPermalink }}"></script>
+    <script defer src="{{ .RelPermalink }}"></script>
 {{ end }}
 
 <script type="text/javascript">
   const lazy = new IntersectionObserver((entries) => {
     const loaded = (entry) => {
-      entry.target.style.opacity = "1";
+        entry.target.style.opacity = "1";
     };
 
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+        if (!entry.isIntersecting) return;
 
-      if (entry.target.complete) {
-        loaded(entry);
-      } else {
-        entry.target.addEventListener("load", loaded);
-      }
+        if (entry.target.complete) {
+            loaded(entry);
+        } else {
+            entry.target.addEventListener("load", loaded);
+        }
 
-      lazy.unobserve(entry.target);
+        lazy.unobserve(entry.target);
     });
   });
 
@@ -33,7 +33,7 @@
     images = document.querySelectorAll("img.lazy");
 
     images.forEach((image) => {
-      lazy.observe(image);
+        lazy.observe(image);
     });
   };
 </script>

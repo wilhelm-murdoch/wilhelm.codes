@@ -1,5 +1,6 @@
 ---
 title: Learning Bash Through <span>Pointless Fun</span>
+title_safe: Learning Bash Through Pointless Fun
 highlight: purple
 pack: duotone
 icon: mushroom

@@ -1,5 +1,6 @@
 ---
 title: <span>Save Money</span> by Keeping Your AWS Account Clean
+title_safe: Save Money by Keeping Your AWS Account Clean
 highlight: emerald
 pack: duotone
 icon: sack-dollar

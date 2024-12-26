@@ -1,5 +1,6 @@
 ---
 title: Liberating Custom <span>Slack Emojis</span>
+title_safe: Liberating Custom Slack Emojis
 highlight: yellow
 pack: duotone
 icon: face-awesome

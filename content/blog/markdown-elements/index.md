@@ -1,5 +1,6 @@
 ---
 title: Testing <span>Markdown</span> Elements
+title_safe: Testing Markdown Elements
 highlight: slate
 pack: brands
 icon: markdown
