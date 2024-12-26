@@ -1,5 +1,6 @@
 ---
 title: Why I Built <span>Plant Smart</span>
+title_safe: Why I Built Plant Smart
 highlight: emerald
 pack: duotone
 icon: seedling

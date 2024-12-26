@@ -1,5 +1,6 @@
 ---
 title: The Longer <span>Something Doesn't Happen</span>, the Sooner it Will
+title_safe: The Longer Something Doesn't Happen, the Sooner it Will
 highlight: orange
 pack: duotone
 icon: fire

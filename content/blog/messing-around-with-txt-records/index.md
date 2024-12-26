@@ -1,5 +1,6 @@
 ---
 title: <span>Messing Around</span> with TXT Records
+title_safe: Messing Around with TXT Records
 highlight: slate
 pack: duotone
 icon: id-card

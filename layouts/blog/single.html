@@ -1,18 +1,10 @@
 {{ define "main" }}
 <div class="blog highlight-{{ .Params.highlight }} mx-auto max-w-4xl">
-    <h4 class="text-center mt-12 mb-6">
-        <span class="rounded-full px-4 py-3 text-lg">{{ .Params.category }}</span>
+    <h4 class="text-center pt-8">
+        <span class="rounded-full px-4 py-3 text-xs font-medium">{{ .Params.category }}</span>
     </h4>
 
-    <div class="text-center mb-12 text-slate-300">
-        {{ with .Params.tags }}
-            {{ if ne (len .) 0 }}
-                {{ partial "tags/inline.html" . }}
-            {{ end }}
-        {{ end }}
-    </div>
-
-    <h3 class="text-center text-5xl mb-16 text-slate-600 font-light">
+    <h3 class="text-center text-5xl my-12 text-slate-600 font-light">
         {{ .LinkTitle | safeHTML }}
     </h3>
 
@@ -25,46 +17,37 @@
         </div>
         <div class="pt-16 relative">
             <span class="absolute mx-auto -top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-10 w-10 p-4 rounded-full ring-4 ring-white"></span>
-            <div class="px-24 mb-16 text-slate-700 text-xl font-light text-justify leading-relaxed">
+            <div class="px-24 mb-14 text-slate-700 text-xl font-light leading-relaxed text-justify">
                 {{ .Summary }}
-                <footer class="mt-10 text-sm text-center text-slate-400 font-light">
-                    written by
-                    <img
-                        class="inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400 jello-animation"
-                        src="https://s.gravatar.com/avatar/7cc6bee5975704b299bd7355e8ba9356?s=40"
-                        alt="It me."
-                    /> on <strong class="border-b border-slate-300">{{ .Date | time.Format ":date_medium" }}</strong> and it's about a <strong class="border-b border-slate-300">{{ .ReadingTime }}-minute</strong> read
-                </footer>
             </div>
-            <section class="toc mx-auto bg-gray-100 p-8 px-24 mb-16">
-                <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">Table of Contents</h3>
-                {{ .TableOfContents }}
-            </section>
+            {{ if ne .Params.toc false }}
+                {{ with .TableOfContents }}
+                <section class="toc mx-auto bg-gray-100 p-8 px-24 mb-16">
+                    <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">Table of Contents</h3>
+                    {{ . }}
+                </section>
+                {{ end }}
+            {{ end }}
         </div>
         <div class="
             mx-auto 
             max-w-4xl 
             mb-8 
-            pb-8
             px-24
             prose-xl 
 
-            prose-p:text-slate-700 
-            prose-p:text-xl
-            prose-p:leading-relaxed
-            prose-p:text-justify
-            prose-p:font-light
+            prose-p:text-slate-600 
+            prose-p:text-lg
+            prose-p:leading-normal
 
             prose-h4:font-semibold
             prose-h4:text-slate-700
             prose-h5:font-semibold
             prose-h5:text-slate-700
 
-            prose-li:text-xl
-            prose-li:text-slate-700 
-            prose-li:leading-relaxed
-            prose-li:text-left
-            prose-li:font-light
+            prose-li:text-lg
+            prose-li:text-slate-600 
+            prose-li:leading-normal
 
             prose-hr:my-18
             prose-pre:overflow-x-auto 
@@ -74,6 +57,25 @@
             prose-inline-code:font-bold
         ">
             {{ .ContentWithoutSummary }}
+        </div>
+        
+        <footer class="mb-4 text-sm text-center text-slate-400 font-light">
+            written by
+            <img
+                class="inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400 jello-animation"
+                src="https://s.gravatar.com/avatar/7cc6bee5975704b299bd7355e8ba9356?s=40"
+                alt="It me."
+            /> on <strong class="border-b border-slate-300">{{ .Date | time.Format ":date_medium" }}</strong>
+            {{ with .Params.tags }}
+                and filed under
+                {{ if ne (len .) 0 }}
+                    {{ partial "tags/inline.html" . }}
+                {{ end }}
+            {{ end }}
+        </footer>
+
+        <div class="text-center mb-8 text-slate-300">
+
         </div>
     </article>
 
@@ -97,7 +99,7 @@
     }
     </script> 
 
-    {{ if .Params.comments }}
+    {{ if ne .Params.comments false }}
     <section id="comments" class="mx-auto max-w-4xl mb-8">
         <script src="https://giscus.app/client.js"
             data-repo="wilhelm-murdoch/wilhelm.codes"

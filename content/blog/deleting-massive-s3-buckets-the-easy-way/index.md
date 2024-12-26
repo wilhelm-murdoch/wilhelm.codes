@@ -1,5 +1,6 @@
 ---
 title: Deleting <span>Massive S3 Buckets</span> the Easy Way
+title_safe: Deleting Massive S3 Buckets the Easy Way
 highlight: red
 pack: duotone
 icon: bucket

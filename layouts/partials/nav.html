@@ -1,4 +1,18 @@
-<nav class="flex justify-center space-x-10 my-8 mb-8 font-semibold text-lg text-slate-600">
-  <a href="{{ .Site.BaseURL }}" title="Latest" class="border-b-4 border-blue-600">Latest</a>
-  <a href="{{ .Site.BaseURL }}archive" title="Archive" class="transition ease-in-out border-b-4 border-slate-200 hover:border-slate-400">Archive</a>
-</nav>
+<div class="max-w-4xl m-auto">
+  <nav id="navigation" class="text-lg text-slate-300 mb-16 text-center">
+    <ul class="p-0 m-0">
+      {{ if eq .RelPermalink "/" }}
+      <li><a href="{{ .Site.BaseURL }}" title="Home" class="active">Home</a></li>
+      {{ else }}
+      <li><a href="{{ .Site.BaseURL }}" title="Home">Home</a></li>
+      {{ end }}
+      
+      {{ if eq .RelPermalink "/archive/" }}
+      <li><a href="{{ .Site.BaseURL }}archive" title="Archive" class="active">Archive</a></li>
+      {{ else }}
+      <li><a href="{{ .Site.BaseURL }}archive" title="Archive">Archive</a></li>
+      {{ end }}
+      <li class="cursor-not-allowed">Projects</li>
+    </ul>
+  </nav>
+</div>

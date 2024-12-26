@@ -10,8 +10,8 @@
             {{ partial "views/row.html" . }}
         {{ end }}
         <div class="text-center">
-            <a href="{{ .Site.BaseURL }}archive" class="text-blue-600">
-                <span class="fa-duotone fa-box-archive h-5 w-5 p-4  bg-blue-50 rounded-full"></span>
+            <a href="{{ .Site.BaseURL }}archive" class="text-blue-600 bg-blue-50 hover:bg-blue-100 transition-all font-semibold rounded-full px-4 py-2">
+                <span class="fa-duotone fa-box-archive mr-1"></span>
                 {{ len (where .Site.RegularPages "Section" "==" "blog") }} archived
             </a>
         </div>
