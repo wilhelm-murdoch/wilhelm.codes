@@ -47,7 +47,7 @@ Effectively, all this does is:
 If you were to save this in a file named as `divider.sh` and set it to execute with something like `chmod a+x` you could test it by doing something like: 
 
 ```bash
-$ while true; do echo "emitting a noop"; sleep 1; done | ./divvy.sh
+$ while true; do echo "emitting a noop"; sleep 1; done | ./divider.sh
 ```
 
 And you'll see something like the following:
