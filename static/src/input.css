@@ -69,9 +69,15 @@ Table of Contents
     letter-spacing: 1px;
   }
 
+.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before,
+.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after,
 .prose-xl :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before,
 .prose-xl :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after {
   content: "`";
+}
+
+.blog a {
+  text-decoration: none;
 }
 
 .highlight code::after,
@@ -93,7 +99,7 @@ Progress Bar
   width: 100%;
   height: 5px;
   background-color: transparent;
-  opacity: .75;
+  opacity: .85;
   z-index: 1100;
 }
 

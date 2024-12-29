@@ -1,23 +1,23 @@
 {{ define "main" }}
-<div class="blog highlight-{{ .Params.highlight }} mx-auto max-w-4xl">
-    <h4 class="text-center pt-8">
-        <span class="rounded-full px-4 py-3 text-xs font-medium">{{ .Params.category }}</span>
+<div class="blog highlight-{{ .Params.highlight }} mx-auto sm:max-w-full md:max-w-4xl">
+    <h4 class="text-center">
+        <span class="rounded-full sm:px-2 sm:py-2 md:px-4 md:py-3 text-xs sm:font-normal md:font-medium">{{ .Params.category }}</span>
     </h4>
 
-    <h3 class="text-center text-5xl my-12 text-slate-600 font-light">
+    <h3 class="text-center sm:text-2xl sm:my-6 md:text-5xl md:my-12 text-slate-600 font-light">
         {{ .LinkTitle | safeHTML }}
     </h3>
 
-    <article class="mb-8 fade-in-animation transition card border rounded-2xl shadow-md shadow-slate-100 overflow-hidden">
-        <div class="overflow-hidden h-96">
+    <article class="mb-8 fade-in-animation transition card md:border sm:rounded-none md:rounded-2xl sm:shadow-none md:shadow-md shadow-slate-100 overflow-hidden">
+        <div class="overflow-hidden sm:h-64 md:h-96">
             {{ $title := .LinkTitle }}
             {{ with .Resources.Get "header.jpeg" }}
                 <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
             {{ end }}
         </div>
-        <div class="pt-16 relative">
-            <span class="absolute mx-auto -top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-10 w-10 p-4 rounded-full ring-4 ring-white"></span>
-            <div class="px-24 mb-14 text-slate-700 text-xl font-light leading-relaxed text-justify">
+        <div class="sm:pt-8 md:pt-16 relative">
+            <span class="absolute mx-auto sm:-top-6 md:-top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} sm:h-5 sm:w-5 md:h-10 md:w-10 p-4 rounded-full ring-4 ring-white"></span>
+            <div class="sm:px-4 md:px-16 sm:mb-7 md:mb-14 text-slate-700 sm:text-base md:text-xl font-light leading-relaxed">
                 {{ .Summary }}
             </div>
             {{ if ne .Params.toc false }}
@@ -33,24 +33,31 @@
             mx-auto 
             max-w-4xl 
             mb-8 
-            px-24
+            sm:px-4
+            md:px-16
             prose-xl 
 
-            prose-p:text-slate-600 
-            prose-p:text-lg
+            prose-p:text-slate-800 
+            sm:prose-p:text-sm
+            md:prose-p:text-lg
             prose-p:leading-normal
+
+            prose-headings:text-lg
 
             prose-h4:font-semibold
             prose-h4:text-slate-700
             prose-h5:font-semibold
             prose-h5:text-slate-700
 
-            prose-li:text-lg
-            prose-li:text-slate-600 
+            sm:prose-li:text-sm
+            md:prose-li:text-lg
+            prose-li:text-slate-800 
             prose-li:leading-normal
 
-            prose-hr:my-18
+            sm:prose-hr:my-9
+            md:prose-hr:my-18
             prose-pre:overflow-x-auto 
+            sm:prose-pre:text-sm
             prose-img:m-auto 
 
             prose-inline-code:text-black

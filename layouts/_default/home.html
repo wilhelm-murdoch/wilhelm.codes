@@ -1,11 +1,17 @@
 {{ define "main" }}
-    <section class="mx-auto max-w-4xl grid grid-cols-2 gap-8 fade-in-animation mb-8 border-b border-b-slate-100 pb-8">
+    <section class="sm:hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-2 gap-8 fade-in-animation mb-8 border-b border-b-slate-100 pb-8">
         {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
             {{ partial "views/card.html" . }}
         {{ end }}
     </section>
 
     <section class="mx-auto max-w-4xl fade-in-animation">
+        <div class="sm:block md:hidden lg:hidden">
+            {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
+                {{ partial "views/row.html" . }}
+            {{ end }}
+        </div>
+
         {{ range (first 6 (where .Site.RegularPages "Section" "blog" | after 2)) }}
             {{ partial "views/row.html" . }}
         {{ end }}
