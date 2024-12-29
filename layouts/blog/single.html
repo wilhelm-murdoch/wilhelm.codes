@@ -1,10 +1,10 @@
 {{ define "main" }}
 <div class="blog highlight-{{ .Params.highlight }} mx-auto sm:max-w-full md:max-w-4xl">
     <h4 class="text-center">
-        <span class="rounded-full sm:px-2 sm:py-2 md:px-4 md:py-3 text-xs sm:font-normal md:font-medium">{{ .Params.category }}</span>
+        <span class="rounded-full px-2 py-2 md:px-4 md:py-3 text-xs sm:font-normal md:font-medium">{{ .Params.category }}</span>
     </h4>
 
-    <h3 class="text-center sm:text-2xl sm:my-6 md:text-5xl md:my-12 text-slate-600 font-light">
+    <h3 class="text-center text-2xl my-6 md:text-5xl md:my-12 text-slate-600 font-light">
         {{ .LinkTitle | safeHTML }}
     </h3>
 
@@ -16,13 +16,13 @@
             {{ end }}
         </div>
         <div class="sm:pt-8 md:pt-16 relative">
-            <span class="absolute mx-auto sm:-top-6 md:-top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} sm:h-5 sm:w-5 md:h-10 md:w-10 p-4 rounded-full ring-4 ring-white"></span>
-            <div class="sm:px-4 md:px-16 sm:mb-7 md:mb-14 text-slate-700 sm:text-base md:text-xl font-light leading-relaxed">
+            <span class="invisible sm:visible absolute mx-auto sm:-top-6 md:-top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} sm:h-5 sm:w-5 md:h-10 md:w-10 p-4 rounded-full ring-4 ring-white"></span>
+            <div class="p-4 md:px-16 sm:mb-7 md:mb-14 text-slate-700 sm:text-base md:text-xl font-light leading-relaxed">
                 {{ .Summary }}
             </div>
             {{ if ne .Params.toc false }}
                 {{ with .TableOfContents }}
-                <section class="toc mx-auto bg-gray-100 p-8 px-24 mb-16">
+                <section class="hidden sm:block toc mx-auto bg-gray-100 p-4 px-24 mb-16">
                     <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">Table of Contents</h3>
                     {{ . }}
                 </section>
@@ -33,31 +33,29 @@
             mx-auto 
             max-w-4xl 
             mb-8 
-            sm:px-4
+            px-4
             md:px-16
             prose-xl 
 
             prose-p:text-slate-800 
-            sm:prose-p:text-sm
+            prose-p:text-sm
             md:prose-p:text-lg
-            prose-p:leading-normal
-
-            prose-headings:text-lg
+            prose-p:leading-normal  
 
             prose-h4:font-semibold
             prose-h4:text-slate-700
             prose-h5:font-semibold
             prose-h5:text-slate-700
 
-            sm:prose-li:text-sm
+            prose-li:text-sm
             md:prose-li:text-lg
             prose-li:text-slate-800 
             prose-li:leading-normal
 
-            sm:prose-hr:my-9
+            prose-hr:my-9
             md:prose-hr:my-18
             prose-pre:overflow-x-auto 
-            sm:prose-pre:text-sm
+            prose-pre:text-sm
             prose-img:m-auto 
 
             prose-inline-code:text-black
@@ -66,7 +64,7 @@
             {{ .ContentWithoutSummary }}
         </div>
         
-        <footer class="mb-4 text-sm text-center text-slate-400 font-light">
+        <footer class="hidden sm:block mb-4 text-sm text-center text-slate-400 font-light">
             written by
             <img
                 class="inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400 jello-animation"
@@ -80,10 +78,6 @@
                 {{ end }}
             {{ end }}
         </footer>
-
-        <div class="text-center mb-8 text-slate-300">
-
-        </div>
     </article>
 
     <progress class="highlight-{{ .Params.highlight }}" value="0" max="100" data-progress-bar></progress>
@@ -107,7 +101,7 @@
     </script> 
 
     {{ if ne .Params.comments false }}
-    <section id="comments" class="mx-auto max-w-4xl mb-8">
+    <section id="comments" class="hidden sm:block mx-auto max-w-4xl mb-8">
         <script src="https://giscus.app/client.js"
             data-repo="wilhelm-murdoch/wilhelm.codes"
             data-repo-id="R_kgDOGWTH9g"
