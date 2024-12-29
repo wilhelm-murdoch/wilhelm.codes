@@ -1,12 +1,12 @@
 {{ define "main" }}
-    <section class="sm:hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-2 gap-8 fade-in-animation mb-8 border-b border-b-slate-100 pb-8">
+    <section class="hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-2 gap-8 fade-in-animation mb-8 border-b border-b-slate-100 pb-8">
         {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
             {{ partial "views/card.html" . }}
         {{ end }}
     </section>
 
     <section class="mx-auto max-w-4xl fade-in-animation">
-        <div class="sm:block md:hidden lg:hidden">
+        <div class="hidden sm:block md:hidden lg:hidden">
             {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
                 {{ partial "views/row.html" . }}
             {{ end }}
@@ -15,7 +15,7 @@
         {{ range (first 6 (where .Site.RegularPages "Section" "blog" | after 2)) }}
             {{ partial "views/row.html" . }}
         {{ end }}
-        <div class="text-center">
+        <div class="text-center mt-8 sm:mt-0">
             <a href="{{ .Site.BaseURL }}archive" class="text-blue-600 bg-blue-50 hover:bg-blue-100 transition-all font-semibold rounded-full px-4 py-2">
                 <span class="fa-duotone fa-box-archive mr-1"></span>
                 {{ len (where .Site.RegularPages "Section" "==" "blog") }} archived
