@@ -1,14 +1,17 @@
 {{ define "main" }}
-
-<!-- {{range $name, $taxonomy := .Site.Taxonomies.tags}} {{ $cnt := .Count }}
-{{ with $.Site.GetPage (printf "/tags/%s" $name) }}
-    <div class="tagbutton">
-  <a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a>
-  <sup>{{$cnt}}</sup>
-    </div>
-{{end}}
-{{end}} -->
     <section class="mx-auto max-w-4xl fade-in-animation">
+        <ul>
+            {{range $name, $taxonomy := .Site.Taxonomies.tags}} 
+                {{ $cnt := .Count }}
+                {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
+                    <li class="inline-block pb-4 mr-4">
+                        <a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>" class="text-lg border-b-2 border-b-slate-100 text-slate-500">#{{$name}}</a>
+                        <sup class="bg-slate-100 text-slate-500 border rounded-full w-6 h-6 text-xs inline-flex items-center justify-center -top-3">{{$cnt}}</sup>
+                    </li>
+                {{end}}
+            {{end}}
+        </ul>
+
         {{ range (where .Site.RegularPages "Section" "blog") }}
             {{ partial "views/row.html" . }}
         {{ end }}

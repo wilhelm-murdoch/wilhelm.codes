@@ -127,6 +127,16 @@ func main() {
 }
 ```
 
+```bash
+tmux set -g status-right "#[align=absolute-centre]#[fg=#f8f9f2]#W#[fg=#51cd97]#{?client_prefix,#[fg=#d0689d],#[fg=#51cd97]}.#[align=right]#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,}#[fg=#404040,underscore]#S#[none] "
+tmux set -g status-style "bg=#1f1f1f,fg=#f8f8f2"
+tmux set -g window-status-current-format "#{?client_prefix,#[fg=#d0689d],#[fg=#51cd97]}"
+tmux set -g window-status-format "#[fg=#404040]"
+tmux set -g status-left ' '
+tmux set-window-option -g pane-border-style "fg=#404040"
+tmux set-window-option -g pane-active-border-style "fg=#51cd97"
+```
+
 Ex amet id ex aliquip id do laborum excepteur exercitation elit sint commodo occaecat nostrud est. Nostrud pariatur esse veniam laborum non sint magna sit laboris minim in id. Aliqua pariatur pariatur excepteur adipisicing irure culpa consequat commodo et ex id ad.
 
 ## Inline elements
