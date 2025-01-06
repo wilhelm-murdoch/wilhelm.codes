@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "Wilhelm Codes"
 enableGitInfo = true
 
+[sitemap]
+  changeFreq = "daily"
+
 [params]
   description = "Slinger of nibbles, bits and bytes. Over 25 years of professional experience as a software engineer. Love making glowing rectangles go \"beep-boop\"."
   [params.author]
