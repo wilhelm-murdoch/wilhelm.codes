@@ -56,7 +56,7 @@ Honestly, there's nothing special about how to implement this. It's just another
 
 I recently migrated my zone for `wilhelm.codes` from [Vultr](https://www.vultr.com/) to [CloudFlare](https://www.cloudflare.com/) and this is pretty much what it all looks like:
 
-![](image-1.png)
+![](messing-around-with-txt-records/image-1.png)
 
 Obviously, this interface will be different if you use a different service, but that's all there is to it!
 
