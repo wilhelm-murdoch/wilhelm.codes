@@ -85,6 +85,11 @@ Table of Contents
   content: "";
 }
 
+.credit svg {
+  color: theme("colors.white") !important;
+  background-color: transparent !important;
+}
+
 /*
 Progress Bar
 */

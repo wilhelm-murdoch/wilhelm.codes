@@ -19,7 +19,7 @@ I'm in the middle of decommissioning a service at the moment and I have to do th
 
 For this particular service, we have an  [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)  process that stores raw data points for downstream ingestion by some other... thing. Anyway, the storage mechanism for this is a cross-region replicated S3 bucket containing just over 10 _million_ objects.
 
-![](image-1.png)
+![](deleting-massive-s3-buckets-the-easy-way/image-1.png)
 
 All associated buckets and objects must be deleted. 😬
 
@@ -27,7 +27,7 @@ Have you ever had to delete a bucket with this many objects? Not exactly straigh
 ## What's the problem? 
 As you may or may not know, you can't delete a bucket that still contains objects. For smaller buckets, this isn't much of an issue as you can saunter on over to the "empty bucket" screen. This will take you to a confirmation interstitial where you have to sit and wait until the deletion process finishes. Though, you had better not close that tab unless you want to start the process all over.  
 
-![](image-2.png)
+![](deleting-massive-s3-buckets-the-easy-way/image-2.png)
 
 Not exactly a feasible solution for our use case. No, for larger buckets there really is only one pragmatic solution.
 ## Lifecycle Policies! 
@@ -44,11 +44,11 @@ Alright, we're going to have to perform the following steps for the first policy
 
 First and foremost, give this policy and name and confirm your intent:
 
-![](image-3.png)
+![](deleting-massive-s3-buckets-the-easy-way/image-3.png)
 
 Select the following actions. We will need to select the last option in the list, but due to conflicting settings you will have to add it in separate, secondary, lifecycle policy:  
 
-![](image-4.png)
+![](deleting-massive-s3-buckets-the-easy-way/image-4.png)
 
 Set the following option to `1` day:
 

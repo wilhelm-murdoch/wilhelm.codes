@@ -9,10 +9,17 @@
     </h3>
 
     <article class="mb-8 fade-in-animation transition card md:border sm:rounded-none md:rounded-2xl sm:shadow-none md:shadow-md shadow-slate-100 overflow-hidden">
-        <div class="overflow-hidden sm:h-64 md:h-96">
+        <div class="overflow-hidden sm:h-64 md:h-96 relative">
             {{ $title := .LinkTitle }}
             {{ with .Resources.Get "header.jpeg" }}
                 <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
+            {{ end }}
+
+            {{ if .Params.credit }}
+                <div class="credit absolute bottom-1 left-1 rounded-md bg-black text-white p-2 opacity-70 text-xs">
+                    <span class="fa-duotone fa-copyright"></span>
+                    {{ .Params.credit | safeHTML }}
+                </div>
             {{ end }}
         </div>
         <div class="sm:pt-8 md:pt-16 relative">
