@@ -108,7 +108,7 @@ done <<< "${ids}"
 echo "Finished"
 ```
 
-You can save this as a file and make it executable, but I just paste this bad boy into my terminal. The above script will remove `100` accounts at a time. Just keep executing the script until you no longer see results like the following:
+You can save this as a file and make it executable, but I just paste this bad boy into your terminal. The above script will remove `100` accounts at a time. Just keep executing the script until you no longer see results like the following:
 
 ```text
 Unfollowing user '111'... done
