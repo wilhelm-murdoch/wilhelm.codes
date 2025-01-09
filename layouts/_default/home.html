@@ -6,7 +6,7 @@
     </section>
 
     <section class="mx-auto max-w-4xl fade-in-animation">
-        <div class="hidden sm:block md:hidden lg:hidden">
+        <div class="sm:block md:hidden lg:hidden">
             {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
                 {{ partial "views/row.html" . }}
             {{ end }}
