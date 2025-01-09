@@ -1996,8 +1996,70 @@ header h1 span::after {
   color: rgb(30 41 59 / var(--tw-text-opacity, 1));
 }
 
+.prose-table\:m-auto :is(:where(table):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin: auto;
+}
+
+.prose-table\:w-full :is(:where(table):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  width: 100%;
+}
+
+.prose-table\:table-auto :is(:where(table):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  table-layout: auto;
+}
+
+.prose-table\:table-fixed :is(:where(table):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  table-layout: fixed;
+}
+
+.prose-table\:border :is(:where(table):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  border-width: 1px;
+}
+
+.prose-thead\:bg-black :is(:where(thead):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
+.prose-thead\:bg-slate-50 :is(:where(thead):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity, 1));
+}
+
+.prose-thead\:p-1 :is(:where(thead):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  padding: 0.25rem;
+}
+
+.prose-thead\:p-2 :is(:where(thead):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  padding: 0.5rem;
+}
+
+.prose-thead\:p-5 :is(:where(thead):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  padding: 1.25rem;
+}
+
+.prose-tr\:border-b :is(:where(tr):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  border-bottom-width: 1px;
+}
+
+.prose-th\:p-2 :is(:where(th):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  padding: 0.5rem;
+}
+
+.prose-td\:p-2 :is(:where(td):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  padding: 0.5rem;
+}
+
 .prose-img\:m-auto :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin: auto;
+}
+
+.prose-img\:rounded-md :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  border-radius: 0.375rem;
+}
+
+.prose-img\:rounded-lg :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  border-radius: 0.5rem;
 }
 
 .prose-hr\:my-9 :is(:where(hr):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
