@@ -6,14 +6,13 @@ pack: duotone
 icon: code
 draft: false
 toc: false
-date: 2024-12-19
+date: 2025-01-09
 category: Development
 tags:
   - bash
   - snippets
   - tutorials
 ---
-
 I tend to look at a _lot_ of log output throughout the day as part of my role as platform engineer. This obviously extends to any backend, or ops-related, role. One little niggle that always gets to me is tailing output where the lines only change when something interesting happens.
 
 <!--more-->
