@@ -1,6 +1,6 @@
 {{ define "main" }}
     <section class="mx-auto max-w-4xl fade-in-animation">
-        <ul>
+        <!-- <ul>
             {{range $name, $taxonomy := .Site.Taxonomies.tags}} 
                 {{ $cnt := .Count }}
                 {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
@@ -10,7 +10,7 @@
                     </li>
                 {{end}}
             {{end}}
-        </ul>
+        </ul> -->
 
         {{ range (where .Site.RegularPages "Section" "blog") }}
             {{ partial "views/row.html" . }}
