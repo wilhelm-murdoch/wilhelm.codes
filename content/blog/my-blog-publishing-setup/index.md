@@ -112,7 +112,7 @@ $ git commit -m 'some banal new bullshit screed'
 $ git push origin main
 ```
 
-Cloudflare monitors the associated repository, picks up the change and the auto-magic-ally builds and pushes everything the public eye.
+Cloudflare monitors the associated repository, picks up the change and the auto-magic-ally builds and pushes everything to the public eye.
 
 With this flow, I can see my changes locally in near realtime and push to "production" only when I'm happy with the results.
 
