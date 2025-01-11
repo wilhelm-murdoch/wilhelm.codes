@@ -15,7 +15,7 @@ tags:
   - cloudflare
 credit: Logo by <a href="https://obsidian.md/">Obsidian</a>
 ---
-Late last year I parted ways with [Hashnode](https://hashnode.com/) as the platform of choice for my blog. They pivoted a bit too far into the generative AI space which —  to me for a blogging platform —  made little to no sense. What? You write your content with AI, which then trains their model only to spit out more AI-generated slop?  A slop-based [Ouroboros](https://en.wikipedia.org/wiki/Ouroboros), if you will.
+Late last year I parted ways with [Hashnode](https://hashnode.com/) as the platform of choice for my blog. They pivoted a bit too far into the generative AI space which —  to me for a blogging platform —  made little to no sense. What? You write your content with AI, which then trains their model only to spit out more AI-generated slop?  A slop-based [Ouroboros](https://en.wikipedia.org/wiki/Ouroboros), if you will. Good luck with that, but I'll pass thanks.
 
 <!--more-->
 
@@ -96,3 +96,29 @@ done
 ```
 
 I keep this running whenever I'm writing a new article. Obsidian saves in almost realtime, so as I type the changes almost immediately sync across to the local Hugo server so I can review my changes.
+
+You effectively run it as:
+```bash
+$ ./sync.sh /path/to/obsidian/blog/ /path/to/hugo/content/
+```
+
+For `rsync` to work as intended and keep the destination directory completely in sync with the source directory, remember to add a trailing slash to both directory arguments.
+### No Auto-Commit?
+Nope. Not here. There are a few other peeps with blogs out there that "commit on change", but I prefer to have a bit more control over what actually gets published. For that, I simply use plain-old git commands to publish my new article:
+
+```bash
+$ git add -A
+$ git commit -m 'some banal new bullshit screed'
+$ git push origin main
+```
+
+Cloudflare monitors the associated repository, picks up the change and the auto-magic-ally builds and pushes everything the public eye.
+
+With this flow, I can see my changes locally in near realtime and push to "production" only when I'm happy with the results.
+
+## In Closing ...
+I'm stoked to have my very own place again that I have complete control over. I've thoroughly enjoyed creating this new blog design and I may even open-source it one day. 
+
+That said, I've made a very loose commitment to post a new article every week this year of our lord 2025 and I'm hoping this will make things heaps simpler. I only want to worry about what I'm going to write and just get the content out there.
+
+I sincerely hope I can keep this self-imposed weekly commitment. 😬👍
