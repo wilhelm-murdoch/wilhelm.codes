@@ -38,7 +38,7 @@ As for as question over "cost". Outside of time spent, it's about ~$100 AUD per 
 So, the greatest cost is... time? I guess 🤷
 
 ### Obsidian
-While I won't be going into what [Obsidian]() is and how it works, I will say it's been a personal boon in how I keep notes and track of ideas. I have a lot of fleeting / ephemeral thoughts that would otherwise lose instantly if I didn't immediately jot them down using this app.
+While I won't be going into what [Obsidian]() is and how it works, I will say it's been a personal boon in how I keep notes and track of ideas. I have a lot of fleeting / ephemeral thoughts I that would otherwise lose instantly if I didn't immediately jot them down using this app.
 
 So, it makes perfect sense for me to use my personal [vault](https://help.obsidian.md/Getting+started/Create+a+vault) to store all my blog content. The fact Obsidian content nothing more than Markdown files makes working with them using other bits of tech that much easier.
 
