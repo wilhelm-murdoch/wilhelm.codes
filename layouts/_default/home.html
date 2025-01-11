@@ -12,7 +12,7 @@
             {{ end }}
         </div>
 
-        {{ range (first 6 (where .Site.RegularPages "Section" "blog" | after 2)) }}
+        {{ range (first 10 (where .Site.RegularPages "Section" "blog" | after 2)) }}
             {{ partial "views/row.html" . }}
         {{ end }}
         <div class="text-center mt-8 sm:mt-0">
