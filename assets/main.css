@@ -967,6 +967,14 @@ h1,
   aspect-ratio: 16 / 9;
 }
 
+.aspect-auto {
+  aspect-ratio: auto;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -1147,6 +1155,11 @@ h1,
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .p-0 {
