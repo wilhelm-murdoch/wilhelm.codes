@@ -1,15 +1,16 @@
 <nav id="navigation" class="text-xs md:text-lg text-slate-300 mb-6 sm:mb-6 md:mb-14 text-center">
   <ul class="p-0 m-0">
-    {{ if eq .RelPermalink "/" }}
-    <li><a href="{{ .Site.BaseURL }}" title="Home" class="active">Home</a></li>
-    {{ else }}
-    <li><a href="{{ .Site.BaseURL }}" title="Home">Home</a></li>
-    {{ end }}
-    
-    {{ if eq .RelPermalink "/archive/" }}
-    <li><a href="{{ .Site.BaseURL }}archive" title="Archive" class="active">Archive</a></li>
-    {{ else }}
-    <li><a href="{{ .Site.BaseURL }}archive" title="Archive">Archive</a></li>
+    {{ $current := . }}
+    {{ range site.Menus.main }}
+      {{ $active := or ($current.IsMenuCurrent "nav" .) ($current.HasMenuCurrent "nav" .) }}
+      {{ $active = or $active (eq .Name $current.Title) }}
+      {{ $active = or $active (eq .URL $current.RelPermalink) }}
+      {{ $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog")) }}
+      <li>
+        <a class="{{ if $active }}active{{ end }}" href="{{ .URL }}">
+          {{ .Name }}
+        </a>
+      </li>
     {{ end }}
     <li class="cursor-not-allowed">Projects</li>
     <li class="cursor-not-allowed">Series</li>

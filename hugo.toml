@@ -3,6 +3,16 @@ languageCode = "en-us"
 title = "Wilhelm Codes"
 enableGitInfo = true
 
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+  [[menus.main]]
+    name = 'Archive'
+    pageRef = '/archive'
+    weight = 20
+
 [sitemap]
   changeFreq = "daily"
 
