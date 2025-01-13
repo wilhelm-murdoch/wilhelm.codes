@@ -1413,6 +1413,10 @@ h1,
   src: url("/fonts/Rubik.ttf") format("truetype");
 }
 
+/*
+Primary Navigation
+*/
+
 #navigation li {
   display: inline-block;
   margin-left: 1em;
@@ -1425,13 +1429,26 @@ h1,
   color: #1e293b;
 }
 
-#navigation a:hover {
+#navigation span::after,
+#navigation a::after {
   transition: all .2s ease;
-  border-bottom: 2px solid #2563eb;
+  position: absolute;
+  content: "";
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  transform: rotate(2deg);
 }
 
-#navigation a.active {
-  border-bottom: 2px solid #2563eb;
+#navigation span.active::after,
+#navigation a.active::after {
+  background-color: #93c5fd;
+}
+
+#navigation a:hover::after {
+  background-color: #dbeafe;
 }
 
 /*
