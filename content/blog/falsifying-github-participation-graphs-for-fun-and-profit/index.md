@@ -11,7 +11,6 @@ tags:
   - bash
   - git
 ---
-
 If you've spent any time job hunting in the tech industry, you've had to deal with recruiters. I like to joke around with my peers about how they're a necessary evil, but in all seriousness, great recruiters are worth their weight in gold. However ...
 
 <!--more-->
@@ -44,13 +43,13 @@ You will, naturally, need a Github account. Let's start there.
 
 Did you know you can configure your participation graph to display anonymised private commit statistics? Ensure that setting is ✅ and move on to the next step.
 
-![](falsifying-github-participation-graphs-for-fun-and-profit/image-1.png)
+![](image-1.png)
 
 ### New Private Repository
 
 Let's create a new _empty_ repository entitled `graph-participation` and make sure it's private.
 
-![](falsifying-github-participation-graphs-for-fun-and-profit/image-2.png)
+![](image-2.png)
 
 ### Checkout Local Working Copy
 
@@ -131,11 +130,11 @@ All you now have to do is sit back and wait for everything to update.
 
 We've gone from barren landscape:
 
-![](falsifying-github-participation-graphs-for-fun-and-profit/image-3.png)
+![](image-3.png)
 
 To a verdant garden paradise:
 
-![](falsifying-github-participation-graphs-for-fun-and-profit/image-4.png)
+![](image-4.png)
 
 And that's it! 🎉
 

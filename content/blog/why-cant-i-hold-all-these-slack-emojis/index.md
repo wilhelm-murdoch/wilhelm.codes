@@ -29,7 +29,7 @@ You’ll still be using the following, which can be found using instructions fro
 
 In addition, you will need your workspaces’s subdomain, or URL. This can easily be found within the Slack app itself:
 
-![](why-cant-i-hold-all-these-slack-emojis/image-1.png)
+![](image-1.png)
 
 ## Testing Your Findings
 
