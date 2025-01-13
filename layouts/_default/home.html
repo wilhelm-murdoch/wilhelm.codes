@@ -1,18 +1,35 @@
 {{ define "main" }}
-    <section class="hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-2 gap-8 fade-in-animation mb-8 border-b border-b-slate-100 pb-8">
+    <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
+        <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
+            <span class="bg-white px-4">Latest & Greatest</span>
+        </h3>
+    </div>
+
+    <section class="hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-2 gap-8 fade-in-animation mb-8 pb-8 border-b border-b-slate-100">
         {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
             {{ partial "views/card.html" . }}
         {{ end }}
     </section>
 
+    <section class="hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-4 gap-8 fade-in-animation mb-8">
+        {{ range (first 4 (where .Site.RegularPages "Section" "blog" | after 2)) }}
+            {{ partial "views/small.html" . }}
+        {{ end }}
+    </section>
+
+    <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
+        <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
+            <span class="bg-white px-4">Everything Else</span>
+        </h3>
+    </div>
     <section class="mx-auto max-w-4xl fade-in-animation">
         <div class="sm:block md:hidden lg:hidden">
-            {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
+            {{ range (where .Site.RegularPages "Section" "blog" | first 6) }}
                 {{ partial "views/row.html" . }}
             {{ end }}
         </div>
 
-        {{ range (first 10 (where .Site.RegularPages "Section" "blog" | after 2)) }}
+        {{ range (first 10 (where .Site.RegularPages "Section" "blog" | after 6)) }}
             {{ partial "views/row.html" . }}
         {{ end }}
         <div class="text-center mt-8 sm:mt-0">
