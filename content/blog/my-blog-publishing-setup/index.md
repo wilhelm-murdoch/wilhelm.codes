@@ -33,7 +33,7 @@ Or, to put it in even simpler terms:
 ## The "Stack"
 I suppose it's technically a "stack", but it seems a bit funny to use the term when referencing a blog setup. Just as with my [Plant Smart](https://plantsm.art) project, the goal is to automate as much as possible while keeping maintenance requirements and hard- and soft-dollar costs as low as possible. For this, I need only use a handful of tools to keep this space operational.
 
-As for as question over "cost". Outside of time spent, it's about ~$100 AUD per year for the domain name. This blog is a very small and inconsequential part of this domain, so the overall cost is absorbed by "other stuff".
+As far as the question over "cost", outside of time spent, it's about ~$100 AUD per year for the domain name. This blog is a very small and inconsequential part of this domain, so the overall cost is absorbed by "other stuff".
 
 So, the greatest cost is... time? I guess 🤷
 
