@@ -12,7 +12,6 @@ tags:
   - devops
   - networking
 ---
-
 If you've spent any time in an ops-related position, you've had to add these records when using custom domain names while integrating with some 3rd-party service. Especially, if you've ever wanted to configure an email service provider, like Google's Gmail, to appear as if you're sending emails from a personal domain name.
 
 <!--more-->
@@ -56,7 +55,7 @@ Honestly, there's nothing special about how to implement this. It's just another
 
 I recently migrated my zone for `wilhelm.codes` from [Vultr](https://www.vultr.com/) to [CloudFlare](https://www.cloudflare.com/) and this is pretty much what it all looks like:
 
-![](messing-around-with-txt-records/image-1.png)
+![](image-1.png)
 
 Obviously, this interface will be different if you use a different service, but that's all there is to it!
 
