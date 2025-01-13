@@ -1,0 +1,18 @@
+<article class="transition hover:scale-105 hover:ease-in-out hover:duration-300 highlight-{{ .Params.highlight }} card border rounded-2xl shadow-md shadow-slate-100 overflow-hidden">
+    <div class="overflow-hidden">
+        {{ $title := .LinkTitle }}
+        <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+        {{ with .Resources.Get "header.jpeg" }}
+            <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
+        {{ end }}
+        </a>
+    </div>
+    <div class="p-4 relative h-max">
+        <span class="absolute mx-auto -top-3 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-4 w-4 p-1 rounded-full ring-2 ring-white"></span>
+        <h3 class="font-light text-center text-sm mb-2 text-slate-800">
+            <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+                {{ .LinkTitle | safeHTML }}
+            </a>
+        </h3>
+    </div>
+</article>
