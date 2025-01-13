@@ -1,5 +1,5 @@
 ---
-title: <span>Falsifying</span> Github Participation Graphs for <span>Fun and Profit</span>
+title: <span>Falsifying</span> Github Participation Graphs for <span>Fun</span> & <span>Profit</span>
 title_safe: Falsifying Github Participation Graphs for Fun and Profit
 highlight: blue
 pack: brands
