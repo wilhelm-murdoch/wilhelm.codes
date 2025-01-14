@@ -5,13 +5,17 @@ enableGitInfo = true
 
 [menus]
   [[menus.main]]
-    name = 'Home'
-    pageRef = '/'
+    name = "Home"
+    pageRef = "/"
     weight = 10
   [[menus.main]]
-    name = 'Archive'
-    pageRef = '/archive'
+    name = "Archive"
+    pageRef = "/archive"
     weight = 20
+  [[menus.main]]
+    name = "Changelog"
+    pageRef = "/changelog"
+    weight = 30
 
 [sitemap]
   changeFreq = "daily"

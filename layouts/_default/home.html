@@ -17,7 +17,7 @@
         {{ end }}
     </section>
 
-
+    <!-- 
     <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
         <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
             <span class="bg-white px-4">Popular Tags</span>
@@ -35,14 +35,15 @@
                 {{end}}
             {{end}}
         </ul>
-    </section>
+    </section> 
+    -->
 
     <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
         <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
             <span class="bg-white px-4">Everything Else</span>
         </h3>
     </div>
-    <section class="mx-auto max-w-4xl fade-in-animation">
+    <section class="mx-auto max-w-4xl fade-in-animation mb-10">
         <div class="sm:block md:hidden lg:hidden">
             {{ range (where .Site.RegularPages "Section" "blog" | first 10) }}
                 {{ partial "views/row.html" . }}

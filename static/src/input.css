@@ -56,14 +56,14 @@ Primary Navigation
   margin-right: 1em;
 }
 
-#navigation a {
+#navigation li a {
   transition: all .2s ease;
   font-weight: 600;
   color: theme("colors.slate.800");
 }
 
-#navigation span::after,
-#navigation a::after {
+#navigation li span::after,
+#navigation li a::after {
   transition: all .2s ease;
   position: absolute;
   content: "";
@@ -75,12 +75,12 @@ Primary Navigation
   transform: rotate(2deg);
 }
 
-#navigation span.active::after,
-#navigation a.active::after {
+#navigation li span.active::after,
+#navigation li a.active::after {
   background-color: theme("colors.blue.300");
 }
 
-#navigation a:hover::after {
+#navigation li a:hover::after {
   background-color: theme("colors.blue.100");
 }
 
