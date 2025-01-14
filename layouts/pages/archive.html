@@ -1,7 +1,7 @@
 {{ define "main" }}
-    <section class="mx-auto max-w-4xl fade-in-animation">
-        {{ range (where .Site.RegularPages "Section" "blog") }}
-            {{ partial "views/row.html" . }}
-        {{ end }}
-    </section>
+  <section class="mx-auto max-w-4xl fade-in-animation">
+    {{ range (where .Site.RegularPages "Section" "blog") }}
+      {{ partial "views/row.html" . }}
+    {{ end }}
+  </section>
 {{ end }}

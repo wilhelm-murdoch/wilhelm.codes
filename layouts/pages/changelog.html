@@ -1,0 +1,75 @@
+{{ define "main" }}
+  <header class="hidden mx-auto max-w-4xl text-center mb-0 md:mb-8 pb-4 relative fade-in-animation">
+    <h1 class="text-2xl md:text-5xl sm:my-4 md:my-8 font-bold text-center leading-tight">
+      Heya, I'm
+      <span class="font-normal relative">Wilhelm Murdoch</span>.<br />Coder
+      & Platform Engineer.
+    </h1>
+    <p class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10">
+      {{ .Site.Params.Description }}
+    </p>
+  </header>
+
+  {{ $response := dict }}
+  <!-- {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }} -->
+  {{ $url := "http://localhost:1313/github.json" }}
+  {{ with resources.GetRemote $url }}
+    {{ with .Err }}
+      {{ errorf "%s" . }}
+    {{ else }}
+      {{ $response = . | transform.Unmarshal }}
+    {{ end }}
+  {{ else }}
+    {{ errorf "Unable to get remote resource %q" $url }}
+  {{ end }}
+
+  {{ $counts := newScratch }}
+  {{ $dates := slice }}
+  {{ range $response }}
+    {{ $date := substr .created_at 0 10 }}
+    {{ if not ( in $dates $date ) }}
+      {{ $dates = $dates | append $date }}
+    {{ end }}
+    {{ $counts.Add $date 1 }}
+  {{ end }}
+
+  <ul>
+    {{ range $dates }}
+      <li>
+        {{ $counts.Get . }} event{{ if gt ( $counts.Get . ) 1 }}s{{ end }} on 
+        {{ $time := . | time.AsTime }}
+        {{ $time.Format "2 of Jan, 2006" }}
+        <ul class="ml-4">
+          {{ $date := . }}
+          {{ range $response }}
+            {{ if eq $date ( substr .created_at 0 10 ) }}
+              {{ $event := . }}
+
+              <li>
+                {{ with ( eq .type "PushEvent" ) }}
+                  <div class="rounded-full bg-slate-100 inline-block p-1 px-2">
+                    <span class="fa-duotone fa-code-commit"></span>
+                  </div>
+                {{ end }}
+
+                {{ with ( eq .type "IssuesEvent" ) }}
+                  <div class="rounded-full bg-slate-100 inline-block p-1 px-2">
+                    <span class="fa-duotone fa-comments"></span>
+                  </div>
+                {{ end }}
+
+                {{ with ( eq .type "IssueCommentEvent" ) }}
+                  <div class="rounded-full bg-slate-100 inline-block p-1 px-2">
+                    <span class="fa-duotone fa-comment"></span>
+                  </div>
+                {{ end }}
+
+                {{ (index .payload.commits 0).message }}
+              </li>
+            {{ end }}
+          {{ end }}
+        </ul>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}
