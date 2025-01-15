@@ -14,6 +14,10 @@
             {{ .Name }}
           </a>
         {{ end }}
+
+        {{ if .Params.badge_text }}
+          <span class="absolute rounded-md px-1 text-xs bg-red-600 text-white">{{ .Params.badge_text }}</span>
+        {{ end }}
       </li>
     {{ end }}
     
