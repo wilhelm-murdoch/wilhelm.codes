@@ -1,15 +1,9 @@
 {{ define "main" }}
-  <header class="hidden mx-auto max-w-4xl text-center mb-0 md:mb-8 pb-4 relative fade-in-animation">
-    <h1 class="text-2xl md:text-5xl sm:my-4 md:my-8 font-bold text-center leading-tight">
-      Heya, I'm
-      <span class="font-normal relative">Wilhelm Murdoch</span>.<br />Coder
-      & Platform Engineer.
-    </h1>
-    <p class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10">
-      {{ .Site.Params.Description }}
-    </p>
-  </header>
-  
+<section class="mx-auto max-w-4xl fade-in-animation">
+  <h1 class="text-2xl md:text-5xl sm:my-4 md:my-8 font-bold text-center leading-tight">The Changelog<span class="text-blue-600">.</span></h1>
+  <p class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10">
+    The only constant is change and you can view it all here.<br/>Or, at least, the last 100 changes pulled directly from Github.
+  </p>
   {{ $response := dict }}
   {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
   {{ with resources.GetRemote $url }}
@@ -31,44 +25,57 @@
     {{ end }}
     {{ $counts.Add $date 1 }}
   {{ end }}
-
-  <ul>
+  
     {{ range $dates }}
-      <li>
-        {{ $counts.Get . }} event{{ if gt ( $counts.Get . ) 1 }}s{{ end }} on 
-        {{ $time := . | time.AsTime }}
-        {{ $time.Format "2 of Jan, 2006" }}
-        <ul class="ml-4">
-          {{ $date := . }}
-          {{ range $response }}
-            {{ if eq $date ( substr .created_at 0 10 ) }}
-              {{ $event := . }}
-
-              <li>
-                {{ with ( eq .type "PushEvent" ) }}
-                  <div class="rounded-full bg-slate-100 inline-block p-1 px-2">
-                    <span class="fa-duotone fa-code-commit"></span>
-                  </div>
-                {{ end }}
-
-                {{ with ( eq .type "IssuesEvent" ) }}
-                  <div class="rounded-full bg-slate-100 inline-block p-1 px-2">
-                    <span class="fa-duotone fa-comments"></span>
-                  </div>
-                {{ end }}
-
-                {{ with ( eq .type "IssueCommentEvent" ) }}
-                  <div class="rounded-full bg-slate-100 inline-block p-1 px-2">
-                    <span class="fa-duotone fa-comment"></span>
-                  </div>
-                {{ end }}
-
-                {{ (index .payload.commits 0).message }}
-              </li>
+    <div class="flex border-t pt-4 mb-4">
+      {{ $time := . | time.AsTime }} 
+      {{ $day := $time.Format "2" }}
+      <div class="w-2/5">
+        <h3 class="text-xl">{{ $day }}{{ partial "functions/ordinal.html" $day }} {{ $time.Format "of January 2006" }}</h3>
+        <h4 class="text-slate-400 text-lg">{{ $counts.Get . }} event{{ if gt ( $counts.Get . ) 1 }}s{{ end }}</h4>
+      </div>
+      <div class="w-3/5">
+        {{ $date := . }}
+        {{ range $response }}
+          {{ if eq $date ( substr .created_at 0 10 ) }}
+            {{ $event := . }}
+            <!-- {{ with ( eq .type "PushEvent" ) }}
+              <div class="rounded-full bg-slate-100 p-1 px-2">
+                <span class="fa-duotone fa-code-commit"></span>
+              </div>
             {{ end }}
+
+            {{ with ( eq .type "IssuesEvent" ) }}
+              <div class="rounded-full bg-slate-100 p-1 px-2">
+                <span class="fa-duotone fa-comments"></span>
+              </div>
+            {{ end }}
+
+            {{ with ( eq .type "IssueCommentEvent" ) }}
+              <div class="rounded-full bg-slate-100 p-1 px-2">
+                <span class="fa-duotone fa-comment"></span>
+              </div>
+            {{ end }} -->
+
+            <div class="mb-4 relative pl-12">
+              <!-- <span class="absolute left-0 top-1 fa-duotone fa-code-commit h-6 w-6 rounded-full bg-green-200 text-green-600 p-2"></span> -->
+              <!-- <span class="absolute left-0 top-1 fa-duotone fa-star h-6 w-6 rounded-full bg-yellow-200 text-yellow-600 p-2"></span> -->
+              <!-- <span class="absolute left-0 top-1 fa-duotone fa-comment h-6 w-6 rounded-full bg-slate-200 text-slate-600 p-2"></span> -->
+              <!-- <span class="absolute left-0 top-1 fa-duotone fa-ticket h-6 w-6 rounded-full bg-red-200 text-red-600 p-2"></span> -->
+              <span class="absolute left-0 top-1 fa-duotone fa-code-branch h-6 w-6 rounded-full bg-blue-200 text-blue-600 p-2"></span>
+                
+              <span class="text-lg">{{ (index .payload.commits 0).message }}</span>
+              <br />
+              by
+              <a href="{{ $event.actor.url }}" title="{{ $event.actor.display_login }}" class="inline-block">
+                <img src="{{ $event.actor.avatar_url }}" alt="{{ $event.actor.display_login }}" class="h-5 rounded-full border-blue-600 border-2"/>
+              </a>
+              at
+            </div>
           {{ end }}
-        </ul>
-      </li>
+        {{ end }}
+      </div>
+      </div>
     {{ end }}
-  </ul>
+</section>
 {{ end }}
