@@ -38,9 +38,9 @@ I also have [this one](https://github.com/wilhelm-murdoch/wilhelm.codes/blob/mai
 Hugo ships with a [default set](https://gohugo.io/content-management/shortcodes/#embedded-shortcodes) of shortcodes covering a variety of additional kinds of embeddings. 
 
 Unfortunately, for my purposes, I'm not planning on using dynamic numeric ordinals in my markdown files. I need this to work with templates and for that, we use...
-
-{{< callout notice "... that while you cannot use partials directly in your markdown files, a shortcode _could_ reference a partial indirectly." >}}
 ## Partials
+{{< callout notice "... that while you cannot use partials directly within your markdown files, you _can_ reference them _indirectly_ by embedding them within a shortcode ." >}}
+
 Unlike shortcodes, [partials]() are small re-usable HTML components that are typically used to keep code duplication down. They are effectively context-aware templates that can accept arbitrary data which can be used in generating desired output.
 
 [Here](https://github.com/wilhelm-murdoch/wilhelm.codes/blob/main/layouts/partials/views/small.html) is a small example of how I use partials for this blog. It's a small data card component you might find scattered throughout the site. Partials let you quickly change a UI component in one place while having it propagate everywhere else.
@@ -58,7 +58,7 @@ For the purpose of this article, they can also be used to create custom template
 {{ end -}}
 ```
 
-This may look a bit unreadable to people who aren't super-familiar with Hugo's template functionality, but it effectively resolves to:
+This may look a bit unreadable to people who aren't super-familiar with Hugo's template syntax, but it effectively resolves to:
 ```javascript
 const number = 10
 let ordinal = "th"
