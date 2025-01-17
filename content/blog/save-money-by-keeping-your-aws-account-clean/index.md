@@ -1,5 +1,5 @@
 ---
-title: <span>Save Money</span> by Keeping Your AWS Account Clean
+title: <span>Save</span> <span>Money</span> by Keeping Your <span>AWS</span> Account Clean
 title_safe: Save Money by Keeping Your AWS Account Clean
 highlight: emerald
 pack: duotone
@@ -13,7 +13,6 @@ tags:
   - security
   - cost-optimisation
 ---
-
 At a prior role, I managed just under 20 AWS accounts. Their uses varied from production workloads, to dedicated CI/CD environments, sandboxed areas for our engineers to experiment in, log aggregation, the list goes on.
 
 <!--more-->

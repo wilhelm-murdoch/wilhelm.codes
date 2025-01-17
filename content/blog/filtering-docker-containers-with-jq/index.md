@@ -1,5 +1,5 @@
 ---
-title: Filtering <span>Docker Containers</span> with jq
+title: Filtering <span>Docker</span> <span>Containers</span> with jq
 title_safe: Filtering Docker Containers with jq
 highlight: blue
 pack: brands

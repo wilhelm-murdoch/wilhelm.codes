@@ -1,5 +1,5 @@
 ---
-title: Breaking Up <span>Log Output</span> Using Bash
+title: Breaking Up <span>Log</span> <span>Output</span> Using Bash
 title_safe: Breaking Up Log Output Using Bash
 highlight: slate
 pack: duotone

@@ -1,5 +1,5 @@
 ---
-title: Deleting <span>Massive S3 Buckets</span> the Easy Way
+title: Deleting <span>Massive</span> <span>S3</span> <span>Buckets</span> the Easy Way
 title_safe: Deleting Massive S3 Buckets the Easy Way
 highlight: red
 pack: duotone

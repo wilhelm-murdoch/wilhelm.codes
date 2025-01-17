@@ -1,5 +1,5 @@
 ---
-title: <span>Messing Around</span> with TXT Records
+title: <span>Messing</span> <span>Around</span> with TXT Records
 title_safe: Messing Around with TXT Records
 highlight: slate
 pack: duotone
