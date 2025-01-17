@@ -9,7 +9,7 @@
       {{ .Site.Params.Description }}
     </p>
   </header>
-
+  
   {{ $response := dict }}
   {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
   {{ with resources.GetRemote $url }}

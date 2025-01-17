@@ -158,7 +158,7 @@ Progress Bar
 Article Highlights
 */
 
-.highlight-slate svg,
+.highlight-slate .summary svg,
 .highlight-slate h3 span {
   color: theme("colors.slate.400");
   font-weight: 500;
@@ -169,7 +169,7 @@ Article Highlights
   border: 1px solid theme("colors.slate.200");
 }
 
-.highlight-slate svg,
+.highlight-slate .summary svg,
 .highlight-slate h4 span,
 .highlight-slate h3 span::after {
   background-color: theme("colors.slate.50");
@@ -188,7 +188,7 @@ progress.highlight-slate::-webkit-progress-value {
   background-color: theme("colors.slate.400");
 }
 
-.highlight-red svg,
+.highlight-red .summary svg,
 .highlight-red h4 span,
 .highlight-red h3 span {
   color: theme("colors.red.400");
@@ -200,7 +200,7 @@ progress.highlight-slate::-webkit-progress-value {
   border: 1px solid theme("colors.red.200");
 }
 
-.highlight-red svg,
+.highlight-red .summary svg,
 .highlight-red h4 span,
 .highlight-red h3 span::after {
   background-color: theme("colors.red.50");
@@ -219,7 +219,7 @@ progress.highlight-red::-webkit-progress-value {
   background-color: theme("colors.red.400");
 }
 
-.highlight-yellow svg,
+.highlight-yellow .summary svg,
 .highlight-yellow h3 span {
   color: theme("colors.yellow.500");
   font-weight: 500;
@@ -230,7 +230,7 @@ progress.highlight-red::-webkit-progress-value {
   border: 1px solid theme("colors.yellow.200");
 }
 
-.highlight-yellow svg,
+.highlight-yellow .summary svg,
 .highlight-yellow h4 span,
 .highlight-yellow h3 span::after {
   background-color: theme("colors.yellow.50");
@@ -249,7 +249,7 @@ progress.highlight-yellow::-webkit-progress-value {
   background-color: theme("colors.yellow.400");
 }
 
-.highlight-orange svg,
+.highlight-orange .summary svg,
 .highlight-orange h3 span {
   color: theme("colors.orange.400");
   font-weight: 500;
@@ -260,7 +260,7 @@ progress.highlight-yellow::-webkit-progress-value {
   border: 1px solid theme("colors.orange.200");
 }
 
-.highlight-orange svg,
+.highlight-orange .summary svg,
 .highlight-orange h4 span,
 .highlight-orange h3 span::after {
   background-color: theme("colors.orange.50");
@@ -279,7 +279,7 @@ progress.highlight-orange::-webkit-progress-value {
   background-color: theme("colors.orange.400");
 }
 
-.highlight-emerald svg,
+.highlight-emerald .summary svg,
 .highlight-emerald h3 span {
   color: theme("colors.emerald.500");
   font-weight: 500;
@@ -290,7 +290,7 @@ progress.highlight-orange::-webkit-progress-value {
   border: 1px solid theme("colors.emerald.200");
 }
 
-.highlight-emerald svg,
+.highlight-emerald .summary svg,
 .highlight-emerald h4 span,
 .highlight-emerald h3 span::after {
   background-color: theme("colors.emerald.50");
@@ -309,7 +309,7 @@ progress.highlight-emerald::-webkit-progress-value {
   background-color: theme("colors.emerald.500");
 }
 
-.highlight-teal svg,
+.highlight-teal .summary svg,
 .highlight-teal h3 span {
   color: theme("colors.teal.400");
   font-weight: 500;
@@ -320,7 +320,7 @@ progress.highlight-emerald::-webkit-progress-value {
   border: 1px solid theme("colors.teal.200");
 }
 
-.highlight-teal svg,
+.highlight-teal .summary svg,
 .highlight-teal h4 span,
 .highlight-teal h3 span::after {
   background-color: theme("colors.teal.50");
@@ -339,7 +339,7 @@ progress.highlight-teal::-webkit-progress-value {
   background-color: theme("colors.teal.400");
 }
 
-.highlight-blue svg,
+.highlight-blue .summary svg,
 .highlight-blue h3 span {
   color: theme("colors.blue.400");
   font-weight: 500;
@@ -350,7 +350,7 @@ progress.highlight-teal::-webkit-progress-value {
   border: 1px solid theme("colors.blue.200");
 }
 
-.highlight-blue svg,
+.highlight-blue .summary svg,
 .highlight-blue h4 span,
 .highlight-blue h3 span::after {
   background-color: theme("colors.blue.50");
@@ -369,7 +369,7 @@ progress.highlight-blue::-webkit-progress-value {
   background-color: theme("colors.blue.400");
 }
 
-.highlight-purple svg,
+.highlight-purple .summary svg,
 .highlight-purple h3 span {
   color: theme("colors.purple.400");
   font-weight: 500;
@@ -380,7 +380,7 @@ progress.highlight-blue::-webkit-progress-value {
   border: 1px solid theme("colors.purple.200");
 }
 
-.highlight-purple svg,
+.highlight-purple .summary svg,
 .highlight-purple h4 span,
 .highlight-purple h3 span::after {
   background-color: theme("colors.purple.50");
@@ -399,7 +399,7 @@ progress.highlight-purple::-webkit-progress-value {
   background-color: theme("colors.purple.400");
 }
 
-.highlight-rose svg,
+.highlight-rose .summary svg,
 .highlight-rose h3 span {
   color: theme("colors.rose.400");
   font-weight: 500;
@@ -410,7 +410,7 @@ progress.highlight-purple::-webkit-progress-value {
   border: 1px solid theme("colors.rose.200");
 }
 
-.highlight-rose svg,
+.highlight-rose .summary svg,
 .highlight-rose h4 span,
 .highlight-rose h3 span::after {
   background-color: theme("colors.rose.50");

@@ -22,12 +22,12 @@
                 </div>
             {{ end }}
         </div>
-        <div class="sm:pt-8 md:pt-16 relative">
+        <div class="summary sm:pt-8 md:pt-16 relative">
             <span class="invisible sm:visible absolute mx-auto sm:-top-6 md:-top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} sm:h-5 sm:w-5 md:h-10 md:w-10 p-4 rounded-full ring-4 ring-white"></span>
             <div class="p-4 md:px-16 sm:mb-7 md:mb-14 text-slate-700 sm:text-base md:text-xl font-light leading-relaxed">
                 {{ .Summary }}
             </div>
-            {{ if ne .Params.toc false }}
+            {{ if eq .Params.toc true }}
                 {{ with .TableOfContents }}
                 <section class="hidden sm:block toc mx-auto bg-gray-100 p-4 px-24 mb-16">
                     <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">Table of Contents</h3>
