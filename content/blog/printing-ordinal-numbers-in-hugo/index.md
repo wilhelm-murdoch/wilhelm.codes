@@ -91,4 +91,4 @@ Which generates:
 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th
 ```
 
-Ground-breaking work! I can finally use ordinals in dates.
+Ground-breaking work! I can finally use ordinals in dates. Not exactly something I expected to write an article about, but here we are. 🤷

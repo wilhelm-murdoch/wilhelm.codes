@@ -1,5 +1,5 @@
 ---
-title: My <span>Blog Publishing</span> Setup & <span>Workflow</span>
+title: My <span>Blog</span> <span>Publishing</span> Setup & <span>Workflow</span>
 title_safe: My Blog Publishing Setup & Workflow
 highlight: purple
 pack: duotone
