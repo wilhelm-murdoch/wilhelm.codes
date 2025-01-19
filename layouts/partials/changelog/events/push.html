@@ -1,0 +1,6 @@
+{{ $event := . }}
+{{ partial "changelog/icon.html" ( dict "icon" "code-commit" "colour" "green" ) }}
+{{ range .payload.commits }}
+  <p class="text-base mb-1">{{ .message }}</p>
+  {{ partial "changelog/author.html" (dict "event" $event "sha_url" .url "sha" .sha) }}
+{{ end }}
