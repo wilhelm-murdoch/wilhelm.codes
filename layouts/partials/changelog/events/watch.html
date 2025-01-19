@@ -1,0 +1,4 @@
+{{ partial "changelog/icon.html" ( dict "icon" "eye" "colour" "purple" ) }}
+{{ $url_repo := partial "changelog/urls/repository.html" .repo.url }}
+<p class="text-base mb-1">{{ .payload.action | title }} watching <a href="{{ $url_repo }}" title="Check out the {{ .repo.name }} repository." target="_blank" class="text-slate-600 border-b border-dotted hover:text-slate-600 hover:border-b-slate-600">this repository</a>.</p>
+{{ partial "changelog/author.html" ( dict "event" . ) }}

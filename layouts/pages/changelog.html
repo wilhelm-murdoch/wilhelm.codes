@@ -5,7 +5,8 @@
     The only constant is change and you can view it all here.<br/>Or, at least, the last 100 changes pulled directly from Github.
   </p>
   {{ $response := dict }}
-  {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
+  <!-- {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100&bb" }} -->
+  {{ $url := "http://localhost:1313/github.json?" }}
   {{ with resources.GetRemote $url }}
     {{ with .Err }}
       {{ errorf "%s" . }}
@@ -39,38 +40,74 @@
         {{ range $response }}
           {{ if eq $date ( substr .created_at 0 10 ) }}
             {{ $event := . }}
-            <!-- {{ with ( eq .type "PushEvent" ) }}
-              <div class="rounded-full bg-slate-100 p-1 px-2">
-                <span class="fa-duotone fa-code-commit"></span>
-              </div>
-            {{ end }}
-
-            {{ with ( eq .type "IssuesEvent" ) }}
-              <div class="rounded-full bg-slate-100 p-1 px-2">
-                <span class="fa-duotone fa-comments"></span>
-              </div>
-            {{ end }}
-
-            {{ with ( eq .type "IssueCommentEvent" ) }}
-              <div class="rounded-full bg-slate-100 p-1 px-2">
-                <span class="fa-duotone fa-comment"></span>
-              </div>
-            {{ end }} -->
-
             <div class="mb-4 relative pl-12">
-              <!-- <span class="absolute left-0 top-1 fa-duotone fa-code-commit h-6 w-6 rounded-full bg-green-200 text-green-600 p-2"></span> -->
-              <!-- <span class="absolute left-0 top-1 fa-duotone fa-star h-6 w-6 rounded-full bg-yellow-200 text-yellow-600 p-2"></span> -->
-              <!-- <span class="absolute left-0 top-1 fa-duotone fa-comment h-6 w-6 rounded-full bg-slate-200 text-slate-600 p-2"></span> -->
-              <!-- <span class="absolute left-0 top-1 fa-duotone fa-ticket h-6 w-6 rounded-full bg-red-200 text-red-600 p-2"></span> -->
-              <span class="absolute left-0 top-1 fa-duotone fa-code-branch h-6 w-6 rounded-full bg-blue-200 text-blue-600 p-2"></span>
-                
-              <span class="text-lg">{{ (index .payload.commits 0).message }}</span>
-              <br />
-              by
-              <a href="{{ $event.actor.url }}" title="{{ $event.actor.display_login }}" class="inline-block">
-                <img src="{{ $event.actor.avatar_url }}" alt="{{ $event.actor.display_login }}" class="h-5 rounded-full border-blue-600 border-2"/>
-              </a>
-              at
+              {{ with ( eq .type "CommitCommentEvent" ) }}
+                {{ partial "changelog/events/commit-comment.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "CreateEvent" ) }}
+                {{ partial "changelog/events/create.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "DeleteEvent" ) }}
+                {{ partial "changelog/events/delete.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "ForkEvent" ) }}
+                {{ partial "changelog/events/fork.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "GollumEvent" ) }}
+                {{ partial "changelog/events/gollum.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "IssueCommentEvent" ) }}
+                {{ partial "changelog/events/issue-comment.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "IssuesEvent" ) }}
+                {{ partial "changelog/events/issues.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "MemberEvent" ) }}
+                {{ partial "changelog/events/member.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "PublicEvent" ) }}
+                {{ partial "changelog/events/public.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "PullRequestEvent" ) }}
+                {{ partial "changelog/events/pull-request.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "PullRequestReviewEvent" ) }}
+                {{ partial "changelog/events/pull-request-review.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "PullRequestReviewCommentEvent" ) }}
+                {{ partial "changelog/events/pull-request-review-comment.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "PullRequestReviewThreadEvent" ) }}
+                {{ partial "changelog/events/pull-request-review-thread.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "PushEvent" ) }}
+                {{ partial "changelog/events/push.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "ReleaseEvent" ) }}
+                {{ partial "changelog/events/release.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "SponsorshipEvent" ) }}
+                {{ partial "changelog/events/push.html" $event }}
+              {{ end }}
+
+              {{ with ( eq .type "WatchEvent" ) }}
+                {{ partial "changelog/events/watch.html" $event }}
+              {{ end }}
             </div>
           {{ end }}
         {{ end }}

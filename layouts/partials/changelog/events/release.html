@@ -1,0 +1,6 @@
+{{ partial "changelog/icon.html" ( dict "icon" "cube" "colour" "blue" ) }}
+<p class="text-base mb-1">
+  {{ .payload.action | title }} release 
+  <a href="{{ .payload.release.html_url }}" title="View more details about this release." target="_blank" class="text-slate-600 border-b border-dotted hover:text-slate-600 hover:border-b-slate-600">{{ .payload.release.name }}</a> with tag <code>{{ .payload.release.tag_name }}</code>.
+</p>
+{{ partial "changelog/author.html" ( dict "event" . ) }}

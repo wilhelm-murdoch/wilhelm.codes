@@ -1,0 +1,15 @@
+<p class="text-slate-400 text-sm mb-4 border-slate-100"> 
+  {{ if .sha_url }}
+    {{ $url_sha := partial "changelog/urls/commit.html" .sha_url }}
+    <a href="{{ $url_sha }}" title="View all details for commit {{ substr .sha 0 8 }}..." class="border-b border-dotted hover:text-slate-600 hover:border-b-slate-600" target="_blank">
+      {{ substr .sha 0 8 }}
+    </a>
+    by
+  {{ end }}
+  <img src="{{ .event.actor.avatar_url }}" alt="{{ .event.actor.display_login }}" class="h-5 rounded-full border-blue-600 border-2 inline"/>
+  {{ $url_actor := partial "changelog/urls/actor.html" .event.actor.url }}
+  <a href="{{ $url_actor }}" title="{{ .event.actor.display_login }}" class="border-b border-dotted hover:text-slate-600 hover:border-b-slate-600" target="_blank">
+    {{ .event.actor.display_login }}
+  </a>
+  at {{ .event.created_at | time.AsTime | time.Format "3:04pm" }} 
+</p>

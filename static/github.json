@@ -1,5 +1,503 @@
 [
   {
+    "id": "45698180763",
+    "type": "DeleteEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "ref": "v1.0.0",
+      "ref_type": "tag",
+      "pusher_type": "user"
+    },
+    "public": true,
+    "created_at": "2025-01-19T10:20:43Z"
+  },
+  {
+    "id": "45695274219",
+    "type": "ReleaseEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "action": "published",
+      "release": {
+        "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/releases/195497041",
+        "assets_url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/releases/195497041/assets",
+        "upload_url": "https://uploads.github.com/repos/wilhelm-murdoch/wilhelm.codes/releases/195497041/assets{?name,label}",
+        "html_url": "https://github.com/wilhelm-murdoch/wilhelm.codes/releases/tag/v1.0.0",
+        "id": 195497041,
+        "author": {
+          "login": "wilhelm-murdoch",
+          "id": 21791,
+          "node_id": "MDQ6VXNlcjIxNzkx",
+          "avatar_url": "https://avatars.githubusercontent.com/u/21791?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/wilhelm-murdoch",
+          "html_url": "https://github.com/wilhelm-murdoch",
+          "followers_url": "https://api.github.com/users/wilhelm-murdoch/followers",
+          "following_url": "https://api.github.com/users/wilhelm-murdoch/following{/other_user}",
+          "gists_url": "https://api.github.com/users/wilhelm-murdoch/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/wilhelm-murdoch/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/wilhelm-murdoch/subscriptions",
+          "organizations_url": "https://api.github.com/users/wilhelm-murdoch/orgs",
+          "repos_url": "https://api.github.com/users/wilhelm-murdoch/repos",
+          "events_url": "https://api.github.com/users/wilhelm-murdoch/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/wilhelm-murdoch/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "node_id": "RE_kwDOGWTH9s4LpwxR",
+        "tag_name": "v1.0.0",
+        "target_commitish": "main",
+        "name": "test",
+        "draft": false,
+        "prerelease": true,
+        "created_at": "2025-01-17T11:04:34Z",
+        "published_at": "2025-01-19T04:36:46Z",
+        "assets": [
+
+        ],
+        "tarball_url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/tarball/v1.0.0",
+        "zipball_url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/zipball/v1.0.0",
+        "body": "testeroni",
+        "short_description_html": "<p>testeroni</p>",
+        "is_short_description_html_truncated": false
+      }
+    },
+    "public": true,
+    "created_at": "2025-01-19T04:36:46Z"
+  },
+  {
+    "id": "45695274217",
+    "type": "CreateEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "ref": "v1.0.0",
+      "ref_type": "tag",
+      "master_branch": "main",
+      "description": "All source files for my personal website.",
+      "pusher_type": "user"
+    },
+    "public": true,
+    "created_at": "2025-01-19T04:36:46Z"
+  },
+  {
+    "id": "45694985170",
+    "type": "WatchEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "action": "started"
+    },
+    "public": true,
+    "created_at": "2025-01-19T03:55:31Z"
+  },
+  {
+    "id": "45659127365",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22178850188,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "a5d7e5bf018097c38ca1021ad43ea3c6c25d2d06",
+      "before": "63ab6f09ca0e618d72cdae2e647e48c57a4f3634",
+      "commits": [
+        {
+          "sha": "a5d7e5bf018097c38ca1021ad43ea3c6c25d2d06",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "changelog updates",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/a5d7e5bf018097c38ca1021ad43ea3c6c25d2d06"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-17T11:04:44Z"
+  },
+  {
+    "id": "45650272390",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22174375961,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "63ab6f09ca0e618d72cdae2e647e48c57a4f3634",
+      "before": "718acd049e89eda429e28dd20dad525d51917187",
+      "commits": [
+        {
+          "sha": "63ab6f09ca0e618d72cdae2e647e48c57a4f3634",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "updated footer blurb",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/63ab6f09ca0e618d72cdae2e647e48c57a4f3634"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-17T05:51:15Z"
+  },
+  {
+    "id": "45649950293",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22174204062,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "718acd049e89eda429e28dd20dad525d51917187",
+      "before": "4566c21378fc91204a3cb2886d18e5b2c6ae121d",
+      "commits": [
+        {
+          "sha": "718acd049e89eda429e28dd20dad525d51917187",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "some grammatical fixes",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/718acd049e89eda429e28dd20dad525d51917187"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-17T05:34:22Z"
+  },
+  {
+    "id": "45649032364",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22173688229,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "4566c21378fc91204a3cb2886d18e5b2c6ae121d",
+      "before": "2e7e8419d2f1938e0518355450406035b24bd164",
+      "commits": [
+        {
+          "sha": "4566c21378fc91204a3cb2886d18e5b2c6ae121d",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "some formatting updates",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/4566c21378fc91204a3cb2886d18e5b2c6ae121d"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-17T04:43:38Z"
+  },
+  {
+    "id": "45648825304",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22173579000,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "2e7e8419d2f1938e0518355450406035b24bd164",
+      "before": "356982b5835e9469a6f23bf8026f8605d3cfdc6b",
+      "commits": [
+        {
+          "sha": "2e7e8419d2f1938e0518355450406035b24bd164",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "new article; design, shortcode and partial updates",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/2e7e8419d2f1938e0518355450406035b24bd164"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-17T04:31:25Z"
+  },
+  {
+    "id": "45566588178",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22132596819,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "356982b5835e9469a6f23bf8026f8605d3cfdc6b",
+      "before": "aefdca89df80a3f87b55cb7d19d7fa68e7ecccb9",
+      "commits": [
+        {
+          "sha": "356982b5835e9469a6f23bf8026f8605d3cfdc6b",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "nav badge support; responsive updates",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/356982b5835e9469a6f23bf8026f8605d3cfdc6b"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-15T02:28:17Z"
+  },
+  {
+    "id": "45535826149",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22117213393,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "aefdca89df80a3f87b55cb7d19d7fa68e7ecccb9",
+      "before": "59d93786306f4a4f1c42798a9e164b97b2f244c5",
+      "commits": [
+        {
+          "sha": "aefdca89df80a3f87b55cb7d19d7fa68e7ecccb9",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "sigh",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/aefdca89df80a3f87b55cb7d19d7fa68e7ecccb9"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-14T09:14:33Z"
+  },
+  {
+    "id": "45535793220",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22117197256,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "59d93786306f4a4f1c42798a9e164b97b2f244c5",
+      "before": "8abdd819f59a7977a53f545d2672a6e6a88c09f9",
+      "commits": [
+        {
+          "sha": "59d93786306f4a4f1c42798a9e164b97b2f244c5",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "use the real github api url",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/59d93786306f4a4f1c42798a9e164b97b2f244c5"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-14T09:13:33Z"
+  },
+  {
+    "id": "45535716480",
+    "type": "PushEvent",
+    "actor": {
+      "id": 21791,
+      "login": "wilhelm-murdoch",
+      "display_login": "wilhelm-murdoch",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/wilhelm-murdoch",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21791?"
+    },
+    "repo": {
+      "id": 426035190,
+      "name": "wilhelm-murdoch/wilhelm.codes",
+      "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes"
+    },
+    "payload": {
+      "repository_id": 426035190,
+      "push_id": 22117159228,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "8abdd819f59a7977a53f545d2672a6e6a88c09f9",
+      "before": "f046b3690fd139987584af56b6058bfc1c81ef7a",
+      "commits": [
+        {
+          "sha": "8abdd819f59a7977a53f545d2672a6e6a88c09f9",
+          "author": {
+            "email": "wilhelm@devilmayco.de",
+            "name": "Wilhelm Murdoch"
+          },
+          "message": "styling updates; removed tags from front page; started change log; updated nav",
+          "distinct": true,
+          "url": "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/commits/8abdd819f59a7977a53f545d2672a6e6a88c09f9"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-14T09:11:13Z"
+  },
+  {
     "id": "45509092236",
     "type": "PushEvent",
     "actor": {
