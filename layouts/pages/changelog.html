@@ -5,8 +5,12 @@
     The only constant is change and you can view it all here.<br/>Or, at least, the last 100 changes pulled directly from Github.
   </p>
   {{ $response := dict }}
-  <!-- {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100&bb" }} -->
-  {{ $url := "http://localhost:1313/github.json?" }}
+
+  {{ $url := "http://localhost:1313/github.json" }}
+  {{ if hugo.IsProduction }}
+    {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
+  {{ end }}
+  
   {{ with resources.GetRemote $url }}
     {{ with .Err }}
       {{ errorf "%s" . }}
