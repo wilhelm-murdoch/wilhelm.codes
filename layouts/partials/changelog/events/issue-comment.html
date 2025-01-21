@@ -1,6 +1,5 @@
-{{ $event := . }}
-<span class="absolute left-0 top-1 fa-duotone fa-code-commit h-4 w-4 rounded-full bg-green-200 text-green-600 border-green-400 p-2 border"></span>
-{{ range .payload.commits }}
-  <p class="text-base mb-1">{{ .message }}</p>
-  {{ partial "changelog/author.html" (dict "event" $event "sha_url" .url "sha" .sha) }}
-{{ end }}
+{{ partial "changelog/icon.html" ( dict "icon" "comment" "colour" "slate" ) }}
+{{ $url_repo := partial "changelog/urls/repository.html" .repo.url }}
+<p class="text-base mb-1">{{ .payload.action | title }} a comment on <a href="" title="" target="_blank">this issue</a>.</p>
+{{ partial "changelog/author.html" (dict "event" .) }}
+

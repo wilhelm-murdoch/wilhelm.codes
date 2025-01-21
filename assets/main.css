@@ -878,6 +878,10 @@ h1,
   top: 0.75rem;
 }
 
+.top-0 {
+  top: 0px;
+}
+
 .m-0 {
   margin: 0px;
 }
@@ -960,6 +964,10 @@ h1,
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
 }
 
 .block {
