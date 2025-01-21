@@ -1,6 +1,13 @@
-{{ $event := . }}
-<span class="absolute left-0 top-1 fa-duotone fa-code-commit h-4 w-4 rounded-full bg-green-200 text-green-600 border-green-400 p-2 border"></span>
-{{ range .payload.commits }}
-  <p class="text-base mb-1">{{ .message }}</p>
-  {{ partial "changelog/author.html" (dict "event" $event "sha_url" .url "sha" .sha) }}
+{{ with eq .payload.action "opened" }}
+  {{ partial "changelog/icon.html" ( dict "icon" "code-pull-request" "colour" "slate" ) }}
 {{ end }}
+
+{{ with eq .payload.action "closed" }}
+  {{ partial "changelog/icon.html" ( dict "icon" "code-pull-request-closed" "colour" "slate" ) }}
+{{ end }}
+
+<p class="text-base mb-1">
+  {{ .payload.action | title }} pull request #{{ .payload.pull_request.number }}
+  <a href="{{ .payload.pull_request.html_url }}" title="View more details about this release." target="_blank" class="text-slate-600 border-b border-dotted hover:text-slate-600 hover:border-b-slate-600">{{ .payload.pull_request.title }}</a>.
+</p>
+{{ partial "changelog/author.html" ( dict "event" . ) }}
