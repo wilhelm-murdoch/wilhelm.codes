@@ -4,14 +4,14 @@
   <p class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10">
     The only constant is change and you can view it all here.<br/>Or, at least, the last 100 changes pulled directly from Github.
   </p>
-  
+
   {{ $response := dict }}
   {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100&d" }}
   {{ if hugo.IsDevelopment }}
     {{ $buster := (time.AsTime "2023-01-27T23:44:58-08:00").Unix }}
-    {{ $url := printf "http://localhost:1313/github.json?%s" $buster }}
+    {{ $url = "http://localhost:1313/github.json?h" }}
   {{ end }}
-  
+ 
   {{ with resources.GetRemote $url }}
     {{ with .Err }}
       {{ errorf "%s" . }}
@@ -31,7 +31,7 @@
     {{ end }}
     {{ $counts.Add $date 1 }}
   {{ end }}
-  
+
     {{ range $dates }}
     <div class="flex border-t pt-4 mb-4">
       {{ $time := . | time.AsTime }} 
