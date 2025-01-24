@@ -2,17 +2,17 @@
 
 {{ with ( eq .payload.ref_type "branch" ) }}
   {{ partial "changelog/icon.html" ( dict "icon" "code-branch" "colour" "slate" ) }}
-  <p class="text-base mb-1">Checked out a new branch <code>{{ $payload.ref }}</code>.</p>
+  <p class="mb-1">Checked out a new branch <code>{{ $payload.ref }}</code>.</p>
 {{ end }}
 
 {{ with ( eq .payload.ref_type "repository" ) }}
   {{ partial "changelog/icon.html" ( dict "icon" "code-compare" "colour" "slate" ) }}
-  <p class="text-base mb-1">Created a new repository <code>{{ $payload.ref }}.</code></p>
+  <p class="mb-1">Created a new repository <code>{{ $payload.ref }}.</code></p>
 {{ end }}
 
 {{ with ( eq .payload.ref_type "tag" ) }}
   {{ partial "changelog/icon.html" ( dict "icon" "tag" "colour" "slate" ) }}
-  <p class="text-base mb-1">Published a new tag <code>{{ $payload.ref }}</code>.</p>
+  <p class="mb-1">Published a new tag <code>{{ $payload.ref }}</code>.</p>
 {{ end }}
 
 {{ partial "changelog/author.html" ( dict "event" . ) }}

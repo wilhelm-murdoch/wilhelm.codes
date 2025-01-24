@@ -1,5 +1,5 @@
 {{ partial "changelog/icon.html" ( dict "icon" "comment" "colour" "slate" ) }}
 {{ $url_repo := partial "changelog/urls/repository.html" .repo.url }}
-<p class="text-base mb-1">{{ .payload.action | title }} a comment on <a href="" title="" target="_blank">this issue</a>.</p>
+<p class="mb-1">{{ .payload.action | title }} a comment on <a href="" title="" target="_blank">this issue</a>.</p>
 {{ partial "changelog/author.html" (dict "event" .) }}
 

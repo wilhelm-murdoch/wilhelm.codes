@@ -9,7 +9,7 @@
   {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100&d" }}
   {{ if hugo.IsDevelopment }}
     {{ $buster := (time.AsTime "2023-01-27T23:44:58-08:00").Unix }}
-    {{ $url = "http://localhost:1313/github.json?h" }}
+    {{ $url = "http://localhost:1313/github.json?wtf" }}
   {{ end }}
  
   {{ with resources.GetRemote $url }}
@@ -37,15 +37,15 @@
       {{ $time := . | time.AsTime }} 
       {{ $day := $time.Format "2" }}
       <div class="w-2/5">
-        <h3 class="text-xl">{{ $day }}{{ partial "functions/ordinal.html" $day }} {{ $time.Format "of January 2006" }}</h3>
-        <h4 class="text-slate-400 text-lg">{{ $counts.Get . }} event{{ if gt ( $counts.Get . ) 1 }}s{{ end }}</h4>
+        <h3 class="text-lg">{{ $day }}{{ partial "functions/ordinal.html" $day }} {{ $time.Format "of January 2006" }}</h3>
+        <h4 class="text-slate-400 text-base">{{ $counts.Get . }} event{{ if gt ( $counts.Get . ) 1 }}s{{ end }}</h4>
       </div>
       <div class="w-3/5">
         {{ $date := . }}
         {{ range $response }}
           {{ if eq $date ( substr .created_at 0 10 ) }}
             {{ $event := . }}
-            <div class="mb-8 relative pl-12">
+            <div class="pb-8 relative pl-8 text-sm border-l border-slate-100">
               {{ with ( eq .type "CommitCommentEvent" ) }}
                 {{ partial "changelog/events/commit-comment.html" $event }}
               {{ end }}

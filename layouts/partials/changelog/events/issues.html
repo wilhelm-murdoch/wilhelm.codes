@@ -1,3 +1,7 @@
-{{ partial "changelog/icon.html" ( dict "icon" "exclamation" "colour" "orange" ) }}
-<p class="text-base mb-1">{{ .type }}</p>
+{{ partial "changelog/icon.html" ( dict "icon" "bug" "colour" "red" ) }}
+<p class="mb-1">
+  Issue #{{ .payload.issue.number}}
+  <a href="" title="">{{ .payload.issue.title }}</a>
+  was {{ .payload.action }}.
+</p>
 {{ partial "changelog/author.html" (dict "event" . ) }}
