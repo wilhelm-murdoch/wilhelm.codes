@@ -1,6 +1,12 @@
 {{ $event := . }}
 {{ partial "changelog/icon.html" ( dict "icon" "code-commit" "colour" "green" ) }}
 {{ range .payload.commits }}
-  <p class="text-base mb-1">{{ .message }}</p>
+  <p class="m mb-1">
+    Pushed
+    {{ $url_sha := partial "changelog/urls/commit.html" .sha_url }}
+    <a href="{{ $url_sha }}" title="View all details for commit {{ substr .sha 0 8 }}..." class="text-slate-500 border-b border-dotted hover:text-slate-600 hover:border-b-slate-600" target="_blank">
+      {{ substr .sha 0 8 }}</a>
+    {{ .message }}
+  </p>
   {{ partial "changelog/author.html" (dict "event" $event "sha_url" .url "sha" .sha) }}
 {{ end }}

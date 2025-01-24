@@ -1,3 +1,8 @@
+{{ $event := . }}
 {{ partial "changelog/icon.html" ( dict "icon" "pen-to-square" "colour" "slate" ) }}
-<p class="text-base mb-1">made an update to the wiki</p>
-{{ partial "changelog/author.html" (dict "event" . ) }}
+{{ range .payload.pages }}
+  <p class="mb-1">
+    {{ .action | title }} wiki page <a href="" title="">{{ .title }}</a>.
+  </p>
+  {{ partial "changelog/author.html" (dict "event" $event ) }}
+{{ end }}
