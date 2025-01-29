@@ -1,8 +1,3 @@
-<p class="text-slate-400 mb-4"> 
-  <img src="{{ .event.actor.avatar_url }}" alt="{{ .event.actor.display_login }}" class="h-4 rounded-full inline"/>
-  {{ $url_actor := partial "changelog/urls/actor.html" .event.actor.url }}
-  <a href="{{ $url_actor }}" title="{{ .event.actor.display_login }}" class="border-b border-dotted hover:text-slate-600 hover:border-b-slate-600" target="_blank">
-    {{ .event.actor.display_login }}
-  </a>
-  at {{ .event.created_at | time.AsTime | time.Format "3:04pm" }} 
-</p>
+{{ $url_actor := partial "changelog/urls/actor.html" .url }}
+<img src="{{ .avatar_url }}" alt="{{ .display_login }}" class="h-4 rounded-full inline"/>
+<a href="{{ $url_actor }}" title="{{ .display_login }}" target="_blank">{{ .display_login }}</a>

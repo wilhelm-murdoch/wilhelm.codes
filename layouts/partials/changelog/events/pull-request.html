@@ -6,8 +6,11 @@
   {{ partial "changelog/icon.html" ( dict "icon" "code-pull-request-closed" "colour" "slate" ) }}
 {{ end }}
 
-<p class="mb-1">
-  {{ .payload.action | title }} pull request #{{ .payload.pull_request.number }}
-  <a href="{{ .payload.pull_request.html_url }}" title="View more details about this release." target="_blank" class="text-slate-600 border-b border-dotted hover:text-slate-600 hover:border-b-slate-600">{{ .payload.pull_request.title }}</a>.
+<p class="mb-2 pt-1">
+  {{ partial "changelog/author.html" .actor }}
+  {{ .payload.action }} pull request
+  <strong>{{ .payload.pull_request.title }}</strong>.
+  <span class="inline-block absolute right-0 top-1 text-sm">
+    <a href="{{ .payload.pull_request.html_url }}" title="View all details for pull request." class="font-mono" target="_blank">#{{.payload.number}}</a>
+  </span>
 </p>
-{{ partial "changelog/author.html" ( dict "event" . ) }}

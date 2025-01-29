@@ -1,12 +1,32 @@
 {{ $event := . }}
 {{ partial "changelog/icon.html" ( dict "icon" "code-commit" "colour" "green" ) }}
-{{ range .payload.commits }}
-  <p class="m mb-1">
-    Pushed
-    {{ $url_sha := partial "changelog/urls/commit.html" .sha_url }}
-    <a href="{{ $url_sha }}" title="View all details for commit {{ substr .sha 0 8 }}..." class="text-slate-500 border-b border-dotted hover:text-slate-600 hover:border-b-slate-600" target="_blank">
-      {{ substr .sha 0 8 }}</a>
-    {{ .message }}
+
+{{ if eq ( len .payload.commits ) 1 }}
+  {{ $commit := index .payload.commits 0 }}
+  {{ $url_sha := partial "changelog/urls/commit.html" $commit.url }}
+  {{ $sha_short := substr $commit.sha 0 8 }}
+  <p class="mb-2 pt-1 relative pr-20">
+    {{ partial "changelog/author.html" $event.actor }}
+    pushed "{{ $commit.message }}"
+    <span class="inline-block absolute right-0 top-1 text-sm">
+      <a href="{{ $url_sha }}" title="View all details for commit {{ $sha_short }}..." class="font-mono" target="_blank">{{ $sha_short }}</a>
+    </span>
   </p>
-  {{ partial "changelog/author.html" (dict "event" $event "sha_url" .url "sha" .sha) }}
+{{ else }}
+  <p class="mb-2 pt-1">
+    {{ partial "changelog/author.html" $event.actor }}
+    pushed the following <strong>{{ len .payload.commits }}</strong> commits:
+    <ul class="ml-4">
+      {{ range .payload.commits }}
+        {{ $url_sha := partial "changelog/urls/commit.html" .url }}
+        {{ $sha_short := substr .sha 0 8 }}
+        <li class="mb-1 marker:text-slate-400 relative pr-20">
+          {{ .message }}
+          <span class="inline-block absolute right-0 top-1 text-sm">
+            <a href="{{ $url_sha }}" title="View all details for commit {{ $sha_short }}..." class="font-mono" target="_blank">{{ $sha_short }}</a>
+          </span>
+        </li>
+      {{ end }}
+    </ul>
+  </p>
 {{ end }}

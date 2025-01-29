@@ -1,3 +1,5 @@
-{{ partial "changelog/icon.html" ( dict "icon" "trash" "colour" "red" ) }}
-<p class="mb-1">Deleted {{ .payload.ref_type }} <code>{{ .payload.ref }}</code>.</p>
-{{ partial "changelog/author.html" ( dict "event" . ) }}
+{{ partial "changelog/icon.html" ( dict "icon" "fire" "colour" "red" ) }}
+<p class="mb-2 pt-1">
+  {{ partial "changelog/author.html" .actor }}
+  deleted {{ .payload.ref_type }} <code>{{ .payload.ref }}</code>.
+</p>

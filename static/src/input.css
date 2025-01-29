@@ -47,6 +47,24 @@
 }
 
 /*
+Changelog
+*/
+
+#changelog .event a {
+  color: theme("colors.slate.500");
+  border-bottom: 1px dotted theme("colors.slate.500");
+}
+
+#changelog .event a:hover {
+  color: theme("colors.slate.600");
+  border-bottom: 1px dotted theme("colors.slate.600");
+}
+
+#changelog .event code {
+  @apply text-sm rounded-md border border-slate-200 p-1 bg-slate-50 text-slate-500;
+}
+
+/*
 Primary Navigation
 */
 

@@ -1,3 +1,5 @@
 {{ partial "changelog/icon.html" ( dict "icon" "exclamation" "colour" "orange" ) }}
-<p class="mb-1">{{ .type }}</p>
-{{ partial "changelog/author.html" (dict "event" . ) }}
+<p class="mb-2 pt-1">
+  {{ partial "changelog/author.html" .actor }}
+  {{ .type}}
+</p>
