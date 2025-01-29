@@ -1,18 +1,21 @@
 {{ $payload := .payload }}
+{{ $action := "unknown"}}
 
 {{ with ( eq .payload.ref_type "branch" ) }}
+  {{ $action = "checked out" }}
   {{ partial "changelog/icon.html" ( dict "icon" "code-branch" "colour" "slate" ) }}
-  <p class="mb-1">Checked out a new branch <code>{{ $payload.ref }}</code>.</p>
 {{ end }}
 
 {{ with ( eq .payload.ref_type "repository" ) }}
+  {{ $action = "created" }}
   {{ partial "changelog/icon.html" ( dict "icon" "code-compare" "colour" "slate" ) }}
-  <p class="mb-1">Created a new repository <code>{{ $payload.ref }}.</code></p>
 {{ end }}
 
 {{ with ( eq .payload.ref_type "tag" ) }}
+  {{ $action = "published" }}
   {{ partial "changelog/icon.html" ( dict "icon" "tag" "colour" "slate" ) }}
-  <p class="mb-1">Published a new tag <code>{{ $payload.ref }}</code>.</p>
 {{ end }}
 
-{{ partial "changelog/author.html" ( dict "event" . ) }}
+<p class="mb-2 pt-1 relative pr-20">
+  {{ partial "changelog/author.html" .actor }} {{ $action }} {{ .payload.ref_type }} <code>{{ $payload.ref }}</code>
+</p>

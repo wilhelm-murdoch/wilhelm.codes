@@ -1,5 +1,5 @@
 {{ define "main" }}
-<section class="mx-auto max-w-4xl fade-in-animation">
+<section id="changelog" class="mx-auto max-w-4xl fade-in-animation">
   <h1 class="text-2xl md:text-5xl sm:my-4 md:my-8 font-bold text-center leading-tight">The Changelog<span class="text-blue-600">.</span></h1>
   <p class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10">
     The only constant is change and you can view it all here.<br/>Or, at least, the last 100 changes pulled directly from Github.
@@ -33,19 +33,16 @@
   {{ end }}
 
     {{ range $dates }}
-    <div class="flex border-t pt-4 mb-4">
+    <div class="my-4">
       {{ $time := . | time.AsTime }} 
       {{ $day := $time.Format "2" }}
-      <div class="w-2/5">
         <h3 class="text-lg">{{ $day }}{{ partial "functions/ordinal.html" $day }} {{ $time.Format "of January 2006" }}</h3>
-        <h4 class="text-slate-400 text-base">{{ $counts.Get . }} event{{ if gt ( $counts.Get . ) 1 }}s{{ end }}</h4>
-      </div>
-      <div class="w-3/5">
+        <h4 class="text-slate-400 text-base mb-4 pb-4 border-b border-b-slate-100">{{ $counts.Get . }} event{{ if gt ( $counts.Get . ) 1 }}s{{ end }}</h4>
         {{ $date := . }}
         {{ range $response }}
           {{ if eq $date ( substr .created_at 0 10 ) }}
             {{ $event := . }}
-            <div class="pb-8 relative pl-8 text-sm border-l border-slate-100">
+            <div class="event pb-4 relative ml-8 pl-8 [&:not(:last-child)]:border-l border-slate-100">
               {{ with ( eq .type "CommitCommentEvent" ) }}
                 {{ partial "changelog/events/commit-comment.html" $event }}
               {{ end }}
@@ -116,7 +113,6 @@
             </div>
           {{ end }}
         {{ end }}
-      </div>
       </div>
     {{ end }}
 </section>
