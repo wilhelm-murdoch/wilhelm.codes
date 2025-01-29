@@ -16,10 +16,6 @@ enableGitInfo = true
     name = "Changelog"
     pageRef = "/changelog"
     weight = 30
-    [menus.main.params]
-      badge_text = "WIP"
-      badge_colour = "red"
-
 
 [sitemap]
   changeFreq = "daily"
