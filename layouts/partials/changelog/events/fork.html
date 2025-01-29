@@ -1,5 +1,7 @@
 {{ partial "changelog/icon.html" ( dict "icon" "code-fork" "colour" "slate" ) }}
-<p class="mb-1">
-  made a <a href="{{ .payload.forkee.html_url }}" title="Check out the {{ .repo.name }} repository." target="_blank" class="text-slate-600 border-b border-dotted hover:text-slate-600 hover:border-b-slate-600">this repository</a>.
+<p class="mb-2 pt-1 relative pr-20">
+  {{ partial "changelog/author.html" .actor }} forked this project
+  <span class="inline-block absolute right-0 top-1 text-sm">
+    <a href="{{ .payload.forkee.html_url }}" title="View this fork...">view</a>
+  </span>
 </p>
-{{ partial "changelog/author.html" ( dict "event" . ) }}

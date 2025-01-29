@@ -1,4 +1,4 @@
 {{ partial "changelog/icon.html" ( dict "icon" "heart" "colour" "red" ) }}
-{{ $url_repo := partial "changelog/urls/repository.html" .repo.url }}
-<p class="mb-1">Triggered a sponsorship event!</p>
-{{ partial "changelog/author.html" (dict "event" .) }}
+<p class="mb-2 pt-1 relative pr-20">
+  {{ partial "changelog/author.html" .actor }} sponsored this project 
+</p>
