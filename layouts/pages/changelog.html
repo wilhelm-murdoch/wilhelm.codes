@@ -46,7 +46,7 @@
         {{ range $response }}
           {{ if eq $date ( substr .created_at 0 10 ) }}
             {{ $event := . }}
-            <div class="event pb-4 relative ml-8 pl-8 [&:not(:last-child)]:border-l border-slate-100">
+            <div class="event pb-4 relative ml-8 pl-8 [&:not(:last-child)]:border-l border-slate-200">
               {{ with ( eq .type "CommitCommentEvent" ) }}
                 {{ partial "changelog/events/commit-comment.html" $event }}
               {{ end }}
