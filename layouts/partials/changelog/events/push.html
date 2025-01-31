@@ -21,7 +21,7 @@
         {{ $url_sha := partial "changelog/urls/commit.html" .url }}
         {{ $sha_short := substr .sha 0 8 }}
         <li class="mb-1 marker:text-slate-400 relative pr-20">
-          {{ .message }}
+          {{ .message | truncate 75 }}
           <span class="inline-block absolute right-0 top-1 text-sm">
             <a href="{{ $url_sha }}" title="View all details for commit {{ $sha_short }}..." class="font-mono" target="_blank">{{ $sha_short }}</a>
           </span>
