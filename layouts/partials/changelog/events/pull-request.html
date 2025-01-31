@@ -11,6 +11,6 @@
   {{ .payload.action }} pull request
   <strong>{{ .payload.pull_request.title }}</strong>.
   <span class="inline-block absolute right-0 top-1 text-sm">
-    <a href="{{ .payload.pull_request.html_url }}" title="View all details for pull request." class="font-mono" target="_blank">#{{.payload.number}}</a>
+    <a href="{{ .payload.pull_request.html_url }}" title="View all details for pull request." class="font-mono" target="_blank">#{{.payload.pull_request.number}}</a>
   </span>
 </p>
