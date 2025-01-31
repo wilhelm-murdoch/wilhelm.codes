@@ -6,7 +6,7 @@
   {{ partial "changelog/icon.html" ( dict "icon" "code-pull-request-closed" "colour" "slate" ) }}
 {{ end }}
 
-<p class="mb-2 pt-1">
+<p class="mb-2 pt-1 relative pr-20">
   {{ partial "changelog/author.html" .actor }}
   {{ .payload.action }} pull request
   <strong>{{ .payload.pull_request.title }}</strong>.
