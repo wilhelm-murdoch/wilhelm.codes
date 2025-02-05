@@ -6,6 +6,6 @@ export SOURCE
 DESTINATION=${DESTINATION:="${2}"}
 export DESTINATION
 
-fswatch -o "${SOURCE}" | while read -r event; do 
-    rsync -av --delete "${SOURCE}" "${DESTINATION}";
+fswatch -o "${SOURCE}" | while read -r; do
+  rsync -av --delete "${SOURCE}" "${DESTINATION}"
 done

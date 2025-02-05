@@ -1,62 +1,48 @@
 {{ define "main" }}
-    <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
-        <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
-            <span class="bg-white px-4">Latest & Greatest</span>
-        </h3>
+  <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
+    <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
+      <span class="bg-white px-4">Latest & Greatest</span>
+    </h3>
+  </div>
+
+  <section
+    class="hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-2 gap-8 fade-in-animation mb-8 pb-8 border-b border-b-slate-100"
+  >
+    {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
+      {{ partial "views/card.html" . }}
+    {{ end }}
+  </section>
+
+  <section
+    class="hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-4 gap-8 fade-in-animation mb-8"
+  >
+    {{ range (first 8 (where .Site.RegularPages "Section" "blog" | after 2)) }}
+      {{ partial "views/small.html" . }}
+    {{ end }}
+  </section>
+
+  <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
+    <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
+      <span class="bg-white px-4">Everything Else</span>
+    </h3>
+  </div>
+  <section class="mx-auto max-w-4xl fade-in-animation mb-10">
+    <div class="sm:block md:hidden lg:hidden">
+      {{ range (where .Site.RegularPages "Section" "blog" | first 10) }}
+        {{ partial "views/row.html" . }}
+      {{ end }}
     </div>
 
-    <section class="hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-2 gap-8 fade-in-animation mb-8 pb-8 border-b border-b-slate-100">
-        {{ range (where .Site.RegularPages "Section" "blog" | first 2) }}
-            {{ partial "views/card.html" . }}
-        {{ end }}
-    </section>
-
-    <section class="hidden md:grid lg:grid mx-auto max-w-4xl grid-cols-4 gap-8 fade-in-animation mb-8">
-        {{ range (first 8 (where .Site.RegularPages "Section" "blog" | after 2)) }}
-            {{ partial "views/small.html" . }}
-        {{ end }}
-    </section>
-
-    <!-- 
-    <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
-        <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
-            <span class="bg-white px-4">Popular Tags</span>
-        </h3>
+    {{ range (first 10 (where .Site.RegularPages "Section" "blog" | after 10)) }}
+      {{ partial "views/row.html" . }}
+    {{ end }}
+    <div class="text-center mt-8 sm:mt-0">
+      <a
+        href="{{ .Site.BaseURL }}archive"
+        class="bg-blue-600 text-blue-50 hover:bg-blue-400 transition-all font-semibold rounded-full px-4 py-2"
+      >
+        View the rest ...
+      </a>
     </div>
-    <section class="hidden md:block lg:block mx-auto max-w-4xl fade-in-animation mb-8">
-        <ul>
-            {{range $name, $taxonomy := .Site.Taxonomies.tags}} 
-                {{ $cnt := .Count }}
-                {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
-                    <li class="inline-block pb-4 mr-4">
-                        <a href={{ .RelPermalink }} title="All articles tagged with `{{$name}}`" class="text-lg border-b-2 border-b-slate-100 text-slate-500">#{{$name}}</a>
-                        <sup class="bg-slate-100 text-slate-500 border rounded-full w-6 h-6 text-xs inline-flex items-center justify-center -top-3">{{$cnt}}</sup>
-                    </li>
-                {{end}}
-            {{end}}
-        </ul>
-    </section> 
-    -->
-
-    <div class="hidden md:block lg:block divider mx-auto max-w-4xl">
-        <h3 class="text-center mb-8 text-xl font-medium text-slate-600">
-            <span class="bg-white px-4">Everything Else</span>
-        </h3>
-    </div>
-    <section class="mx-auto max-w-4xl fade-in-animation mb-10">
-        <div class="sm:block md:hidden lg:hidden">
-            {{ range (where .Site.RegularPages "Section" "blog" | first 10) }}
-                {{ partial "views/row.html" . }}
-            {{ end }}
-        </div>
-
-        {{ range (first 10 (where .Site.RegularPages "Section" "blog" | after 10)) }}
-            {{ partial "views/row.html" . }}
-        {{ end }}
-        <div class="text-center mt-8 sm:mt-0">
-            <a href="{{ .Site.BaseURL }}archive" class="bg-blue-600 text-blue-50 hover:bg-blue-400 transition-all font-semibold rounded-full px-4 py-2">
-                View the rest ...
-            </a>
-        </div>
-    </section>
+  </section>
 {{ end }}

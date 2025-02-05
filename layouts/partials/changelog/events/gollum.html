@@ -13,16 +13,17 @@
 {{ else }}
   <p class="mb-2 pt-1 relative pr-20">
     {{ partial "changelog/author.html" $event.actor }}
-    made the following <strong>{{ len .payload.pages }}</strong> changes to the wiki:
-    <ul class="ml-4">
-      {{ range .payload.pages }}
-        <li class="mb-1 marker:text-slate-400 relative pr-20">
-          {{ .action }} <strong>{{ .title }}</strong>
-          <span class="inline-block absolute right-0 top-1 text-sm">
-            <a href="{{ .html_url }}" title="View these changes...">view</a>
-          </span>
-        </li>
-      {{ end }}
-    </ul>
+    made the following <strong>{{ len .payload.pages }}</strong> changes to the
+    wiki:
   </p>
+  <ul class="ml-4">
+    {{ range .payload.pages }}
+      <li class="mb-1 marker:text-slate-400 relative pr-20">
+        {{ .action }} <strong>{{ .title }}</strong>
+        <span class="inline-block absolute right-0 top-1 text-sm">
+          <a href="{{ .html_url }}" title="View these changes...">view</a>
+        </span>
+      </li>
+    {{ end }}
+  </ul>
 {{ end }}

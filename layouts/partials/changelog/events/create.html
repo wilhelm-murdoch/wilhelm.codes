@@ -1,5 +1,5 @@
 {{ $payload := .payload }}
-{{ $action := "unknown"}}
+{{ $action := "unknown" }}
 
 {{ with ( eq .payload.ref_type "branch" ) }}
   {{ $action = "checked out" }}
@@ -16,6 +16,8 @@
   {{ partial "changelog/icon.html" ( dict "icon" "tag" "colour" "slate" ) }}
 {{ end }}
 
+
 <p class="mb-2 pt-1 relative pr-20">
-  {{ partial "changelog/author.html" .actor }} {{ $action }} {{ .payload.ref_type }} <code>{{ $payload.ref }}</code>
+  {{ partial "changelog/author.html" .actor }} {{ $action }}
+  {{ .payload.ref_type }} <code>{{ $payload.ref }}</code>
 </p>

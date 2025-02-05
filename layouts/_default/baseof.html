@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<!doctype html>
+<html
+  lang="{{ site.Language.LanguageCode }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}"
+>
   <head>
     {{ partial "head.html" . }}
   </head>
   <body>
     <div class="m-0 my-4 p-0 sm:p-4 sm:mx-0 md:m-10">
       {{ partial "nav.html" . }}
-      <header class="mx-auto max-w-4xl text-center mb-0 md:mb-8 pb-4 relative fade-in-animation">
+      <header
+        class="mx-auto max-w-4xl text-center mb-0 md:mb-8 pb-4 relative fade-in-animation"
+      >
         {{ partial "header.html" . }}
       </header>
       <main>
@@ -18,3 +23,4 @@
     </div>
   </body>
 </html>
+

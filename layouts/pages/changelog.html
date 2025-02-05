@@ -1,51 +1,70 @@
 {{ define "main" }}
-<section id="changelog" class="mx-auto max-w-4xl fade-in-animation">
+  <section id="changelog" class="mx-auto max-w-4xl fade-in-animation">
     <header>
-      <h1 class="text-2xl md:text-5xl sm:my-4 md:my-8 font-bold text-center leading-tight">
+      <h1
+        class="text-2xl md:text-5xl sm:my-4 md:my-8 font-bold text-center leading-tight"
+      >
         The <span class="font-normal relative">Changelog</span>.
       </h1>
     </header>
-  <p class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10">
-    The only constant is change and you can view it all here.<br/>Or, at least, the last 100 changes pulled directly from Github.
-  </p>
+    <p
+      class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10"
+    >
+      The only constant is change and you can view it all here.<br />Or, at
+      least, the last 100 changes pulled directly from Github.
+    </p>
 
-  {{ $response := dict }}
-  {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
-  {{ if hugo.IsDevelopment }}
-    {{ $url = "http://localhost:1313/github.json" }}
-  {{ end }}
- 
-  {{ with resources.GetRemote $url }}
-    {{ with .Err }}
-      {{ errorf "%s" . }}
+    {{ $response := dict }}
+    {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
+    {{ if hugo.IsDevelopment }}
+      {{ $url = "http://localhost:1313/github.json?123" }}
+    {{ end }}
+
+    {{ with resources.GetRemote $url }}
+      {{ with .Err }}
+        {{ errorf "%s" . }}
+      {{ else }}
+        {{ $response = . | transform.Unmarshal }}
+      {{ end }}
     {{ else }}
-      {{ $response = . | transform.Unmarshal }}
+      {{ errorf "Unable to get remote resource %q" $url }}
     {{ end }}
-  {{ else }}
-    {{ errorf "Unable to get remote resource %q" $url }}
-  {{ end }}
 
-  {{ $counts := newScratch }}
-  {{ $dates := slice }}
-  {{ range $response }}
-    {{ $date := substr .created_at 0 10 }}
-    {{ if not ( in $dates $date ) }}
-      {{ $dates = $dates | append $date }}
+    {{ $counts := newScratch }}
+    {{ $dates := slice }}
+    {{ range $response }}
+      {{ $date := substr .created_at 0 10 }}
+      {{ if not ( in $dates $date ) }}
+        {{ $dates = $dates | append $date }}
+      {{ end }}
+      {{ $counts.Add $date 1 }}
     {{ end }}
-    {{ $counts.Add $date 1 }}
-  {{ end }}
 
     {{ range $dates }}
-    <div class="my-4">
-      {{ $time := . | time.AsTime }} 
-      {{ $day := $time.Format "2" }}
-        <h3 class="text-lg">{{ $day }}{{ partial "functions/ordinal.html" $day }} {{ $time.Format "of January 2006" }}</h3>
-        <h4 class="text-slate-400 text-base mb-4 pb-4 border-b border-b-slate-100">{{ $counts.Get . }} event{{ if gt ( $counts.Get . ) 1 }}s{{ end }}</h4>
+      <div class="my-4">
+        {{ $time := . | time.AsTime }}
+        {{ $day := $time.Format "2" }}
+        <h3 class="text-lg">
+          {{ $day }}{{ partial "functions/ordinal.html" $day }}
+          {{ $time.Format "of January 2006" }}
+        </h3>
+        <h4
+          class="text-slate-400 text-base mb-4 pb-4 border-b border-b-slate-100"
+        >
+          {{ $counts.Get . }}
+          event{{ if gt (
+            $counts.Get . ) 1
+          }}
+            s
+          {{ end }}
+        </h4>
         {{ $date := . }}
         {{ range $response }}
           {{ if eq $date ( substr .created_at 0 10 ) }}
             {{ $event := . }}
-            <div class="event pb-4 relative ml-8 pl-8 [&:not(:last-child)]:border-l border-slate-200">
+            <div
+              class="event pb-4 relative ml-8 pl-8 [&:not(:last-child)]:border-l border-slate-200"
+            >
               {{ with ( eq .type "CommitCommentEvent" ) }}
                 {{ partial "changelog/events/commit-comment.html" $event }}
               {{ end }}
@@ -118,5 +137,5 @@
         {{ end }}
       </div>
     {{ end }}
-</section>
+  </section>
 {{ end }}

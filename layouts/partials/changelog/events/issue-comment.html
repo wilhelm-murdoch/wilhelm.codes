@@ -1,8 +1,11 @@
 {{ partial "changelog/icon.html" ( dict "icon" "comments" "colour" "slate" ) }}
 <p class="mb-2 pt-1 relative pr-20">
   {{ partial "changelog/author.html" .actor }}
-  {{ .payload.action }} a comment on issue <strong>{{ .payload.issue.title }}</strong>
+  {{ .payload.action }} a comment on issue
+  <strong>{{ .payload.issue.title }}</strong>
   <span class="inline-block absolute right-0 top-1 text-sm">
-    <a href="{{ .payload.html_url }}" title="View these changes...">#{{ .payload.issue.number}}</a>
+    <a href="{{ .payload.html_url }}" title="View these changes..."
+      >#{{ .payload.issue.number }}</a
+    >
   </span>
 </p>

@@ -1,9 +1,15 @@
 {{ partial "changelog/icon.html" ( dict "icon" "comments" "colour" "slate" ) }}
 <p class="mb-2 pt-1 relative pr-20">
   {{ partial "changelog/author.html" .actor }}
-  {{ .payload.action }} pull request review comment 
+  {{ .payload.action }} pull request review comment
   <strong>{{ .payload.pull_request.title }}</strong>.
   <span class="inline-block absolute right-0 top-1 text-sm">
-    <a href="{{ .payload.pull_request.html_url }}" title="View all details for pull request." class="font-mono" target="_blank">#{{ .payload.pull_request.number }}</a>
+    <a
+      href="{{ .payload.pull_request.html_url }}"
+      title="View all details for pull request."
+      class="font-mono"
+      target="_blank"
+      >#{{ .payload.pull_request.number }}</a
+    >
   </span>
 </p>
