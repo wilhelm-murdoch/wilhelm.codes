@@ -1,44 +1,77 @@
-<!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<!doctype html>
+<html
+  lang="{{ site.Language.LanguageCode }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <meta name="generator" content="Hugo" />
-    <link rel="canonical" href="{{ .Permalink }}"/>
+    <link rel="canonical" href="{{ .Permalink }}" />
 
     {{ $title := printf "Lost in Spaaaaaaace · %s" site.Title }}
     {{ $description := .Site.Params.Description }}
+
 
     <title>{{ $title }}</title>
     <meta name="title" content="{{ site.Title }}" />
     <meta name="description" content="{{ $description | truncate 160 }}" />
 
-	<!-- RSS Link -->
-	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="{{ site.Title }}" />
+    <!-- RSS Link -->
+    <link
+      rel="alternate"
+      href="/index.xml"
+      type="application/rss+xml"
+      title="{{ site.Title }}"
+    />
 
-	<!-- Sitemap -->
-	<link rel="sitemap" href="/sitemap.xml" />
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap.xml" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
 
     {{ partialCached "head/css.html" . }}
     {{ partialCached "head/js.html" . }}
   </head>
   <body>
-    <div class="flex h-screen bg-cover bg-no-repeat" style="background-image: url(/images/lost.jpg);">
-      <main class="text-white m-auto text-center p-10 rounded-lg bg-black opacity-80">
+    <div
+      class="flex h-screen bg-cover bg-no-repeat"
+      style="background-image: url(/images/lost.jpg);"
+    >
+      <main
+        class="text-white m-auto text-center p-10 rounded-lg bg-black opacity-80"
+      >
         <h1 class="text-4xl font-bold pb-5">Ehhh... You seem to be lost.</h1>
-        <p class="pb-5">Not sure what you're looking for, but you're not going to find it here.</p>
+        <p class="pb-5">
+          Not sure what you're looking for, but you're not going to find it
+          here.
+        </p>
         <p class="pb-5">
           <a href="{{ .Site.Home.RelPermalink }}">
             Let's take you back home.
           </a>
         </p>
-        <p class="text-slate-400 text-xs">Photo by <a class="font-bold" href="https://unsplash.com/@aperturevintage?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Aperture Vintage</a> on <a class="font-bold" href="https://unsplash.com/photos/starry-sky-Z6EpCdMcoUU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+        <p class="text-slate-400 text-xs">
+          Photo by
+          <a
+            class="font-bold"
+            href="https://unsplash.com/@aperturevintage?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+            >Aperture Vintage</a
+          >
+          on
+          <a
+            class="font-bold"
+            href="https://unsplash.com/photos/starry-sky-Z6EpCdMcoUU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+            >Unsplash</a
+          >
+        </p>
       </main>
     </div>
   </body>

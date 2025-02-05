@@ -1,3 +1,9 @@
 {{ $url_actor := partial "changelog/urls/actor.html" .url }}
-<img src="{{ .avatar_url }}" alt="{{ .display_login }}" class="h-4 rounded-full inline"/>
-<a href="{{ $url_actor }}" title="{{ .display_login }}" target="_blank">{{ .display_login }}</a>
+<img
+  src="{{ .avatar_url }}"
+  alt="{{ .display_login }}"
+  class="h-4 rounded-full inline"
+/>
+<a href="{{ $url_actor }}" title="{{ .display_login }}" target="_blank"
+  >{{ .display_login }}</a
+>

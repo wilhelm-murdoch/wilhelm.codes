@@ -1,8 +1,15 @@
 {{ partial "changelog/icon.html" ( dict "icon" "cube" "colour" "blue" ) }}
 <p class="mb-2 pt-1 relative pr-20">
   {{ partial "changelog/author.html" .actor }}
-  {{ .payload.action }} release with tag <code>{{ .payload.release.tag_name }}</code>
+  {{ .payload.action }} release with tag
+  <code>{{ .payload.release.tag_name }}</code>
   <span class="inline-block absolute right-0 top-1 text-sm">
-    <a href="{{ .payload.release.html_url }}" title="View all details for this release..." class="font-mono" target="_blank">view</a>
+    <a
+      href="{{ .payload.release.html_url }}"
+      title="View all details for this release..."
+      class="font-mono"
+      target="_blank"
+      >view</a
+    >
   </span>
 </p>

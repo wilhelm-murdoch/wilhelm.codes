@@ -1,42 +1,66 @@
 {{ define "main" }}
-<div class="blog highlight-{{ .Params.highlight }} mx-auto sm:max-w-full md:max-w-4xl">
+  <div
+    class="blog highlight-{{ .Params.highlight }} mx-auto sm:max-w-full md:max-w-4xl"
+  >
     <h4 class="text-center">
-        <span class="rounded-full px-2 py-2 md:px-4 md:py-3 text-xs sm:font-normal md:font-medium">{{ .Params.category }}</span>
+      <span
+        class="rounded-full px-2 py-2 md:px-4 md:py-3 text-xs sm:font-normal md:font-medium"
+        >{{ .Params.category }}</span
+      >
     </h4>
 
-    <h3 class="text-center text-2xl my-6 md:text-5xl md:my-12 text-slate-600 font-light">
-        {{ .LinkTitle | safeHTML }}
+    <h3
+      class="text-center text-2xl my-6 md:text-5xl md:my-12 text-slate-600 font-light"
+    >
+      {{ .LinkTitle | safeHTML }}
     </h3>
 
-    <article class="mb-8 fade-in-animation transition card md:border sm:rounded-none md:rounded-2xl sm:shadow-none md:shadow-md shadow-slate-100 overflow-hidden">
-        <div class="overflow-hidden sm:h-64 md:h-96 relative">
-            {{ $title := .LinkTitle }}
-            {{ with .Resources.Get "header.jpeg" }}
-                <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
-            {{ end }}
+    <article
+      class="mb-8 fade-in-animation transition card md:border sm:rounded-none md:rounded-2xl sm:shadow-none md:shadow-md shadow-slate-100 overflow-hidden"
+    >
+      <div class="overflow-hidden sm:h-64 md:h-96 relative">
+        {{ $title := .LinkTitle }}
+        {{ with .Resources.Get "header.jpeg" }}
+          <img
+            src="{{ .RelPermalink }}"
+            alt="{{ $title }}"
+            class="aspect-video object-cover lazy"
+          />
+        {{ end }}
 
-            {{ if .Params.credit }}
-                <div class="credit absolute bottom-1 left-1 rounded-md bg-black text-white p-2 opacity-70 text-xs">
-                    <span class="fa-duotone fa-copyright"></span>
-                    {{ .Params.credit | safeHTML }}
-                </div>
-            {{ end }}
+        {{ if .Params.credit }}
+          <div
+            class="credit absolute bottom-1 left-1 rounded-md bg-black text-white p-2 opacity-70 text-xs"
+          >
+            <span class="fa-duotone fa-copyright"></span>
+            {{ .Params.credit | safeHTML }}
+          </div>
+        {{ end }}
+      </div>
+      <div class="summary sm:pt-8 md:pt-16 relative">
+        <span
+          class="invisible sm:visible absolute mx-auto sm:-top-6 md:-top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} sm:h-5 sm:w-5 md:h-10 md:w-10 p-4 rounded-full ring-4 ring-white"
+        ></span>
+        <div
+          class="p-4 md:px-16 sm:mb-7 md:mb-14 text-slate-700 sm:text-base md:text-xl font-light leading-relaxed"
+        >
+          {{ .Summary }}
         </div>
-        <div class="summary sm:pt-8 md:pt-16 relative">
-            <span class="invisible sm:visible absolute mx-auto sm:-top-6 md:-top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} sm:h-5 sm:w-5 md:h-10 md:w-10 p-4 rounded-full ring-4 ring-white"></span>
-            <div class="p-4 md:px-16 sm:mb-7 md:mb-14 text-slate-700 sm:text-base md:text-xl font-light leading-relaxed">
-                {{ .Summary }}
-            </div>
-            {{ if eq .Params.toc true }}
-                {{ with .TableOfContents }}
-                <section class="hidden sm:block toc mx-auto bg-gray-100 p-4 px-24 mb-16">
-                    <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">Table of Contents</h3>
-                    {{ . }}
-                </section>
-                {{ end }}
-            {{ end }}
-        </div>
-        <div class="
+        {{ if eq .Params.toc true }}
+          {{ with .TableOfContents }}
+            <section
+              class="hidden sm:block toc mx-auto bg-gray-100 p-4 px-24 mb-16"
+            >
+              <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">
+                Table of Contents
+              </h3>
+              {{ . }}
+            </section>
+          {{ end }}
+        {{ end }}
+      </div>
+      <div
+        class="
             mx-auto 
             max-w-4xl 
             mb-8 
@@ -77,65 +101,81 @@
             prose-th:p-2
             prose-td:p-2
             prose-tr:border-b
-        ">
-            {{ .ContentWithoutSummary }}
-        </div>
-        
-        <footer class="hidden sm:block mb-8 text-sm text-center text-slate-400 font-light">
-            written by
-            <img
-                class="inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400 jello-animation"
-                src="/images/me.jpeg"
-                alt="It me."
-            /> on <strong class="border-b border-slate-300">{{ .Date | time.Format ":date_medium" }}</strong>
-            {{ with .Params.tags }}
-                and filed under
-                {{ if ne (len .) 0 }}
-                    {{ partial "tags/inline.html" . }}
-                {{ end }}
-            {{ end }}
-        </footer>
+        "
+      >
+        {{ .ContentWithoutSummary }}
+      </div>
+
+      <footer
+        class="hidden sm:block mb-8 text-sm text-center text-slate-400 font-light"
+      >
+        written by
+        <img
+          class="inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400 jello-animation"
+          src="/images/me.jpeg"
+          alt="It me."
+        />
+        on
+        <strong class="border-b border-slate-300"
+          >{{ .Date | time.Format ":date_medium" }}</strong
+        >
+        {{ with .Params.tags }}
+          and filed under
+          {{ if ne (len .) 0 }}
+            {{ partial "tags/inline.html" . }}
+          {{ end }}
+        {{ end }}
+      </footer>
     </article>
 
-    <progress class="highlight-{{ .Params.highlight }}" value="0" max="100" data-progress-bar></progress>
+    <progress
+      class="highlight-{{ .Params.highlight }}"
+      value="0"
+      max="100"
+      data-progress-bar
+    ></progress>
     <script>
-    function getScrollPercent() {
-        const h = document.documentElement, 
-            b = document.body,
-            st = 'scrollTop',
-            sh = 'scrollHeight';
-        return Math.round((h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100);
-    }
+      function getScrollPercent() {
+        const h = document.documentElement,
+          b = document.body,
+          st = "scrollTop",
+          sh = "scrollHeight";
+        return Math.round(
+          ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100,
+        );
+      }
 
-    const progressBar = document.querySelector('[data-progress-bar]');
-    
-    if (progressBar) {
-        progressBar.setAttribute('value', getScrollPercent());
-        window.addEventListener('scroll', () => {
-        progressBar.setAttribute('value', getScrollPercent());
+      const progressBar = document.querySelector("[data-progress-bar]");
+
+      if (progressBar) {
+        progressBar.setAttribute("value", getScrollPercent());
+        window.addEventListener("scroll", () => {
+          progressBar.setAttribute("value", getScrollPercent());
         });
-    }
-    </script> 
+      }
+    </script>
 
     {{ if ne .Params.comments false }}
-    <section id="comments" class="hidden sm:block mx-auto max-w-4xl mb-8">
-        <script src="https://giscus.app/client.js"
-            data-repo="wilhelm-murdoch/wilhelm.codes"
-            data-repo-id="R_kgDOGWTH9g"
-            data-category="Blog Comments"
-            data-category-id="DIC_kwDOGWTH9s4ClCVr"
-            data-mapping="og:title"
-            data-strict="1"
-            data-reactions-enabled="1"
-            data-emit-metadata="1"
-            data-input-position="top"
-            data-theme="light"
-            data-lang="en"
-            data-loading="lazy"
-            crossorigin="anonymous"
-            async>
-        </script>
-    </section>
+      <section id="comments" class="hidden sm:block mx-auto max-w-4xl mb-8">
+        <script
+          src="https://giscus.app/client.js"
+          data-repo="wilhelm-murdoch/wilhelm.codes"
+          data-repo-id="R_kgDOGWTH9g"
+          data-category="Blog Comments"
+          data-category-id="DIC_kwDOGWTH9s4ClCVr"
+          data-mapping="og:title"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </section>
     {{ end }}
-</div>
+  </div>
 {{ end }}
+

@@ -1,5 +1,6 @@
 {{ partial "changelog/icon.html" ( dict "icon" "eye" "colour" "purple" ) }}
 {{ $url_repo := partial "changelog/urls/repository.html" .repo.url }}
 <p class="mb-2 pt-1 relative pr-20">
-  {{ partial "changelog/author.html" .actor }} {{ .payload.action }} watching this project
+  {{ partial "changelog/author.html" .actor }} {{ .payload.action }} watching
+  this project
 </p>

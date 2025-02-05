@@ -1,21 +1,31 @@
-<article class="transition hover:scale-105 hover:ease-in-out hover:duration-300 highlight-{{ .Params.highlight }} card border rounded-2xl shadow-md shadow-slate-100 overflow-hidden">
-    <div class="overflow-hidden">
-        {{ $title := .LinkTitle }}
-        <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
-        {{ with .Resources.Get "header.jpeg" }}
-            <img src="{{ .RelPermalink }}" alt="{{ $title }}" class="aspect-video object-cover lazy" />
-        {{ end }}
-        </a>
-    </div>
-    <div class="summary p-8 relative h-max">
-        <span class="absolute mx-auto -top-4 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-5 w-5 p-2 rounded-full ring-4 ring-white"></span>
-        <h4 class="text-center mb-4">
-            <span class="rounded-full px-4 py-2 text-xs font-medium">{{ .Params.category }}</span>
-        </h4>
-        <h3 class="font-light text-center text-2xl mb-2 text-slate-800">
-            <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
-                {{ .LinkTitle | safeHTML }}
-            </a>
-        </h3>
-    </div>
+<article
+  class="transition hover:scale-105 hover:ease-in-out hover:duration-300 highlight-{{ .Params.highlight }} card border rounded-2xl shadow-md shadow-slate-100 overflow-hidden"
+>
+  <div class="overflow-hidden">
+    {{ $title := .LinkTitle }}
+    <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+      {{ with .Resources.Get "header.jpeg" }}
+        <img
+          src="{{ .RelPermalink }}"
+          alt="{{ $title }}"
+          class="aspect-video object-cover lazy"
+        />
+      {{ end }}
+    </a>
+  </div>
+  <div class="summary p-8 relative h-max">
+    <span
+      class="absolute mx-auto -top-4 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-5 w-5 p-2 rounded-full ring-4 ring-white"
+    ></span>
+    <h4 class="text-center mb-4">
+      <span class="rounded-full px-4 py-2 text-xs font-medium"
+        >{{ .Params.category }}</span
+      >
+    </h4>
+    <h3 class="font-light text-center text-2xl mb-2 text-slate-800">
+      <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
+        {{ .LinkTitle | safeHTML }}
+      </a>
+    </h3>
+  </div>
 </article>

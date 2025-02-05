@@ -1,4 +1,7 @@
-<nav id="navigation" class="mx-auto max-w-2xl text-xs md:text-lg text-slate-300 mb-6 sm:mb-6 md:mb-14 text-center">
+<nav
+  id="navigation"
+  class="mx-auto max-w-2xl text-xs md:text-lg text-slate-300 mb-6 sm:mb-6 md:mb-14 text-center"
+>
   <ul class="p-0 m-0">
     {{ $current := . }}
     {{ range site.Menus.main }}
@@ -16,10 +19,13 @@
         {{ end }}
 
         {{ if .Params.badge_text }}
-          <span class="absolute rounded-md px-1 text-xs bg-red-600 text-white">{{ .Params.badge_text }}</span>
+          <span class="absolute rounded-md px-1 text-xs bg-red-600 text-white"
+            >{{ .Params.badge_text }}</span
+          >
         {{ end }}
       </li>
     {{ end }}
     <li class="cursor-not-allowed">Projects</li>
   </ul>
 </nav>
+

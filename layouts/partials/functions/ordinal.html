@@ -1,9 +1,10 @@
 {{- if and ( eq ( mod . 10 ) 1 ) ( ne ( mod . 100 ) 11 ) -}}
-    st
+  st
 {{ else if and ( eq ( mod . 10 ) 2 ) ( ne ( mod . 100 ) 12 ) -}}
-    nd
+  nd
 {{ else if and ( eq ( mod . 10 ) 3 ) ( ne ( mod . 100 ) 13 ) -}}
-    rd
+  rd
 {{ else -}}
-    th
+  th
 {{ end -}}
+
