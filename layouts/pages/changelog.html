@@ -52,10 +52,10 @@
           class="text-slate-400 text-base mb-4 pb-4 border-b border-b-slate-100"
         >
           {{ $counts.Get . }}
-          event{{ if gt (
-            $counts.Get . ) 1
-          }}
-            s
+          {{ if gt ($counts.Get . ) 1 }}
+            events
+          {{ else }}
+            event
           {{ end }}
         </h4>
         {{ $date := . }}
