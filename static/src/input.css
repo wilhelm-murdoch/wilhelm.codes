@@ -13,7 +13,9 @@
 }
 
 @layer base {
-  ul, ol {
+
+  ul,
+  ol {
     list-style: revert;
   }
 
@@ -106,7 +108,8 @@ Primary Navigation
 Table of Contents
 */
 
-.toc ul, ol {
+.toc ul,
+ol {
   margin-left: 16px;
 }
 
@@ -116,23 +119,23 @@ Table of Contents
   padding-bottom: 1px !important;
 }
 
-  .toc a:hover {
-    border-bottom: 2px solid theme("colors.slate.300") !important;
-  }
+.toc a:hover {
+  border-bottom: 2px solid theme("colors.slate.300") !important;
+}
 
-  .toc ol {
-    margin-top: 6px;
-  }
+.toc ol {
+  margin-top: 6px;
+}
 
-  .toc li {
-    margin-bottom: 6px;
-    letter-spacing: 1px;
-  }
+.toc li {
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
 
-.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before,
-.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after,
-.prose-xl :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before,
-.prose-xl :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after {
+.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):before,
+.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):after,
+.prose-xl :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):before,
+.prose-xl :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):after {
   content: "`";
 }
 
@@ -168,9 +171,17 @@ Progress Bar
   z-index: 1100;
 }
 
-[data-progress-bar]::-webkit-progress-bar { background: transparent; }
-[data-progress-bar]::-moz-progress-bar { background: black; }
-[data-progress-bar]::-webkit-progress-value { background: black; }
+[data-progress-bar]::-webkit-progress-bar {
+  background: transparent;
+}
+
+[data-progress-bar]::-moz-progress-bar {
+  background: black;
+}
+
+[data-progress-bar]::-webkit-progress-value {
+  background: black;
+}
 
 /*
 Article Highlights
@@ -195,7 +206,7 @@ Article Highlights
 
 .blog.highlight-slate a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.slate.500") 
+  border-bottom: 2px solid theme("colors.slate.500")
 }
 
 .blog.highlight-slate a:hover {
@@ -226,7 +237,7 @@ progress.highlight-slate::-webkit-progress-value {
 
 .blog.highlight-red a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.red.500") 
+  border-bottom: 2px solid theme("colors.red.500")
 }
 
 .blog.highlight-red a:hover {
@@ -256,7 +267,7 @@ progress.highlight-red::-webkit-progress-value {
 
 .blog.highlight-yellow a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.yellow.500") 
+  border-bottom: 2px solid theme("colors.yellow.500")
 }
 
 .blog.highlight-yellow a:hover {
@@ -316,7 +327,7 @@ progress.highlight-orange::-webkit-progress-value {
 
 .blog.highlight-emerald a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.emerald.500") 
+  border-bottom: 2px solid theme("colors.emerald.500")
 }
 
 .blog.highlight-emerald a:hover {
@@ -346,7 +357,7 @@ progress.highlight-emerald::-webkit-progress-value {
 
 .blog.highlight-teal a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.teal.500") 
+  border-bottom: 2px solid theme("colors.teal.500")
 }
 
 .blog.highlight-teal a:hover {
@@ -376,7 +387,7 @@ progress.highlight-teal::-webkit-progress-value {
 
 .blog.highlight-blue a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.blue.500") 
+  border-bottom: 2px solid theme("colors.blue.500")
 }
 
 .blog.highlight-blue a:hover {
@@ -406,7 +417,7 @@ progress.highlight-blue::-webkit-progress-value {
 
 .blog.highlight-purple a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.purple.500") 
+  border-bottom: 2px solid theme("colors.purple.500")
 }
 
 .blog.highlight-purple a:hover {
@@ -436,7 +447,7 @@ progress.highlight-purple::-webkit-progress-value {
 
 .blog.highlight-rose a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.rose.500") 
+  border-bottom: 2px solid theme("colors.rose.500")
 }
 
 .blog.highlight-rose a:hover {
@@ -481,9 +492,17 @@ header h1 span::after {
   background-color: theme("colors.blue.100");
 }
 
+section header p a {
+  @apply text-slate-600;
+  border-bottom: 2px solid theme("colors.blue.500");
+}
+
+section header p a:hover {
+  @apply text-slate-900;
+}
+
 .fade-in-animation {
-  -webkit-animation: fade-in-animation 1s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
+  -webkit-animation: fade-in-animation 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in-animation 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
@@ -491,14 +510,17 @@ header h1 span::after {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
+
 @keyframes fade-in-animation {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -698,5 +720,3 @@ header h1 span::after {
     opacity: 1;
   }
 }
-
-
