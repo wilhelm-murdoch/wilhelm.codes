@@ -18,6 +18,7 @@
 
 
 <p class="mb-2 pt-1 relative pr-20">
-  {{ partial "changelog/author.html" .actor }} {{ $action }}
+  {{ partial "changelog/author.html" .actor }}
+  {{ $action }}
   {{ .payload.ref_type }} <code>{{ $payload.ref }}</code>
 </p>

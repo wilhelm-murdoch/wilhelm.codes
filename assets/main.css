@@ -554,7 +554,8 @@ video {
   display: none;
 }
 
-ul, ol {
+ul,
+  ol {
   list-style: revert;
 }
 
@@ -986,10 +987,6 @@ h1,
   display: flex;
 }
 
-.inline-flex {
-  display: inline-flex;
-}
-
 .hidden {
   display: none;
 }
@@ -1065,14 +1062,6 @@ h1,
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
 }
 
 .gap-8 {
@@ -33545,7 +33534,8 @@ Primary Navigation
 Table of Contents
 */
 
-.toc ul, ol {
+.toc ul,
+ol {
   margin-left: 16px;
 }
 
@@ -33568,10 +33558,10 @@ Table of Contents
   letter-spacing: 1px;
 }
 
-.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before,
-.prose :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after,
-.prose-xl :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):before,
-.prose-xl :where(code):not(:where([class~=not-prose],[class~=not-prose] *)):after {
+.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):before,
+.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):after,
+.prose-xl :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):before,
+.prose-xl :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):after {
   content: "`";
 }
 
@@ -33926,6 +33916,17 @@ header h1 span::after {
   height: 40%;
   transform: rotate(1deg);
   background-color: #dbeafe;
+}
+
+section header p a {
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity, 1));
+  border-bottom: 2px solid #3b82f6;
+}
+
+section header p a:hover {
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity, 1));
 }
 
 .fade-in-animation {
@@ -34443,5 +34444,3 @@ header h1 span::after {
 .\[\&\:not\(\:last-child\)\]\:border-l:not(:last-child) {
   border-left-width: 1px;
 }
-
-

@@ -6,13 +6,19 @@
       >
         The <span class="font-normal relative">Changelog</span>.
       </h1>
+      <p
+        class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10"
+      >
+        The only constant is change and you can view it all here.<br />Or, at
+        least, the last 100 changes pulled directly from
+        <a
+          href="https://github.com/wilhelm-murdoch/wilhelm.codes"
+          title="Check out some code..."
+          target="_blank"
+          >Github</a
+        >.
+      </p>
     </header>
-    <p
-      class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10"
-    >
-      The only constant is change and you can view it all here.<br />Or, at
-      least, the last 100 changes pulled directly from Github.
-    </p>
 
     {{ $response := dict }}
     {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}

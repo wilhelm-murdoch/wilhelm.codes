@@ -6,13 +6,13 @@
       >
         The <span class="font-normal relative">Archive</span>.
       </h1>
+      <p
+        class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10"
+      >
+        Here you will find everything under the sun.<br />Have a nice
+        <i>scroll</i> through memory lane.
+      </p>
     </header>
-    <p
-      class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10"
-    >
-      Here you will find everything under the sun.<br />Have a nice
-      <i>scroll</i> through memory lane.
-    </p>
     {{ range (where .Site.RegularPages "Section" "blog") }}
       {{ partial "views/row.html" . }}
     {{ end }}
