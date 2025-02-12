@@ -7,7 +7,12 @@
 {{ $title := site.Title }}
 {{ $description := .Site.Params.Description }}
 {{ if not .IsHome }}
-  {{ $title = printf "%s · %s" .Params.title_safe $title }}
+  {{ $subtitle := .Params.title_safe }}
+  {{ if not $subtitle }}
+    {{ $subtitle = cond ( not .Data.Term ) .Title .Data.Term }}
+  {{ end }}
+
+  {{ $title = printf "%s · %s" $subtitle $title }}
   {{ $description = .Summary }}
 {{ end }}
 
