@@ -119,7 +119,7 @@
         <strong class="border-b border-slate-300"
           >{{ .Date | time.Format ":date_medium" }}</strong
         >
-        {{ with .Params.tags }}
+        {{ with .GetTerms "tags" }}
           and filed under
           {{ if ne (len .) 0 }}
             {{ partial "tags/inline.html" . }}
@@ -178,4 +178,3 @@
     {{ end }}
   </div>
 {{ end }}
-

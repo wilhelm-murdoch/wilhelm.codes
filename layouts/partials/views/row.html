@@ -16,7 +16,7 @@
       <span class="border-b-2 border-b-slate-100 font-medium text-slate-500"
         >{{ .Params.category }}</span
       >
-      {{ with .Params.tags }}
+      {{ with .GetTerms "tags" }}
         {{ if ne (len .) 0 }}
           +
           {{ partial "tags/inline.html" . }}
@@ -25,4 +25,3 @@
     </p>
   </div>
 </article>
-
