@@ -3,6 +3,10 @@ languageCode = "en-us"
 title = "Wilhelm Codes"
 enableGitInfo = true
 
+[taxonomies]
+  tag = "tags"
+  category = "category"
+
 [menus]
   [[menus.main]]
     name = "Home"
@@ -32,4 +36,4 @@ enableGitInfo = true
     ordered = true
     startLevel = 2
   [markup.highlight]
-    style = "nord"
+    style = "catppuccin-mocha"
