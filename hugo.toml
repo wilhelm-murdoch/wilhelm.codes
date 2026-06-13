@@ -1,7 +1,20 @@
 baseURL = "https://wilhelm.codes/"
-languageCode = "en-us"
+locale = "en-US"
 title = "Wilhelm Codes"
 enableGitInfo = true
+
+# Generate hugo_stats.json (the list of classes Hugo emits) so Tailwind's
+# css.TailwindCSS pipeline can scan the rendered site, and bust the CSS cache
+# when that file or any asset CSS changes.
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/watching/hugo_stats\.json'
+    target = 'css'
+  [[build.cachebusters]]
+    source = 'assets/.*\.css'
+    target = 'css'
 
 [taxonomies]
   tag = "tags"

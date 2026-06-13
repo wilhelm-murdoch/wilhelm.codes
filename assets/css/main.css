@@ -1,6 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+/* Hugo writes every utility class it emits to hugo_stats.json (enabled via
+   [build.buildStats] in hugo.toml). Source it so Tailwind scans the rendered
+   site instead of the templates. */
+@source "hugo_stats.json";
+
+/* Color utilities are composed dynamically from the `highlight`/`pack` front
+   matter (e.g. bg-{color}-50, text-{color}-500, border-{color}-200) in the
+   callout, bits and changelog templates, so scanning output alone can miss
+   combinations that aren't currently used. Generate them explicitly — this
+   mirrors the safelist from the old tailwind.config.js. */
+@source inline("{text,bg,border-b,border}-{purple,blue,green,emerald,indigo,pink,orange,rose,red,yellow,slate}-{50,100,200,300,400,500,600,700,800}");
+
+/* Replaces the addVariant() calls from the old tailwind.config.js plugin. */
+@custom-variant prose-inline-code (&.prose-xl :where(:not(pre) > code):not(:where([class~="not-prose"] *)));
+@custom-variant not-last (&:not(:last-child));
+
+/* Tailwind v4 defaults the border and divide colors to currentColor; v3
+   defaulted them to gray-200. Preserve the v3 look for elements that use a
+   bare `border`/`border-b` without an explicit color. */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @font-face {
   font-family: "Inter";
@@ -45,7 +74,7 @@
   bottom: 45%;
   width: 100%;
   height: 4px;
-  background-color: theme("colors.blue.50");
+  background-color: var(--color-blue-50);
 }
 
 /*
@@ -53,13 +82,13 @@ Changelog
 */
 
 #changelog .event a {
-  color: theme("colors.slate.500");
-  border-bottom: 1px dotted theme("colors.slate.500");
+  color: var(--color-slate-500);
+  border-bottom: 1px dotted var(--color-slate-500);
 }
 
 #changelog .event a:hover {
-  color: theme("colors.slate.600");
-  border-bottom: 1px dotted theme("colors.slate.600");
+  color: var(--color-slate-600);
+  border-bottom: 1px dotted var(--color-slate-600);
 }
 
 #changelog .event code {
@@ -79,7 +108,7 @@ Primary Navigation
 #navigation li a {
   transition: all .2s ease;
   font-weight: 600;
-  color: theme("colors.slate.800");
+  color: var(--color-slate-800);
 }
 
 #navigation li span::after,
@@ -97,11 +126,11 @@ Primary Navigation
 
 #navigation li span.active::after,
 #navigation li a.active::after {
-  background-color: theme("colors.blue.300");
+  background-color: var(--color-blue-300);
 }
 
 #navigation li a:hover::after {
-  background-color: theme("colors.blue.100");
+  background-color: var(--color-blue-100);
 }
 
 /*
@@ -114,13 +143,13 @@ ol {
 }
 
 .toc a {
-  color: theme("colors.slate.700") !important;
-  border-bottom: 2px solid theme("colors.slate.200") !important;
+  color: var(--color-slate-700) !important;
+  border-bottom: 2px solid var(--color-slate-200) !important;
   padding-bottom: 1px !important;
 }
 
 .toc a:hover {
-  border-bottom: 2px solid theme("colors.slate.300") !important;
+  border-bottom: 2px solid var(--color-slate-300) !important;
 }
 
 .toc ol {
@@ -149,7 +178,7 @@ ol {
 }
 
 .credit svg {
-  color: theme("colors.white") !important;
+  color: var(--color-white) !important;
   background-color: transparent !important;
 }
 
@@ -189,273 +218,273 @@ Article Highlights
 
 .highlight-slate .summary svg,
 .highlight-slate h3 span {
-  color: theme("colors.slate.400");
+  color: var(--color-slate-400);
   font-weight: 500;
 }
 
 .highlight-slate h4 span {
-  color: theme("colors.slate.400");
-  border: 1px solid theme("colors.slate.200");
+  color: var(--color-slate-400);
+  border: 1px solid var(--color-slate-200);
 }
 
 .highlight-slate .summary svg,
 .highlight-slate h4 span,
 .highlight-slate h3 span::after {
-  background-color: theme("colors.slate.50");
+  background-color: var(--color-slate-50);
 }
 
 .blog.highlight-slate a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.slate.500")
+  border-bottom: 2px solid var(--color-slate-500)
 }
 
 .blog.highlight-slate a:hover {
-  color: theme("colors.slate.500");
+  color: var(--color-slate-500);
 }
 
 progress.highlight-slate::-webkit-progress-value {
-  background-color: theme("colors.slate.400");
+  background-color: var(--color-slate-400);
 }
 
 .highlight-red .summary svg,
 .highlight-red h4 span,
 .highlight-red h3 span {
-  color: theme("colors.red.400");
+  color: var(--color-red-400);
   font-weight: 500;
 }
 
 .highlight-red h4 span {
-  color: theme("colors.red.400");
-  border: 1px solid theme("colors.red.200");
+  color: var(--color-red-400);
+  border: 1px solid var(--color-red-200);
 }
 
 .highlight-red .summary svg,
 .highlight-red h4 span,
 .highlight-red h3 span::after {
-  background-color: theme("colors.red.50");
+  background-color: var(--color-red-50);
 }
 
 .blog.highlight-red a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.red.500")
+  border-bottom: 2px solid var(--color-red-500)
 }
 
 .blog.highlight-red a:hover {
-  color: theme("colors.red.500");
+  color: var(--color-red-500);
 }
 
 progress.highlight-red::-webkit-progress-value {
-  background-color: theme("colors.red.400");
+  background-color: var(--color-red-400);
 }
 
 .highlight-yellow .summary svg,
 .highlight-yellow h3 span {
-  color: theme("colors.yellow.500");
+  color: var(--color-yellow-500);
   font-weight: 500;
 }
 
 .highlight-yellow h4 span {
-  color: theme("colors.yellow.400");
-  border: 1px solid theme("colors.yellow.200");
+  color: var(--color-yellow-400);
+  border: 1px solid var(--color-yellow-200);
 }
 
 .highlight-yellow .summary svg,
 .highlight-yellow h4 span,
 .highlight-yellow h3 span::after {
-  background-color: theme("colors.yellow.50");
+  background-color: var(--color-yellow-50);
 }
 
 .blog.highlight-yellow a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.yellow.500")
+  border-bottom: 2px solid var(--color-yellow-500)
 }
 
 .blog.highlight-yellow a:hover {
-  color: theme("colors.yellow.500");
+  color: var(--color-yellow-500);
 }
 
 progress.highlight-yellow::-webkit-progress-value {
-  background-color: theme("colors.yellow.400");
+  background-color: var(--color-yellow-400);
 }
 
 .highlight-orange .summary svg,
 .highlight-orange h3 span {
-  color: theme("colors.orange.400");
+  color: var(--color-orange-400);
   font-weight: 500;
 }
 
 .highlight-orange h4 span {
-  color: theme("colors.orange.400");
-  border: 1px solid theme("colors.orange.200");
+  color: var(--color-orange-400);
+  border: 1px solid var(--color-orange-200);
 }
 
 .highlight-orange .summary svg,
 .highlight-orange h4 span,
 .highlight-orange h3 span::after {
-  background-color: theme("colors.orange.50");
+  background-color: var(--color-orange-50);
 }
 
 .blog.highlight-orange a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.orange.500");
+  border-bottom: 2px solid var(--color-orange-500);
 }
 
 .blog.highlight-orange a:hover {
-  color: theme("colors.orange.500");
+  color: var(--color-orange-500);
 }
 
 progress.highlight-orange::-webkit-progress-value {
-  background-color: theme("colors.orange.400");
+  background-color: var(--color-orange-400);
 }
 
 .highlight-emerald .summary svg,
 .highlight-emerald h3 span {
-  color: theme("colors.emerald.500");
+  color: var(--color-emerald-500);
   font-weight: 500;
 }
 
 .highlight-emerald h4 span {
-  color: theme("colors.emerald.500");
-  border: 1px solid theme("colors.emerald.200");
+  color: var(--color-emerald-500);
+  border: 1px solid var(--color-emerald-200);
 }
 
 .highlight-emerald .summary svg,
 .highlight-emerald h4 span,
 .highlight-emerald h3 span::after {
-  background-color: theme("colors.emerald.50");
+  background-color: var(--color-emerald-50);
 }
 
 .blog.highlight-emerald a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.emerald.500")
+  border-bottom: 2px solid var(--color-emerald-500)
 }
 
 .blog.highlight-emerald a:hover {
-  color: theme("colors.emerald.500");
+  color: var(--color-emerald-500);
 }
 
 progress.highlight-emerald::-webkit-progress-value {
-  background-color: theme("colors.emerald.500");
+  background-color: var(--color-emerald-500);
 }
 
 .highlight-teal .summary svg,
 .highlight-teal h3 span {
-  color: theme("colors.teal.400");
+  color: var(--color-teal-400);
   font-weight: 500;
 }
 
 .highlight-teal h4 span {
-  color: theme("colors.teal.400");
-  border: 1px solid theme("colors.teal.200");
+  color: var(--color-teal-400);
+  border: 1px solid var(--color-teal-200);
 }
 
 .highlight-teal .summary svg,
 .highlight-teal h4 span,
 .highlight-teal h3 span::after {
-  background-color: theme("colors.teal.50");
+  background-color: var(--color-teal-50);
 }
 
 .blog.highlight-teal a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.teal.500")
+  border-bottom: 2px solid var(--color-teal-500)
 }
 
 .blog.highlight-teal a:hover {
-  color: theme("colors.teal.500");
+  color: var(--color-teal-500);
 }
 
 progress.highlight-teal::-webkit-progress-value {
-  background-color: theme("colors.teal.400");
+  background-color: var(--color-teal-400);
 }
 
 .highlight-blue .summary svg,
 .highlight-blue h3 span {
-  color: theme("colors.blue.400");
+  color: var(--color-blue-400);
   font-weight: 500;
 }
 
 .highlight-blue h4 span {
-  color: theme("colors.blue.400");
-  border: 1px solid theme("colors.blue.200");
+  color: var(--color-blue-400);
+  border: 1px solid var(--color-blue-200);
 }
 
 .highlight-blue .summary svg,
 .highlight-blue h4 span,
 .highlight-blue h3 span::after {
-  background-color: theme("colors.blue.50");
+  background-color: var(--color-blue-50);
 }
 
 .blog.highlight-blue a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.blue.500")
+  border-bottom: 2px solid var(--color-blue-500)
 }
 
 .blog.highlight-blue a:hover {
-  color: theme("colors.blue.500");
+  color: var(--color-blue-500);
 }
 
 progress.highlight-blue::-webkit-progress-value {
-  background-color: theme("colors.blue.400");
+  background-color: var(--color-blue-400);
 }
 
 .highlight-purple .summary svg,
 .highlight-purple h3 span {
-  color: theme("colors.purple.400");
+  color: var(--color-purple-400);
   font-weight: 500;
 }
 
 .highlight-purple h4 span {
-  color: theme("colors.purple.400");
-  border: 1px solid theme("colors.purple.200");
+  color: var(--color-purple-400);
+  border: 1px solid var(--color-purple-200);
 }
 
 .highlight-purple .summary svg,
 .highlight-purple h4 span,
 .highlight-purple h3 span::after {
-  background-color: theme("colors.purple.50");
+  background-color: var(--color-purple-50);
 }
 
 .blog.highlight-purple a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.purple.500")
+  border-bottom: 2px solid var(--color-purple-500)
 }
 
 .blog.highlight-purple a:hover {
-  color: theme("colors.purple.500");
+  color: var(--color-purple-500);
 }
 
 progress.highlight-purple::-webkit-progress-value {
-  background-color: theme("colors.purple.400");
+  background-color: var(--color-purple-400);
 }
 
 .highlight-rose .summary svg,
 .highlight-rose h3 span {
-  color: theme("colors.rose.400");
+  color: var(--color-rose-400);
   font-weight: 500;
 }
 
 .highlight-rose h4 span {
-  color: theme("colors.rose.400");
-  border: 1px solid theme("colors.rose.200");
+  color: var(--color-rose-400);
+  border: 1px solid var(--color-rose-200);
 }
 
 .highlight-rose .summary svg,
 .highlight-rose h4 span,
 .highlight-rose h3 span::after {
-  background-color: theme("colors.rose.50");
+  background-color: var(--color-rose-50);
 }
 
 .blog.highlight-rose a {
   font-weight: 500;
-  border-bottom: 2px solid theme("colors.rose.500")
+  border-bottom: 2px solid var(--color-rose-500)
 }
 
 .blog.highlight-rose a:hover {
-  color: theme("colors.rose.500");
+  color: var(--color-rose-500);
 }
 
 progress.highlight-rose::-webkit-progress-value {
-  background-color: theme("colors.rose.400");
+  background-color: var(--color-rose-400);
 }
 
 .archive h3 span {
@@ -489,12 +518,12 @@ header h1 span::after {
   width: 100%;
   height: 40%;
   transform: rotate(1deg);
-  background-color: theme("colors.blue.100");
+  background-color: var(--color-blue-100);
 }
 
 section header p a {
   @apply text-slate-600;
-  border-bottom: 2px solid theme("colors.blue.500");
+  border-bottom: 2px solid var(--color-blue-500);
 }
 
 section header p a:hover {
