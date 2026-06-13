@@ -1,0 +1,10 @@
+# Prettier only formats the Hugo templates (layouts) and project config.
+# Keep it away from authored content, data fixtures, build output and
+# pre-minified vendor assets.
+public/
+resources/
+node_modules/
+content/
+static/
+assets/*.min.js
+package-lock.json

@@ -1,8 +1,8 @@
 <nav
   id="navigation"
-  class="mx-auto max-w-2xl text-xs md:text-lg text-slate-300 mb-6 sm:mb-6 md:mb-14 text-center"
+  class="mx-auto mb-6 max-w-2xl text-center text-xs text-slate-300 sm:mb-6 md:mb-14 md:text-lg"
 >
-  <ul class="p-0 m-0">
+  <ul class="m-0 p-0">
     {{ $current := . }}
     {{ range site.Menus.main }}
       {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
@@ -11,7 +11,7 @@
       {{ $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog")) }}
       <li class="relative">
         {{ if $active }}
-          <span class="text-slate-800 font-semibold active">{{ .Name }}</span>
+          <span class="active font-semibold text-slate-800">{{ .Name }}</span>
         {{ else }}
           <a href="{{ .URL }}" title="{{ .Name }}">
             {{ .Name }}
@@ -19,7 +19,7 @@
         {{ end }}
 
         {{ if .Params.badge_text }}
-          <span class="absolute rounded-md px-1 text-xs bg-red-600 text-white"
+          <span class="absolute rounded-md bg-red-600 px-1 text-xs text-white"
             >{{ .Params.badge_text }}</span
           >
         {{ end }}

@@ -1,7 +1,7 @@
 {{ partial "changelog/icon.html" ( dict "icon" "code-fork" "colour" "slate" ) }}
-<p class="mb-2 pt-1 relative pr-20">
+<p class="relative mb-2 pt-1 pr-20">
   {{ partial "changelog/author.html" .actor }} forked this project
-  <span class="inline-block absolute right-0 top-1 text-sm">
+  <span class="absolute top-1 right-0 inline-block text-sm">
     <a href="{{ .payload.forkee.html_url }}" title="View this fork...">view</a>
   </span>
 </p>

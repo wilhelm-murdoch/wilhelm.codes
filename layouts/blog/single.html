@@ -4,54 +4,54 @@
   >
     <h4 class="text-center">
       <span
-        class="rounded-full px-2 py-2 md:px-4 md:py-3 text-xs sm:font-normal md:font-medium"
+        class="rounded-full px-2 py-2 text-xs sm:font-normal md:px-4 md:py-3 md:font-medium"
         >{{ .Params.category }}</span
       >
     </h4>
 
     <h3
-      class="text-center text-2xl my-6 md:text-5xl md:my-12 text-slate-600 font-light"
+      class="my-6 text-center text-2xl font-light text-slate-600 md:my-12 md:text-5xl"
     >
       {{ .LinkTitle | safeHTML }}
     </h3>
 
     <article
-      class="mb-8 fade-in-animation transition card md:border sm:rounded-none md:rounded-2xl sm:shadow-none md:shadow-md shadow-slate-100 overflow-hidden"
+      class="fade-in-animation card mb-8 overflow-hidden shadow-slate-100 transition sm:rounded-none sm:shadow-none md:rounded-2xl md:border md:shadow-md"
     >
-      <div class="overflow-hidden sm:h-64 md:h-96 relative">
+      <div class="relative overflow-hidden sm:h-64 md:h-96">
         {{ $title := .LinkTitle }}
         {{ with .Resources.Get "header.jpeg" }}
           <img
             src="{{ .RelPermalink }}"
             alt="{{ $title }}"
-            class="aspect-video object-cover lazy"
+            class="lazy aspect-video object-cover"
           />
         {{ end }}
 
         {{ if .Params.credit }}
           <div
-            class="credit absolute bottom-1 left-1 rounded-md bg-black text-white p-2 opacity-70 text-xs"
+            class="credit absolute bottom-1 left-1 rounded-md bg-black p-2 text-xs text-white opacity-70"
           >
             <span class="fa-duotone fa-copyright"></span>
             {{ .Params.credit | safeHTML }}
           </div>
         {{ end }}
       </div>
-      <div class="summary sm:pt-8 md:pt-16 relative">
+      <div class="summary relative sm:pt-8 md:pt-16">
         <span
-          class="invisible sm:visible absolute mx-auto sm:-top-6 md:-top-9 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} sm:h-5 sm:w-5 md:h-10 md:w-10 p-4 rounded-full ring-4 ring-white"
+          class="fa-{{ .Params.pack }} fa-{{ .Params.icon }} invisible absolute right-0 left-0 mx-auto rounded-full p-4 ring-4 ring-white sm:visible sm:-top-6 sm:h-5 sm:w-5 md:-top-9 md:h-10 md:w-10"
         ></span>
         <div
-          class="p-4 md:px-16 sm:mb-7 md:mb-14 text-slate-700 sm:text-base md:text-xl font-light leading-relaxed"
+          class="p-4 leading-relaxed font-light text-slate-700 sm:mb-7 sm:text-base md:mb-14 md:px-16 md:text-xl"
         >
           {{ .Summary }}
         </div>
         {{ if eq .Params.toc true }}
           {{ with .TableOfContents }}
             <section
-              class="hidden sm:block toc mx-auto bg-gray-100 p-4 px-24 mb-16"
+              class="toc mx-auto mb-16 hidden bg-gray-100 p-4 px-24 sm:block"
             >
-              <h3 class="pb-2 mb-4 text-xl font-semibold border-b border-black">
+              <h3 class="mb-4 border-b border-black pb-2 text-xl font-semibold">
                 Table of Contents
               </h3>
               {{ . }}
@@ -60,58 +60,17 @@
         {{ end }}
       </div>
       <div
-        class="
-            mx-auto 
-            max-w-4xl 
-            mb-8 
-            px-4
-            md:px-16
-            prose-xl 
-
-            prose-p:text-slate-800 
-            prose-p:text-sm
-            md:prose-p:text-lg
-            prose-p:leading-normal  
-
-            prose-h4:font-semibold
-            prose-h4:text-slate-700
-            prose-h5:font-semibold
-            prose-h5:text-slate-700
-
-            prose-li:text-sm
-            md:prose-li:text-lg
-            prose-li:text-slate-800 
-            prose-li:leading-normal
-
-            prose-hr:my-9
-            md:prose-hr:my-18
-
-            prose-pre:overflow-x-auto 
-            prose-pre:text-sm
-            
-            prose-img:m-auto 
-            prose-img:rounded-lg
-
-            prose-inline-code:text-black
-            prose-inline-code:font-bold
-            prose-thead:bg-slate-50
-
-            prose-table:border
-            prose-table:w-full
-            prose-th:p-2
-            prose-td:p-2
-            prose-tr:border-b
-        "
+        class="mx-auto prose-xl mb-8 max-w-4xl px-4 md:px-16 prose-h4:font-semibold prose-h4:text-slate-700 prose-h5:font-semibold prose-h5:text-slate-700 prose-p:text-sm prose-p:leading-normal prose-p:text-slate-800 md:prose-p:text-lg prose-pre:overflow-x-auto prose-pre:text-sm prose-li:text-sm prose-li:leading-normal prose-li:text-slate-800 md:prose-li:text-lg prose-table:w-full prose-table:border prose-thead:bg-slate-50 prose-tr:border-b prose-th:p-2 prose-td:p-2 prose-img:m-auto prose-img:rounded-lg prose-hr:my-9 md:prose-hr:my-18 prose-inline-code:font-bold prose-inline-code:text-black"
       >
         {{ .ContentWithoutSummary }}
       </div>
 
       <footer
-        class="hidden sm:block mb-8 text-sm text-center text-slate-400 font-light"
+        class="mb-8 hidden text-center text-sm font-light text-slate-400 sm:block"
       >
         written by
         <img
-          class="inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400 jello-animation"
+          class="jello-animation inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400"
           src="/images/me.jpeg"
           alt="It me."
         />
@@ -156,7 +115,7 @@
     </script>
 
     {{ if ne .Params.comments false }}
-      <section id="comments" class="hidden sm:block mx-auto max-w-4xl mb-8">
+      <section id="comments" class="mx-auto mb-8 hidden max-w-4xl sm:block">
         <script
           src="https://giscus.app/client.js"
           data-repo="wilhelm-murdoch/wilhelm.codes"

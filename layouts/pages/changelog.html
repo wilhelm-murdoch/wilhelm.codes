@@ -1,13 +1,13 @@
 {{ define "main" }}
-  <section id="changelog" class="mx-auto max-w-4xl fade-in-animation">
+  <section id="changelog" class="fade-in-animation mx-auto max-w-4xl">
     <header>
       <h1
-        class="text-2xl md:text-5xl sm:my-4 md:my-8 font-bold text-center leading-tight"
+        class="text-center text-2xl leading-tight font-bold sm:my-4 md:my-8 md:text-5xl"
       >
-        The <span class="font-normal relative">Changelog</span>.
+        The <span class="relative font-normal">Changelog</span>.
       </h1>
       <p
-        class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10"
+        class="mb-10 hidden text-center text-2xl font-extralight text-slate-500 md:block"
       >
         The only constant is change and you can view it all here.<br />Or, at
         least, the last 100 changes pulled directly from
@@ -23,8 +23,9 @@
     {{ $response := dict }}
     {{ if hugo.IsDevelopment }}
       {{/* Dev: read the committed fixture straight from disk. Fetching it over
-           localhost deadlocks, because `hugo server` runs this build before it
-           starts listening on its own port. */}}
+        localhost deadlocks, because `hugo server` runs this build before it
+        starts listening on its own port.
+      */}}
       {{ $response = os.ReadFile "static/github.json" | transform.Unmarshal }}
     {{ else }}
       {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
@@ -58,7 +59,7 @@
           {{ $time.Format "of January 2006" }}
         </h3>
         <h4
-          class="text-slate-400 text-base mb-4 pb-4 border-b border-b-slate-100"
+          class="mb-4 border-b border-b-slate-100 pb-4 text-base text-slate-400"
         >
           {{ $counts.Get . }}
           {{ if gt ($counts.Get . ) 1 }}
@@ -72,7 +73,7 @@
           {{ if eq $date ( substr .created_at 0 10 ) }}
             {{ $event := . }}
             <div
-              class="event pb-4 relative ml-8 pl-8 [&:not(:last-child)]:border-l border-slate-200"
+              class="event relative ml-8 border-slate-200 pb-4 pl-8 [&:not(:last-child)]:border-l"
             >
               {{ with ( eq .type "CommitCommentEvent" ) }}
                 {{ partial "changelog/events/commit-comment.html" $event }}
