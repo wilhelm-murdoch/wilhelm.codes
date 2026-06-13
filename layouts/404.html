@@ -4,41 +4,7 @@
   dir="{{ or site.Language.Direction `ltr` }}"
 >
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" type="image/png" href="/images/favicon.png" />
-    <meta name="generator" content="Hugo" />
-    <link rel="canonical" href="{{ .Permalink }}" />
-
-    {{ $title := printf "Lost in Spaaaaaaace · %s" site.Title }}
-    {{ $description := .Site.Params.Description }}
-
-
-    <title>{{ $title }}</title>
-    <meta name="title" content="{{ site.Title }}" />
-    <meta name="description" content="{{ $description | truncate 160 }}" />
-
-    <!-- RSS Link -->
-    <link
-      rel="alternate"
-      href="/index.xml"
-      type="application/rss+xml"
-      title="{{ site.Title }}"
-    />
-
-    <!-- Sitemap -->
-    <link rel="sitemap" href="/sitemap.xml" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-      rel="stylesheet"
-    />
-
-    {{ partial "head/css.html" . }}
-    {{ partialCached "head/js.html" . }}
+    {{ partial "head.html" . }}
   </head>
   <body>
     <div
@@ -46,9 +12,9 @@
       style="background-image: url(/images/lost.jpg);"
     >
       <main
-        class="text-white m-auto text-center p-10 rounded-lg bg-black opacity-80"
+        class="m-auto rounded-lg bg-black p-10 text-center text-white opacity-80"
       >
-        <h1 class="text-4xl font-bold pb-5">Ehhh... You seem to be lost.</h1>
+        <h1 class="pb-5 text-4xl font-bold">Ehhh... You seem to be lost.</h1>
         <p class="pb-5">
           Not sure what you're looking for, but you're not going to find it
           here.
@@ -58,7 +24,7 @@
             Let's take you back home.
           </a>
         </p>
-        <p class="text-slate-400 text-xs">
+        <p class="text-xs text-slate-400">
           Photo by
           <a
             class="font-bold"
