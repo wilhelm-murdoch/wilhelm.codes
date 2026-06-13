@@ -1,7 +1,7 @@
 +++
 date = '{{ .Date }}'
 draft = false
-layout = archive
-type = page
+layout = 'archive'
+type = 'pages'
 title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 +++
