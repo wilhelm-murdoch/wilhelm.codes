@@ -1,6 +1,6 @@
 {{ $count :=  len . }}
 {{ range $index, $tag := . }}
-  <span class="border-b-2 border-b-slate-100  text-slate-500"
+  <span class="border-b-2 border-b-slate-100 text-slate-500"
     ><a href="{{ $tag.RelPermalink }}" title="">#{{ $tag.Data.Term }}</a></span
   >
   {{ if eq $count 2 }}

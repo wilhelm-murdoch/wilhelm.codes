@@ -1,5 +1,5 @@
 <article
-  class="transition hover:scale-105 hover:ease-in-out hover:duration-300 highlight-{{ .Params.highlight }} card border rounded-2xl shadow-md shadow-slate-100 overflow-hidden"
+  class="highlight-{{ .Params.highlight }} card overflow-hidden rounded-2xl border shadow-md shadow-slate-100 transition hover:scale-105 hover:duration-300 hover:ease-in-out"
 >
   <div class="overflow-hidden">
     {{ $title := .LinkTitle }}
@@ -8,16 +8,16 @@
         <img
           src="{{ .RelPermalink }}"
           alt="{{ $title }}"
-          class="aspect-video object-cover lazy w-full h-full"
+          class="lazy aspect-video h-full w-full object-cover"
         />
       {{ end }}
     </a>
   </div>
-  <div class="summary p-4 relative h-max">
+  <div class="summary relative h-max p-4">
     <span
-      class="absolute mx-auto -top-3 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-4 w-4 p-1 rounded-full ring-2 ring-white"
+      class="fa-{{ .Params.pack }} fa-{{ .Params.icon }} absolute -top-3 right-0 left-0 mx-auto h-4 w-4 rounded-full p-1 ring-2 ring-white"
     ></span>
-    <h3 class="font-light text-center text-sm mb-2 text-slate-800">
+    <h3 class="mb-2 text-center text-sm font-light text-slate-800">
       <a href="{{ .RelPermalink }}" title="{{ .LinkTitle }}">
         {{ .LinkTitle | safeHTML }}
       </a>

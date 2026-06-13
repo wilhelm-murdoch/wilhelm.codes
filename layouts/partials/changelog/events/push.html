@@ -5,10 +5,10 @@
   {{ $commit := index .payload.commits 0 }}
   {{ $url_sha := partial "changelog/urls/commit.html" $commit.url }}
   {{ $sha_short := substr $commit.sha 0 8 }}
-  <p class="mb-2 pt-1 relative pr-20">
+  <p class="relative mb-2 pt-1 pr-20">
     {{ partial "changelog/author.html" $event.actor }}
     pushed "{{ $commit.message }}"
-    <span class="inline-block absolute right-0 top-1 text-sm">
+    <span class="absolute top-1 right-0 inline-block text-sm">
       <a
         href="{{ $url_sha }}"
         title="View all details for commit {{ $sha_short }}..."
@@ -27,9 +27,9 @@
     {{ range .payload.commits }}
       {{ $url_sha := partial "changelog/urls/commit.html" .url }}
       {{ $sha_short := substr .sha 0 8 }}
-      <li class="mb-1 marker:text-slate-400 relative pr-20">
+      <li class="relative mb-1 pr-20 marker:text-slate-400">
         {{ .message | truncate 75 }}
-        <span class="inline-block absolute right-0 top-1 text-sm">
+        <span class="absolute top-1 right-0 inline-block text-sm">
           <a
             href="{{ $url_sha }}"
             title="View all details for commit {{ $sha_short }}..."

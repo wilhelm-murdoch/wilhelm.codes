@@ -44,14 +44,18 @@
 }
 
 @layer base {
-
   ul,
   ol {
     list-style: revert;
   }
 
   body {
-    font-family: "Inter", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family:
+      "Inter",
+      Helvetica Neue,
+      Helvetica,
+      Arial,
+      sans-serif;
   }
 
   h1,
@@ -60,7 +64,12 @@
   h4,
   h5,
   h6 {
-    font-family: "Rubik", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family:
+      "Rubik",
+      Helvetica Neue,
+      Helvetica,
+      Arial,
+      sans-serif;
   }
 }
 
@@ -94,7 +103,7 @@ Changelog
 }
 
 #changelog .event code {
-  @apply text-sm rounded-md border border-slate-200 p-1 bg-slate-50 text-slate-500;
+  @apply rounded-md border border-slate-200 bg-slate-50 p-1 text-sm text-slate-500;
 }
 
 /*
@@ -108,14 +117,14 @@ Primary Navigation
 }
 
 #navigation li a {
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   font-weight: 600;
   color: var(--color-slate-800);
 }
 
 #navigation li span::after,
 #navigation li a::after {
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   position: absolute;
   content: "";
   z-index: -1;
@@ -163,10 +172,14 @@ ol {
   letter-spacing: 1px;
 }
 
-.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):before,
-.prose :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):after,
-.prose-xl :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):before,
-.prose-xl :where(code):not(:where([class~=not-prose], [class~=not-prose] *)):after {
+.prose
+  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):before,
+.prose
+  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):after,
+.prose-xl
+  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):before,
+.prose-xl
+  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):after {
   content: "`";
 }
 
@@ -198,7 +211,7 @@ Progress Bar
   width: 100%;
   height: 8px;
   background-color: transparent;
-  opacity: .85;
+  opacity: 0.85;
   z-index: 1100;
 }
 
@@ -237,7 +250,7 @@ Article Highlights
 
 .blog.highlight-slate a {
   font-weight: 500;
-  border-bottom: 2px solid var(--color-slate-500)
+  border-bottom: 2px solid var(--color-slate-500);
 }
 
 .blog.highlight-slate a:hover {
@@ -268,7 +281,7 @@ progress.highlight-slate::-webkit-progress-value {
 
 .blog.highlight-red a {
   font-weight: 500;
-  border-bottom: 2px solid var(--color-red-500)
+  border-bottom: 2px solid var(--color-red-500);
 }
 
 .blog.highlight-red a:hover {
@@ -298,7 +311,7 @@ progress.highlight-red::-webkit-progress-value {
 
 .blog.highlight-yellow a {
   font-weight: 500;
-  border-bottom: 2px solid var(--color-yellow-500)
+  border-bottom: 2px solid var(--color-yellow-500);
 }
 
 .blog.highlight-yellow a:hover {
@@ -358,7 +371,7 @@ progress.highlight-orange::-webkit-progress-value {
 
 .blog.highlight-emerald a {
   font-weight: 500;
-  border-bottom: 2px solid var(--color-emerald-500)
+  border-bottom: 2px solid var(--color-emerald-500);
 }
 
 .blog.highlight-emerald a:hover {
@@ -388,7 +401,7 @@ progress.highlight-emerald::-webkit-progress-value {
 
 .blog.highlight-teal a {
   font-weight: 500;
-  border-bottom: 2px solid var(--color-teal-500)
+  border-bottom: 2px solid var(--color-teal-500);
 }
 
 .blog.highlight-teal a:hover {
@@ -418,7 +431,7 @@ progress.highlight-teal::-webkit-progress-value {
 
 .blog.highlight-blue a {
   font-weight: 500;
-  border-bottom: 2px solid var(--color-blue-500)
+  border-bottom: 2px solid var(--color-blue-500);
 }
 
 .blog.highlight-blue a:hover {
@@ -448,7 +461,7 @@ progress.highlight-blue::-webkit-progress-value {
 
 .blog.highlight-purple a {
   font-weight: 500;
-  border-bottom: 2px solid var(--color-purple-500)
+  border-bottom: 2px solid var(--color-purple-500);
 }
 
 .blog.highlight-purple a:hover {
@@ -478,7 +491,7 @@ progress.highlight-purple::-webkit-progress-value {
 
 .blog.highlight-rose a {
   font-weight: 500;
-  border-bottom: 2px solid var(--color-rose-500)
+  border-bottom: 2px solid var(--color-rose-500);
 }
 
 .blog.highlight-rose a:hover {
@@ -533,7 +546,8 @@ section header p a:hover {
 }
 
 .fade-in-animation {
-  -webkit-animation: fade-in-animation 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-animation: fade-in-animation 1s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
   animation: fade-in-animation 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 

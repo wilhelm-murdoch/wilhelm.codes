@@ -3,12 +3,12 @@
   <a
     href="https://gohugo.io"
     title="Hugo"
-    class="border-b hover:text-slate-400 hover:border-b-slate-400"
+    class="border-b hover:border-b-slate-400 hover:text-slate-400"
     >Hugo</a
   >
   and
   <svg
-    class="w-6 h-6 text-red-600 inline-block heartbeat-animation"
+    class="heartbeat-animation inline-block h-6 w-6 text-red-600"
     fill="currentColor"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
   by me
 </div>
 
-<div class="text-center text-slate-200 text-sm mt-8 font-mono">
+<div class="mt-8 text-center font-mono text-sm text-slate-200">
   {{ $date := now }}
   {{ if .GitInfo }}
     {{ $date = .GitInfo.AuthorDate }}
@@ -31,4 +31,3 @@
   {{ $date | time.Format ":date_long" }}
   {{ $date | time.Format ":time_medium" }}
 </div>
-
