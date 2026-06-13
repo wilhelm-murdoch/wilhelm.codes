@@ -198,6 +198,22 @@ ol {
 }
 
 /*
+Icon Badges
+
+Font Awesome injects its CSS at runtime, unlayered, so under Tailwind v4's
+layered utilities its `.svg-inline--fa { height: 1em }` outranks the h-*
+utilities and squashes the circular icon badges into smaller pills (the w-*
+still wins, so they end up wider than tall). Re-derive a square box from the
+badge's set width to restore the circle. Only affects the rounded-full badges,
+not inline icons.
+*/
+
+.svg-inline--fa.rounded-full {
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+/*
 Progress Bar
 */
 
@@ -225,6 +241,50 @@ Progress Bar
 
 [data-progress-bar]::-webkit-progress-value {
   background: black;
+}
+
+/*
+The per-highlight overrides further down only colour ::-webkit-progress-value.
+Firefox paints ::-moz-progress-bar, which otherwise falls back to the black
+base rule above, so mirror the accent colour here. (A webkit and a moz
+pseudo-element can't share one selector list — an unknown one would drop the
+whole rule — so they're kept separate.)
+*/
+
+progress.highlight-slate::-moz-progress-bar {
+  background-color: var(--color-slate-400);
+}
+
+progress.highlight-red::-moz-progress-bar {
+  background-color: var(--color-red-400);
+}
+
+progress.highlight-yellow::-moz-progress-bar {
+  background-color: var(--color-yellow-400);
+}
+
+progress.highlight-orange::-moz-progress-bar {
+  background-color: var(--color-orange-400);
+}
+
+progress.highlight-emerald::-moz-progress-bar {
+  background-color: var(--color-emerald-500);
+}
+
+progress.highlight-teal::-moz-progress-bar {
+  background-color: var(--color-teal-400);
+}
+
+progress.highlight-blue::-moz-progress-bar {
+  background-color: var(--color-blue-400);
+}
+
+progress.highlight-purple::-moz-progress-bar {
+  background-color: var(--color-purple-400);
+}
+
+progress.highlight-rose::-moz-progress-bar {
+  background-color: var(--color-rose-400);
 }
 
 /*
