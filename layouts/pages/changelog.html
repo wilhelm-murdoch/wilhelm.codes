@@ -21,18 +21,21 @@
     </header>
 
     {{ $response := dict }}
-    {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
     {{ if hugo.IsDevelopment }}
-      {{ $url = "http://localhost:1313/github.json?123" }}
-    {{ end }}
-
-    {{ with try (resources.GetRemote $url) }}
-      {{ with .Err }}
-        {{ errorf "%s" . }}
-      {{ else with .Value }}
-        {{ $response = . | transform.Unmarshal }}
-      {{ else }}
-        {{ errorf "Unable to get remote resource %q" $url }}
+      {{/* Dev: read the committed fixture straight from disk. Fetching it over
+           localhost deadlocks, because `hugo server` runs this build before it
+           starts listening on its own port. */}}
+      {{ $response = os.ReadFile "static/github.json" | transform.Unmarshal }}
+    {{ else }}
+      {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
+      {{ with try (resources.GetRemote $url) }}
+        {{ with .Err }}
+          {{ errorf "%s" . }}
+        {{ else with .Value }}
+          {{ $response = . | transform.Unmarshal }}
+        {{ else }}
+          {{ errorf "Unable to get remote resource %q" $url }}
+        {{ end }}
       {{ end }}
     {{ end }}
 
