@@ -1,17 +1,21 @@
-{{ partial "changelog/icon.html" ( dict "icon" "cube" "colour" "blue" ) }}
+{{ partial "changelog/icon.html" ( dict "icon" "code-commit" "colour" "green" ) }}
+
+{{ $message := index ( split .commit.message "\n" ) 0 }}
+{{ $sha_short := substr .sha 0 8 }}
 <p class="relative mb-2 pt-1 pr-20">
   {{ with .author }}
     {{ partial "changelog/author.html" ( dict "url" .url "avatar_url" .avatar_url "display_login" .login ) }}
+  {{ else }}
+    <strong>{{ .commit.author.name }}</strong>
   {{ end }}
-  published release
-  <strong>{{ or .name .tag_name }}</strong>
+  committed "{{ $message }}"
   <span class="absolute top-1 right-0 inline-block text-sm">
     <a
       href="{{ .html_url }}"
-      title="View release {{ .tag_name }}..."
+      title="View commit {{ $sha_short }}..."
       class="font-mono"
       target="_blank"
-      >{{ .tag_name }}</a
+      >{{ $sha_short }}</a
     >
   </span>
 </p>

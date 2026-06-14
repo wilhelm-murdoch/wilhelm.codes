@@ -10,7 +10,7 @@
         class="mb-10 hidden text-center text-2xl font-extralight text-slate-500 md:block"
       >
         The only constant is change and you can view it all here.<br />Or, at
-        least, the last 100 changes pulled directly from
+        least, the latest events pulled directly from
         <a
           href="https://github.com/wilhelm-murdoch/wilhelm.codes"
           title="Check out some code..."
@@ -20,44 +20,43 @@
       </p>
     </header>
 
-    {{ $response := dict }}
-    {{ $fixture := "static/github.json" }}
-    {{ if hugo.IsDevelopment }}
-      {{/* Dev: read the committed fixture straight from disk. Fetching it over
-        localhost deadlocks, because `hugo server` runs this build before it
-        starts listening on its own port.
-      */}}
-      {{ $response = os.ReadFile $fixture | transform.Unmarshal }}
-    {{ else }}
-      {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
-      {{/* Authenticate when HUGO_GITHUB_TOKEN is set: the unauthenticated API is
-        capped at 60 requests/hour per IP, which shared CI build IPs blow through
-        (a 403), while a token raises the limit to 5000/hour. The HUGO_ prefix is
-        required by Hugo's getenv security policy.
-      */}}
-      {{ $opts := dict }}
-      {{ with os.Getenv "HUGO_GITHUB_TOKEN" }}
-        {{ $opts = dict "headers" (dict "Authorization" (printf "Bearer %s" .)) }}
-      {{ end }}
-      {{/* Never fail the build on a third-party hiccup: fall back to the
-        committed fixture if the fetch errors or comes back empty.
-      */}}
-      {{ $remote := try (resources.GetRemote $url $opts) }}
-      {{ with $remote.Err }}
-        {{ warnf "changelog: GitHub fetch failed (%s); falling back to %s" . $fixture }}
-        {{ $response = os.ReadFile $fixture | transform.Unmarshal }}
-      {{ else with $remote.Value }}
-        {{ $response = . | transform.Unmarshal }}
-      {{ else }}
-        {{ warnf "changelog: GitHub returned no data; falling back to %s" $fixture }}
-        {{ $response = os.ReadFile $fixture | transform.Unmarshal }}
+    {{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
+
+    {{/* Wrap every row in a common envelope { date, kind, data } so the sources
+      merge into one timeline, dated by the moment that matters (a PR by when it
+      was merged/closed/opened, etc.).
+    */}}
+    {{ $items := slice }}
+
+    {{ $commits := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo) "fixture" "static/github-commits.json") }}
+    {{ range $commits }}
+      {{ $items = $items | append (dict "date" .commit.author.date "kind" "commit" "data" .) }}
+    {{ end }}
+
+    {{ $pulls := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/pulls?state=all&sort=updated&direction=desc&per_page=50" $repo) "fixture" "static/github-pulls.json") }}
+    {{ range $pulls }}
+      {{ $items = $items | append (dict "date" (or .merged_at .closed_at .created_at) "kind" "pull" "data" .) }}
+    {{ end }}
+
+    {{ $issues := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/issues?state=all&sort=updated&direction=desc&per_page=50" $repo) "fixture" "static/github-issues.json") }}
+    {{ range $issues }}
+      {{/* /issues also returns pull requests; skip those (covered by $pulls). */}}
+      {{ if not .pull_request }}
+        {{ $items = $items | append (dict "date" (or .closed_at .created_at) "kind" "issue" "data" .) }}
       {{ end }}
     {{ end }}
 
+    {{ $releases := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/releases?per_page=30" $repo) "fixture" "static/github-releases.json") }}
+    {{ range $releases }}
+      {{ $items = $items | append (dict "date" .published_at "kind" "release" "data" .) }}
+    {{ end }}
+
+    {{ $items = first 100 (sort $items "date" "desc") }}
+
     {{ $counts := newScratch }}
     {{ $dates := slice }}
-    {{ range $response }}
-      {{ $date := substr .created_at 0 10 }}
+    {{ range $items }}
+      {{ $date := substr .date 0 10 }}
       {{ if not ( in $dates $date ) }}
         {{ $dates = $dates | append $date }}
       {{ end }}
@@ -77,84 +76,27 @@
         >
           {{ $counts.Get . }}
           {{ if gt ($counts.Get . ) 1 }}
-            events
+            changes
           {{ else }}
-            event
+            change
           {{ end }}
         </h4>
         {{ $date := . }}
-        {{ range $response }}
-          {{ if eq $date ( substr .created_at 0 10 ) }}
-            {{ $event := . }}
+        {{ range $items }}
+          {{ if eq $date ( substr .date 0 10 ) }}
             <div
               class="event relative ml-8 border-slate-200 pb-4 pl-8 not-last:border-l"
             >
-              {{ with ( eq .type "CommitCommentEvent" ) }}
-                {{ partial "changelog/events/commit-comment.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "CreateEvent" ) }}
-                {{ partial "changelog/events/create.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "DeleteEvent" ) }}
-                {{ partial "changelog/events/delete.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "ForkEvent" ) }}
-                {{ partial "changelog/events/fork.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "GollumEvent" ) }}
-                {{ partial "changelog/events/gollum.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "IssueCommentEvent" ) }}
-                {{ partial "changelog/events/issue-comment.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "IssuesEvent" ) }}
-                {{ partial "changelog/events/issues.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "MemberEvent" ) }}
-                {{ partial "changelog/events/member.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "PublicEvent" ) }}
-                {{ partial "changelog/events/public.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "PullRequestEvent" ) }}
-                {{ partial "changelog/events/pull-request.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "PullRequestReviewEvent" ) }}
-                {{ partial "changelog/events/pull-request-review.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "PullRequestReviewCommentEvent" ) }}
-                {{ partial "changelog/events/pull-request-review-comment.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "PullRequestReviewThreadEvent" ) }}
-                {{ partial "changelog/events/pull-request-review-thread.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "PushEvent" ) }}
-                {{ partial "changelog/events/push.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "ReleaseEvent" ) }}
-                {{ partial "changelog/events/release.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "SponsorshipEvent" ) }}
-                {{ partial "changelog/events/sponsorship.html" $event }}
-              {{ end }}
-
-              {{ with ( eq .type "WatchEvent" ) }}
-                {{ partial "changelog/events/watch.html" $event }}
+              {{ if eq .kind "commit" }}
+                {{ partial "changelog/events/commit.html" .data }}
+              {{ else if eq .kind "pull" }}
+                {{ partial "changelog/events/pull-request.html" .data }}
+              {{ else if eq .kind "issue" }}
+                {{ partial "changelog/events/issues.html" .data }}
+              {{ else if eq .kind "release" }}
+                {{ partial "changelog/events/release.html" .data }}
+              {{ else if eq .kind "fork" }}
+                {{ partial "changelog/events/fork.html" .data }}
               {{ end }}
             </div>
           {{ end }}

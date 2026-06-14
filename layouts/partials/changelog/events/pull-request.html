@@ -1,23 +1,27 @@
-{{ with eq .payload.action "opened" }}
-  {{ partial "changelog/icon.html" ( dict "icon" "code-pull-request" "colour" "slate" ) }}
+{{ $action := "opened" }}
+{{ $icon := "code-pull-request" }}
+{{ $colour := "green" }}
+{{ if .merged_at }}
+  {{ $action = "merged" }}
+  {{ $icon = "code-merge" }}
+  {{ $colour = "purple" }}
+{{ else if eq .state "closed" }}
+  {{ $action = "closed" }}
+  {{ $icon = "code-pull-request-closed" }}
+  {{ $colour = "red" }}
 {{ end }}
-
-{{ with eq .payload.action "closed" }}
-  {{ partial "changelog/icon.html" ( dict "icon" "code-pull-request-closed" "colour" "slate" ) }}
-{{ end }}
-
-
+{{ partial "changelog/icon.html" ( dict "icon" $icon "colour" $colour ) }}
 <p class="relative mb-2 pt-1 pr-20">
-  {{ partial "changelog/author.html" .actor }}
-  {{ .payload.action }} pull request
-  <strong>{{ .payload.pull_request.title }}</strong>.
+  {{ partial "changelog/author.html" ( dict "url" .user.url "avatar_url" .user.avatar_url "display_login" .user.login ) }}
+  {{ $action }} pull request
+  <strong>{{ .title }}</strong>.
   <span class="absolute top-1 right-0 inline-block text-sm">
     <a
-      href="{{ .payload.pull_request.html_url }}"
-      title="View all details for pull request."
+      href="{{ .html_url }}"
+      title="View pull request #{{ .number }}..."
       class="font-mono"
       target="_blank"
-      >#{{ .payload.pull_request.number }}</a
+      >#{{ .number }}</a
     >
   </span>
 </p>
