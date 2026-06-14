@@ -95,8 +95,6 @@
                 {{ partial "changelog/events/issues.html" .data }}
               {{ else if eq .kind "release" }}
                 {{ partial "changelog/events/release.html" .data }}
-              {{ else if eq .kind "fork" }}
-                {{ partial "changelog/events/fork.html" .data }}
               {{ end }}
             </div>
           {{ end }}
