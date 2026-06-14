@@ -73,7 +73,7 @@
           {{ if eq $date ( substr .created_at 0 10 ) }}
             {{ $event := . }}
             <div
-              class="event relative ml-8 border-slate-200 pb-4 pl-8 [&:not(:last-child)]:border-l"
+              class="event relative ml-8 border-slate-200 pb-4 pl-8 not-last:border-l"
             >
               {{ with ( eq .type "CommitCommentEvent" ) }}
                 {{ partial "changelog/events/commit-comment.html" $event }}
