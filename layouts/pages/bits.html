@@ -1,15 +1,15 @@
 {{ define "main" }}
-  <section class="mx-auto max-w-4xl fade-in-animation">
+  <section class="fade-in-animation mx-auto max-w-4xl">
     <header>
       <h1
-        class="text-2xl md:text-5xl sm:my-4 md:my-8 font-bold text-center leading-tight"
+        class="text-center text-2xl leading-tight font-bold sm:my-4 md:my-8 md:text-5xl"
       >
-        <span class="font-normal relative">Nibbles</span>,
-        <span class="font-normal relative">Bits</span> &amp;
-        <span class="font-normal relative">Bytes</span>.
+        <span class="relative font-normal">Nibbles</span>,
+        <span class="relative font-normal">Bits</span> &amp;
+        <span class="relative font-normal">Bytes</span>.
       </h1>
       <p
-        class="hidden md:block text-center text-2xl text-slate-500 font-extralight mb-10"
+        class="mb-10 hidden text-center text-2xl font-extralight text-slate-500 md:block"
       >
         An uncurated collection of links & blurbs. <br />
         It's like a backlog, but for my attention span.
@@ -17,17 +17,17 @@
     </header>
     {{ range (where .Site.RegularPages "Section" "bits") }}
       <article
-        class="relative highlight-{{ .Params.highlight }} article pb-8 mb-8"
+        class="highlight-{{ .Params.highlight }} article relative mb-8 pb-8"
       >
-        <header class="text-center summary mb-8">
-          <h3 class="text-2xl text-center mb-6 font-light">
+        <header class="summary mb-8 text-center">
+          <h3 class="mb-6 text-center text-2xl font-light">
             {{ .LinkTitle | safeHTML }}
           </h3>
           <div
-            class="mx-auto w-1/2 border-b-2 border-{{ .Params.highlight }}-100"
+            class="border-{{ .Params.highlight }}-100 mx-auto w-1/2 border-b-2"
           >
             <span
-              class="absolute mx-auto top-10 left-0 right-0 fa-{{ .Params.pack }} fa-{{ .Params.icon }} h-4 w-4 p-2 rounded-full ring-4 ring-white"
+              class="fa-{{ .Params.pack }} fa-{{ .Params.icon }} absolute top-10 right-0 left-0 mx-auto h-4 w-4 rounded-full p-2 ring-4 ring-white"
             ></span>
           </div>
         </header>
@@ -37,7 +37,7 @@
             <a href="{{ .Params.url }}" title="{{ .LinkTitle }}"> source </a>
           {{ end }}
         </div>
-        <footer class="text-sm text-slate-400 text-center">
+        <footer class="text-center text-sm text-slate-400">
           <span>{{ .Date | time.Format ":date_medium" }}</span>
           {{ with .GetTerms "tags" }}
             +
