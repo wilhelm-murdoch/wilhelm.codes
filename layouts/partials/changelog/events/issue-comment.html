@@ -4,7 +4,7 @@
   {{ .payload.action }} a comment on issue
   <strong>{{ .payload.issue.title }}</strong>
   <span class="absolute top-1 right-0 inline-block text-sm">
-    <a href="{{ .payload.html_url }}" title="View these changes..."
+    <a href="{{ .payload.comment.html_url }}" title="View these changes..."
       >#{{ .payload.issue.number }}</a
     >
   </span>

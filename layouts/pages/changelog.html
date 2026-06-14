@@ -28,27 +28,34 @@
     */}}
     {{ $items := slice }}
 
+    {{ $events := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/events" $repo) "fixture" "static/github-events.json") }}
+    {{ range $events }}
+      {{ if not (or (eq .type "PullRequestEvent" )) }}
+        {{ $items = $items | append (dict "date" .created_at "type" .type "data" .) }}
+      {{ end }}
+    {{ end }}
+
     {{ $commits := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo) "fixture" "static/github-commits.json") }}
     {{ range $commits }}
-      {{ $items = $items | append (dict "date" .commit.author.date "kind" "commit" "data" .) }}
+      {{ $items = $items | append (dict "date" .commit.author.date "type" "CommitEvent" "data" .) }}
     {{ end }}
 
     {{ $pulls := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/pulls?state=all&sort=updated&direction=desc&per_page=50" $repo) "fixture" "static/github-pulls.json") }}
     {{ range $pulls }}
-      {{ $items = $items | append (dict "date" (or .merged_at .closed_at .created_at) "kind" "pull" "data" .) }}
+      {{ $items = $items | append (dict "date" (or .merged_at .closed_at .created_at) "type" "PullRequestEvent" "data" .) }}
     {{ end }}
 
     {{ $issues := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/issues?state=all&sort=updated&direction=desc&per_page=50" $repo) "fixture" "static/github-issues.json") }}
     {{ range $issues }}
       {{/* /issues also returns pull requests; skip those (covered by $pulls). */}}
       {{ if not .pull_request }}
-        {{ $items = $items | append (dict "date" (or .closed_at .created_at) "kind" "issue" "data" .) }}
+        {{ $items = $items | append (dict "date" (or .closed_at .created_at) "type" "IssuesEvent" "data" .) }}
       {{ end }}
     {{ end }}
 
     {{ $releases := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/releases?per_page=30" $repo) "fixture" "static/github-releases.json") }}
     {{ range $releases }}
-      {{ $items = $items | append (dict "date" .published_at "kind" "release" "data" .) }}
+      {{ $items = $items | append (dict "date" .published_at "type" "ReleaseEvent" "data" .) }}
     {{ end }}
 
     {{ $items = first 100 (sort $items "date" "desc") }}
@@ -87,14 +94,40 @@
             <div
               class="event relative ml-8 border-slate-200 pb-4 pl-8 not-last:border-l"
             >
-              {{ if eq .kind "commit" }}
-                {{ partial "changelog/events/commit.html" .data }}
-              {{ else if eq .kind "pull" }}
-                {{ partial "changelog/events/pull-request.html" .data }}
-              {{ else if eq .kind "issue" }}
+              {{ if ( eq .type "CommitCommentEvent" ) }}
+                {{ partial "changelog/events/commit-comment.html" .data }}
+              {{ else if ( eq .type "CreateEvent" ) }}
+                {{ partial "changelog/events/create.html" .data }}
+              {{ else if ( eq .type "DeleteEvent" ) }}
+                {{ partial "changelog/events/delete.html" .data }}
+              {{ else if ( eq .type "ForkEvent" ) }}
+                {{ partial "changelog/events/fork.html" .data }}
+              {{ else if ( eq .type "GollumEvent" ) }}
+                {{ partial "changelog/events/gollum.html" .data }}
+              {{ else if ( eq .type "IssueCommentEvent" ) }}
+                {{ partial "changelog/events/issue-comment.html" .data }}
+              {{ else if ( eq .type "IssuesEvent" ) }}
                 {{ partial "changelog/events/issues.html" .data }}
-              {{ else if eq .kind "release" }}
+              {{ else if ( eq .type "MemberEvent" ) }}
+                {{ partial "changelog/events/member.html" .data }}
+              {{ else if ( eq .type "PublicEvent" ) }}
+                {{ partial "changelog/events/public.html" .data }}
+              {{ else if ( eq .type "PullRequestEvent" ) }}
+                {{ partial "changelog/events/pull-request.html" .data }}
+              {{ else if ( eq .type "PullRequestReviewEvent" ) }}
+                {{ partial "changelog/events/pull-request-review.html" .data }}
+              {{ else if ( eq .type "PullRequestReviewCommentEvent" ) }}
+                {{ partial "changelog/events/pull-request-review-comment.html" .data }}
+              {{ else if ( eq .type "PullRequestReviewThreadEvent" ) }}
+                {{ partial "changelog/events/pull-request-review-thread.html" .data }}
+              {{ else if ( eq .type "CommitEvent" ) }}
+                {{ partial "changelog/events/commit.html" .data }}
+              {{ else if ( eq .type "ReleaseEvent" ) }}
                 {{ partial "changelog/events/release.html" .data }}
+              {{ else if ( eq .type "SponsorshipEvent" ) }}
+                {{ partial "changelog/events/push.html" .data }}
+              {{ else if ( eq .type "WatchEvent" ) }}
+                {{ partial "changelog/events/watch.html" .data }}
               {{ end }}
             </div>
           {{ end }}
