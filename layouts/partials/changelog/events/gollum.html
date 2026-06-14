@@ -1,29 +1,30 @@
 {{ $event := . }}
 {{ partial "changelog/icon.html" ( dict "icon" "pen" "colour" "slate" ) }}
 
-{{ if eq ( len .payload.pages) 1 }}
-  {{ $page := index .payload.pages 0 }}
-  <p class="relative mb-2 pt-1 pr-20">
-    {{ partial "changelog/author.html" $event.actor }}
-    {{ $page.action }} wiki page <strong>{{ $page.title }}</strong>.
-    <span class="absolute top-1 right-0 inline-block text-sm">
-      <a href="{{ $page.html_url }}" title="View these changes...">view</a>
-    </span>
-  </p>
-{{ else }}
-  <p class="relative mb-2 pt-1 pr-20">
-    {{ partial "changelog/author.html" $event.actor }}
-    made the following <strong>{{ len .payload.pages }}</strong> changes to the
-    wiki:
-  </p>
-  <ul class="ml-4">
-    {{ range .payload.pages }}
-      <li class="relative mb-1 pr-20 marker:text-slate-400">
-        {{ .action }} <strong>{{ .title }}</strong>
-        <span class="absolute top-1 right-0 inline-block text-sm">
-          <a href="{{ .html_url }}" title="View these changes...">view</a>
-        </span>
-      </li>
-    {{ end }}
-  </ul>
+{{ with .payload.pages }}
+  {{ if eq ( len . ) 1 }}
+    {{ $page := index . 0 }}
+    <p class="relative mb-2 pt-1 pr-20">
+      {{ partial "changelog/author.html" $event.actor }}
+      {{ $page.action }} wiki page <strong>{{ $page.title }}</strong>.
+      <span class="absolute top-1 right-0 inline-block text-sm">
+        <a href="{{ $page.html_url }}" title="View these changes...">view</a>
+      </span>
+    </p>
+  {{ else }}
+    <p class="relative mb-2 pt-1 pr-20">
+      {{ partial "changelog/author.html" $event.actor }}
+      made the following <strong>{{ len . }}</strong> changes to the wiki:
+    </p>
+    <ul class="ml-4">
+      {{ range . }}
+        <li class="relative mb-1 pr-20 marker:text-slate-400">
+          {{ .action }} <strong>{{ .title }}</strong>
+          <span class="absolute top-1 right-0 inline-block text-sm">
+            <a href="{{ .html_url }}" title="View these changes...">view</a>
+          </span>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
 {{ end }}

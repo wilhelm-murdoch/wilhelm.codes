@@ -136,7 +136,7 @@
               {{ end }}
 
               {{ with ( eq .type "SponsorshipEvent" ) }}
-                {{ partial "changelog/events/push.html" $event }}
+                {{ partial "changelog/events/sponsorship.html" $event }}
               {{ end }}
 
               {{ with ( eq .type "WatchEvent" ) }}
