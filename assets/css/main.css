@@ -1,26 +1,12 @@
 @import "tailwindcss";
-
 @plugin "@tailwindcss/typography";
-
-/* Hugo writes every utility class it emits to hugo_stats.json (enabled via
-   [build.buildStats] in hugo.toml). Source it so Tailwind scans the rendered
-   site instead of the templates. */
 @source "hugo_stats.json";
 
-/* Color utilities are composed dynamically from the `highlight`/`pack` front
-   matter (e.g. bg-{color}-50, text-{color}-500, border-{color}-200) in the
-   callout, bits and changelog templates, so scanning output alone can miss
-   combinations that aren't currently used. Generate them explicitly — this
-   mirrors the safelist from the old tailwind.config.js. */
 @source inline("{text,bg,border-b,border}-{purple,blue,green,emerald,indigo,pink,orange,rose,red,yellow,slate}-{50,100,200,300,400,500,600,700,800}");
 
-/* Replaces the addVariant() calls from the old tailwind.config.js plugin. */
 @custom-variant prose-inline-code (&.prose-xl :where(:not(pre) > code):not(:where([class~="not-prose"] *)));
 @custom-variant not-last (&:not(:last-child));
 
-/* Tailwind v4 defaults the border and divide colors to currentColor; v3
-   defaulted them to gray-200. Preserve the v3 look for elements that use a
-   bare `border`/`border-b` without an explicit color. */
 @layer base {
   *,
   ::after,
@@ -84,7 +70,7 @@
   left: 0;
   bottom: 45%;
   width: 100%;
-  height: 4px;
+  height: 2px;
   background-color: var(--color-blue-50);
 }
 
@@ -197,17 +183,6 @@ ol {
   background-color: transparent !important;
 }
 
-/*
-Icon Badges
-
-Font Awesome injects its CSS at runtime, unlayered, so under Tailwind v4's
-layered utilities its `.svg-inline--fa { height: 1em }` outranks the h-*
-utilities and squashes the circular icon badges into smaller pills (the w-*
-still wins, so they end up wider than tall). Re-derive a square box from the
-badge's set width to restore the circle. Only affects the rounded-full badges,
-not inline icons.
-*/
-
 .svg-inline--fa.rounded-full {
   height: auto;
   aspect-ratio: 1 / 1;
@@ -242,14 +217,6 @@ Progress Bar
 [data-progress-bar]::-webkit-progress-value {
   background: black;
 }
-
-/*
-The per-highlight overrides further down only colour ::-webkit-progress-value.
-Firefox paints ::-moz-progress-bar, which otherwise falls back to the black
-base rule above, so mirror the accent colour here. (A webkit and a moz
-pseudo-element can't share one selector list — an unknown one would drop the
-whole rule — so they're kept separate.)
-*/
 
 progress.highlight-slate::-moz-progress-bar {
   background-color: var(--color-slate-400);
