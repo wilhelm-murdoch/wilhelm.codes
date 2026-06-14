@@ -2,47 +2,44 @@
   <div
     class="blog highlight-{{ .Params.highlight }} mx-auto sm:max-w-full md:max-w-4xl"
   >
-    <h4 class="text-center">
-      <span
-        class="rounded-full px-2 py-2 text-xs sm:font-normal md:px-4 md:py-3 md:font-medium"
-        >{{ .Params.category }}</span
-      >
-    </h4>
-
-    <h3
-      class="my-6 text-center text-2xl font-light text-slate-600 md:my-12 md:text-5xl"
-    >
-      {{ .LinkTitle | safeHTML }}
-    </h3>
-
-    <article
-      class="fade-in-animation card mb-8 overflow-hidden shadow-slate-100 transition sm:rounded-none sm:shadow-none md:rounded-2xl md:border md:shadow-md"
-    >
-      <div class="relative overflow-hidden sm:h-64 md:h-96">
-        {{ $title := .LinkTitle }}
-        {{ with .Resources.Get "header.jpeg" }}
-          <img
-            src="{{ .RelPermalink }}"
-            alt="{{ $title }}"
-            class="lazy aspect-video object-cover"
-          />
-        {{ end }}
-
-        {{ if .Params.credit }}
-          <div
-            class="credit absolute bottom-1 left-1 rounded-md bg-black p-2 text-xs text-white opacity-70"
+    <header class="border-b mb-8 pb-8 ">
+        <h4 class="mb-10 text-center">
+          <span
+            class="rounded-full px-2 py-2 text-xs sm:font-normal md:px-4 md:py-3 md:font-medium"
+            >{{ .Params.category }}</span
           >
-            <span class="fa-duotone fa-copyright"></span>
-            {{ .Params.credit | safeHTML }}
-          </div>
-        {{ end }}
-      </div>
-      <div class="summary relative sm:pt-8 md:pt-16">
-        <span
-          class="fa-{{ .Params.pack }} fa-{{ .Params.icon }} invisible absolute right-0 left-0 mx-auto rounded-full p-4 ring-4 ring-white sm:visible sm:-top-6 sm:h-5 sm:w-5 md:-top-9 md:h-10 md:w-10"
-        ></span>
+        </h4>
+
+        <h3 class="mb-8 text-center text-2xl font-light text-slate-600 md:text-5xl">
+        {{ .LinkTitle | safeHTML }}
+        </h3>
         <div
-          class="p-4 leading-relaxed font-light text-slate-700 sm:mb-7 sm:text-base md:mb-14 md:px-16 md:text-xl"
+        class="text-center text-sm font-light text-slate-400"
+        >
+            written by
+            <img
+                class="jello-animation inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400"
+                src="/images/me.jpeg"
+                alt="It me."
+            />
+            on
+            <strong class="border-b border-slate-300"
+                >{{ .Date | time.Format ":date_medium" }}</strong
+            >
+            {{ with .GetTerms "tags" }}
+                under
+                {{ if ne (len .) 0 }}
+                {{ partial "tags/inline.html" . }}
+                {{ end }}
+            {{ end }}
+        </div>
+    </header>
+  </div>
+
+    <article class="fade-in-animation mb-8 border-b pb-8 transition">
+      <div class="summary">
+        <div
+          class="py-4 leading-relaxed font-light text-slate-700 sm:mb-4 sm:text-base md:mb-8 md:text-lg"
         >
           {{ .Summary }}
         </div>
@@ -60,31 +57,10 @@
         {{ end }}
       </div>
       <div
-        class="mx-auto prose-xl mb-8 max-w-4xl px-4 md:px-16 prose-h4:font-semibold prose-h4:text-slate-700 prose-h5:font-semibold prose-h5:text-slate-700 prose-p:text-sm prose-p:leading-normal prose-p:text-slate-800 md:prose-p:text-lg prose-pre:overflow-x-auto prose-pre:text-sm prose-li:text-sm prose-li:leading-normal prose-li:text-slate-800 md:prose-li:text-lg prose-table:w-full prose-table:border prose-thead:bg-slate-50 prose-tr:border-b prose-th:p-2 prose-td:p-2 prose-img:m-auto prose-img:rounded-lg prose-hr:my-9 md:prose-hr:my-18 prose-inline-code:font-bold prose-inline-code:text-black"
+        class="mx-auto prose-xl mb-8 max-w-4xl prose-h4:font-semibold prose-h4:text-slate-700 prose-h5:font-semibold prose-h5:text-slate-700 prose-p:text-sm prose-p:leading-normal prose-p:text-slate-800 md:prose-p:text-lg prose-pre:overflow-x-auto prose-pre:text-sm prose-li:text-sm prose-li:leading-normal prose-li:text-slate-800 md:prose-li:text-lg prose-table:w-full prose-table:border prose-thead:bg-slate-50 prose-tr:border-b prose-th:p-2 prose-td:p-2 prose-img:m-auto prose-img:rounded-lg prose-hr:my-9 md:prose-hr:my-18 prose-inline-code:font-bold prose-inline-code:text-black"
       >
         {{ .ContentWithoutSummary }}
       </div>
-
-      <footer
-        class="mb-8 hidden text-center text-sm font-light text-slate-400 sm:block"
-      >
-        written by
-        <img
-          class="jello-animation inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400"
-          src="/images/me.jpeg"
-          alt="It me."
-        />
-        on
-        <strong class="border-b border-slate-300"
-          >{{ .Date | time.Format ":date_medium" }}</strong
-        >
-        {{ with .GetTerms "tags" }}
-          and filed under
-          {{ if ne (len .) 0 }}
-            {{ partial "tags/inline.html" . }}
-          {{ end }}
-        {{ end }}
-      </footer>
     </article>
 
     <progress
