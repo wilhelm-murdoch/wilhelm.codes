@@ -21,22 +21,36 @@
     </header>
 
     {{ $response := dict }}
+    {{ $fixture := "static/github.json" }}
     {{ if hugo.IsDevelopment }}
       {{/* Dev: read the committed fixture straight from disk. Fetching it over
         localhost deadlocks, because `hugo server` runs this build before it
         starts listening on its own port.
       */}}
-      {{ $response = os.ReadFile "static/github.json" | transform.Unmarshal }}
+      {{ $response = os.ReadFile $fixture | transform.Unmarshal }}
     {{ else }}
       {{ $url := "https://api.github.com/repos/wilhelm-murdoch/wilhelm.codes/events?per_page=100" }}
-      {{ with try (resources.GetRemote $url) }}
-        {{ with .Err }}
-          {{ errorf "%s" . }}
-        {{ else with .Value }}
-          {{ $response = . | transform.Unmarshal }}
-        {{ else }}
-          {{ errorf "Unable to get remote resource %q" $url }}
-        {{ end }}
+      {{/* Authenticate when HUGO_GITHUB_TOKEN is set: the unauthenticated API is
+        capped at 60 requests/hour per IP, which shared CI build IPs blow through
+        (a 403), while a token raises the limit to 5000/hour. The HUGO_ prefix is
+        required by Hugo's getenv security policy.
+      */}}
+      {{ $opts := dict }}
+      {{ with os.Getenv "HUGO_GITHUB_TOKEN" }}
+        {{ $opts = dict "headers" (dict "Authorization" (printf "Bearer %s" .)) }}
+      {{ end }}
+      {{/* Never fail the build on a third-party hiccup: fall back to the
+        committed fixture if the fetch errors or comes back empty.
+      */}}
+      {{ $remote := try (resources.GetRemote $url $opts) }}
+      {{ with $remote.Err }}
+        {{ warnf "changelog: GitHub fetch failed (%s); falling back to %s" . $fixture }}
+        {{ $response = os.ReadFile $fixture | transform.Unmarshal }}
+      {{ else with $remote.Value }}
+        {{ $response = . | transform.Unmarshal }}
+      {{ else }}
+        {{ warnf "changelog: GitHub returned no data; falling back to %s" $fixture }}
+        {{ $response = os.ReadFile $fixture | transform.Unmarshal }}
       {{ end }}
     {{ end }}
 
