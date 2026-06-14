@@ -89,6 +89,6 @@ A grab-bag of smaller wins while I had the hood up:
 
 ## Was the juice worth the squeeze?
 
-The site should look _exactly_ the same as it did before. Not a single pixel out of place. Which is, weirdly, the whole point; all of this work was about the parts you can't see. I got a leaner build, faster page loads, and a project I can come back to in another year without wincing; famous last words, etc...
+Aside from a few cosmetic updates here and there, the site should look pretty much the same as it did before. Which is, weirdly, the whole point; all of this work was about the parts you can't see. I got a leaner build, faster page loads, and a project I can come back to in another year without wincing; famous last words, etc...
 
 For now, the house is clean. Very nice.
