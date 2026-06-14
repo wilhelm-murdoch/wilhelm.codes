@@ -5,6 +5,9 @@
   <ul class="m-0 p-0">
     {{ $current := . }}
     {{ range site.Menus.main }}
+      {{/* The bits section is a draft, hidden in production (see
+           content/bits/_index.md). Hide its nav link there too. */}}
+      {{ if and (eq .Name "Bits") hugo.IsProduction }}{{ continue }}{{ end }}
       {{ $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
       {{ $active = or $active (eq .Name $current.Title) }}
       {{ $active = or $active (eq .URL $current.RelPermalink) }}
