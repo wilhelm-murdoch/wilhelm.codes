@@ -61,15 +61,17 @@ My favourite part of this is there's no JS involved. The whole thing is a CSS gr
 </div>
 ```
 
-The shade is scaled relative to the busiest week of the lot, so a quiet week gets a faint `emerald-100` and my most frantic week - _this_ one - gets a deep `emerald-600`, with a few steps in between. It's relative rather than absolute on purpose. I'd rather the graph always have some contrast than have one monster week flatten everything else into the same pale green.
+Working out the shade was the fiddly bit. My first attempt simply scaled each week against the busiest one, which sounds sensible right up until you remember my data is basically one enormous week and a whole lot of flat nothing. That single monster week hogged the dark end and squashed everything else into the same pale green. So I did what GitHub does and reached for [quartiles](https://en.wikipedia.org/wiki/Quartile) instead. You rank the weeks that actually saw some activity, chop them into four groups, and let a week's colour come from where it lands in the pack rather than from some absolute number. Empty weeks stay a faint `emerald-100`; the rest climb through four steps of green up to `emerald-600`. The part I like is that it's relative to _me_; a busy week is only busy compared to my _other_ weeks.
 
 The little tooltip that pops up when you hover over a circle is also pure CSS. A `group` on the wrapper, a `group-hover:opacity-100` on the popup, a `transition` is all I needed. Each circle now gives a little `scale` on hover too, just because it's nice.
 
 ## The graph's painful honesty.
 
-Now on to the more embarrassing part. When I first rendered it with real data, I got _one_ bright green circle and fifty-one almost-invisible ones. Surely, you've noticed that on the front page.
+Now on to the more embarrassing part. When I first rendered it with real data, I got _one_ lonely green circle and fifty-one empty ones. Surely, you've noticed it on the front page.
 
-At the moment I assumed I'd done something wrong. But, to my great shame I hadn't. Turns out that when you vanish from your own website for close to 18 months and then cram an [entire renovation](https://wilhelm.codes/blog/some-long-overdue-housekeeping/) into a single week, the graph renders exactly that. A long, flat, pale stretch of road ending with one pathetic little green emerald.
+At the time I assumed I'd done something wrong. But, to my great shame, I hadn't. Turns out that when you vanish from your own website for close to 18 months and then cram an [entire renovation](https://wilhelm.codes/blog/some-long-overdue-housekeeping/) into a single week, the graph renders exactly that. A long, flat, pale stretch of road ending with one pathetic little green emerald.
+
+There's an extra little indignity baked into the quartiles, too. They need a _spread_ to rank against, and with exactly one active week there's nothing to compare it to. So my massive renovation-cramming week doesn't even get to be properly dark green. It turns up as a polite, middling shade. 
 
 I effectively built a little a tool whose entire job is to hold up a mirror to my own lack of consistency and commitment. Very cool! 😬👌
 
