@@ -1,9 +1,11 @@
 {{ partial "changelog/icon.html" ( dict "icon" "code-pull-request" "colour" "slate" ) }}
-<p class="relative mb-2 pt-1 pr-20">
+<p class="relative mb-2 px-2 pt-1 sm:px-0 sm:pr-20">
   {{ partial "changelog/author.html" .actor }}
   {{ .payload.review.state }} pull request
   <strong>{{ .payload.pull_request.title }}</strong>
-  <span class="absolute top-1 right-0 inline-block text-sm">
+  <span
+    class="relative inline-block text-xs sm:absolute sm:top-1 sm:right-0 sm:text-sm"
+  >
     <a href="{{ .payload.pull_request.html_url }}" title="View these changes..."
       >#{{ .payload.pull_request.number }}</a
     >

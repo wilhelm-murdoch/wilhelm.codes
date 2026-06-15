@@ -14,11 +14,13 @@
 {{ .type }}
 
 {{ partial "changelog/icon.html" ( dict "icon" $icon "colour" $colour ) }}
-<p class="relative mb-2 pt-1 pr-20">
+<p class="relative mb-2 px-2 pt-1 sm:px-0 sm:pr-20">
   {{ partial "changelog/author.html" ( dict "url" .user.url "avatar_url" .user.avatar_url "display_login" .user.login ) }}
   {{ $action }} pull request
   <strong>{{ .title }}</strong>.
-  <span class="absolute top-1 right-0 inline-block text-sm">
+  <span
+    class="relative inline-block text-xs sm:absolute sm:top-1 sm:right-0 sm:text-sm"
+  >
     <a
       href="{{ .html_url }}"
       title="View pull request #{{ .number }}..."

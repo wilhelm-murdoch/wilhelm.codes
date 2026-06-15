@@ -1,18 +1,19 @@
 {{ define "main" }}
-  <section class="fade-in-animation mx-auto max-w-4xl">
+  <section class="fade-in-animation mx-auto mb-10 max-w-4xl">
     <header>
       <h1
-        class="text-center text-2xl leading-tight font-bold sm:my-4 md:my-8 md:text-5xl"
+        class="my-4 text-center text-2xl leading-tight font-bold md:my-8 md:text-5xl"
       >
         The <span class="relative font-normal">Archive</span>.
       </h1>
       <p
-        class="mb-10 hidden text-center text-2xl font-extralight text-slate-500 md:block"
+        class="mb-4 border-b pb-4 text-center text-sm font-extralight text-slate-500 sm:border-none md:mb-10 md:border-none md:pb-0 md:text-2xl"
       >
         Here you will find everything under the sun.<br />Have a nice
         <i>scroll</i> through memory lane.
       </p>
     </header>
+
     {{ range (where .Site.RegularPages "Section" "blog") }}
       {{ partial "views/row.html" . }}
     {{ end }}

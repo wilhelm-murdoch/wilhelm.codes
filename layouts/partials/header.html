@@ -4,18 +4,20 @@
   alt="My gorgeous mug."
 />
 <h1
-  class="text-center text-2xl leading-tight font-bold sm:my-4 md:my-8 md:text-5xl"
+  class="my-4 text-center text-2xl leading-tight font-bold md:my-8 md:text-5xl"
 >
   Heya, I'm
   <span class="relative font-normal">Wilhelm Murdoch</span>.<br />Coder &
   Platform Engineer.
 </h1>
 <p
-  class="mb-10 hidden text-center text-2xl font-extralight text-slate-500 md:block"
+  class="mb-4 text-center text-sm font-extralight text-slate-500 md:mb-10 md:border-none md:text-2xl"
 >
   {{ .Site.Params.Description }}
 </p>
-<div class="hidden space-x-4 text-center md:block">
+<div
+  class="space-x-4 border-b pb-4 text-center sm:border-none md:block md:pb-0"
+>
   <a
     href="https://github.com/wilhelm-murdoch"
     title="GitHub"

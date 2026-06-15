@@ -1,11 +1,13 @@
 {{ partial "changelog/icon.html" ( dict "icon" "cube" "colour" "blue" ) }}
-<p class="relative mb-2 pt-1 pr-20">
+<p class="relative mb-2 px-2 pt-1 sm:px-0 sm:pr-20">
   {{ with .author }}
     {{ partial "changelog/author.html" ( dict "url" .url "avatar_url" .avatar_url "display_login" .login ) }}
   {{ end }}
   published release
   <strong>{{ or .name .tag_name }}</strong>
-  <span class="absolute top-1 right-0 inline-block text-sm">
+  <span
+    class="relative inline-block text-xs sm:absolute sm:top-1 sm:right-0 sm:text-sm"
+  >
     <a
       href="{{ .html_url }}"
       title="View release {{ .tag_name }}..."

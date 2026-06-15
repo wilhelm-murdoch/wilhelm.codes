@@ -2,14 +2,16 @@
 
 {{ $message := index ( split .commit.message "\n" ) 0 }}
 {{ $sha_short := substr .sha 0 8 }}
-<p class="relative mb-2 pt-1 pr-20">
+<p class="relative mb-2 px-2 pt-1 sm:px-0 sm:pr-20">
   {{ with .author }}
     {{ partial "changelog/author.html" ( dict "url" .url "avatar_url" .avatar_url "display_login" .login ) }}
   {{ else }}
     <strong>{{ .commit.author.name }}</strong>
   {{ end }}
   committed "{{ $message }}"
-  <span class="absolute top-1 right-0 inline-block text-sm">
+  <span
+    class="relative inline-block text-xs sm:absolute sm:top-1 sm:right-0 sm:text-sm"
+  >
     <a
       href="{{ .html_url }}"
       title="View commit {{ $sha_short }}..."

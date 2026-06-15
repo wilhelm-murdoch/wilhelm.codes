@@ -4,15 +4,17 @@
 {{ with .payload.pages }}
   {{ if eq ( len . ) 1 }}
     {{ $page := index . 0 }}
-    <p class="relative mb-2 pt-1 pr-20">
+    <p class="relative mb-2 px-2 pt-1 sm:px-0 sm:pr-20">
       {{ partial "changelog/author.html" $event.actor }}
       {{ $page.action }} wiki page <strong>{{ $page.title }}</strong>.
-      <span class="absolute top-1 right-0 inline-block text-sm">
+      <span
+        class="relative inline-block text-xs sm:absolute sm:top-1 sm:right-0 sm:text-sm"
+      >
         <a href="{{ $page.html_url }}" title="View these changes...">view</a>
       </span>
     </p>
   {{ else }}
-    <p class="relative mb-2 pt-1 pr-20">
+    <p class="relative mb-2 px-2 pt-1 sm:px-0 sm:pr-20">
       {{ partial "changelog/author.html" $event.actor }}
       made the following <strong>{{ len . }}</strong> changes to the wiki:
     </p>
