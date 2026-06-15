@@ -70,6 +70,9 @@ The little tooltip that pops up when you hover over a squircle is also pure CSS.
 
 Now on to the more embarrassing part. When I first rendered it with real data, I got _one_ lonely green squircle and fifty-one empty ones. Surely, you've noticed it on the front page.
 
+For the curious, this is what it _would_ look like if I didn't have commitment issues.
+![](/blog/a-year-in-circles/activity-graph-demo.png)
+
 At the time I assumed I'd done something wrong. But, to my great shame, I hadn't. Turns out that when you vanish from your own website for close to 18 months and then cram an [entire renovation](https://wilhelm.codes/blog/some-long-overdue-housekeeping/) into a single week, the graph renders exactly that. A long, flat, pale stretch of road ending with one pathetic little green emerald.
 
 There's an extra little indignity baked into the quartiles, too. They need a _spread_ to rank against, and with exactly one active week there's nothing to compare it to. So my massive renovation-cramming week doesn't even get to be properly dark green. It turns up as a polite, middling shade. 
