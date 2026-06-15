@@ -1,5 +1,5 @@
-{{/* Returns every "interstitial" activity event — bits + the GitHub changelog
-  sources — normalised into a uniform, metadata-rich shape and sorted newest
+{{/* Returns every "interstitial" activity event - bits + the GitHub changelog
+  sources - normalised into a uniform, metadata-rich shape and sorted newest
   first. Each item:
 
   kind   "bit" | "commit" | "pull" | "issue" | "release"
@@ -9,8 +9,6 @@
   actor  login/name where known
   icon   + colour  (Font Awesome hints, ready for future rendering)
   data   the raw source object, for anything not normalised above
-
-  Reuses changelog/fetch.html (cached, token-auth, fixture fallback).
 */}}
 
 {{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
