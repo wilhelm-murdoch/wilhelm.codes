@@ -22,6 +22,9 @@
 
     {{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
 
+    {{/* Collect activity timestamps from every event. */}}
+    {{ $datesActivitGraph := slice }}
+
     {{/* Wrap every row in a common envelope { date, kind, data } so the sources
       merge into one timeline, dated by the moment that matters (a PR by when it
       was merged/closed/opened, etc.).
@@ -32,17 +35,29 @@
     {{ range $events }}
       {{ if not (or (eq .type "PullRequestEvent" ) (eq .type "PushEvent")) }}
         {{ $items = $items | append (dict "date" .created_at "type" .type "data" .) }}
+
+        {{ with .created_at }}
+          {{ $datesActivitGraph = $datesActivitGraph | append (time.AsTime .) }}
+        {{ end }}
       {{ end }}
     {{ end }}
 
     {{ $commits := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo) "fixture" "static/github-commits.json") }}
     {{ range $commits }}
       {{ $items = $items | append (dict "date" .commit.author.date "type" "CommitEvent" "data" .) }}
+
+      {{ with .commit.author.date }}
+        {{ $datesActivitGraph = $datesActivitGraph | append (time.AsTime .) }}
+      {{ end }}
     {{ end }}
 
     {{ $pulls := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/pulls?state=all&sort=updated&direction=desc&per_page=50" $repo) "fixture" "static/github-pulls.json") }}
     {{ range $pulls }}
       {{ $items = $items | append (dict "date" (or .merged_at .closed_at .created_at) "type" "PullRequestEvent" "data" .) }}
+
+      {{ with (or .merged_at .closed_at .created_at) }}
+        {{ $datesActivitGraph = $datesActivitGraph | append (time.AsTime .) }}
+      {{ end }}
     {{ end }}
 
     {{ $issues := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/issues?state=all&sort=updated&direction=desc&per_page=50" $repo) "fixture" "static/github-issues.json") }}
@@ -50,12 +65,20 @@
       {{/* /issues also returns pull requests; skip those (covered by $pulls). */}}
       {{ if not .pull_request }}
         {{ $items = $items | append (dict "date" (or .closed_at .created_at) "type" "IssuesEvent" "data" .) }}
+
+        {{ with (or .closed_at .created_at) }}
+          {{ $datesActivitGraph = $datesActivitGraph | append (time.AsTime .) }}
+        {{ end }}
       {{ end }}
     {{ end }}
 
     {{ $releases := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/releases?per_page=30" $repo) "fixture" "static/github-releases.json") }}
     {{ range $releases }}
       {{ $items = $items | append (dict "date" .published_at "type" "ReleaseEvent" "data" .) }}
+
+      {{ with (or .published_at) }}
+        {{ $datesActivitGraph = $datesActivitGraph | append (time.AsTime .) }}
+      {{ end }}
     {{ end }}
 
     {{ $items = first 100 (sort $items "date" "desc") }}
@@ -69,6 +92,13 @@
       {{ end }}
       {{ $counts.Add $date 1 }}
     {{ end }}
+
+
+    <section
+      class="fade-in-animation mx-auto mb-2 max-w-4xl border-b p-2 pb-4 sm:mb-6 sm:border-none sm:px-0"
+    >
+      {{ partial "activity-graph.html" (dict "dates" $datesActivitGraph "color" "emerald" "type" "Github") }}
+    </section>
 
     {{ range $dates }}
       <div class="my-4">

@@ -1,6 +1,7 @@
 {{/* Weekly activity heatmap. */}}
 
-{{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
+{{ $type := .type }}
+{{ $color := .color }}
 {{ $weeks := 52 }}
 {{ $secondsPerWeek := 604800 }}
 
@@ -16,46 +17,9 @@
     {{ $counts.Add (printf "%d" $i) (int (mul (math.Rand) 53)) }}
   {{ end }}
 {{ else }}
-  {{/* Collect activity timestamps from every source. */}}
-  {{ $dates := slice }}
-
-  {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo) "fixture" "static/github-commits.json") }}
-    {{ with .commit.author.date }}
-      {{ $dates = $dates | append (time.AsTime .) }}
-    {{ end }}
-  {{ end }}
-
-  {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/pulls?state=all&per_page=50" $repo) "fixture" "static/github-pulls.json") }}
-    {{ with (or .merged_at .closed_at .created_at) }}
-      {{ $dates = $dates | append (time.AsTime .) }}
-    {{ end }}
-  {{ end }}
-
-  {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/issues?state=all&per_page=50" $repo) "fixture" "static/github-issues.json") }}
-    {{ if not .pull_request }}
-      {{ with (or .closed_at .created_at) }}
-        {{ $dates = $dates | append (time.AsTime .) }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-
-  {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/releases?per_page=30" $repo) "fixture" "static/github-releases.json") }}
-    {{ with .published_at }}
-      {{ $dates = $dates | append (time.AsTime .) }}
-    {{ end }}
-  {{ end }}
-
-  {{ range where site.RegularPages "Section" "blog" }}
-    {{ $dates = $dates | append .Date }}
-  {{ end }}
-
-  {{ range where site.RegularPages "Section" "bits" }}
-    {{ $dates = $dates | append .Date }}
-  {{ end }}
-
   {{/* Bucket into the last 52 weeks */}}
   {{ $nowUnix := now.Unix }}
-  {{ range $d := $dates }}
+  {{ range $d := .dates }}
     {{ $ago := int (div (sub $nowUnix $d.Unix) $secondsPerWeek) }}
     {{ if and (ge $ago 0) (lt $ago $weeks) }}
       {{ $counts.Add (printf "%d" (sub (sub $weeks 1) $ago)) 1 }}
@@ -103,7 +67,7 @@
 
       <div class="group relative aspect-square cursor-pointer">
         <div
-          class="bg-emerald-{{ $shade }} h-full w-full rounded-md transition-transform duration-150 group-hover:scale-125"
+          class="bg-{{ $color }}-{{ $shade }} h-full w-full rounded-md transition-transform duration-150 group-hover:scale-125"
         ></div>
         <div
           class="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1 -translate-x-1/2 rounded bg-black px-2 py-1 text-center text-xs whitespace-nowrap text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100"
@@ -118,23 +82,26 @@
   <div
     class="mt-2 hidden items-center justify-between text-xs font-light text-slate-400 sm:flex"
   >
-    <span>Last <strong>52</strong> weeks of all activity.</span>
+    <span
+      >Last <strong>52</strong> weeks of
+      <strong>{{ $type }}</strong> activity.</span
+    >
     <div class="flex items-center gap-1">
       <span class="mr-0.5">Less</span>
       <span
-        class="inline-block h-2 w-2 rounded-md bg-emerald-50 sm:h-2.5 sm:w-2.5"
+        class="bg-{{ $color }}-50 inline-block h-2 w-2 rounded-md sm:h-2.5 sm:w-2.5"
       ></span>
       <span
-        class="inline-block h-2 w-2 rounded-md bg-emerald-300 sm:h-2.5 sm:w-2.5"
+        class="bg-{{ $color }}-300 inline-block h-2 w-2 rounded-md sm:h-2.5 sm:w-2.5"
       ></span>
       <span
-        class="inline-block h-2 w-2 rounded-md bg-emerald-400 sm:h-2.5 sm:w-2.5"
+        class="bg-{{ $color }}-400 inline-block h-2 w-2 rounded-md sm:h-2.5 sm:w-2.5"
       ></span>
       <span
-        class="inline-block h-2 w-2 rounded-md bg-emerald-500 sm:h-2.5 sm:w-2.5"
+        class="bg-{{ $color }}-500 inline-block h-2 w-2 rounded-md sm:h-2.5 sm:w-2.5"
       ></span>
       <span
-        class="inline-block h-2 w-2 rounded-md bg-emerald-600 sm:h-2.5 sm:w-2.5"
+        class="bg-{{ $color }}-600 inline-block h-2 w-2 rounded-md sm:h-2.5 sm:w-2.5"
       ></span>
       <span class="ml-0.5">More</span>
     </div>

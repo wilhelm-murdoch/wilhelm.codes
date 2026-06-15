@@ -8,7 +8,45 @@
   <section
     class="fade-in-animation mx-auto mb-2 max-w-4xl border-b p-2 pb-4 sm:mb-6 sm:border-none sm:px-0"
   >
-    {{ partial "activity-graph.html" . }}
+    {{/* Collect activity timestamps from every source. */}}
+    {{ $dates := slice }}
+    {{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
+
+    {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo) "fixture" "static/github-commits.json") }}
+      {{ with .commit.author.date }}
+        {{ $dates = $dates | append (time.AsTime .) }}
+      {{ end }}
+    {{ end }}
+
+    {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/pulls?state=all&per_page=50" $repo) "fixture" "static/github-pulls.json") }}
+      {{ with (or .merged_at .closed_at .created_at) }}
+        {{ $dates = $dates | append (time.AsTime .) }}
+      {{ end }}
+    {{ end }}
+
+    {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/issues?state=all&per_page=50" $repo) "fixture" "static/github-issues.json") }}
+      {{ if not .pull_request }}
+        {{ with (or .closed_at .created_at) }}
+          {{ $dates = $dates | append (time.AsTime .) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/releases?per_page=30" $repo) "fixture" "static/github-releases.json") }}
+      {{ with .published_at }}
+        {{ $dates = $dates | append (time.AsTime .) }}
+      {{ end }}
+    {{ end }}
+
+    {{ range where site.RegularPages "Section" "blog" }}
+      {{ $dates = $dates | append .Date }}
+    {{ end }}
+
+    {{ range where site.RegularPages "Section" "bits" }}
+      {{ $dates = $dates | append .Date }}
+    {{ end }}
+
+    {{ partial "activity-graph.html" (dict "dates" $dates "color" "blue" "type" "all") }}
   </section>
 
   <section class="fade-in-animation mx-auto mb-10 max-w-4xl">

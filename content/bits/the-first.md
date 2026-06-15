@@ -3,7 +3,7 @@ title: The Very First <span>Bit</span>
 highlight: red
 pack: duotone
 icon: brain
-date: 2025-04-19
+date: 2026-06-06
 tags:
   - random
 ---
