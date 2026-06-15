@@ -46,11 +46,11 @@ Open up your browser, or new tab, and navigate to your Instagram profile. Open y
 
 We need to intercept an XHR request that returns a JSON body containing some of your followers. Click the "following" link and monitor the resulting requests that pop in the list on the "Network" tab.
 
-![](image-1.png)
+![](/blog/how-to-mass-unfollow-instagram-accounts/image-1.png)
 
 You _should_ see something like `following/count=12...` in the list. Right-click that item and select "Copy as cURL". Paste the new value in your clipboard into a scratch file for reference later.
 
-![](image-2.png)
+![](/blog/how-to-mass-unfollow-instagram-accounts/image-2.png)
 
 Be aware this command will contain all the headers required to make requests from your terminal on your behalf. Do NOT share these details with anyone. I haven't checked how long until the tokens within the auth headers expire, so assume they are long(ish)-lived and treat them accordingly.
 
@@ -58,11 +58,11 @@ Be aware this command will contain all the headers required to make requests fro
 
 Next, we need to intercept an XHR request to _unfollow_ someone. Going back to your following list, select a random user and unfollow them while once again keeping an eye on the "Network" tab.
 
-![](image-3.png)
+![](/blog/how-to-mass-unfollow-instagram-accounts/image-3.png)
 
 You're going to see something like the following; an XHR event making a `POST` request to "destroy" your chosen follower. Once again, you'll right-click and "Copy and cURL". Paste this into your scratch file as well for future reference.
 
-![](image-4.png)
+![](/blog/how-to-mass-unfollow-instagram-accounts/image-4.png)
 
 ## Putting it all together
 

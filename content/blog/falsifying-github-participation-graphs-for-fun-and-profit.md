@@ -43,13 +43,13 @@ You will, naturally, need a Github account. Let's start there.
 
 Did you know you can configure your participation graph to display anonymised private commit statistics? Ensure that setting is ✅ and move on to the next step.
 
-![](image-1.png)
+![](/blog/falsifying-github-participation-graphs-for-fun-and-profit/image-1.png)
 
 ### New Private Repository
 
 Let's create a new _empty_ repository entitled `graph-participation` and make sure it's private.
 
-![](image-2.png)
+![](/blog/falsifying-github-participation-graphs-for-fun-and-profit/image-2.png)
 
 ### Checkout Local Working Copy
 
@@ -130,11 +130,11 @@ All you now have to do is sit back and wait for everything to update.
 
 We've gone from barren landscape:
 
-![](image-3.png)
+![](/blog/falsifying-github-participation-graphs-for-fun-and-profit/image-3.png)
 
 To a verdant garden paradise:
 
-![](image-4.png)
+![](/blog/falsifying-github-participation-graphs-for-fun-and-profit/image-4.png)
 
 And that's it! 🎉
 

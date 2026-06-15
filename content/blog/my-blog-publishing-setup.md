@@ -29,7 +29,7 @@ It's all so tiring, so perhaps you can understand why I'd immediately recoil in 
 
 Or, to put it in even simpler terms:
 
-![](image-1.png)
+![](/blog/my-blog-publishing-setup/image-1.png)
 ## The "Stack"
 I suppose it's technically a "stack", but it seems a bit funny to use the term when referencing a blog setup. Just as with my [Plant Smart](https://plantsm.art) project, the goal is to automate as much as possible while keeping maintenance requirements and hard- and soft-dollar costs as low as possible. For this, I need only use a handful of tools to keep this space operational.
 
@@ -62,15 +62,15 @@ How is this all put together for day-to-day usage? Luckily, the Cloudflare stuff
 
 I have a single vault in Obsidian. It's where all my thoughts go. Stored within is a top-level `Blog/` directory. Care to hazard a guess as to what it may contain?
 
-![](image-2.png)
+![](/blog/my-blog-publishing-setup/image-2.png)
 
-Hugo has the concept of [page bundles](https://gohugo.io/content-management/page-bundles/) where you can group all resources associated with your blog articles within a single directory. You'll notice above all directories mirror the blog posts hosted on this site. In my case, we can consider the directory names to be the human-friendly slugs you see in your address bar that point to the associated content. Within these directories, you'd see any other resource I may link to; source code, images, etc... The best thing about this is I only have to perform a relative reference to these resources. If I want to link to `image-1.png`, I only have to reference it as `![](image-1.png)` without worrying about specifying an absolute path; very nice.
+Hugo has the concept of [page bundles](https://gohugo.io/content-management/page-bundles/) where you can group all resources associated with your blog articles within a single directory. You'll notice above all directories mirror the blog posts hosted on this site. In my case, we can consider the directory names to be the human-friendly slugs you see in your address bar that point to the associated content. Within these directories, you'd see any other resource I may link to; source code, images, etc... The best thing about this is I only have to perform a relative reference to these resources. If I want to link to `image-1.png`, I only have to reference it as `![](/blog/my-blog-publishing-setup/image-1.png)` without worrying about specifying an absolute path; very nice.
 
 When I want to write a new article, I first create a new directory here. I may already have the title of the article in mind, but it can be in flux until I decide to publish it. In the new directory, I create a file called `index.md`. This file contains all the content of the associated article written using Markdown.
 
 I then use an Obsidian [template](https://help.obsidian.md/Plugins/Templates) dedicated to new blog posts and apply it to the new file. This ensures I have all [front matter](https://jekyllrb.com/docs/front-matter/) properties ready to go. This makes configuring my posts in the editor that much easier.
 
-![](image-3.png)
+![](/blog/my-blog-publishing-setup/image-3.png)
 
 All that's left is writing my articles! Well, not really. I need a way to synchronise these files with my local Hugo instance. As you can see [here](https://github.com/wilhelm-murdoch/wilhelm.codes/tree/main/content/blog), the content mirrors what I have stored in my Obsidian vault. 
 

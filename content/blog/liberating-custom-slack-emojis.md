@@ -258,5 +258,5 @@ Hopefully, you’ve learned something new! 🤞
 
 ## Bonus Relevant XKCD Image
 
-![](image-1.png)
+![](/blog/liberating-custom-slack-emojis/image-1.png)
 source: [xkcd: automation](https://xkcd.com/1319/)
