@@ -13,6 +13,9 @@ tags:
   - css
   - tailwindcss
 ---
+
+**Edit:** Excuse the clever-but-misleading title. We are no longer into circles. We're roundy-squaremaxxing now.
+
 If you scroll up to the top of the home page, you'll find a pair of little rows of green circles. It's my own dumbed-down take on GitHub's contribution graph. Effectively, it's the same idea, except instead of a year of days it's a year of _weeks_. Two rows of twenty-six with one circle per week, with each circle coloured a deeper shade of green the busier that week was.
 
 <!--more-->
