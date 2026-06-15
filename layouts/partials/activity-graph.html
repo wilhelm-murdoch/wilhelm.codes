@@ -1,0 +1,103 @@
+{{/* Weekly activity heatmap. */}}
+
+{{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
+{{ $weeks := 52 }}
+{{ $secondsPerWeek := 604800 }}
+
+{{/* Collect activity timestamps from every source. */}}
+{{ $dates := slice }}
+
+{{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo) "fixture" "static/github-commits.json") }}
+  {{ with .commit.author.date }}
+    {{ $dates = $dates | append (time.AsTime .) }}
+  {{ end }}
+{{ end }}
+
+{{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/pulls?state=all&per_page=50" $repo) "fixture" "static/github-pulls.json") }}
+  {{ with (or .merged_at .closed_at .created_at) }}
+    {{ $dates = $dates | append (time.AsTime .) }}
+  {{ end }}
+{{ end }}
+
+{{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/issues?state=all&per_page=50" $repo) "fixture" "static/github-issues.json") }}
+  {{ if not .pull_request }}
+    {{ with (or .closed_at .created_at) }}
+      {{ $dates = $dates | append (time.AsTime .) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/releases?per_page=30" $repo) "fixture" "static/github-releases.json") }}
+  {{ with .published_at }}
+    {{ $dates = $dates | append (time.AsTime .) }}
+  {{ end }}
+{{ end }}
+
+{{ range where site.RegularPages "Section" "blog" }}
+  {{ $dates = $dates | append .Date }}
+{{ end }}
+
+{{ range where site.RegularPages "Section" "bits" }}
+  {{ $dates = $dates | append .Date }}
+{{ end }}
+
+{{/* Bucket into the last 52 weeks */}}
+{{ $counts := newScratch }}
+{{ $nowUnix := now.Unix }}
+{{ range $d := $dates }}
+  {{ $ago := int (div (sub $nowUnix $d.Unix) $secondsPerWeek) }}
+  {{ if and (ge $ago 0) (lt $ago $weeks) }}
+    {{ $counts.Add (printf "%d" (sub (sub $weeks 1) $ago)) 1 }}
+  {{ end }}
+{{ end }}
+
+{{/* Largest week, for scaling the shade. */}}
+{{ $max := 1 }}
+{{ range $i := seq 0 (sub $weeks 1) }}
+  {{ $c := $counts.Get (printf "%d" $i) | default 0 }}
+  {{ if gt $c $max }}{{ $max = $c }}{{ end }}
+{{ end }}
+
+
+<section>
+  <div class="grid grid-cols-26 gap-1.5">
+    {{ range $i := seq 0 (sub $weeks 1) }}
+      {{ $c := $counts.Get (printf "%d" $i) | default 0 }}
+      {{ $shade := "100" }}
+      {{ if gt $c 0 }}
+        {{ $r := div (mul 1.0 $c) $max }}
+        {{ $shade = "300" }}
+        {{ if gt $r 0.25 }}{{ $shade = "400" }}{{ end }}
+        {{ if gt $r 0.5 }}{{ $shade = "500" }}{{ end }}
+        {{ if gt $r 0.75 }}{{ $shade = "600" }}{{ end }}
+      {{ end }}
+
+
+      <div class="group relative aspect-square cursor-pointer">
+        <div
+          class="bg-emerald-{{ $shade }} h-full w-full rounded-full transition-transform duration-150 group-hover:scale-125"
+        ></div>
+        <div
+          class="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1 -translate-x-1/2 rounded bg-black px-2 py-1 text-center text-xs whitespace-nowrap text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+        >
+          {{ $c }} {{ cond (eq $c 1) "entry" "entries" }}<br />Week
+          {{ add $i 1 }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+  <div
+    class="mt-2 flex items-center justify-between text-xs font-light text-slate-400"
+  >
+    <span>Last <strong>52</strong> weeks of all activity.</span>
+    <div class="flex items-center gap-1">
+      <span class="mr-0.5">Less</span>
+      <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-100"></span>
+      <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+      <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+      <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+      <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-600"></span>
+      <span class="ml-0.5">More</span>
+    </div>
+  </div>
+</section>

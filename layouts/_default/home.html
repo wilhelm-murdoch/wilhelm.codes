@@ -5,6 +5,10 @@
     {{ partial "header.html" . }}
   </header>
 
+  <section class="fade-in-animation mx-auto mb-10 max-w-4xl px-2 sm:px-0">
+    {{ partial "activity-graph.html" . }}
+  </section>
+
   <section class="fade-in-animation mx-auto mb-10 max-w-4xl">
     {{ range (first 50 (where .Site.RegularPages "Section" "blog")) }}
       {{ partial "views/row.html" . }}
