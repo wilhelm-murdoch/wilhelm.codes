@@ -2,15 +2,15 @@
   <div
     class="blog highlight-{{ .Params.highlight }} mx-auto sm:max-w-full md:max-w-4xl"
   >
-    <header class="border-b mb-8 pb-8 ">
-        <h4 class="mb-10 text-center">
+    <header class="border-b mb-4 pb-4 sm:mb-8 sm:pb-8 ">
+        <h4 class="mb-6 sm:mb-10 text-center">
           <span
             class="rounded-full px-2 py-2 text-xs sm:font-normal md:px-4 md:py-3 md:font-medium"
             >{{ .Params.category }}</span
           >
         </h4>
 
-        <h3 class="mb-8 text-center text-2xl font-light text-slate-600 md:text-5xl">
+        <h3 class="mb-4 sm:mb-8 text-center text-2xl font-light text-slate-600 md:text-5xl">
         {{ .LinkTitle | safeHTML }}
         </h3>
         <div
@@ -25,17 +25,16 @@
             on
             <strong class="border-b border-slate-300"
                 >{{ .Date | time.Format ":date_medium" }}</strong
-            >
+            ><br />
             {{ with .GetTerms "tags" }}
-                under
                 {{ if ne (len .) 0 }}
-                {{ partial "tags/inline.html" . }}
+                    {{ partial "tags/inline.html" . }}
                 {{ end }}
             {{ end }}
         </div>
     </header>
 
-    <article class="fade-in-animation mb-8 border-b pb-8 transition">
+    <article class="fade-in-animation px-2 mb-4 border-b pb-4 sm:px-0 sm:pb-8 sm:mb-8 transition">
       <div class="summary">
         <div
           class="py-4 leading-relaxed font-light text-slate-700 sm:mb-4 sm:text-base md:mb-8 md:text-lg"
@@ -91,7 +90,7 @@
     </script>
 
     {{ if ne .Params.comments false }}
-      <section id="comments" class="mx-auto mb-8 hidden max-w-4xl sm:block">
+      <section id="comments" class="mx-auto mb-8 max-w-4xl px-2 sm:p-0">
         <script
           src="https://giscus.app/client.js"
           data-repo="wilhelm-murdoch/wilhelm.codes"
