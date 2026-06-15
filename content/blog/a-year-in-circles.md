@@ -50,9 +50,9 @@ Each of these dates now need to land in one of fifty-two buckets. Working out wh
 
 That `604800` is the number of seconds in a week. And yes, I did have to look that up. Anything older than fifty-two weeks just falls off the back and is quietly ignored.
 
-## Painting the circles
+## Painting the circles.
 
-Here's the bit I'm a little smug about; there's no JavaScript involved. The whole thing is a CSS grid of twenty-six columns, and because each circle is `aspect-square`, the rows just work and the circles stretch to fill whatever container I drop the partial into:
+My favourite part of this is there's no JS involved. The whole thing is a CSS grid of twenty-six columns, and because each circle is `aspect-square`, the rows just work and the circles stretch to fill whatever container I drop the partial into:
 
 ```html
 <div class="grid grid-cols-26 gap-1.5">
@@ -63,9 +63,9 @@ Here's the bit I'm a little smug about; there's no JavaScript involved. The whol
 
 The shade is scaled relative to the busiest week of the lot, so a quiet week gets a faint `emerald-100` and my most frantic week - _this_ one - gets a deep `emerald-600`, with a few steps in between. It's relative rather than absolute on purpose. I'd rather the graph always have some contrast than have one monster week flatten everything else into the same pale green.
 
-The little tooltip that pops up when you hover over a circle  is also pure CSS. A `group` on the wrapper, a `group-hover:opacity-100` on the popup, a `transition` is all I needed. Each circle now gives a little `scale` on hover too, just because it's nice.
+The little tooltip that pops up when you hover over a circle is also pure CSS. A `group` on the wrapper, a `group-hover:opacity-100` on the popup, a `transition` is all I needed. Each circle now gives a little `scale` on hover too, just because it's nice.
 
-## The graph does not lie.
+## The graph's painful honesty.
 
 Now on to the more embarrassing part. When I first rendered it with real data, I got _one_ bright green circle and fifty-one almost-invisible ones. Surely, you've noticed that on the front page.
 
