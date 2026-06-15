@@ -1,0 +1,59 @@
+{{/* Renders one gap in the timeline. Receives the slice of normalised events
+  (see timeline/events.html) that fall between two articles, newest first.
+
+  The summary line is a <details> toggle (no JS); expanding it lists the
+  grouped events as little rows. Hidden below the `sm` breakpoint — on mobile
+  the timeline collapses to just the article rows.
+*/}}
+{{ $bits := len (where . "kind" "bit") }}
+{{ $changelog := sub (len .) $bits }}
+{{ if or $bits $changelog }}
+  <details class="group my-3 mb-6 hidden sm:block">
+    <summary
+      class="flex cursor-pointer list-none items-center gap-3 text-xs text-slate-400 [&::-webkit-details-marker]:hidden"
+    >
+      <span class="h-px flex-1 bg-slate-100"></span>
+      <span class="shrink-0 group-hover:text-slate-500">
+        {{ if $bits }}
+          <span class="font-medium text-slate-500"
+            >{{ $bits }} {{ cond (eq $bits 1) "bit" "bits" }}</span
+          >
+        {{ end }}
+        {{ if and $bits $changelog }}and{{ end }}
+        {{ if $changelog }}
+          <span class="font-medium text-slate-500"
+            >{{ $changelog }} changelog
+            {{ cond (eq $changelog 1) "event" "events" }}</span
+          >
+        {{ end }}
+        in between
+        <span
+          class="fa-duotone fa-chevron-down ml-1 transition-transform group-open:rotate-180"
+        ></span>
+      </span>
+      <span class="h-px flex-1 bg-slate-100"></span>
+    </summary>
+
+    <ul class="mx-auto mt-3 max-w-2xl space-y-2 px-2">
+      {{ range . }}
+        <li class="flex items-center gap-2 text-sm text-slate-500">
+          <span
+            class="fa-{{ .pack | default "duotone" }} fa-{{ .icon }} text-{{ .colour }}-500 w-4 shrink-0 text-center text-xs"
+          ></span>
+          <span class="min-w-0 flex-1 truncate">
+            {{ if .url }}
+              <a href="{{ .url }}" target="_blank" class="hover:text-slate-700"
+                >{{ .title }}</a
+              >
+            {{ else }}
+              {{ .title }}
+            {{ end }}
+          </span>
+          <span class="shrink-0 text-xs text-slate-300">
+            {{ .date.Format "Jan 2" }}
+          </span>
+        </li>
+      {{ end }}
+    </ul>
+  </details>
+{{ end }}

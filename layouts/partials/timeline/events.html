@@ -1,0 +1,116 @@
+{{/* Returns every "interstitial" activity event — bits + the GitHub changelog
+  sources — normalised into a uniform, metadata-rich shape and sorted newest
+  first. Each item:
+
+  kind   "bit" | "commit" | "pull" | "issue" | "release"
+  date   time.Time (used for windowing/sorting)
+  title  short human label
+  url    canonical link (may be empty, e.g. inline bits)
+  actor  login/name where known
+  icon   + colour  (Font Awesome hints, ready for future rendering)
+  data   the raw source object, for anything not normalised above
+
+  Reuses changelog/fetch.html (cached, token-auth, fixture fallback).
+*/}}
+
+{{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
+{{ $events := slice }}
+
+{{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo) "fixture" "static/github-commits.json") }}
+  {{ $c := . }}
+  {{ with $c.commit.author.date }}
+    {{ $actor := $c.commit.author.name }}
+    {{ with $c.author }}{{ $actor = .login }}{{ end }}
+    {{ $events = $events | append (dict
+      "kind" "commit"
+      "date" (time.AsTime .)
+      "title" (index (split $c.commit.message "\n") 0)
+      "url" $c.html_url
+      "actor" $actor
+      "icon" "code-commit"
+      "colour" "green"
+      "data" $c)
+    }}
+  {{ end }}
+{{ end }}
+
+{{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/pulls?state=all&per_page=50" $repo) "fixture" "static/github-pulls.json") }}
+  {{ $p := . }}
+  {{ $date := or $p.merged_at $p.closed_at $p.created_at }}
+  {{ $state := "opened" }}
+  {{ if $p.merged_at }}
+    {{ $state = "merged" }}
+  {{ else if eq $p.state "closed" }}
+    {{ $state = "closed" }}
+  {{ end }}
+  {{ with $date }}
+    {{ $events = $events | append (dict
+      "kind" "pull"
+      "date" (time.AsTime .)
+      "title" $p.title
+      "url" $p.html_url
+      "actor" $p.user.login
+      "state" $state
+      "number" $p.number
+      "icon" "code-pull-request"
+      "colour" "green"
+      "data" $p)
+    }}
+  {{ end }}
+{{ end }}
+
+{{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/issues?state=all&per_page=50" $repo) "fixture" "static/github-issues.json") }}
+  {{ $issue := . }}
+  {{ if not $issue.pull_request }}
+    {{ $date := or $issue.closed_at $issue.created_at }}
+    {{ with $date }}
+      {{ $events = $events | append (dict
+        "kind" "issue"
+        "date" (time.AsTime .)
+        "title" $issue.title
+        "url" $issue.html_url
+        "actor" $issue.user.login
+        "state" $issue.state
+        "number" $issue.number
+        "icon" "circle-dot"
+        "colour" "blue"
+        "data" $issue)
+      }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/releases?per_page=30" $repo) "fixture" "static/github-releases.json") }}
+  {{ $r := . }}
+  {{ with $r.published_at }}
+    {{ $actor := "" }}
+    {{ with $r.author }}{{ $actor = .login }}{{ end }}
+    {{ $events = $events | append (dict
+      "kind" "release"
+      "date" (time.AsTime .)
+      "title" (or $r.name $r.tag_name)
+      "url" $r.html_url
+      "actor" $actor
+      "icon" "cube"
+      "colour" "blue"
+      "data" $r)
+    }}
+  {{ end }}
+{{ end }}
+
+{{ range where site.RegularPages "Section" "bits" }}
+  {{ $b := . }}
+  {{ $events = $events | append (dict
+    "kind" "bit"
+    "date" $b.Date
+    "title" (or $b.Title (truncate 60 $b.Plain))
+    "url" $b.RelPermalink
+    "actor" ""
+    "icon" (default "note" $b.Params.icon)
+    "colour" (default "slate" $b.Params.highlight)
+    "pack" (default "duotone" $b.Params.pack)
+    "data" $b)
+  }}
+{{ end }}
+
+{{ return (sort $events "date" "desc") }}
