@@ -2,13 +2,13 @@
   <section class="fade-in-animation mx-auto max-w-4xl">
     <header>
       <h1
-        class="text-center text-2xl leading-tight font-bold sm:my-4 md:my-8 md:text-5xl"
+        class="my-4 text-center text-2xl leading-tight font-bold md:my-8 md:text-5xl"
       >
         Nibbles,
         <span class="relative font-normal">Bits</span> &amp; Bytes.
       </h1>
       <p
-        class="mb-10 hidden text-center text-2xl font-extralight text-slate-500 md:block"
+        class="mb-4 border-b pb-4 text-center text-sm font-extralight text-slate-500 sm:border-none md:mb-10 md:border-none md:pb-0 md:text-2xl"
       >
         An uncurated collection of links & blurbs. <br />
         It's like a backlog, but for my attention span.
@@ -16,7 +16,7 @@
     </header>
 
     <section
-      class="fade-in-animation mx-auto mb-2 max-w-4xl border-b p-2 pb-4 sm:mb-6 sm:border-none sm:px-0"
+      class="fade-in-animation mx-auto mb-2 hidden max-w-4xl p-2 pb-4 sm:mb-6 sm:block sm:px-0"
     >
       {{/* Collect activity timestamps from all bits. */}}
       {{ $dates := slice }}

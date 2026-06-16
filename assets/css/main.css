@@ -97,9 +97,7 @@ Primary Navigation
 */
 
 #navigation li {
-  display: inline-block;
-  margin-left: 1em;
-  margin-right: 1em;
+  position: relative;
 }
 
 #navigation li a {

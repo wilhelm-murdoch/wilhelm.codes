@@ -6,11 +6,20 @@
   </header>
 
   <section
-    class="fade-in-animation mx-auto mb-2 max-w-4xl border-b p-2 pb-4 sm:mb-6 sm:border-none sm:px-0"
+    class="fade-in-animation mx-auto mb-2 hidden max-w-4xl p-2 pb-4 sm:mb-6 sm:block sm:px-0"
   >
     {{/* Collect activity timestamps from every source. */}}
     {{ $dates := slice }}
     {{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
+
+    {{ $events := partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/events" $repo) "fixture" "static/github-events.json") }}
+    {{ range $events }}
+      {{ if not (or (eq .type "PullRequestEvent" ) (eq .type "PushEvent")) }}
+        {{ with .created_at }}
+          {{ $dates = $dates | append (time.AsTime .) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
 
     {{ range partial "changelog/fetch.html" (dict "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo) "fixture" "static/github-commits.json") }}
       {{ with .commit.author.date }}
