@@ -73,9 +73,9 @@ Click the summary, the gap unfolds into a tidy little list of every commit, PR a
 
 ## Saving myself a small headache.
 
-Finally, there's the the responsive question. This site's overall design isn't exaclyt "mobile first" and viewing it on a small screen strips away a lot of detail already. All these thin dividers and fold-out lists look great on a wide screen and turn into a cramped mess on a phone.
+Finally, there's the the responsive question. This site's overall design isn't exactly "mobile first" and viewing it on a small screen strips away a lot of detail already. All these thin dividers and fold-out lists look great on a wide screen and turn into a cramped mess on a phone.
 
-I thought about it for a while and weighed up some clever reflowing. In the end I did the only sensible thing; hid the whole timeline below the `sm` breakpoint. On a phone you get the clean list of articles, but on a desktop you get the full story between them.
+I thought about it for a while and weighed up some clever reflowing. In the end I did the only sensible thing and hid the whole timeline below the `sm` breakpoint. On a phone you get the clean list of articles, but on a desktop you get the full story between them.
 
 {{< blockquote "Sometimes the right amount of effort is zero and the discipline is in admitting it." "Me. Wilhelm. I said that.">}}
 
