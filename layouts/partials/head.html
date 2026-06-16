@@ -4,6 +4,20 @@
 <meta name="generator" content="Hugo" />
 <link rel="canonical" href="{{ .Permalink }}" />
 
+{{/* Apply the saved theme before paint to avoid a flash of the wrong mode. */}}
+<script>
+  (function () {
+    try {
+      var p = localStorage.getItem("theme") || "system";
+      var d =
+        p === "dark" ||
+        (p === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+    } catch (e) {}
+  })();
+</script>
+
 {{ $title := site.Title }}
 {{ $description := .Site.Params.Description }}
 {{ if not .IsHome }}

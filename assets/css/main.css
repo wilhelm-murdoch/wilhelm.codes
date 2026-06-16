@@ -7,6 +7,10 @@
 @custom-variant prose-inline-code (&.prose-xl :where(:not(pre) > code):not(:where([class~="not-prose"] *)));
 @custom-variant not-last (&:not(:last-child));
 
+/* Class-based dark mode: toggled by adding `.dark` to <html> (see the floating
+   theme switcher). Enables dark: utilities and the .dark overrides below. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   *,
   ::after,
@@ -42,6 +46,12 @@
       Helvetica,
       Arial,
       sans-serif;
+    /* `--color-white` is the canvas; it remaps to dark under .dark, so the
+       page background follows the theme. */
+    background-color: var(--color-white);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
 
   h1,
@@ -99,7 +109,7 @@ Primary Navigation
 #navigation li {
   position: relative;
   /* Default highlight bar color; per-section overrides below. */
-  --nav-bar-active: var(--color-blue-300);
+  --nav-bar-active: var(--color-blue-400);
   --nav-bar-hover: var(--color-blue-100);
 }
 
@@ -121,7 +131,7 @@ Primary Navigation
 
 #navigation li a {
   transition: all 0.2s ease;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--color-slate-800);
 }
 
@@ -647,7 +657,7 @@ header h1 span::after {
   left: 0;
   bottom: 0px;
   width: 100%;
-  height: 40%;
+  height: 10%;
   transform: rotate(1deg);
   background-color: var(--header-bar, var(--color-blue-100));
 }
@@ -913,4 +923,152 @@ section header p a:hover {
   50% {
     opacity: 1;
   }
+}
+
+/*
+Dark Mode
+Class-based (.dark on <html>, set by the floating theme switcher). Instead of
+sprinkling dark: utilities across every template, we remap Tailwind's neutral
+color variables here so existing slate / gray / white utilities flip
+automatically. White becomes the dark canvas; text-white is restored to true
+white below for labels on colored/black backgrounds. Accent-driven bits
+(highlight bars, activity graph, inline code, progress bar) get targeted fixes.
+*/
+
+html.dark {
+  /* Canvas (white -> darkest) and the slate scale inverted. */
+  --color-white: #0b1220;
+
+  --color-slate-50: #0f172a;
+  --color-slate-100: #1e293b;
+  --color-slate-200: #334155;
+  --color-slate-300: #475569;
+  --color-slate-400: #64748b;
+  --color-slate-500: #94a3b8;
+  --color-slate-600: #cbd5e1;
+  --color-slate-700: #e2e8f0;
+  --color-slate-800: #f1f5f9;
+  --color-slate-900: #f8fafc;
+
+  --color-gray-50: #0f172a;
+  --color-gray-100: #1e293b;
+  --color-gray-200: #334155;
+  --color-gray-300: #475569;
+
+  /* Faint accent washes (-50): empty activity-graph cells, article title bars,
+     the divider line. Drop them to a dark surface so they don't glow. */
+  --color-blue-50: #1e293b;
+  --color-rose-50: #1e293b;
+  --color-purple-50: #1e293b;
+  --color-emerald-50: #1e293b;
+  --color-red-50: #1e293b;
+  --color-orange-50: #1e293b;
+  --color-yellow-50: #1e293b;
+  --color-green-50: #1e293b;
+  --color-teal-50: #1e293b;
+  --color-indigo-50: #1e293b;
+  --color-pink-50: #1e293b;
+}
+
+/* Default text color for the dark canvas (light mode keeps the browser default). */
+.dark body {
+  color: var(--color-slate-700);
+}
+
+/* Keep white labels (badges, tooltips, the 404 card) readable on their
+   colored/black backgrounds, where remapped white would hide them. */
+.dark [class~="text-white"] {
+  color: #fff;
+}
+
+/* Explicit black borders (e.g. the TOC heading rule). */
+.dark [class~="border-black"] {
+  border-color: var(--color-slate-700);
+}
+
+/* Inline code uses text-black via the prose-inline-code utility. */
+.dark
+  .article-prose
+  :where(:not(pre) > code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  ) {
+  color: var(--color-slate-800);
+}
+
+/* Scroll progress bar fill uses the `black` keyword, not a variable. */
+.dark [data-progress-bar]::-webkit-progress-value {
+  background: var(--color-slate-600);
+}
+.dark [data-progress-bar]::-moz-progress-bar {
+  background: var(--color-slate-600);
+}
+
+/* Rotated highlight bars: swap pastel washes (-100/-300) for dark-tinted
+   accents so they read behind the now-light text. */
+.dark #navigation li {
+  --nav-bar-active: var(--color-blue-400);
+  --nav-bar-hover: var(--color-blue-600);
+}
+.dark #navigation li.highlight-rose {
+  --nav-bar-active: var(--color-rose-700);
+  --nav-bar-hover: var(--color-rose-800);
+}
+.dark #navigation li.highlight-purple {
+  --nav-bar-active: var(--color-purple-700);
+  --nav-bar-hover: var(--color-purple-800);
+}
+.dark #navigation li.highlight-emerald {
+  --nav-bar-active: var(--color-emerald-700);
+  --nav-bar-hover: var(--color-emerald-800);
+}
+
+.dark header h1 span::after {
+  background-color: var(--header-bar, var(--color-blue-500));
+}
+.dark .theme-rose {
+  --header-bar: var(--color-rose-600);
+  --header-link: var(--color-rose-400);
+}
+.dark .theme-purple {
+  --header-bar: var(--color-purple-800);
+  --header-link: var(--color-purple-400);
+}
+.dark .theme-emerald {
+  --header-bar: var(--color-emerald-800);
+  --header-link: var(--color-emerald-400);
+}
+.dark section header p a {
+  border-bottom-color: var(--header-link, var(--color-blue-400));
+}
+
+/*
+Theme Switcher
+Floating control (top-right) with a fade-in dropdown.
+*/
+.theme-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.25rem);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0.15s ease;
+}
+
+.theme-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.theme-option .theme-check {
+  opacity: 0;
+}
+
+.theme-option.is-active {
+  font-weight: 600;
+}
+
+.theme-option.is-active .theme-check {
+  opacity: 1;
 }
