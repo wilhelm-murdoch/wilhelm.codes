@@ -98,6 +98,25 @@ Primary Navigation
 
 #navigation li {
   position: relative;
+  /* Default highlight bar color; per-section overrides below. */
+  --nav-bar-active: var(--color-blue-300);
+  --nav-bar-hover: var(--color-blue-100);
+}
+
+/* Per-section nav highlight colors, matching each section's activity graph. */
+#navigation li.highlight-rose {
+  --nav-bar-active: var(--color-rose-300);
+  --nav-bar-hover: var(--color-rose-100);
+}
+
+#navigation li.highlight-purple {
+  --nav-bar-active: var(--color-purple-300);
+  --nav-bar-hover: var(--color-purple-100);
+}
+
+#navigation li.highlight-emerald {
+  --nav-bar-active: var(--color-emerald-300);
+  --nav-bar-hover: var(--color-emerald-100);
 }
 
 #navigation li a {
@@ -121,11 +140,11 @@ Primary Navigation
 
 #navigation li span.active::after,
 #navigation li a.active::after {
-  background-color: var(--color-blue-300);
+  background-color: var(--nav-bar-active);
 }
 
 #navigation li a:hover::after {
-  background-color: var(--color-blue-100);
+  background-color: var(--nav-bar-hover);
 }
 
 /*
@@ -630,7 +649,23 @@ header h1 span::after {
   width: 100%;
   height: 40%;
   transform: rotate(1deg);
-  background-color: var(--color-blue-100);
+  background-color: var(--header-bar, var(--color-blue-100));
+}
+
+/* Section theme colors, matching each section's activity graph. */
+.theme-rose {
+  --header-bar: var(--color-rose-100);
+  --header-link: var(--color-rose-500);
+}
+
+.theme-purple {
+  --header-bar: var(--color-purple-100);
+  --header-link: var(--color-purple-500);
+}
+
+.theme-emerald {
+  --header-bar: var(--color-emerald-100);
+  --header-link: var(--color-emerald-500);
 }
 
 header h3 span {
@@ -652,7 +687,7 @@ header h3 span::after {
 
 section header p a {
   @apply text-slate-600;
-  border-bottom: 2px solid var(--color-blue-500);
+  border-bottom: 2px solid var(--header-link, var(--color-blue-500));
 }
 
 section header p a:hover {

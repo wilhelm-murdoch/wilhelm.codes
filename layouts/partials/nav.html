@@ -14,7 +14,7 @@
       {{ $active = or $active (eq .Name $current.Title) }}
       {{ $active = or $active (eq .URL $current.RelPermalink) }}
       {{ $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog")) }}
-      <li class="relative">
+      <li class="relative{{ with .Params.highlight }} highlight-{{ . }}{{ end }}">
         {{ if $active }}
           <span class="active font-semibold text-slate-800">{{ .Name }}</span>
         {{ else }}

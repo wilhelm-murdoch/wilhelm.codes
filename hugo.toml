@@ -29,14 +29,20 @@ enableGitInfo = true
     name = "Bits"
     pageRef = "/bits"
     weight = 20
+    [menus.main.params]
+      highlight = "rose"
   [[menus.main]]
     name = "Archive"
     pageRef = "/archive"
     weight = 30
+    [menus.main.params]
+      highlight = "purple"
   [[menus.main]]
     name = "Changelog"
     pageRef = "/changelog"
     weight = 40
+    [menus.main.params]
+      highlight = "emerald"
 
 [sitemap]
   changeFreq = "daily"
