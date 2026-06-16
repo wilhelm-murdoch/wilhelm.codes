@@ -185,6 +185,60 @@ ol {
   @apply prose-inline-code:rounded-sm prose-inline-code:bg-gray-100 prose-inline-code:p-1 prose-inline-code:font-medium prose-inline-code:text-black;
 }
 
+/*
+Heading Anchors
+Markdown headings (via layouts/_default/_markup/render-heading.html) get a muted
+*/
+
+.article-prose :where(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+  scroll-margin-top: 2rem;
+}
+
+.heading-link {
+  display: block;
+  color: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.heading-anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1em;
+  display: inline-flex;
+  align-items: center;
+  width: 1.4em;
+  padding-right: 0.4em;
+  color: var(--color-slate-300);
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+
+.heading-anchor svg {
+  width: 0.65em;
+  height: 0.65em;
+}
+
+.article-prose :where(h1, h2, h3, h4, h5, h6):hover .heading-anchor,
+.heading-link:focus .heading-anchor {
+  opacity: 1;
+}
+
+.heading-anchor:hover {
+  color: var(--color-slate-500);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 .blog a {
   text-decoration: none;
 }
