@@ -48,7 +48,7 @@
 {{ end }}
 
 
-<section>
+<section class="activity-graph">
   <div class="grid grid-cols-26 gap-1.5">
     {{ range $i := seq 0 (sub $weeks 1) }}
       {{ $c := $counts.Get (printf "%d" $i) | default 0 }}
