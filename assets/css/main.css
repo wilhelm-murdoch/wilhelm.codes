@@ -914,3 +914,53 @@ section header p a:hover {
     opacity: 1;
   }
 }
+
+/*
+Face Confetti
+Bouncing mini-mes spawned by clicking the homepage portrait (see header.html).
+Positioned via transform; pointer-transparent so they never block clicks.
+*/
+.me-particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1150;
+  pointer-events: none;
+  border-radius: 9999px;
+  border: 2px solid var(--color-white);
+  box-shadow: 0 0 0 3px var(--color-blue-400);
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Agitate the portrait on hover. The entrance zoom is kept as the first entry
+   in both states so toggling hover never restarts it; the wobble is just
+   appended on hover. */
+@keyframes me-agitate {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(-5deg) scale(1.03);
+  }
+  45% {
+    transform: rotate(4deg) scale(1.03);
+  }
+  70% {
+    transform: rotate(-3deg) scale(1.03);
+  }
+  90% {
+    transform: rotate(2deg) scale(1.02);
+  }
+}
+
+#me-spawner {
+  animation: zoom-animation 0.5s both;
+}
+
+#me-spawner:hover {
+  animation:
+    zoom-animation 0.5s both,
+    me-agitate 0.5s ease-in-out infinite;
+}
