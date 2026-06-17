@@ -915,11 +915,7 @@ section header p a:hover {
   }
 }
 
-/*
-Face Confetti
-Bouncing mini-mes spawned by clicking the homepage portrait (see header.html).
-Positioned via transform; pointer-transparent so they never block clicks.
-*/
+/* A particle MEmitter */
 .me-particle {
   position: fixed;
   top: 0;
@@ -933,9 +929,7 @@ Positioned via transform; pointer-transparent so they never block clicks.
   will-change: transform;
 }
 
-/* Agitate the portrait on hover. The entrance zoom is kept as the first entry
-   in both states so toggling hover never restarts it; the wobble is just
-   appended on hover. */
+/* Agitate me on hover */
 @keyframes me-agitate {
   0%,
   100% {
