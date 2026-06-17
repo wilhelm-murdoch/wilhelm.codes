@@ -1,7 +1,9 @@
 <img
-  class="zoom-animation mx-auto hidden rounded-full border-2 border-white ring-4 ring-blue-400 md:block md:h-36"
+  id="me-spawner"
+  class="zoom-animation mx-auto hidden cursor-pointer rounded-full border-2 border-white ring-4 ring-blue-400 transition-transform select-none active:scale-95 md:block md:h-36"
   src="/images/me.jpeg"
   alt="My gorgeous mug."
+  title="Go on, click me."
 />
 <h1
   class="my-4 text-center text-2xl leading-tight font-bold md:my-8 md:text-5xl"
@@ -45,3 +47,84 @@
     <span class="fa-brands fa-linkedin h-6 md:text-[2rem]"></span>
   </a>
 </div>
+
+<script>
+  {{/* Click the face to spray a burst of bouncing mini-mes around the viewport. */}}
+  (function () {
+    var src = document.getElementById("me-spawner");
+    if (!src) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var particles = [];
+    var MAX = 60;
+    var running = false;
+
+    function spawn() {
+      var rect = src.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+
+      for (var i = 0; i < 12 && particles.length < MAX; i++) {
+        var size = 28 + Math.random() * 20;
+        var el = document.createElement("img");
+        el.src = src.src;
+        el.alt = "";
+        el.className = "me-particle";
+        el.style.width = el.style.height = size + "px";
+        document.body.appendChild(el);
+
+        var angle = Math.random() * Math.PI * 2;
+        var speed = 2 + Math.random() * 4;
+        particles.push({
+          el: el,
+          x: cx - size / 2,
+          y: cy - size / 2,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          rot: Math.random() * 360,
+          vr: (Math.random() - 0.5) * 12,
+          size: size,
+          born: performance.now(),
+          life: 6000,
+        });
+      }
+
+      if (!running) {
+        running = true;
+        requestAnimationFrame(tick);
+      }
+    }
+
+    function tick(now) {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+
+      for (var i = particles.length - 1; i >= 0; i--) {
+        var p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x <= 0) { p.x = 0; p.vx = -p.vx; }
+        else if (p.x + p.size >= w) { p.x = w - p.size; p.vx = -p.vx; }
+        if (p.y <= 0) { p.y = 0; p.vy = -p.vy; }
+        else if (p.y + p.size >= h) { p.y = h - p.size; p.vy = -p.vy; }
+
+        var remaining = p.life - (now - p.born);
+        if (remaining <= 0) {
+          p.el.remove();
+          particles.splice(i, 1);
+          continue;
+        }
+        p.rot += p.vr;
+        if (remaining < 700) p.el.style.opacity = (remaining / 700).toFixed(2);
+        p.el.style.transform =
+          "translate(" + p.x + "px," + p.y + "px) rotate(" + p.rot + "deg)";
+      }
+
+      if (particles.length) requestAnimationFrame(tick);
+      else running = false;
+    }
+
+    src.addEventListener("click", spawn);
+  })();
+</script>
