@@ -7,8 +7,7 @@
 @custom-variant prose-inline-code (&.prose-xl :where(:not(pre) > code):not(:where([class~="not-prose"] *)));
 @custom-variant not-last (&:not(:last-child));
 
-/* Class-based dark mode: toggled by adding `.dark` to <html> (see the floating
-   theme switcher). Enables dark: utilities and the .dark overrides below. */
+/*  Class-based dark mode; see theme switcher button below.  */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
@@ -84,10 +83,7 @@
   background-color: var(--color-blue-50);
 }
 
-/*
-Changelog
-*/
-
+/* Changelog */
 #changelog .event a {
   color: var(--color-slate-500);
   border-bottom: 1px dotted var(--color-slate-500);
@@ -102,10 +98,7 @@ Changelog
   @apply rounded-md border border-slate-200 bg-slate-50 p-0.5 text-xs text-slate-500 sm:p-1 sm:text-sm;
 }
 
-/*
-Primary Navigation
-*/
-
+/* Primary Navigation */
 #navigation li {
   position: relative;
   /* Default highlight bar color; per-section overrides below. */
@@ -157,10 +150,7 @@ Primary Navigation
   background-color: var(--nav-bar-hover);
 }
 
-/*
-Table of Contents
-*/
-
+/* Table of Contents */
 .toc ul,
 ol {
   margin-left: 16px;
@@ -214,11 +204,7 @@ ol {
   @apply prose-inline-code:rounded-sm prose-inline-code:bg-gray-100 prose-inline-code:p-1 prose-inline-code:font-medium prose-inline-code:text-black;
 }
 
-/*
-Heading Anchors
-Markdown headings (via layouts/_default/_markup/render-heading.html) get a muted
-*/
-
+/* Heading Anchors */
 .article-prose :where(h1, h2, h3, h4, h5, h6) {
   position: relative;
   scroll-margin-top: 2rem;
@@ -287,10 +273,7 @@ Markdown headings (via layouts/_default/_markup/render-heading.html) get a muted
   aspect-ratio: 1 / 1;
 }
 
-/*
-Progress Bar
-*/
-
+/* Progress Bar */
 [data-progress-bar] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -353,10 +336,7 @@ progress.highlight-rose::-moz-progress-bar {
   background-color: var(--color-rose-400);
 }
 
-/*
-Article Highlights
-*/
-
+/* Article Highlights */
 .highlight-slate .summary svg,
 .highlight-slate h3 span {
   color: var(--color-slate-400);
@@ -927,16 +907,9 @@ section header p a:hover {
 
 /*
 Dark Mode
-Class-based (.dark on <html>, set by the floating theme switcher). Instead of
-sprinkling dark: utilities across every template, we remap Tailwind's neutral
-color variables here so existing slate / gray / white utilities flip
-automatically. White becomes the dark canvas; text-white is restored to true
-white below for labels on colored/black backgrounds. Accent-driven bits
-(highlight bars, activity graph, inline code, progress bar) get targeted fixes.
 */
 
 html.dark {
-  /* Canvas (white -> darkest) and the slate scale inverted. */
   --color-white: #0b1220;
 
   --color-slate-50: #0f172a;
@@ -955,8 +928,10 @@ html.dark {
   --color-gray-200: #334155;
   --color-gray-300: #475569;
 
-  /* Faint accent washes (-50): empty activity-graph cells, article title bars,
-     the divider line. Drop them to a dark surface so they don't glow. */
+  /*
+  Faint accent washes on empty activity-graph cells, article title bars,
+  the divider line. Drop them to a dark surface so they don't glow.
+  */
   --color-blue-50: #1e293b;
   --color-rose-50: #1e293b;
   --color-purple-50: #1e293b;
@@ -970,12 +945,7 @@ html.dark {
   --color-pink-50: #1e293b;
 }
 
-/* Activity-graph quartiles (-300..-600). On a dark canvas the light-mode ramp
-   reads backwards (busy weeks go dark and sink in), so remap the lower steps
-   onto darker, muted shades — lightness now rises with activity (GitHub-style),
-   with -600 left as the bright end. Scoped to the graph container so it only
-   affects the cells/legend, not links, bars, the profile ring, etc. References
-   stay on untouched shades (-700/-800/-900) to avoid circular variables. */
+/* Activity-graph quartiles */
 .dark .activity-graph {
   --color-emerald-300: var(--color-emerald-900);
   --color-emerald-400: var(--color-emerald-800);
@@ -994,25 +964,30 @@ html.dark {
   --color-blue-500: var(--color-blue-700);
 }
 
-/* Default text color for the dark canvas (light mode keeps the browser default). */
 .dark body {
   color: var(--color-slate-700);
 }
 
-/* Keep white labels (badges, tooltips, the 404 card) readable on their
-   colored/black backgrounds, where remapped white would hide them. */
+/*
+Keep white labels (badges, tooltips, the 404 card) readable on their
+colored/black backgrounds, where remapped white would hide them.
+*/
 .dark [class~="text-white"] {
   color: #fff;
 }
 
-/* Explicit black borders (e.g. the TOC heading rule). */
+/*
+Explicit black borders (e.g. the TOC heading rule).
+*/
 .dark [class~="border-black"] {
   border-color: var(--color-slate-700);
 }
 
-/* Row cards (views/row.html): in dark mode shadow-slate-100 resolves lighter
-   than the canvas and reads as a pale halo, and the default border is too
-   bright. Darken both. */
+/*
+Row cards (views/row.html): in dark mode shadow-slate-100 resolves lighter
+than the canvas and reads as a pale halo, and the default border is too
+bright. Darken both.
+*/
 .dark [class~="shadow-slate-100"] {
   border-color: var(--color-slate-100);
   --tw-shadow-color: var(--color-slate-950);
@@ -1035,20 +1010,22 @@ html.dark {
   background: var(--color-slate-600);
 }
 
-/* Rotated highlight bars: swap pastel washes (-100/-300) for dark-tinted
-   accents so they read behind the now-light text. */
+/* Rotated highlight bars */
 .dark #navigation li {
   --nav-bar-active: var(--color-blue-400);
   --nav-bar-hover: var(--color-blue-600);
 }
+
 .dark #navigation li.highlight-rose {
   --nav-bar-active: var(--color-rose-700);
   --nav-bar-hover: var(--color-rose-800);
 }
+
 .dark #navigation li.highlight-purple {
   --nav-bar-active: var(--color-purple-700);
   --nav-bar-hover: var(--color-purple-800);
 }
+
 .dark #navigation li.highlight-emerald {
   --nav-bar-active: var(--color-emerald-700);
   --nav-bar-hover: var(--color-emerald-800);
@@ -1057,26 +1034,27 @@ html.dark {
 .dark header h1 span::after {
   background-color: var(--header-bar, var(--color-blue-500));
 }
+
 .dark .theme-rose {
   --header-bar: var(--color-rose-600);
   --header-link: var(--color-rose-400);
 }
+
 .dark .theme-purple {
   --header-bar: var(--color-purple-800);
   --header-link: var(--color-purple-400);
 }
+
 .dark .theme-emerald {
   --header-bar: var(--color-emerald-800);
   --header-link: var(--color-emerald-400);
 }
+
 .dark section header p a {
   border-bottom-color: var(--header-link, var(--color-blue-400));
 }
 
-/*
-Theme Switcher
-Floating control (top-right) with a fade-in dropdown.
-*/
+/* Dark/light mode switcher button... thing */
 .theme-menu {
   opacity: 0;
   visibility: hidden;
