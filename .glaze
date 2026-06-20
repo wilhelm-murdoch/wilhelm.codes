@@ -1,0 +1,40 @@
+session {
+  name = replace(path.base, ".", "-")
+
+  envs = {
+    HUGO_GITHUB_TOKEN        = ""
+    HUGO_ACTIVITY_GRAPH_DEMO = "1"
+  }
+
+  window {
+    name  = "editor"
+    focus = true
+
+    pane {
+      focus = true
+      commands = ["nvim"]
+    }
+  }
+
+  window {
+    name  = "terminal"
+
+    pane {}
+  }
+
+  window {
+    name  = "server"
+
+    pane {
+      commands = ["hugo server --disableFastRender"]
+    }
+  }
+
+  window {
+    name  = "git"
+
+    pane {
+      commands = ["lazygit"]
+    }
+  }
+}
