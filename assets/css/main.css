@@ -203,7 +203,7 @@ ol {
 
 /* Blurb bit prose stylings */
 .blurb-prose {
-  @apply text-base leading-relaxed font-light text-slate-700;
+  @apply text-sm leading-relaxed font-normal text-slate-700;
 }
 
 .blurb-prose :where(p, ul, ol, blockquote, pre, h2, h3, h4, .highlight) {
