@@ -141,37 +141,36 @@ Enough talk. Here's the profile I actually use when working this website:
 session {
   name = replace(path.base, ".", "-")
 
+  envs = {
+    HUGO_GITHUB_TOKEN        = "${github}"
+    HUGO_ACTIVITY_GRAPH_DEMO = "${demo}"
+  }
+
   window {
     name  = "editor"
-    focus = true
 
     pane {
-      focus = true
       commands = ["nvim"]
     }
   }
 
   window {
     name  = "terminal"
+    focus = true
 
     pane {}
   }
 
   window {
-    name  = "server"
+    name = "server"
 
     pane {
-      envs = {
-        HUGO_GITHUB_TOKEN        = "${var.github}"
-        HUGO_ACTIVITY_GRAPH_DEMO = "${var.demo}"
-      }
-      
       commands = ["hugo server --disableFastRender"]
     }
   }
 
   window {
-    name  = "git"
+    name = "git"
 
     pane {
       commands = ["lazygit"]
