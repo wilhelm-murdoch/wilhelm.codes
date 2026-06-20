@@ -31,13 +31,6 @@
             >{{ partial "functions/relative-date.html" .Date }}</span
           >
 
-          <!--{{ with .GetTerms "tags" }}
-            {{ if ne (len .) 0 }}
-              {{ partial "tags/inline.html" . }}
-            {{ end }}
-          {{ end }}
-          -->
-
           {{ range .Params.tags }}
             {{ with site.GetPage (printf "/tags/%s" (urlize .)) }}
               <span class="text-xs text-slate-400"
