@@ -106,6 +106,51 @@
           async
         ></script>
       </section>
+
+      {{/* Keep giscus' theme in sync with the site theme switcher. */}}
+      <script>
+        (function () {
+          var ORIGIN = "https://giscus.app";
+          var script = document.querySelector(
+            '#comments script[src^="' + ORIGIN + '"]',
+          );
+          var mql = window.matchMedia("(prefers-color-scheme: dark)");
+
+          function theme() {
+            var pref;
+            try {
+              pref = localStorage.getItem("theme") || "system";
+            } catch (e) {
+              pref = "system";
+            }
+            var dark = pref === "dark" || (pref === "system" && mql.matches);
+            return dark ? "transparent_dark" : "light";
+          }
+
+          function sync() {
+            var t = theme();
+
+            if (script) script.setAttribute("data-theme", t);
+
+            var iframe = document.querySelector("iframe.giscus-frame");
+            if (iframe) {
+              iframe.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: t } } },
+                ORIGIN,
+              );
+            }
+          }
+
+          sync();
+
+          new MutationObserver(sync).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+          });
+
+          mql.addEventListener("change", sync);
+        })();
+      </script>
     {{ end }}
   </div>
 {{ end }}
