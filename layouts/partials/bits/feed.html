@@ -28,7 +28,7 @@
             >{{ $m.label }}</span
           >
           <span class="text-xs text-slate-400"
-            >{{ .Date.Format "Jan 2, 2006" }}</span
+            >{{ partial "functions/relative-date.html" .Date }}</span
           >
 
           <!--{{ with .GetTerms "tags" }}

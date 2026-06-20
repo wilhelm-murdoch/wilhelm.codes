@@ -14,21 +14,9 @@
       </a>
     </h3>
     <p class="hidden text-sm text-slate-400 sm:block">
-      {{ $date := .Date }}
-      {{ $now := now }}
-      {{ $delta := $now.Sub $date }}
-
       Posted
       <span class="border-b-2 border-b-slate-100 font-medium text-slate-500">
-        {{ if lt $delta.Hours 24 }}
-          today
-        {{ else if and (gt $delta.Hours 24) (lt $delta.Hours 48) }}
-          yesterday
-        {{ else if and (gt $delta.Hours 48) (lt $delta.Hours 96) }}
-          recently
-        {{ else }}
-          {{ math.Floor (div $delta.Hours 24) | lang.FormatNumber 0 }} days ago
-        {{ end }}
+        {{ partial "functions/relative-date.html" .Date }}
       </span>
       in
       <span class="border-b-2 border-b-slate-100 font-medium text-slate-500"
