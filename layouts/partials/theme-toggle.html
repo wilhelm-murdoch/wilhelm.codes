@@ -1,0 +1,251 @@
+{{/* Floating theme switcher: Light / Dark / System (default). */}}
+<div class="fixed top-3 right-3 z-1200" data-theme-toggle>
+  <button
+    type="button"
+    class="flex h-9 w-9 items-center justify-center rounded-full border bg-white text-slate-600 shadow-sm transition hover:text-slate-900"
+    data-theme-button
+    aria-label="Switch theme"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    {{/* Reflects the current preference; System shown by default. */}}
+    <svg
+      data-icon="light"
+      class="hidden h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path
+        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+      />
+    </svg>
+    <svg
+      data-icon="dark"
+      class="hidden h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+    <svg
+      data-icon="system"
+      class="h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="M8 21h8M12 17v4" />
+    </svg>
+  </button>
+
+  <div
+    class="theme-menu absolute right-0 mt-2 w-36 rounded-lg border bg-white p-1 shadow-lg"
+    data-theme-menu
+    role="menu"
+    aria-label="Theme"
+  >
+    <button
+      type="button"
+      class="theme-option flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-slate-600 hover:bg-slate-50"
+      data-theme-option="light"
+      role="menuitemradio"
+      aria-checked="false"
+    >
+      <svg
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+        />
+      </svg>
+      <span class="flex-1 text-left">Light</span>
+      <svg
+        class="theme-check h-3.5 w-3.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      class="theme-option flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-slate-600 hover:bg-slate-50"
+      data-theme-option="dark"
+      role="menuitemradio"
+      aria-checked="false"
+    >
+      <svg
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <span class="flex-1 text-left">Dark</span>
+      <svg
+        class="theme-check h-3.5 w-3.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      class="theme-option flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-slate-600 hover:bg-slate-50"
+      data-theme-option="system"
+      role="menuitemradio"
+      aria-checked="false"
+    >
+      <svg
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+      </svg>
+      <span class="flex-1 text-left">System</span>
+      <svg
+        class="theme-check h-3.5 w-3.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var wrap = document.querySelector("[data-theme-toggle]");
+    if (!wrap) return;
+
+    var button = wrap.querySelector("[data-theme-button]");
+    var menu = wrap.querySelector("[data-theme-menu]");
+    var options = wrap.querySelectorAll("[data-theme-option]");
+    var icons = {
+      light: button.querySelector('[data-icon="light"]'),
+      dark: button.querySelector('[data-icon="dark"]'),
+      system: button.querySelector('[data-icon="system"]'),
+    };
+    var mql = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function stored() {
+      try {
+        return localStorage.getItem("theme") || "system";
+      } catch (e) {
+        return "system";
+      }
+    }
+
+    function effectiveDark(pref) {
+      return pref === "dark" || (pref === "system" && mql.matches);
+    }
+
+    function apply(pref) {
+      root.classList.toggle("dark", effectiveDark(pref));
+      Object.keys(icons).forEach(function (k) {
+        if (icons[k]) icons[k].classList.toggle("hidden", k !== pref);
+      });
+      options.forEach(function (o) {
+        var active = o.getAttribute("data-theme-option") === pref;
+        o.classList.toggle("is-active", active);
+        o.setAttribute("aria-checked", active ? "true" : "false");
+      });
+    }
+
+    function setPref(pref) {
+      try {
+        localStorage.setItem("theme", pref);
+      } catch (e) {}
+      apply(pref);
+    }
+
+    function closeMenu() {
+      menu.classList.remove("is-open");
+      button.setAttribute("aria-expanded", "false");
+    }
+
+    button.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = menu.classList.toggle("is-open");
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
+    options.forEach(function (o) {
+      o.addEventListener("click", function () {
+        setPref(o.getAttribute("data-theme-option"));
+        closeMenu();
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!wrap.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    {{/* React to OS changes only while following the system preference. */}}
+    mql.addEventListener("change", function () {
+      if (stored() === "system") apply("system");
+    });
+
+    apply(stored());
+  })();
+</script>

@@ -1,0 +1,111 @@
+{{ define "main" }}
+  <div
+    class="blog highlight-{{ .Params.highlight }} mx-auto sm:max-w-full md:max-w-4xl"
+  >
+    <header class="border-b mb-4 pb-4 sm:mb-8 sm:pb-8 ">
+        <h4 class="mb-6 sm:mb-10 text-center">
+          <span
+            class="rounded-full px-2 py-2 text-xs sm:font-normal md:px-4 md:py-3 md:font-medium"
+            >{{ .Params.category }}</span
+          >
+        </h4>
+
+        <h3 class="mb-4 sm:mb-8 text-center text-2xl font-light text-slate-600 md:text-5xl">
+        {{ .LinkTitle | safeHTML }}
+        </h3>
+        <div
+        class="text-center text-sm font-light text-slate-400"
+        >
+            written by
+            <img
+                class="jello-animation inline-block h-6 w-6 rounded-full border-2 border-slate-300 hover:border-slate-400"
+                src="/images/me.jpeg"
+                alt="It me."
+            />
+            on
+            <strong class="border-b border-slate-300"
+                >{{ .Date | time.Format ":date_medium" }}</strong
+            ><br class="mb-2"/>
+            {{ with .GetTerms "tags" }}
+                {{ if ne (len .) 0 }}
+                    {{ partial "tags/inline.html" . }}
+                {{ end }}
+            {{ end }}
+        </div>
+    </header>
+
+    <article class="fade-in-animation px-2 mb-4 border-b pb-4 sm:px-0 sm:pb-8 sm:mb-8 transition">
+      <div class="summary">
+        <div
+          class="py-4 leading-relaxed font-light text-slate-700 sm:mb-4 sm:text-base md:mb-8 md:text-lg"
+        >
+          {{ .Summary }}
+        </div>
+        {{ if eq .Params.toc true }}
+          {{ with .TableOfContents }}
+            <section
+              class="toc mx-auto mb-16 hidden bg-gray-100 p-4 px-24 sm:block"
+            >
+              <h3 class="mb-4 border-b border-black pb-2 text-xl font-semibold">
+                Table of Contents
+              </h3>
+              {{ . }}
+            </section>
+          {{ end }}
+        {{ end }}
+      </div>
+      <div class="prose-xl article-prose">
+        {{ .ContentWithoutSummary }}
+    </article>
+  </div>
+
+    <progress
+      class="highlight-{{ .Params.highlight }}"
+      value="0"
+      max="100"
+      data-progress-bar
+    ></progress>
+    <script>
+      function getScrollPercent() {
+        const h = document.documentElement,
+          b = document.body,
+          st = "scrollTop",
+          sh = "scrollHeight";
+        return Math.round(
+          ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100,
+        );
+      }
+
+      const progressBar = document.querySelector("[data-progress-bar]");
+
+      if (progressBar) {
+        progressBar.setAttribute("value", getScrollPercent());
+        window.addEventListener("scroll", () => {
+          progressBar.setAttribute("value", getScrollPercent());
+        });
+      }
+    </script>
+
+    {{ if ne .Params.comments false }}
+      <section id="comments" class="mx-auto mb-8 max-w-4xl px-2 sm:p-0">
+        <script
+          src="https://giscus.app/client.js"
+          data-repo="wilhelm-murdoch/wilhelm.codes"
+          data-repo-id="R_kgDOGWTH9g"
+          data-category="Blog Comments"
+          data-category-id="DIC_kwDOGWTH9s4ClCVr"
+          data-mapping="og:title"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async
+        ></script>
+      </section>
+    {{ end }}
+  </div>
+{{ end }}

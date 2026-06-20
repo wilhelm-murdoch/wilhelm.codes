@@ -1,0 +1,21 @@
+<!doctype html>
+<html
+  lang="{{ site.Language.Locale }}"
+  dir="{{ or site.Language.Direction `ltr` }}"
+>
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    {{ partial "theme-toggle.html" . }}
+    <div class="m-0 my-4 p-0 sm:mx-0 sm:p-4 md:m-10">
+      {{ partial "nav.html" . }}
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main>
+      <footer class="mx-auto max-w-2xl text-center text-sm text-slate-400">
+        {{ partial "footer.html" . }}
+      </footer>
+    </div>
+  </body>
+</html>

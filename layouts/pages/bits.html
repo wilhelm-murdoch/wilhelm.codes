@@ -1,0 +1,32 @@
+{{ define "main" }}
+  <section class="fade-in-animation mx-auto max-w-4xl">
+    <header class="theme-rose">
+      <h1 class="my-4 text-center text-2xl leading-tight md:my-8 md:text-5xl">
+        Nibbles,
+        <span class="relative font-bold">Bits</span> &amp; Bytes.
+      </h1>
+      <p
+        class="mb-4 border-b pb-4 text-center text-sm font-extralight text-slate-500 sm:border-none md:mb-10 md:border-none md:pb-0 md:text-2xl"
+      >
+        An uncurated collection of links & blurbs. <br />
+        It's like a backlog, but for my attention span.
+      </p>
+    </header>
+
+    <section
+      class="fade-in-animation mx-auto mb-2 hidden max-w-4xl p-2 pb-4 sm:mb-6 sm:block sm:px-0"
+    >
+      {{/* Collect activity timestamps from all bits. */}}
+      {{ $dates := slice }}
+      {{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
+
+      {{ range where site.RegularPages "Section" "bits" }}
+        {{ $dates = $dates | append .Date }}
+      {{ end }}
+
+      {{ partial "activity-graph.html" (dict "dates" $dates "color" "rose" "type" "bit") }}
+    </section>
+
+    {{ partial "bits/feed.html" . }}
+  </section>
+{{ end }}
