@@ -18,7 +18,7 @@
               >{{ .label }}</span
             >
             <span class="text-xs text-slate-400"
-              >{{ .date.Format "Jan 2" }}</span
+              >{{ partial "functions/relative-date.html" .date }}</span
             >
           </div>
           <div class="mt-0.5 truncate text-sm text-slate-600">
