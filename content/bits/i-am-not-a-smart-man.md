@@ -10,3 +10,5 @@ I am not a smart man. I completely forgot I was using the "Pro" version of FontA
 I'm currently experimenting with some alternative OPEN SOURCE web icons and updating the third-party licensing notice bundled with the repo to cover icons as well as web fonts.
 
 Luckily, only _I_ noticed this issue and immediately worked to address it.
+
+_edit:_ Good-bye, sweet git history!
