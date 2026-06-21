@@ -1,7 +1,7 @@
 {{ $meta := partialCached "bits/meta.html" . }}
 
 
-<div class="relative mx-auto max-w-2xl px-2 sm:px-0">
+<div id="bit-feed" class="relative mx-auto max-w-2xl px-2 sm:px-0">
   {{/* The vertical rail; dots punch through it with a white ring. */}}
   <div class="absolute top-3 bottom-3 left-3.5 w-px bg-slate-100"></div>
 
@@ -13,6 +13,7 @@
 
     <div
       id="bit-{{ .File.ContentBaseName }}"
+      data-bit-type="{{ $type }}"
       class="relative mb-8 flex scroll-mt-8 gap-4"
     >
       <div

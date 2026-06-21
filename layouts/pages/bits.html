@@ -27,6 +27,8 @@
       {{ partial "activity-graph.html" (dict "dates" $dates "color" "rose" "type" "bit") }}
     </section>
 
+    {{ partial "bits/filter.html" . }}
+
     {{ partial "bits/feed.html" . }}
   </section>
 {{ end }}
