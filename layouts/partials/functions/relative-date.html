@@ -2,6 +2,7 @@
   Human, casual relative date for a time.Time. Returns a plain string.
 
   Scale:
+  < 12h ............ just now
   < 24h ............ today
   1 day ............ yesterday
   2-3 days ......... recently
@@ -21,7 +22,9 @@
 {{- $hours := (now.Sub $date).Hours -}}
 {{- $days := math.Floor (div $hours 24) -}}
 {{- $out := "" -}}
-{{- if lt $hours 24 -}}
+{{- if lt $hours 12 -}}
+  {{- $out = "just now" -}}
+{{- else if lt $hours 24 -}}
   {{- $out = "today" -}}
 {{- else if lt $days 2 -}}
   {{- $out = "yesterday" -}}

@@ -27,3 +27,6 @@
     {{ end }}
   </div>
 </div>
+{{ with .Content }}
+  <div class="mt-1 text-sm font-light text-slate-500 [&_p]:m-0">{{ . }}</div>
+{{ end }}
