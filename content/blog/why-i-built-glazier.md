@@ -15,21 +15,21 @@ tags:
   - hcl
   - projects
 ---
-I live in [tmux](https://github.com/tmux/tmux/wiki). I typically have an editor here, a dev server there, logs tailing in the corner or a spare pane for poking at things. The trouble is that this little world is frustratingly ephemeral. Rebooting my machine, kill the wrong session or just close the laptop lid for too long and it can all evaporates. Then I'm back to rebuilding the same layout by hand, one `split-window` at a time, like some kind of animal.
+I live in [tmux](https://github.com/tmux/tmux/wiki). I typically have an editor here, a dev server there, logs tailing in the corner or a spare pane for poking at things. The trouble is that this little world is frustratingly ephemeral. Rebooting my machine ( thank you, compuslory MacOS updates ), kill the wrong session or just close the laptop lid for too long and it can all evaporates. Then I'm back to rebuilding the same layout by hand, one `split-window` at a time, like some kind of animal.
 
 <!--more-->
 
-So I built [`glaze`](https://github.com/wilhelm-murdoch/glazier); a small command-line tool that lets me describe a tmux workspace once and recreate it on demand. Type `glaze up` and the sessions, windows and panes I described spring back into existence exactly how I left them.
+So I built [`Glazier`](https://github.com/wilhelm-murdoch/glazier); a small command-line tool that lets me describe a tmux workspace once and recreate it on demand. Type `glaze up` and the sessions, windows and panes I described spring back into existence exactly how I left them.
 
 This has been a slow-burning labour of love for the better part of two years and it's finally in a state where I feel comfortable letting other people look at it. So let's talk about why it exists, what else is out there and how this one is different.
 
 ## It's just a config file, right?
 
-That was the idea, at least. I just wanted to stop rebuilding the same layouts over and over. But, as is tradition around here, I didn't want to make it *too* easy for myself.
+That was the idea, at least. I just wanted to stop rebuilding the same layouts over and over. But, as is tradition, I didn't want to make it *too* easy for myself.
 
 There was a second, more selfish motivation. As a platform engineer, there isn't a day that goes by where I don't work with [Terraform](https://www.terraform.io/). I've always been quietly fascinated by how it parses and validates its configuration. That whole experience of getting a precise, friendly error pointing at the exact line you fat-fingered, rather than a stack trace and a 🖕. I wanted to understand how that machinery actually worked.
 
-I'm a heavy tmux user *and* I wanted to learn HCL parsing from the inside. These two things lined up a little too perfectly. So glaze profiles aren't YAML; they're [HCL](https://github.com/hashicorp/hcl). The same configuration language Terraform uses and parsed with the same underlying library.
+So, I'm a heavy tmux user *and* I wanted to learn HCL parsing from the inside. These two things lined up a little too perfectly. So Glazier's profiles aren't YAML; they're [HCL](https://github.com/hashicorp/hcl). The same configuration language Terraform uses and parsed with the same underlying library.
 
 Here's a basic profile:
 
@@ -60,7 +60,7 @@ This is a thoroughly-solved problem and I'd be doing you a disservice if I prete
 
 * [tmuxinator](https://github.com/tmuxinator/tmuxinator) is the one most are familiar with. Written in Ruby with YAML profiles. Probably what most people reach for.
 * [teamocil](https://github.com/remi/teamocil) is also written Ruby; also uses YAML.
-* [smug](https://github.com/ivaaaan/smug) is written in Go and uses YAML and is the closest in spirit to glazier if we're being honest.
+* [smug](https://github.com/ivaaaan/smug) is written in Go and uses YAML and is the closest in spirit to Glazier if we're being honest.
 * [tmuxp](https://github.com/tmux-python/tmuxp) is written in good'ole reliable Python and it'll happily eat YAML *or* JSON.
 
 If you already use and trust one of these, I'll be straight with you: there isn't a compelling reason to switch. Keep using what works. I'm not here to convince anyone to rip out a tool they're happy with.
@@ -71,7 +71,7 @@ But if you're still reading, here's what *I* like about mine.
 
 ### The profile validates itself!
 
-This is the part I set out to build, so it's the part I'm fondest of. Because glazier is built on HCL, it inherits Terraform-style diagnostics for free. Mistype a layout, point a starting directory at somewhere that doesn't exist or forget a required block and you don't get a vague "something went wrong fuck you". You get told exactly what and where you messed up:
+This is the part I set out to build, so it's the part I'm fondest of. Because Glazier is built on HCL, it inherits Terraform-style diagnostics for free. Mistype a layout, point a starting directory at somewhere that doesn't exist or forget a required block and you don't get a vague "something went wrong fuck you". You get told exactly what and where you messed up:
 
 ```text
 Error: Invalid layout specified
@@ -84,7 +84,7 @@ The layout value of "main-plumbus" is not a supported preset
 tiled) nor a valid tmux layout string.
 ```
 
-There's even a `glaze format` command that rewrites your profile into a canonical style and, with `--validate`, reports any of these diagnostics without touching tmux at all. Both of these scratch exactly the itch that started the whole project.
+There's a `glaze format` command that rewrites your profile into a canonical style and, with `--validate`, reports any of these diagnostics without touching tmux at all. Both of these scratch exactly the itch that started the whole project.
 
 ### Variables, templates and string functions! Oh, my!
 
@@ -193,6 +193,8 @@ could not create new session `wilhelm.codes`: session `wilhelm.codes` was create
 
 Definitely a small edge case I should address with the next patch.
 
+Further, the `--var` arguments aren't really necessary as you could just `export GLAZE_var_name` as well and Glazier will pick it up automatically.
+
 Anyways, because the session is just a named thing, the rest of the lifecycle is tidy too. List what's running with `glaze ls`:
 
 ```console
@@ -232,4 +234,4 @@ I would confidently say Glazier has moved on from "experimental" to "stable". It
 
 If you're already happy with Tmuxinator or Smug, then stick with them. But if the idea of a declarative, self-validating, slightly-too-clever tmux profile appeals to you, or you just want to read some Go that wraps tmux in ways it was probably never meant to be wrapped, I'd love for you to take it for a spin.
 
-I sincerely hope you find [glazier](https://github.com/wilhelm-murdoch/glazier) as useful as I had fun building it.
+I sincerely hope you find [Glazier](https://github.com/wilhelm-murdoch/glazier) as useful as I had fun building it.

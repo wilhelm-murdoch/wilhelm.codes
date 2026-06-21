@@ -190,7 +190,7 @@ ol {
   @apply prose-h3:text-lg prose-h3:font-medium prose-h3:text-slate-700 md:prose-h3:text-2xl;
   @apply prose-h4:text-base prose-h4:font-semibold prose-h4:text-slate-700 md:prose-h4:text-xl;
   @apply prose-h5:text-sm prose-h5:font-semibold prose-h5:text-slate-700 md:prose-h5:text-lg;
-  @apply prose-p:text-sm prose-p:leading-normal prose-p:font-light prose-p:text-slate-600 md:prose-p:text-lg;
+  @apply prose-p:text-sm prose-p:leading-normal prose-p:text-slate-800 md:prose-p:text-lg;
   @apply prose-blockquote:border-l-4 prose-blockquote:border-slate-200 prose-blockquote:pl-4 prose-blockquote:font-light prose-blockquote:text-slate-500 prose-blockquote:italic;
   @apply prose-pre:overflow-x-auto prose-pre:text-sm;
   @apply prose-li:text-sm prose-li:leading-normal prose-li:text-slate-800 md:prose-li:text-lg;
