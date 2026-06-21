@@ -73,6 +73,9 @@ fetch play                       ph:play-duotone                        "${UI_DI
 fetch arrow-up-right             ph:arrow-up-right-duotone              "${UI_DIR}"
 fetch chevron-down               ph:caret-down-duotone                  "${UI_DIR}"
 fetch terminal-window            ph:terminal-window-duotone             "${UI_DIR}"
+fetch cell-tower                 ph:cell-tower-duotone                  "${UI_DIR}"
+fetch broadcast                  ph:broadcast-duotone                   "${UI_DIR}"
+fetch bell                       ph:bell-duotone                        "${UI_DIR}"
 
 # Git / changelog activity (Phosphor duotone)
 fetch code-commit                ph:git-commit-duotone                  "${UI_DIR}"
