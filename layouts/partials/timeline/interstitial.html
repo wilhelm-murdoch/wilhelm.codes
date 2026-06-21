@@ -1,31 +1,13 @@
 {{ $bits := where . "kind" "bit" }}
 {{ $changelog := where . "kind" "ne" "bit" }}
+{{ $bitsLimit := 5 }}
+{{ $bitsLeft := sub (len $bits) $bitsLimit }}
 
 {{ if or $bits $changelog }}
   <div class="my-3 mb-6 hidden sm:block">
     {{/* Bits - first-class timeline elements. */}}
-    {{ range $bits }}
-      <div class="mx-auto flex max-w-2xl items-start gap-3 px-2 py-2">
-        <div
-          class="bg-{{ .colour }}-50 text-{{ .colour }}-600 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ring-4 ring-white"
-        >
-          {{ partial "icon.html" (dict "pack" .pack "icon" .icon "class" "text-[10px]") }}
-        </div>
-        <div class="min-w-0 flex-1">
-          <div class="flex items-center gap-2">
-            <span
-              class="bg-{{ .colour }}-50 text-{{ .colour }}-600 rounded px-1.5 py-0.5 text-[11px] font-medium"
-              >{{ .label }}</span
-            >
-            <span class="text-xs text-slate-400"
-              >{{ partial "functions/relative-date.html" .date }}</span
-            >
-          </div>
-          <div class="mt-0.5 truncate text-sm text-slate-600">
-            <a href="{{ .url }}" class="hover:text-slate-800">{{ .title }}</a>
-          </div>
-        </div>
-      </div>
+    {{ range first $bitsLimit $bits }}
+      {{ partial "timeline/rows/bit.html" . }}
     {{ end }}
 
     {{/* GitHub changelog activity - collapsed summary. */}}
@@ -36,8 +18,13 @@
         >
           <span class="h-px flex-1 bg-slate-100"></span>
           <span class="shrink-0 group-hover:text-slate-500">
-            <span class="font-medium text-slate-500"
-              >{{ len $changelog }} changelog
+            <span class="font-medium text-slate-500">
+              {{ if gt $bitsLeft 0 }}
+                {{ $bitsLeft }} more
+                {{ cond (gt ($bitsLeft) 1) "bits" "bit" }}
+                and
+              {{ end }}
+              {{ len $changelog }} changelog
               {{ cond (eq (len $changelog) 1) "event" "events" }}</span
             >
             in between
@@ -46,7 +33,16 @@
           <span class="h-px flex-1 bg-slate-100"></span>
         </summary>
 
-        <ul class="fade-in-animation mx-auto mt-3 max-w-2xl space-y-2 px-2">
+        {{ if gt $bitsLeft 0 }}
+          {{ range last ( sub ( len $bits ) $bitsLimit ) $bits }}
+            {{ partial "timeline/rows/bit.html" . }}
+          {{ end }}
+        {{ end }}
+
+
+        <ul
+          class="{{ cond (gt ($bitsLeft) 0) "pt-4" "" }} fade-in-animation mx-auto mt-3 max-w-2xl space-y-2 px-2"
+        >
           {{ range $changelog }}
             <li class="flex items-center gap-2 text-sm text-slate-500">
               {{ partial "icon.html" (dict "pack" (.pack | default "duotone") "icon" .icon "class" (printf "text-%s-500 w-4 shrink-0 text-center text-xs" .colour) "title" .label) }}
