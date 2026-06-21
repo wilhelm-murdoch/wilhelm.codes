@@ -47,6 +47,27 @@ enableGitInfo = true
 [sitemap]
   changeFreq = "daily"
 
+# Two purpose-built RSS feeds, both served from the home page:
+#   /articles.xml - longer-form blog posts
+#   /bits.xml     - short-form bits (quotes, links, videos, blurbs)
+[outputFormats]
+  [outputFormats.ArticlesRSS]
+    mediaType = "application/rss+xml"
+    baseName = "articles"
+    isPlainText = false
+    isHTML = false
+    rel = "alternate"
+  [outputFormats.BitsRSS]
+    mediaType = "application/rss+xml"
+    baseName = "bits"
+    isPlainText = false
+    isHTML = false
+    rel = "alternate"
+
+[outputs]
+  home = ["HTML", "ArticlesRSS", "BitsRSS"]
+  section = ["HTML"]
+
 [params]
   description = "Slinger of nibbles, bits and bytes. Over 25 years of professional experience as a software engineer. Love making glowing rectangles go \"beep-boop\"."
   [params.author]
