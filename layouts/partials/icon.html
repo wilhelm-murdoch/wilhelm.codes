@@ -18,6 +18,7 @@
 {{- $icon := .icon -}}
 {{- $dir := cond (eq (.pack | default "duotone") "brands") "brands" "ui" -}}
 {{- $class := .class | default "" -}}
+
 {{- with resources.Get (printf "icons/%s/%s.svg" $dir $icon) -}}
   <span
     class="icon {{ $class }}"
