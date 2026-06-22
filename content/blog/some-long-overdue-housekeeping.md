@@ -13,6 +13,7 @@ tags:
   - tailwindcss
   - css
   - refactoring
+  - wilhelm.codes
 credit: Photo by <a href="https://unsplash.com/@bobvanaubel">Bob van Aubel</a> on <a href="https://unsplash.com/photos/red-and-brown-brush-on-white-wooden-table-hUWlPaOHyAI">Unsplash</a>
 ---
 This blog has been quietly chugging along for a while now without me paying it much attention. Which is, I suppose, the whole point of a [set-and-forget](https://wilhelm.codes/blog/my-blog-publishing-setup/) setup. But "set-and-forget" has a sneaky way of becoming "forgotten", and the longer you leave something untouched, the more it quietly rots behind your back. So I rolled up my sleeves and gave the whole thing a proper tune-up.

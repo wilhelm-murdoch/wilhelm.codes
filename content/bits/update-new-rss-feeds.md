@@ -2,6 +2,8 @@
 title: Update New Rss Feeds
 date: 2026-06-21T16:01:44+10:00
 type: update
+tags:
+  - wilhelm.codes
 ---
 
 Some small incremental updates for the site today:

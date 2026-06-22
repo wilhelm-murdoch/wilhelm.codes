@@ -12,6 +12,7 @@ tags:
   - hugo
   - css
   - tailwindcss
+  - wilhelm.codes
 ---
 A while back, in [Reading Between the Posts](https://wilhelm.codes/blog/reading-between-the-posts/), I wired up the home page so the quiet gaps between articles would narrate themselves - "_1 bit and 41 changelog events in between_". There was just one tiny problem with that sentence. At the time I had written exactly _zero_ bits. 
 

@@ -44,6 +44,7 @@ fetch clock-rotate-left          ph:clock-counter-clockwise-duotone     "${UI_DI
 fetch code                       ph:code-duotone                        "${UI_DIR}"
 fetch face-awesome               ph:smiley-duotone                      "${UI_DIR}"
 fetch fire                       ph:fire-duotone                        "${UI_DIR}"
+fetch globe                      ph:globe-duotone                       "${UI_DIR}"
 fetch id-card                    ph:identification-card-duotone         "${UI_DIR}"
 fetch list-check                 ph:list-checks-duotone                 "${UI_DIR}"
 fetch mushroom                   ph:game-controller-duotone             "${UI_DIR}"

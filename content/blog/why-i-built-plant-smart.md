@@ -6,10 +6,10 @@ pack: duotone
 icon: seedling
 draft: false
 date: 2023-01-08
-category: Thoughts & Musings
+category: Projects
 tags:
   - svelte
-  - projects
+  - plantsmart
 ---
 Simply put, I love plants and I love animals. I can't count how many times I've been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.
 

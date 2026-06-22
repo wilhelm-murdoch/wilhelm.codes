@@ -1,0 +1,162 @@
+{{ define "main" }}
+  <section class="fade-in-animation mx-auto mb-10 max-w-4xl">
+    <header class="theme-orange">
+      <h1 class="my-4 text-center text-2xl leading-tight md:my-8 md:text-5xl">
+        Some Fun <span class="relative font-bold">Projects</span>.
+      </h1>
+      <p
+        class="mb-4 pb-4 text-center text-sm font-extralight text-slate-500 md:mb-10 md:pb-0 md:text-2xl"
+      >
+        The bigger things I'm working on,<br />and everything I've written that
+        orbits them.
+      </p>
+    </header>
+
+    <section
+      class="fade-in-animation mx-auto mb-2 hidden max-w-4xl p-2 pb-4 sm:mb-6 sm:block sm:px-0"
+    >
+      {{/* Activity across every project's tag, deduped by page. */}}
+      {{ $projectTags := slice }}
+      {{ range hugo.Data.projects.projects }}
+        {{ $projectTags = $projectTags | append .tag }}
+      {{ end }}
+
+      {{ $dates := slice }}
+      {{ range where site.RegularPages "Params.tags" "intersect" $projectTags }}
+        {{ $dates = $dates | append .Date }}
+      {{ end }}
+
+      {{ partial "activity-graph.html" (dict "dates" $dates "color" "orange" "type" "project") }}
+    </section>
+
+    {{/* Bit type -> icon/colour/label, shared with the bits feed. */}}
+    {{ $meta := partialCached "bits/meta.html" . }}
+
+    {{/* Bits have no own URL (build.render: never); they're anchored on /bits/. */}}
+    {{ $bitsPage := site.GetPage "/bits" }}
+
+    {{/* status -> pill colour */}}
+    {{ $statusColours := dict "active" "emerald" "tinkering" "yellow" "shelved" "slate" }}
+
+    {{ range $p := hugo.Data.projects.projects }}
+      {{/* Gather every blog post + bit that shares this project's tag. */}}
+      {{ $tagged := sort (where site.RegularPages "Params.tags" "intersect" (slice $p.tag)) "Date" "desc" }}
+      {{ $status := $p.status | default "active" }}
+      {{ $sc := index $statusColours $status | default "slate" }}
+
+
+      <article
+        class="highlight-{{ $p.highlight }} relative mx-2 mb-2 rounded-md border px-2 py-4 shadow-sm shadow-slate-100 transition sm:mx-0 sm:mb-8 sm:rounded-2xl sm:p-8 sm:shadow-md md:hover:scale-105"
+      >
+        <div class="flex">
+          <div class="summary mr-4 hidden w-16 pt-1 md:inline-block">
+            {{ partial "icon.html" (dict "pack" $p.pack "icon" $p.icon "class" "flex h-14 w-14 items-center justify-center rounded-full p-3 text-3xl") }}
+          </div>
+
+          <div class="flex-1">
+            <div
+              class="mb-0 flex flex-wrap items-center justify-center gap-2 sm:mb-2 sm:justify-start"
+            >
+              <h3 class="m-0 font-light text-slate-800 sm:text-xl md:text-2xl">
+                {{ with or $p.website $p.repo }}
+                  <a href="{{ . }}" title="{{ $p.name }}">{{ $p.name }}</a>
+                {{ else }}
+                  {{ $p.name }}
+                {{ end }}
+              </h3>
+              <span
+                class="bg-{{ $sc }}-50 text-{{ $sc }}-600 rounded-md px-2 py-0.5 text-xs font-medium"
+                >{{ $status }}</span
+              >
+
+              {{ if or $p.website $p.repo }}
+                <span
+                  class="flex items-center gap-x-4 text-sm text-slate-500 sm:ml-auto"
+                >
+                  {{ with $p.website }}
+                    <a
+                      href="{{ . }}"
+                      class="inline-flex items-center gap-1 hover:text-slate-700"
+                      >{{ partial "icon.html" (dict "pack" "duotone" "icon" "globe" "class" "text-xs") }}
+                      Website</a
+                    >
+                  {{ end }}
+                  {{ with $p.repo }}
+                    <a
+                      href="{{ . }}"
+                      class="inline-flex items-center gap-1 hover:text-slate-700"
+                      >{{ partial "icon.html" (dict "pack" "brands" "icon" "github" "class" "text-xs") }}
+                      GitHub</a
+                    >
+                  {{ end }}
+                </span>
+              {{ end }}
+            </div>
+
+            <p class="mt-1 text-center text-sm text-slate-500 sm:text-left">
+              {{ $p.description | markdownify }}
+            </p>
+
+            <p class="mt-2 text-center text-sm text-slate-400 sm:text-left">
+              {{ with site.GetPage (printf "/tags/%s" (urlize $p.tag)) }}
+                <a
+                  href="{{ .RelPermalink }}"
+                  class="border-b-2 border-b-slate-100 text-slate-500"
+                  >#{{ $p.tag }}</a
+                >
+              {{ else }}
+                <span class="text-slate-400">#{{ $p.tag }}</span>
+              {{ end }}
+            </p>
+          </div>
+        </div>
+
+        {{ with $tagged }}
+          <div class="mt-4 border-t border-slate-100 pt-4 sm:mt-6 sm:pt-6">
+            <p class="mb-2 text-xs text-slate-400">Tagged writing</p>
+            <ul class="m-0 list-none space-y-2 p-0">
+              {{ range . }}
+                {{ $isBlog := eq .Section "blog" }}
+                {{ $m := index $meta .Type }}
+                {{ if not $m }}{{ $m = index $meta "blurb" }}{{ end }}
+                <li class="flex items-center gap-2 text-sm">
+                  <span class="text-slate-400">
+                    {{ if $isBlog }}
+                      {{ partial "icon.html" (dict "pack" .Params.pack "icon" .Params.icon "class" "text-xs") }}
+                    {{ else }}
+                      {{ partial "icon.html" (dict "pack" $m.pack "icon" $m.icon "class" "text-xs") }}
+                    {{ end }}
+                  </span>
+                  {{ $href := .RelPermalink }}
+                  {{ if not $isBlog }}
+                    {{ $href = printf "%s#bit-%s" $bitsPage.RelPermalink .File.ContentBaseName }}
+                  {{ end }}
+                  <a
+                    href="{{ $href }}"
+                    class="min-w-0 truncate border-b border-slate-200 text-slate-600 hover:text-slate-900"
+                    >{{ with .LinkTitle }}
+                      {{ . | safeHTML }}
+                    {{ else }}
+                      {{ .Summary | plainify | htmlUnescape | strings.TrimSpace | truncate 80 }}
+                    {{ end }}</a
+                  >
+                  <span class="ml-auto shrink-0 text-xs text-slate-400">
+                    {{ if $isBlog }}article{{ else }}{{ $m.label }}{{ end }}
+                    &middot;
+                    {{ partial "functions/relative-date.html" .Date }}
+                  </span>
+                </li>
+              {{ end }}
+            </ul>
+          </div>
+        {{ else }}
+          <div
+            class="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-400"
+          >
+            Nothing tagged #{{ $p.tag }} yet.
+          </div>
+        {{ end }}
+      </article>
+    {{ end }}
+  </section>
+{{ end }}

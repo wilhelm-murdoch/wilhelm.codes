@@ -7,13 +7,12 @@ icon: terminal-window
 draft: false
 toc: true
 date: 2026-06-20
-category: Development
+category: Projects
 tags:
   - go
-  - golang
   - tmux
   - hcl
-  - projects
+  - glazier
 ---
 I live in [tmux](https://github.com/tmux/tmux/wiki). I typically have an editor here, a dev server there, logs tailing in the corner or a spare pane for poking at things. The trouble is that this little world is frustratingly ephemeral. Rebooting my machine ( thank you, compuslory MacOS updates ), kill the wrong session or just close the laptop lid for too long and it can all evaporate. Then, I'm back to rebuilding the same layout by hand, one `split-window` at a time, like some kind of animal.
 

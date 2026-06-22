@@ -119,6 +119,11 @@
   --nav-bar-hover: var(--color-emerald-100);
 }
 
+#navigation li.highlight-orange {
+  --nav-bar-active: var(--color-orange-300);
+  --nav-bar-hover: var(--color-orange-100);
+}
+
 #navigation li a {
   transition: all 0.2s ease;
   font-weight: 400;
@@ -721,6 +726,11 @@ header h1 span::after {
   --header-link: var(--color-emerald-500);
 }
 
+.theme-orange {
+  --header-bar: var(--color-orange-100);
+  --header-link: var(--color-orange-500);
+}
+
 header h3 span {
   font-weight: 500;
   display: inline-block;
@@ -1087,6 +1097,11 @@ colored/black backgrounds, where remapped white would hide them.
   --nav-bar-hover: var(--color-emerald-800);
 }
 
+.dark #navigation li.highlight-orange {
+  --nav-bar-active: var(--color-orange-700);
+  --nav-bar-hover: var(--color-orange-800);
+}
+
 .dark header h1 span::after {
   background-color: var(--header-bar, var(--color-blue-500));
 }
@@ -1104,6 +1119,11 @@ colored/black backgrounds, where remapped white would hide them.
 .dark .theme-emerald {
   --header-bar: var(--color-emerald-800);
   --header-link: var(--color-emerald-400);
+}
+
+.dark .theme-orange {
+  --header-bar: var(--color-orange-800);
+  --header-link: var(--color-orange-400);
 }
 
 .dark section header p a {
