@@ -33,7 +33,7 @@
 {{- else if lt $days 8 -}}
   {{- $out = printf "%d days ago" (int $days) -}}
 {{- else if lt $days 14 -}}
-  {{- $out = "a week and change" -}}
+  {{- $out = "a week and change ago" -}}
 {{- else if lt $days 21 -}}
   {{- $out = "a couple of weeks ago" -}}
 {{- else if lt $days 31 -}}
