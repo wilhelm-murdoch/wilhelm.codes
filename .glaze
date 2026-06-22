@@ -1,5 +1,5 @@
 session {
-  name = replace(path.base, ".", "-")
+  name = path.base
 
   envs = {
     HUGO_GITHUB_TOKEN        = "${github}"

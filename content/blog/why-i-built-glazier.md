@@ -139,7 +139,7 @@ Enough talk. Here's the profile I actually use when working this website:
 
 ```hcl
 session {
-  name = replace(path.base, ".", "-")
+  name = path.base
 
   envs = {
     HUGO_GITHUB_TOKEN        = "${github}"
@@ -184,14 +184,6 @@ Running `glaze up --var github=*** --var demo=true` gives me the following windo
 - A dedicated terminal session.
 - The Hugo server along with some `HUGO_` specific environment variables; values sourced from the CLI.
 - Finally, `lazygit` to manage and commit my changes.
-
-One thing I should point out is where I define the session name with `replace(path.base, ".", "-")`. This is a workaround for a small known tmux quirk where it won't allow `.` or `:` within a session name. Since the repository is `wilhelm.codes`, tmux will automatically assign it as `wilhelm_codes`. And since Glazier refers to the session by the name we explicitly define, it'll lose context the moment the session is created with the following useful error:
-
-```shell
-could not create new session `wilhelm.codes`: session `wilhelm.codes` was created but could not be found afterwards
-```
-
-Definitely a small edge case I should address with the next patch.
 
 Further, the `--var` arguments aren't really necessary as you could just `export GLAZE_var_name` as well and Glazier will pick it up automatically.
 
