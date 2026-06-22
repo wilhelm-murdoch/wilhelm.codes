@@ -15,11 +15,11 @@ tags:
   - hcl
   - projects
 ---
-I live in [tmux](https://github.com/tmux/tmux/wiki). I typically have an editor here, a dev server there, logs tailing in the corner or a spare pane for poking at things. The trouble is that this little world is frustratingly ephemeral. Rebooting my machine ( thank you, compuslory MacOS updates ), kill the wrong session or just close the laptop lid for too long and it can all evaporates. Then I'm back to rebuilding the same layout by hand, one `split-window` at a time, like some kind of animal.
+I live in [tmux](https://github.com/tmux/tmux/wiki). I typically have an editor here, a dev server there, logs tailing in the corner or a spare pane for poking at things. The trouble is that this little world is frustratingly ephemeral. Rebooting my machine ( thank you, compuslory MacOS updates ), kill the wrong session or just close the laptop lid for too long and it can all evaporate. Then, I'm back to rebuilding the same layout by hand, one `split-window` at a time, like some kind of animal.
 
 <!--more-->
 
-So I built [`Glazier`](https://github.com/wilhelm-murdoch/glazier); a small command-line tool that lets me describe a tmux workspace once and recreate it on demand. Type `glaze up` and the sessions, windows and panes I described spring back into existence exactly how I left them.
+So I built [Glazier](https://github.com/wilhelm-murdoch/glazier); a small command-line tool that lets me describe a tmux workspace once and recreate it on demand. Type `glaze up` and the sessions, windows and panes I described spring back into existence exactly how I left them.
 
 This has been a slow-burning labour of love for the better part of two years and it's finally in a state where I feel comfortable letting other people look at it. So let's talk about why it exists, what else is out there and how this one is different.
 
