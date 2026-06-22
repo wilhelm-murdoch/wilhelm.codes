@@ -38,7 +38,7 @@
     {{/* status -> pill colour */}}
     {{ $statusColours := dict "active" "emerald" "tinkering" "yellow" "shelved" "slate" }}
 
-    {{ range $p := hugo.Data.projects.projects }}
+    {{ range $i, $p := hugo.Data.projects.projects }}
       {{/* Gather every blog post + bit that shares this project's tag. */}}
       {{ $tagged := sort (where site.RegularPages "Params.tags" "intersect" (slice $p.tag)) "Date" "desc" }}
       {{ $status := $p.status | default "active" }}
@@ -46,7 +46,7 @@
 
 
       <article
-        class="highlight-{{ $p.highlight }} relative mx-2 mb-2 rounded-md border px-2 py-4 shadow-sm shadow-slate-100 transition sm:mx-0 sm:mb-8 sm:rounded-2xl sm:p-8 sm:shadow-md md:hover:scale-105"
+        class="highlight-{{ $p.highlight }} relative mx-2 mb-2 overflow-hidden rounded-md border px-2 py-4 shadow-sm shadow-slate-100 transition sm:mx-0 sm:mb-8 sm:rounded-2xl sm:p-8 sm:shadow-md md:hover:scale-105"
       >
         <div class="flex">
           <div class="summary mr-4 hidden w-16 pt-1 md:inline-block">
@@ -112,9 +112,16 @@
         </div>
 
         {{ with $tagged }}
-          <div class="mt-4 border-t border-slate-100 pt-4 sm:mt-6 sm:pt-6">
-            <p class="mb-2 text-xs text-slate-400">Tagged writing</p>
-            <ul class="m-0 list-none space-y-2 p-0">
+          {{ $sparkDates := slice }}
+          {{ range $tagged }}{{ $sparkDates = $sparkDates | append .Date }}{{ end }}
+          <div
+            class="project-split relative -mx-2 -mb-4 mt-4 sm:-mx-8 sm:-mb-8 sm:mt-6"
+          >
+            {{ partial "projects/sparkline.html" (dict "dates" $sparkDates "id" $i) }}
+
+            <div class="split-area px-2 pt-3 pb-4 sm:px-8 sm:pt-4 sm:pb-8">
+              <p class="mb-2 text-xs text-slate-400">Tagged writing</p>
+              <ul class="m-0 list-none space-y-2 p-0">
               {{ range . }}
                 {{ $isBlog := eq .Section "blog" }}
                 {{ $m := index $meta .Type }}
@@ -147,7 +154,8 @@
                   </span>
                 </li>
               {{ end }}
-            </ul>
+              </ul>
+            </div>
           </div>
         {{ else }}
           <div

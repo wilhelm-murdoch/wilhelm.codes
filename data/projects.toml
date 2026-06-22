@@ -28,7 +28,7 @@ repo = "https://github.com/wilhelm-murdoch/glazier"
 [[projects]]
 name = "Plant Smart"
 description = "An older project in much need of some love. I wanted to create a free resource people could use to seee if their houseplants and safe around their pets."
-tag = "plantsmart"
+tag = "plantsm.art"
 status = "tinkering"
 highlight = "emerald"
 pack = "duotone"

@@ -978,9 +978,32 @@ section header p a:hover {
   }
 }
 
+/* Project card sparkline */
+.project-split {
+  --split-shade: rgba(15, 23, 42, 0.05);
+  --split-line: var(--color-slate-300);
+}
+
+.project-split .split-fill {
+  fill: var(--split-shade);
+}
+
+.project-split .split-area {
+  background-color: var(--split-shade);
+}
+
+.project-split .split-line {
+  stroke: var(--split-line);
+}
+
 /*
 Dark Mode
 */
+
+html.dark .project-split {
+  --split-shade: rgba(0, 0, 0, 0.25);
+  --split-line: var(--color-slate-500);
+}
 
 html.dark {
   --color-white: #0b1220;

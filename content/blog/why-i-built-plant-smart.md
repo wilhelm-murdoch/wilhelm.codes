@@ -9,7 +9,7 @@ date: 2023-01-08
 category: Projects
 tags:
   - svelte
-  - plantsmart
+  - plantsm.art
 ---
 Simply put, I love plants and I love animals. I can't count how many times I've been to a plant nursery and had to stop and do a Google search to see if something was safe enough to bring home and keep around our little Pandora, or 🐼 for short.
 
