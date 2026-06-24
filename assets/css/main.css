@@ -177,33 +177,45 @@ ol {
   letter-spacing: 1px;
 }
 
-.prose
+.prose,
+.blurb-prose
   :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):before,
-.prose
+.prose,
+.blurb-prose
   :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):after,
-.prose-xl
+.prose-xl,
+.blurb-prose
   :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):before,
-.prose-xl
+.prose-xl,
+.blurb-prose
   :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):after {
   content: "`";
 }
 
 .article-prose {
   @apply mx-auto mb-8 max-w-4xl wrap-break-word;
-  @apply prose-headings:mt-8 prose-headings:mb-3 md:prose-headings:mt-12 md:prose-headings:mb-4;
-  @apply prose-h2:text-xl prose-h2:font-semibold prose-h2:text-slate-800 md:prose-h2:text-3xl;
-  @apply prose-h3:text-lg prose-h3:font-medium prose-h3:text-slate-700 md:prose-h3:text-2xl;
-  @apply prose-h4:text-base prose-h4:font-semibold prose-h4:text-slate-700 md:prose-h4:text-xl;
-  @apply prose-h5:text-sm prose-h5:font-semibold prose-h5:text-slate-700 md:prose-h5:text-lg;
-  @apply prose-p:text-sm prose-p:leading-normal prose-p:text-slate-800 md:prose-p:text-lg;
+  @apply prose-headings:mt-10 prose-headings:mb-3 md:prose-headings:mt-12 md:prose-headings:mb-4 lg:prose-headings:mt-14;
+  @apply prose-h2:text-2xl prose-h2:font-bold prose-h2:leading-tight prose-h2:text-slate-800 md:prose-h2:text-3xl;
+  @apply prose-h3:text-xl prose-h3:font-semibold prose-h3:leading-snug prose-h3:text-slate-700 md:prose-h3:text-2xl;
+  @apply prose-h4:text-lg prose-h4:font-semibold prose-h4:leading-snug prose-h4:text-slate-700 md:prose-h4:text-xl;
+  @apply prose-h5:text-base prose-h5:font-semibold prose-h5:text-slate-700 md:prose-h5:text-lg;
   @apply prose-blockquote:border-l-4 prose-blockquote:border-slate-200 prose-blockquote:pl-4 prose-blockquote:font-light prose-blockquote:text-slate-500 prose-blockquote:italic;
   @apply prose-pre:overflow-x-auto prose-pre:text-sm;
-  @apply prose-li:text-sm prose-li:leading-normal prose-li:text-slate-800 md:prose-li:text-lg;
   @apply prose-table:block prose-table:w-full prose-table:overflow-x-auto prose-table:border md:prose-table:table;
   @apply prose-thead:bg-slate-50 prose-tr:border-b prose-th:p-2 prose-td:p-2;
   @apply prose-img:m-auto prose-img:rounded-lg prose-img:border prose-img:bg-slate-100 prose-img:p-2;
   @apply prose-hr:my-9 md:prose-hr:my-18;
   @apply prose-inline-code:rounded-sm prose-inline-code:bg-gray-100 prose-inline-code:p-1 prose-inline-code:font-medium prose-inline-code:text-black;
+}
+
+/* Flowing text holds a ~65ch measure, centered; code, images and tables keep the full width. */
+.article-prose :where(p, ul, ol, blockquote, h2, h3, h4, h5, h6) {
+  @apply mx-auto max-w-[46rem];
+}
+
+/* Body copy: 16px on small screens, 18px from md up, with relaxed leading for long-form reading. */
+.article-prose :where(p, li) {
+  @apply text-base leading-relaxed text-slate-800 md:text-lg md:leading-[1.7];
 }
 
 /* Blurb bit prose stylings */
