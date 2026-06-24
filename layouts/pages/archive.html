@@ -26,6 +26,10 @@
       {{ partial "activity-graph.html" (dict "dates" $dates "color" "purple" "type" "blogging") }}
     </section>
 
+    <section class="fade-in-animation mb-8 sm:hidden">
+      {{ partial "activity-heatline.html" (dict "dates" $dates "color" "purple") }}
+    </section>
+
     {{ range (where .Site.RegularPages "Section" "blog") }}
       {{ partial "views/row.html" . }}
     {{ end }}

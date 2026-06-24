@@ -44,11 +44,17 @@
       {{ partial "activity-graph.html" (dict "dates" $graphDates "color" "emerald" "type" "Github") }}
     </section>
 
+    <section class="fade-in-animation mb-8 sm:hidden">
+      {{ partial "activity-heatline.html" (dict "dates" $graphDates "color" "emerald") }}
+    </section>
+
     {{/* Bits-style rail, grouped by day. A coloured dot per event, a type pill,
       the actor (with avatar) and a compact one-line summary.
     */}}
     <div class="relative mx-auto max-w-2xl px-2 sm:px-0">
-      <div class="absolute top-3 bottom-3 left-3.5 w-px bg-slate-100"></div>
+      <div
+        class="absolute top-3 bottom-3 left-5.5 w-px bg-slate-100 sm:left-3.5"
+      ></div>
 
       {{ range $days }}
         {{ $day := . }}

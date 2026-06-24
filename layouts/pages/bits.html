@@ -27,6 +27,10 @@
       {{ partial "activity-graph.html" (dict "dates" $dates "color" "rose" "type" "bit") }}
     </section>
 
+    <section class="fade-in-animation mb-8 sm:hidden">
+      {{ partial "activity-heatline.html" (dict "dates" $dates "color" "rose") }}
+    </section>
+
     {{ partial "bits/filter.html" . }}
 
     {{ partial "bits/feed.html" . }}

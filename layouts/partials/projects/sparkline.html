@@ -1,12 +1,12 @@
-{{/* A 30-day activity sparkline as a series is of trailing 7-day rolling
+{{/* A 15-day activity sparkline as a series of a trailing multi-day rolling
   sum, drawn as straight segments.
 
   Params (dict):
   dates - slice of time.Time (e.g. the .Date of each tagged page)
   id    - value unique per card (kept for callers)
 */}}
-{{- $days := 30 -}}
-{{- $window := 7 -}}
+{{- $days := 15 -}}
+{{- $window := 15 -}}
 {{- $w := 600 -}}
 {{- $h := 80 -}}
 {{- $pad := 10 -}}

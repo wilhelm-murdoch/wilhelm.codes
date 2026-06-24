@@ -1,6 +1,6 @@
 {{ define "main" }}
   <header
-    class="fade-in-animation relative mx-auto mb-0 max-w-4xl pb-2 text-center md:mb-8"
+    class="fade-in-animation relative mx-auto mb-0 max-w-4xl pb-2 text-center sm:mb-8"
   >
     {{ partial "header.html" . }}
   </header>
@@ -17,6 +17,10 @@
     {{ end }}
 
     {{ partial "activity-graph.html" (dict "dates" $dates "color" "blue" "type" "all") }}
+  </section>
+
+  <section class="fade-in-animation mb-8 sm:hidden">
+    {{ partial "activity-heatline.html" (dict "dates" $dates "color" "blue") }}
   </section>
 
   <section class="fade-in-animation mx-auto mb-10 max-w-4xl">
