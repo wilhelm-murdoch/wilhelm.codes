@@ -48,8 +48,12 @@
 {{ end }}
 
 
-<section class="activity-graph">
+<section
+  class="activity-graph"
+  style="--act-base: var(--color-{{ $color }}-50)"
+>
   <div class="grid grid-cols-26 gap-1.5">
+    {{ $flashes := slice "300" "400" "500" "600" }}
     {{ range $i := seq 0 (sub $weeks 1) }}
       {{ $c := $counts.Get (printf "%d" $i) | default 0 }}
       {{ $shade := "50" }}
@@ -64,10 +68,29 @@
         {{ end }}
       {{ end }}
 
+      {{/* On-load reveal: an overlay runs three flashy waves across the grid
+        — bursting out from the centre, then a leftward sweep, then a rightward
+        sweep that fades away to expose each cell's real value. The --d* delays
+        are phased so the waves run in sequence; see .act-fx in the stylesheet.
+        --dist is each column's distance from centre, driving the opening burst.
+      */}}
+      {{ $col := mod $i 26 }}
+      {{ $dist := int (math.Abs (sub $col 12)) }}
+      {{ $d1 := mul $dist 18 }}
+      {{ $d2 := add 460 (mul (sub 25 $col) 18) }}
+      {{ $d3 := add 980 (mul $col 18) }}
+      {{ $f1 := index $flashes (int (mul (math.Rand) 4)) }}
+      {{ $f2 := index $flashes (int (mul (math.Rand) 4)) }}
+
 
       <div class="group relative aspect-square cursor-pointer">
         <div
           class="bg-{{ $color }}-{{ $shade }} h-full w-full rounded-sm transition-transform duration-150 group-hover:scale-125"
+        ></div>
+        <div
+          class="act-fx pointer-events-none absolute inset-0 rounded-sm"
+          aria-hidden="true"
+          style="--d1: {{ $d1 }}ms; --d2: {{ $d2 }}ms; --d3: {{ $d3 }}ms; --f1: var(--color-{{ $color }}-{{ $f1 }}); --f2: var(--color-{{ $color }}-{{ $f2 }})"
         ></div>
         <div
           class="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1 -translate-x-1/2 rounded bg-black px-2 py-1 text-center text-xs whitespace-nowrap text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100"

@@ -195,9 +195,9 @@ ol {
 .article-prose {
   @apply mx-auto mb-8 max-w-4xl wrap-break-word;
   @apply prose-headings:mt-10 prose-headings:mb-3 md:prose-headings:mt-12 md:prose-headings:mb-4 lg:prose-headings:mt-14;
-  @apply prose-h2:text-2xl prose-h2:font-bold prose-h2:leading-tight prose-h2:text-slate-800 md:prose-h2:text-3xl;
-  @apply prose-h3:text-xl prose-h3:font-semibold prose-h3:leading-snug prose-h3:text-slate-700 md:prose-h3:text-2xl;
-  @apply prose-h4:text-lg prose-h4:font-semibold prose-h4:leading-snug prose-h4:text-slate-700 md:prose-h4:text-xl;
+  @apply prose-h2:text-2xl prose-h2:leading-tight prose-h2:font-bold prose-h2:text-slate-800 md:prose-h2:text-3xl;
+  @apply prose-h3:text-xl prose-h3:leading-snug prose-h3:font-semibold prose-h3:text-slate-700 md:prose-h3:text-2xl;
+  @apply prose-h4:text-lg prose-h4:leading-snug prose-h4:font-semibold prose-h4:text-slate-700 md:prose-h4:text-xl;
   @apply prose-h5:text-base prose-h5:font-semibold prose-h5:text-slate-700 md:prose-h5:text-lg;
   @apply prose-blockquote:border-l-4 prose-blockquote:border-slate-200 prose-blockquote:pl-4 prose-blockquote:font-light prose-blockquote:text-slate-500 prose-blockquote:italic;
   @apply prose-pre:overflow-x-auto prose-pre:text-sm;
@@ -304,9 +304,65 @@ ol {
   color: var(--color-slate-500);
 }
 
+/* The activity-graph reveal overlay is opt-in via the motion-safe rules below;
+   by default it stays hidden so the real graph shows immediately. */
+.act-fx {
+  display: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+
+  .activity-graph .act-fx {
+    display: block;
+    background-color: var(--act-base);
+    animation: fx-pulse-a 0.42s ease-out var(--d1, 0ms) backwards;
+    /*fx-pulse-b 0.42s ease-out var(--d2, 0ms),
+      fx-reveal 0.5s ease-out var(--d3, 0ms) forwards;*/
+  }
+
+  @keyframes fx-pulse-a {
+    0%,
+    100% {
+      background-color: var(--act-base);
+      transform: scale(1);
+    }
+    50% {
+      background-color: var(--f1);
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes fx-pulse-b {
+    0%,
+    100% {
+      background-color: var(--act-base);
+      transform: scale(1);
+    }
+    50% {
+      background-color: var(--f2);
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes fx-reveal {
+    0% {
+      background-color: var(--f1);
+      transform: scale(1);
+      opacity: 1;
+    }
+    45% {
+      background-color: var(--f2);
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      background-color: var(--f2);
+      transform: scale(1);
+      opacity: 0;
+    }
   }
 }
 
