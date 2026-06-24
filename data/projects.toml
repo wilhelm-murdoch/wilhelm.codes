@@ -6,32 +6,32 @@
 #   website   - optional public site; repo - optional source (both shown as small icon links)
 [[projects]]
 name = "Wilhelm Codes"
-description = "This very site. A Hugo build I keep tinkering with: a self-assembling changelog, an activity graph, short-form bits and whatever else I feel like wiring up."
+description = "The very site you're currently visiting; a playground to scratch my front-end itches."
 tag = "wilhelm.codes"
-status = "active"
 highlight = "purple"
 pack = "duotone"
-icon = "code"
+icon = "globe"
+technology = ["tailwindcss", "hugo", "cloudflare pages"]
 website = "https://wilhelm.codes/"
 repo = "https://github.com/wilhelm-murdoch/wilhelm.codes"
 
 [[projects]]
 name = "Glazier"
-description = "A command-line tool that lets me describe a tmux workspace once and recreate it on demand. Type `glaze up` and the whole layout springs back to life."
+description = "Declaritive, repeatable tmux profiles writtin in HCL."
 tag = "glazier"
-status = "active"
 highlight = "blue"
 pack = "duotone"
 icon = "terminal-window"
+technology = ["golang", "hcl", "tmux"]
 repo = "https://github.com/wilhelm-murdoch/glazier"
 
 [[projects]]
 name = "Plant Smart"
-description = "An older project in much need of some love. I wanted to create a free resource people could use to seee if their houseplants and safe around their pets."
+description = "For pet owners to make informed purchasing decisions for animal-safe house plants."
 tag = "plantsm.art"
-status = "stale"
 highlight = "emerald"
 pack = "duotone"
 icon = "seedling"
 website = "https://plantsm.art/"
+technology = ["svelte", "cloudflare pages"]
 repo = "https://github.com/wilhelm-murdoch/plantsm.art"

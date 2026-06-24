@@ -25,12 +25,12 @@ enableGitInfo = true
     name = "Home"
     pageRef = "/"
     weight = 10
-  [[menus.main]]
-    name = "Projects"
-    pageRef = "/projects"
-    weight = 20
-    [menus.main.params]
-      highlight = "orange"
+  # [[menus.main]]
+  #   name = "Projects"
+  #   pageRef = "/projects"
+  #   weight = 20
+  #   [menus.main.params]
+  #     highlight = "orange"
   [[menus.main]]
     name = "Archive"
     pageRef = "/archive"
@@ -86,4 +86,4 @@ enableGitInfo = true
     ordered = true
     startLevel = 2
   [markup.highlight]
-    style = "catppuccin-mocha"
+    style = "github-dark"

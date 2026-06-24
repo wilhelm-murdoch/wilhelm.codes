@@ -77,6 +77,8 @@ fetch terminal-window            ph:terminal-window-duotone             "${UI_DI
 fetch cell-tower                 ph:cell-tower-duotone                  "${UI_DIR}"
 fetch broadcast                  ph:broadcast-duotone                   "${UI_DIR}"
 fetch bell                       ph:bell-duotone                        "${UI_DIR}"
+fetch bug                        ph:bug-duotone                         "${UI_DIR}"
+fetch sliders-horizontal         ph:sliders-horizontal                  "${UI_DIR}"
 
 # Git / changelog activity (Phosphor duotone)
 fetch code-commit                ph:git-commit-duotone                  "${UI_DIR}"
