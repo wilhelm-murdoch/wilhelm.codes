@@ -1,0 +1,37 @@
+# Projects shown on /projects, newest/most-active first.
+#   tag       - the taxonomy tag that gathers related blog posts + bits
+#   status    - active | tinkering | shelved (drives the pill colour)
+#   highlight - card accent colour (matches the highlight-* CSS + icon circle)
+#   pack/icon - passed straight to the icon.html partial
+#   website   - optional public site; repo - optional source (both shown as small icon links)
+[[projects]]
+name = "Glazier"
+description = "Declaritive, repeatable tmux profiles writtin in HCL."
+tag = "glazier"
+highlight = "blue"
+pack = "duotone"
+icon = "terminal-window"
+technology = ["golang", "hcl", "tmux"]
+repo = "https://github.com/wilhelm-murdoch/glazier"
+
+[[projects]]
+name = "Wilhelm Codes"
+description = "The very site you're currently visiting; a playground to scratch my front-end itches."
+tag = "wilhelm.codes"
+highlight = "purple"
+pack = "duotone"
+icon = "globe"
+technology = ["tailwindcss", "hugo", "cloudflare pages"]
+website = "https://wilhelm.codes/"
+repo = "https://github.com/wilhelm-murdoch/wilhelm.codes"
+
+[[projects]]
+name = "Plant Smart"
+description = "For pet owners to make informed purchasing decisions for animal-safe house plants."
+tag = "plantsm.art"
+highlight = "emerald"
+pack = "duotone"
+icon = "seedling"
+website = "https://plantsm.art/"
+technology = ["svelte", "cloudflare pages"]
+repo = "https://github.com/wilhelm-murdoch/plantsm.art"

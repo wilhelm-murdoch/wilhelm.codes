@@ -1,0 +1,146 @@
+baseURL = "https://wilhelm.codes/"
+locale = "en-US"
+title = "Wilhelm Codes"
+enableGitInfo = true
+
+# Generate hugo_stats.json (the list of classes Hugo emits) so Tailwind's
+# css.TailwindCSS pipeline can scan the rendered site, and bust the CSS cache
+# when that file or any asset CSS changes.
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/watching/hugo_stats\.json'
+    target = 'css'
+  [[build.cachebusters]]
+    source = 'assets/.*\.css'
+    target = 'css'
+
+[taxonomies]
+  tag = "tags"
+  category = "category"
+
+# Drawer navigation. Entries are grouped into sections via params.group
+# ("Pages" when unset); params.icon names a file in assets/icons/ui/.
+[menus]
+  [[menus.main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 10
+    [menus.main.params]
+      icon = "house"
+  [[menus.main]]
+    name = "Projects"
+    pageRef = "/projects"
+    weight = 20
+    [menus.main.params]
+      highlight = "orange"
+      icon = "cube"
+  [[menus.main]]
+    name = "Archive"
+    pageRef = "/archive"
+    weight = 30
+    [menus.main.params]
+      highlight = "purple"
+      icon = "clock-rotate-left"
+  [[menus.main]]
+    name = "Bits"
+    pageRef = "/bits"
+    weight = 40
+    [menus.main.params]
+      highlight = "rose"
+      icon = "shapes"
+  [[menus.main]]
+    name = "Changelog"
+    pageRef = "/changelog"
+    weight = 50
+    [menus.main.params]
+      highlight = "emerald"
+      icon = "timeline"
+  # [[menus.main]]
+  #   name = "Tutorials"
+  #   url = "/category/tutorials/"
+  #   weight = 60
+  #   [menus.main.params]
+  #     highlight = "yellow"
+  #     icon = "graduation-cap"
+  #     group = "Library"
+
+# External links and feeds, rendered as the drawer's closing section.
+  [[menus.elsewhere]]
+    name = "GitHub"
+    url = "https://github.com/wilhelm-murdoch"
+    weight = 10
+    [menus.elsewhere.params]
+      icon = "github"
+      pack = "brands"
+  [[menus.elsewhere]]
+    name = "Bluesky"
+    url = "https://bsky.app/profile/wilhelm.codes"
+    weight = 20
+    [menus.elsewhere.params]
+      icon = "bluesky"
+      pack = "brands"
+  [[menus.elsewhere]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/wilhelmmurdoch"
+    weight = 30
+    [menus.elsewhere.params]
+      icon = "linkedin"
+      pack = "brands"
+  [[menus.elsewhere]]
+    name = "Articles Feed"
+    url = "/articles.xml"
+    weight = 40
+    [menus.elsewhere.params]
+      icon = "rss"
+  [[menus.elsewhere]]
+    name = "Bits Feed"
+    url = "/bits.xml"
+    weight = 50
+    [menus.elsewhere.params]
+      icon = "rss"
+
+[sitemap]
+  changeFreq = "daily"
+
+# Two purpose-built RSS feeds, both served from the home page:
+#   /articles.xml - longer-form blog posts
+#   /bits.xml     - short-form bits (quotes, links, videos, blurbs)
+[outputFormats]
+  [outputFormats.ArticlesRSS]
+    mediaType = "application/rss+xml"
+    baseName = "articles"
+    isPlainText = false
+    isHTML = false
+    rel = "alternate"
+  [outputFormats.BitsRSS]
+    mediaType = "application/rss+xml"
+    baseName = "bits"
+    isPlainText = false
+    isHTML = false
+    rel = "alternate"
+  # Build-time JSON index for the command palette (fuse.js client-side).
+  [outputFormats.SearchIndex]
+    mediaType = "application/json"
+    baseName = "searchindex"
+    isPlainText = true
+
+[outputs]
+  home = ["HTML", "ArticlesRSS", "BitsRSS", "SearchIndex"]
+  section = ["HTML"]
+
+[params]
+  description = "Slinger of nibbles, bits and bytes. Over 25 years of professional experience as a software engineer. Love making glowing rectangles go \"beep-boop\"."
+  tagline = "Slinger of nibbles, bits & bytes."
+  [params.author]
+    email = "0xdeadbeef@devilmayco.de"
+    name = "ɯlǝɥlᴉʍ"
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = true
+    startLevel = 2
+  [markup.highlight]
+    style = "github-dark"

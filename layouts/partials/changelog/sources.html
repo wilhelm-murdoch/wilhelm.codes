@@ -1,0 +1,21 @@
+{{/* Single point of truth for every GitHub collection the site consumes. */}}
+
+{{ $repo := "wilhelm-murdoch/wilhelm.codes" }}
+
+{{ return dict
+  "events" (partial "changelog/fetch.html" (dict
+  "url" (printf "https://api.github.com/repos/%s/events" $repo)
+  "fixture" "static/github-events.json"))
+  "commits" (partial "changelog/fetch.html" (dict
+  "url" (printf "https://api.github.com/repos/%s/commits?per_page=100" $repo)
+  "fixture" "static/github-commits.json"))
+  "pulls" (partial "changelog/fetch.html" (dict
+  "url" (printf "https://api.github.com/repos/%s/pulls?state=all&sort=updated&direction=desc&per_page=50" $repo)
+  "fixture" "static/github-pulls.json"))
+  "issues" (partial "changelog/fetch.html" (dict
+  "url" (printf "https://api.github.com/repos/%s/issues?state=all&sort=updated&direction=desc&per_page=50" $repo)
+  "fixture" "static/github-issues.json"))
+  "releases" (partial "changelog/fetch.html" (dict
+  "url" (printf "https://api.github.com/repos/%s/releases?per_page=30" $repo)
+  "fixture" "static/github-releases.json"))
+}}
