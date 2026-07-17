@@ -62,6 +62,8 @@ fetch exclamation                ph:warning-circle-duotone              "${UI_DI
 fetch lock-open                  ph:lock-open-duotone                   "${UI_DIR}"
 fetch book                       ph:book-duotone                        "${UI_DIR}"
 fetch heart                      ph:heart-duotone                       "${UI_DIR}"
+fetch heart-crack                ph:heart-break-duotone                 "${UI_DIR}"
+fetch sidebar                    ph:sidebar-simple-duotone              "${UI_DIR}"
 fetch quote-right                ph:quotes-duotone                      "${UI_DIR}"
 fetch arrow-up-right-from-square ph:arrow-square-out-duotone            "${UI_DIR}"
 fetch pen-nib                    ph:pen-nib-duotone                     "${UI_DIR}"
