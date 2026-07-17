@@ -26,7 +26,7 @@ So [go-collection](https://github.com/wilhelm-murdoch/go-collection) happened. A
 
 {{< blockquote "There are far more comprehensive modules out there, but this one works quite well for my purposes." "me, in the README, setting expectations appropriately for once" >}}
 
-That sentence was doing more work than I realised at the time. It wasn't trying to compete with the big functional-utility libraries. It was scratching a personal itch and for a few years it scratched it well. Then Go's standard library grew slurped most of it up.
+That sentence was doing more work than I realised at the time. It wasn't trying to compete with the big functional-utility libraries. It was scratching a personal itch and for a few years it scratched it well. Then Go's standard library grew and slurped most of it up.
 
 ## Taking a trip to the morgue.
 
@@ -165,6 +165,8 @@ So today, the repo gets the full send-off:
 If you're one of the however-many people with this module in a `go.mod` somewhere nothing breaks. The Go module proxy caches published versions more or less permanently, so `v1.0.11` will keep resolving long after we're all dust. Archiving just makes the end of our relationship official rather than leaving it implied.
 
 If you've got a little module of your own in the same situation that has been superseded, purpose spent, kept alive out of habit, then consider this your permission slip. Write the notice, hit archive and go build that next thing. An honest ending is a kindness to your users and to yourself. It's OK to let go.
+
+[Here](https://github.com/wilhelm-murdoch/glazier/commit/8b6b84a220225fe714b8623aac1b183d64faf09a) is an example of me tearing `go-collection` out of my very recent Glazier project. This one stung a little at how easily it was replaced.
 
 ## In closing ...
 
