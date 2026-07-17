@@ -46,12 +46,18 @@
 <meta name="title" content="{{ $title }}" />
 <meta name="description" content="{{ $description | truncate 160 }}" />
 
+{{ $ogImage := absURL "images/og-banner.png" }}
+{{ $customOg := printf "%sog.png" .RelPermalink }}
+{{ if fileExists (printf "static%s" $customOg) }}
+  {{ $ogImage = absURL $customOg }}
+{{ end }}
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ site.BaseURL }}" />
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $description | truncate 160 }}" />
-<meta property="og:image" content="{{ site.BaseURL }}images/og-banner.png" />
+<meta property="og:image" content="{{ $ogImage }}" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -59,7 +65,7 @@
 <meta property="twitter:title" content="{{ $title }}" />
 <meta property="twitter:description" content="{{ $description }}" />
 <meta name="twitter:creator" content="@wilhelm.codes" />
-<meta name="twitter:image" content="{{ site.BaseURL }}images/og-banner.png" />
+<meta name="twitter:image" content="{{ $ogImage }}" />
 
 <!-- RSS Feeds -->
 <link
