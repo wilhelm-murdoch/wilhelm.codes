@@ -160,7 +160,7 @@ Keeping it alive from here would mean maintaining a slightly worse, slightly slo
 So today, the repo gets the full send-off:
 
 * A deprecation notice at the top of the README, pointing anyone who lands there at the [slices](https://pkg.go.dev/slices) package and at this post.
-* The repository gets [archived](https://github.com/wilhelm-murdoch/go-collection) on GitHub. Read-only, clearly signposted and locked in eternal statis.
+* The repository gets [archived](https://github.com/wilhelm-murdoch/go-collection) on GitHub. Read-only, clearly signposted and locked in eternal stasis.
 
 If you're one of the however-many people with this module in a `go.mod` somewhere nothing breaks. The Go module proxy caches published versions more or less permanently, so `v1.0.11` will keep resolving long after we're all dust. Archiving just makes the end of our relationship official rather than leaving it implied.
 
