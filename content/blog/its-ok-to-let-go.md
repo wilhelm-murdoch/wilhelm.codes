@@ -32,7 +32,7 @@ That sentence was doing more work than I realised at the time. It wasn't trying 
 
 Cause of death is easy to establish here, because it happened in three well-documented releases. Go 1.21 shipped the `slices` package. Go 1.22 and 1.23 finished the job. Let's walk through it, method by method, like the nerds we are.
 
-### Membership and search
+### Does it have the thing?
 
 The bread and butter. Probably eighty percent of my actual usage of this library was some flavour of "is this thing in there?":
 
@@ -149,7 +149,7 @@ Four lines. Obvious to anyone who's read any Go at all, no import, nothing to le
 
 So that's the technical half. Here's the part I actually wanted to write about.
 
-We don't really have a culture of *finishing* software. A project is either "actively maintained" or it's "abandoned", with all the guilt that word drags behind it. Issues accumulate, badges rot, and the README slowly becomes a lie because nobody wants to be the person who admits the thing is done. I've had this module sitting in that limbo for a while now, still getting pulled into new projects out of habit while a strictly better replacement sat in the standard library the whole time.
+We don't really have a culture of *finishing* software. A project is either "actively maintained" or it's "abandoned", with all the guilt that word drags behind it. Issues accumulate, badges rot and the README slowly becomes a lie because nobody wants to be the person who admits the thing is done, or no longer necessary. I've had this module sitting in that limbo for a while now, still getting pulled into new projects out of habit while a strictly better replacement sat in the standard library the whole time.
 
 But software isn't a legacy; it's a tool. Tools serve a purpose. This one's purpose was to teach me generics in their first year of existence and to spare me a few thousand `for` loops while the language sorted itself out. Purpose served on both counts. And of all the ways for a library to die, being absorbed by the standard library is the best one available. It means the gap you filled was real and now it's just *gone*, fixed at the correct layer, for everyone and forever. That's not a failure state. That's the mission succeeding so hard the mission ceases to exist.
 
