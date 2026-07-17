@@ -248,7 +248,9 @@ content card shifts right to make room. Pure CSS; the trigger button and
 overlay behaviour only exist below lg.
 */
 @media (min-width: 64rem) {
-  body {
+  /* :has guard: standalone pages without the drawer (404) keep a full-bleed
+     body instead of inheriting the dock's gutter. */
+  body:has([data-drawer]) {
     padding-left: 19rem;
     padding-right: 1rem;
   }
@@ -279,7 +281,7 @@ overlay behaviour only exist below lg.
      on <html> (set pre-paint in head.html, toggled in drawer.html); the
      drawer-anim class is added around the toggle so only deliberate
      collapses animate - resizes and page loads snap. */
-  html.drawer-collapsed body {
+  html.drawer-collapsed body:has([data-drawer]) {
     padding-left: 1rem;
   }
 
@@ -333,7 +335,7 @@ drawer travels with the card instead of clinging to the viewport edge
 while the card drifts off to the right.
 */
 @media (min-width: 92rem) {
-  body {
+  body:has([data-drawer]) {
     padding-left: calc((100vw - 92rem) / 2 + 19rem);
     padding-right: calc((100vw - 92rem) / 2 + 1rem);
   }
@@ -345,7 +347,7 @@ while the card drifts off to the right.
   /* Collapsed: mirror the right-hand padding so the card recenters, and
      push the slide-out distance past the panel's centered left offset so
      it fully clears the viewport. */
-  html.drawer-collapsed body {
+  html.drawer-collapsed body:has([data-drawer]) {
     padding-left: calc((100vw - 92rem) / 2 + 1rem);
   }
 
