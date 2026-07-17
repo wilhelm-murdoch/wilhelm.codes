@@ -274,6 +274,45 @@ overlay behaviour only exist below lg.
     display: none;
   }
 
+  /* Collapsed dock: the panel slides away, the content card reclaims the
+     19rem gutter and the hamburger returns as the way back in. State lives
+     on <html> (set pre-paint in head.html, toggled in drawer.html); the
+     drawer-anim class is added around the toggle so only deliberate
+     collapses animate - resizes and page loads snap. */
+  html.drawer-collapsed body {
+    padding-left: 1rem;
+  }
+
+  html.drawer-collapsed .drawer-panel {
+    transform: translateX(calc(-100% - 1rem));
+    visibility: hidden;
+  }
+
+  html.drawer-collapsed [data-drawer-open] {
+    display: flex;
+  }
+
+  html.drawer-collapsed .palette-panel {
+    left: 50vw;
+  }
+
+  html.drawer-anim body {
+    transition: padding-left 0.3s ease;
+  }
+
+  html.drawer-anim .drawer-panel {
+    transition:
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.drawer-anim body,
+    html.drawer-anim .drawer-panel {
+      transition: none;
+    }
+  }
+
   /* Hover lifts items to the card colour, matching the foreground. */
   #navigation a:hover {
     background-color: var(--color-white);
@@ -301,6 +340,17 @@ while the card drifts off to the right.
 
   .drawer-panel {
     left: calc((100vw - 92rem) / 2);
+  }
+
+  /* Collapsed: mirror the right-hand padding so the card recenters, and
+     push the slide-out distance past the panel's centered left offset so
+     it fully clears the viewport. */
+  html.drawer-collapsed body {
+    padding-left: calc((100vw - 92rem) / 2 + 1rem);
+  }
+
+  html.drawer-collapsed .drawer-panel {
+    transform: translateX(calc(-100% - (100vw - 92rem) / 2 - 1rem));
   }
 }
 

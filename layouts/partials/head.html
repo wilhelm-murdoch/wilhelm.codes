@@ -18,6 +18,17 @@
   })();
 </script>
 
+{{/* Likewise the collapsed drawer, so the docked panel doesn't flash in. */}}
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem("drawer") === "collapsed") {
+        document.documentElement.classList.add("drawer-collapsed");
+      }
+    } catch (e) {}
+  })();
+</script>
+
 {{ $title := site.Title }}
 {{ $description := .Site.Params.Description }}
 {{ if not .IsHome }}

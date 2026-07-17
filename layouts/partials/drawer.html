@@ -104,6 +104,16 @@
         >
       </button>
       {{ partial "theme-toggle.html" . }}
+      <button
+        type="button"
+        class="hidden aspect-square shrink-0 cursor-pointer items-center justify-center rounded-lg border bg-white text-slate-400 transition hover:text-slate-600 lg:flex"
+        data-drawer-collapse
+        aria-label="Hide navigation"
+        aria-controls="site-drawer"
+        title="Hide navigation"
+      >
+        {{ partial "icon.html" (dict "icon" "sidebar" "class" "text-base") }}
+      </button>
     </div>
 
     <nav id="navigation" class="flex-1 overflow-y-auto px-3 pb-6">
@@ -191,6 +201,7 @@
     var root = document.documentElement;
     var openButton = wrap.querySelector("[data-drawer-open]");
     var closeButton = wrap.querySelector("[data-drawer-close]");
+    var collapseButton = wrap.querySelector("[data-drawer-collapse]");
     var backdrop = wrap.querySelector("[data-drawer-backdrop]");
     var panel = wrap.querySelector("[data-drawer-panel]");
     var lastFocused = null;
@@ -228,7 +239,41 @@
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
 
+    {{/* At lg+ the docked drawer can be collapsed away entirely; the state
+        rides on <html> (set pre-paint in head.html) and persists like the
+        theme preference. */}}
+    var animTimer = null;
+
+    function setCollapsed(collapsed) {
+      {{/* drawer-anim opts into transitions for the toggle only, so
+          resizes and breakpoint crossings still snap instantly. */}}
+      root.classList.add("drawer-anim");
+      root.classList.toggle("drawer-collapsed", collapsed);
+      openButton.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      try {
+        localStorage.setItem("drawer", collapsed ? "collapsed" : "open");
+      } catch (e) {}
+      if (animTimer) clearTimeout(animTimer);
+      animTimer = setTimeout(function () {
+        root.classList.remove("drawer-anim");
+        animTimer = null;
+      }, 350);
+    }
+
+    collapseButton.addEventListener("click", function () {
+      setCollapsed(true);
+      openButton.focus({ preventScroll: true });
+    });
+
     openButton.addEventListener("click", function () {
+      if (large.matches) {
+        setCollapsed(false);
+        {{/* Wait a frame so the button is rendered before it takes focus. */}}
+        requestAnimationFrame(function () {
+          collapseButton.focus({ preventScroll: true });
+        });
+        return;
+      }
       isOpen() ? close() : open();
     });
     closeButton.addEventListener("click", close);
