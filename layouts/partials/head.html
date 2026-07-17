@@ -47,10 +47,13 @@
 <meta name="description" content="{{ $description | truncate 160 }}" />
 
 {{ $ogImage := absURL "images/og-banner.png" }}
+{{ $ogImagePath := "static/images/og-banner.png" }}
 {{ $customOg := printf "%sog.png" .RelPermalink }}
 {{ if fileExists (printf "static%s" $customOg) }}
   {{ $ogImage = absURL $customOg }}
+  {{ $ogImagePath = printf "static%s" $customOg }}
 {{ end }}
+{{ $ogImageDim := imageConfig $ogImagePath }}
 
 {{ $isArticle := eq .Section "blog" }}
 
@@ -60,6 +63,8 @@
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $description | truncate 160 }}" />
 <meta property="og:image" content="{{ $ogImage }}" />
+<meta property="og:image:width" content="{{ $ogImageDim.Width }}" />
+<meta property="og:image:height" content="{{ $ogImageDim.Height }}" />
 {{ if $isArticle }}
   <meta
     property="article:published_time"
@@ -67,13 +72,15 @@
   />
 {{ end }}
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="{{ .Permalink }}" />
-<meta property="twitter:title" content="{{ $title }}" />
-<meta property="twitter:description" content="{{ $description }}" />
+<!-- Twitter/X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="{{ .Permalink }}" />
+<meta name="twitter:title" content="{{ $title }}" />
+<meta name="twitter:description" content="{{ $description }}" />
 <meta name="twitter:creator" content="@wilhelm.codes" />
 <meta name="twitter:image" content="{{ $ogImage }}" />
+<meta name="twitter:image:width" content="{{ $ogImageDim.Width }}" />
+<meta name="twitter:image:height" content="{{ $ogImageDim.Height }}" />
 
 <!-- RSS Feeds -->
 <link
